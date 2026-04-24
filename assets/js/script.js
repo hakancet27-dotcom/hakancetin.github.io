@@ -101,13 +101,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // Open email client
             window.location.href = mailtoLink;
             
-            // Show success message
-            alert('Mesajınız için teşekkürler! Email clientiniz açılıyor...');
-            
-            // Reset form
-            contactForm.reset();
         });
     }
+    
+    // Initialize syntax highlighting
+    hljs.highlightAll();
     
     console.log('Hakancetin.com yüklendi! 🚀');
 });
