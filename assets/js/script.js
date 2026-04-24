@@ -109,3 +109,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('Hakancetin.com yüklendi! 🚀');
 });
+
+// Code demo toggle function
+function toggleCode(header) {
+    const codeBlock = header.nextElementSibling;
+    const toggleIcon = header.querySelector('.toggle-icon');
+    
+    codeBlock.classList.toggle('expanded');
+    toggleIcon.classList.toggle('rotated');
+}

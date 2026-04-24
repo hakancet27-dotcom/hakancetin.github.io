@@ -385,6 +385,29 @@ body.dark-mode .hero {
     gap: 1.5rem;
     padding: 1.5rem 2rem;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
+    cursor: pointer;
+    user-select: none;
+    transition: filter 0.3s;
+}
+
+.demo-header:hover {
+    filter: brightness(1.1);
+}
+
+.toggle-icon {
+    margin-left: auto;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    transition: transform 0.3s;
+}
+
+.toggle-icon.rotated {
+    transform: rotate(180deg);
 }
 
 .demo-icon {
@@ -417,6 +440,15 @@ body.dark-mode .hero {
     background: #282c34;
     padding: 0;
     overflow-x: auto;
+    max-height: 0;
+    transition: max-height 0.4s ease-out, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.code-block.expanded {
+    max-height: 2000px;
+    opacity: 1;
+    transition: max-height 0.5s ease-in, opacity 0.3s ease;
 }
 
 .code-block pre {
