@@ -6,6 +6,9 @@
     <title>Hakan Çetin - Python Geliştirici</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
 </head>
 <body>
     <header>
@@ -18,6 +21,7 @@
                 <li><a href="#hero">Ana Sayfa</a></li>
                 <li><a href="#hakkimda">Hakkımda</a></li>
                 <li><a href="#yetenekler">Yetenekler</a></li>
+                <li><a href="#kod-demolari">Kod Demoları</a></li>
                 <li><a href="#projeler">Projeler</a></li>
                 <li><a href="#iletisim">İletişim</a></li>
             </ul>
@@ -114,6 +118,247 @@
                         <span class="skill-tag">GitHub</span>
                         <span class="skill-tag">VS Code</span>
                         <span class="skill-tag">Docker</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kod Demoları Section -->
+        <section id="kod-demolari">
+            <h2><i class="fas fa-code"></i> Python Kod Demoları</h2>
+            <p class="section-description">Uzmanlık alanımdaki yeteneklerimi gösteren etkileyici kod örnekleri</p>
+            
+            <div class="code-demos-grid">
+                <!-- Demo 1: Advanced Web Scraping -->
+                <div class="code-demo">
+                    <div class="demo-header">
+                        <div class="demo-icon">
+                            <i class="fas fa-spider"></i>
+                        </div>
+                        <div class="demo-info">
+                            <h3>İleri Düzey Web Scraping</h3>
+                            <p>Anti-bot sistemlerini aşan, rate-limiting ve proxy rotasyonu kullanan profesyonel scraper</p>
+                        </div>
+                    </div>
+                    <div class="code-block">
+                        <pre><code class="language-python">import asyncio
+import aiohttp
+from bs4 import BeautifulSoup
+from fake_useragent import UserAgent
+import random
+
+class AdvancedScraper:
+    def __init__(self):
+        self.ua = UserAgent()
+        self.proxies = [
+            'http://proxy1.com:8080',
+            'http://proxy2.com:8080',
+            'http://proxy3.com:8080'
+        ]
+        self.rate_limit = 2  # requests per second
+        
+    async def fetch_page(self, session, url):
+        headers = {'User-Agent': self.ua.random}
+        proxy = random.choice(self.proxies)
+        
+        async with session.get(url, headers=headers, 
+                               proxy=proxy, timeout=30) as response:
+            if response.status == 200:
+                return await response.text()
+            return None
+    
+    async def scrape_multiple(self, urls):
+        async with aiohttp.ClientSession() as session:
+            tasks = []
+            for url in urls:
+                task = self.fetch_page(session, url)
+                tasks.append(task)
+                await asyncio.sleep(1 / self.rate_limit)
+            
+            results = await asyncio.gather(*tasks)
+            return [r for r in results if r]
+
+# Kullanım
+scraper = AdvancedScraper()
+urls = ['https://example1.com', 'https://example2.com']
+data = asyncio.run(scraper.scrape_multiple(urls))</code></pre>
+                    </div>
+                    <div class="demo-features">
+                        <span class="feature-tag"><i class="fas fa-bolt"></i> Async/Await</span>
+                        <span class="feature-tag"><i class="fas fa-shield-alt"></i> Anti-Bot</span>
+                        <span class="feature-tag"><i class="fas fa-exchange-alt"></i> Proxy Rotasyon</span>
+                    </div>
+                </div>
+
+                <!-- Demo 2: Data Processing Pipeline -->
+                <div class="code-demo">
+                    <div class="demo-header">
+                        <div class="demo-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="demo-info">
+                            <h3>Veri İşleme Pipeline</h3>
+                            <p>Büyük veri setlerini otomatik temizleyen, dönüştüren ve analiz eden pipeline</p>
+                        </div>
+                    </div>
+                    <div class="code-block">
+                        <pre><code class="language-python">import pandas as pd
+import numpy as np
+from typing import List, Dict
+import re
+
+class DataPipeline:
+    def __init__(self):
+        self.cleaners = [
+            self.remove_duplicates,
+            self.handle_missing_values,
+            self.normalize_text,
+            self.detect_outliers
+        ]
+    
+    def remove_duplicates(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Tekrarlayan kayıtları kaldır"""
+        return df.drop_duplicates()
+    
+    def handle_missing_values(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Eksik değerleri doldur"""
+        numeric_cols = df.select_dtypes(include=[np.number]).columns
+        df[numeric_cols] = df[numeric_cols].fillna(df[numeric_cols].median())
+        return df
+    
+    def normalize_text(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Metinleri normalize et"""
+        text_cols = df.select_dtypes(include=['object']).columns
+        for col in text_cols:
+            df[col] = df[col].str.lower().str.strip()
+            df[col] = df[col].apply(lambda x: re.sub(r'[^\w\s]', '', str(x)))
+        return df
+    
+    def detect_outliers(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Aykırı değerleri tespit et"""
+        numeric_cols = df.select_dtypes(include=[np.number]).columns
+        for col in numeric_cols:
+            Q1 = df[col].quantile(0.25)
+            Q3 = df[col].quantile(0.75)
+            IQR = Q3 - Q1
+            df = df[~((df[col] < (Q1 - 1.5 * IQR)) | 
+                     (df[col] > (Q3 + 1.5 * IQR)))]
+        return df
+    
+    def process(self, raw_data: List[Dict]) -> pd.DataFrame:
+        """Veriyi pipeline'dan geçir"""
+        df = pd.DataFrame(raw_data)
+        
+        for cleaner in self.cleaners:
+            df = cleaner(df)
+            print(f"✓ {cleaner.__name__} tamamlandı")
+        
+        return df
+
+# Kullanım
+pipeline = DataPipeline()
+raw_data = [{'name': '  Test  ', 'value': 100}, 
+            {'name': 'test', 'value': 105}]
+clean_data = pipeline.process(raw_data)</code></pre>
+                    </div>
+                    <div class="demo-features">
+                        <span class="feature-tag"><i class="fas fa-database"></i> Pandas</span>
+                        <span class="feature-tag"><i class="fas fa-broom"></i> Auto-Clean</span>
+                        <span class="feature-tag"><i class="fas fa-chart-bar"></i> Analysis</span>
+                    </div>
+                </div>
+
+                <!-- Demo 3: Intelligent Agent -->
+                <div class="code-demo">
+                    <div class="demo-header">
+                        <div class="demo-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="demo-info">
+                            <h3>Akıllı Veri Agent</h3>
+                            <p>Kendiliğinden öğrenen ve strateji geliştiren otonom veri toplama agent</p>
+                        </div>
+                    </div>
+                    <div class="code-block">
+                        <pre><code class="language-python">import json
+from datetime import datetime
+from typing import Dict, List
+import random
+
+class DataAgent:
+    def __init__(self, name: str):
+        self.name = name
+        self.memory = {}
+        self.success_rate = 0.0
+        self.strategies = {
+            'aggressive': 0.3,
+            'balanced': 0.5,
+            'conservative': 0.2
+        }
+        self.learning_rate = 0.1
+    
+    def learn(self, success: bool, strategy: str):
+        """Başarıya göre öğren"""
+        if success:
+            self.strategies[strategy] += self.learning_rate
+            self.success_rate = min(1.0, self.success_rate + 0.05)
+        else:
+            self.strategies[strategy] -= self.learning_rate
+            self.success_rate = max(0.0, self.success_rate - 0.02)
+        
+        # Normalize stratejiler
+        total = sum(self.strategies.values())
+        for key in self.strategies:
+            self.strategies[key] /= total
+    
+    def select_strategy(self) -> str:
+        """En iyi stratejiyi seç"""
+        return random.choices(
+            list(self.strategies.keys()),
+            weights=list(self.strategies.values())
+        )[0]
+    
+    def execute_task(self, task: Dict) -> Dict:
+        """Görevi çalıştır"""
+        strategy = self.select_strategy()
+        
+        # Simüle edilmiş görev
+        success_chance = {
+            'aggressive': 0.4,
+            'balanced': 0.7,
+            'conservative': 0.9
+        }[strategy]
+        
+        success = random.random() < success_chance
+        self.learn(success, strategy)
+        
+        return {
+            'agent': self.name,
+            'strategy': strategy,
+            'success': success,
+            'success_rate': self.success_rate,
+            'timestamp': datetime.now().isoformat()
+        }
+    
+    def save_memory(self):
+        """Hafızayı kaydet"""
+        with open(f'{self.name}_memory.json', 'w') as f:
+            json.dump({
+                'strategies': self.strategies,
+                'success_rate': self.success_rate
+            }, f)
+
+# Kullanım
+agent = DataAgent("AlphaBot")
+for _ in range(10):
+    result = agent.execute_task({'type': 'scrape'})
+    print(f"Strategy: {result['strategy']}, Success: {result['success']}")
+agent.save_memory()</code></pre>
+                    </div>
+                    <div class="demo-features">
+                        <span class="feature-tag"><i class="fas fa-brain"></i> Machine Learning</span>
+                        <span class="feature-tag"><i class="fas fa-sync"></i> Self-Improving</span>
+                        <span class="feature-tag"><i class="fas fa-chess"></i> Strategy</span>
                     </div>
                 </div>
             </div>
