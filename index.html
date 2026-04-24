@@ -370,6 +370,164 @@ agent.save_memory()</code></pre>
                         <span class="feature-tag"><i class="fas fa-chess"></i> Strategy</span>
                     </div>
                 </div>
+
+                <!-- Demo 4: Snake Game -->
+                <div class="code-demo">
+                    <div class="demo-header" onclick="toggleCode(this)">
+                        <div class="demo-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div class="demo-info">
+                            <h3>Snake Oyunu</h3>
+                            <p>Pygame ile geliştirilmiş klasik yılan oyunu - OOP, event handling ve oyun döngüsü</p>
+                        </div>
+                        <div class="toggle-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="code-block collapsed">
+                        <pre><code class="language-python">import pygame
+import random
+import sys
+
+class SnakeGame:
+    def __init__(self):
+        pygame.init()
+        self.width = 800
+        self.height = 600
+        self.screen = pygame.display.set_mode((self.width, self.height))
+        pygame.display.set_caption("Python Snake Game")
+        self.clock = pygame.time.Clock()
+        
+        # Renkler
+        self.BLACK = (0, 0, 0)
+        self.WHITE = (255, 255, 255)
+        self.GREEN = (0, 255, 0)
+        self.RED = (255, 0, 0)
+        self.BLUE = (0, 0, 255)
+        
+        # Oyun ayarları
+        self.block_size = 20
+        self.snake_speed = 15
+        
+        # Yılan başlangıç
+        self.snake = []
+        self.snake_length = 1
+        self.x1 = self.width // 2
+        self.y1 = self.height // 2
+        self.x1_change = 0
+        self.y1_change = 0
+        
+        # Yem
+        self.food_x = round(random.randrange(0, self.width - self.block_size) / self.block_size) * self.block_size
+        self.food_y = round(random.randrange(0, self.height - self.block_size) / self.block_size) * self.block_size
+        
+        # Skor
+        self.score = 0
+        
+    def handle_events(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT and self.x1_change == 0:
+                    self.x1_change = -self.block_size
+                    self.y1_change = 0
+                elif event.key == pygame.K_RIGHT and self.x1_change == 0:
+                    self.x1_change = self.block_size
+                    self.y1_change = 0
+                elif event.key == pygame.K_UP and self.y1_change == 0:
+                    self.y1_change = -self.block_size
+                    self.x1_change = 0
+                elif event.key == pygame.K_DOWN and self.y1_change == 0:
+                    self.y1_change = self.block_size
+                    self.x1_change = 0
+        return True
+    
+    def update(self):
+        self.x1 += self.x1_change
+        self.y1 += self.y1_change
+        
+        # Yılanın yeni başını ekle
+        self.snake.append([self.x1, self.y1])
+        
+        # Yılanı istenen uzunlukta tut
+        if len(self.snake) > self.snake_length:
+            del self.snake[0]
+        
+        # Yem yeme kontrolü
+        if self.x1 == self.food_x and self.y1 == self.food_y:
+            self.food_x = round(random.randrange(0, self.width - self.block_size) / self.block_size) * self.block_size
+            self.food_y = round(random.randrange(0, self.height - self.block_size) / self.block_size) * self.block_size
+            self.snake_length += 1
+            self.score += 10
+        
+        # Duvar çarpışması
+        if self.x1 >= self.width or self.x1 < 0 or self.y1 >= self.height or self.y1 < 0:
+            return False
+        
+        # Kendine çarpışma
+        for segment in self.snake[:-1]:
+            if segment == [self.x1, self.y1]:
+                return False
+        
+        return True
+    
+    def draw(self):
+        self.screen.fill(self.BLACK)
+        
+        # Yılanı çiz
+        for segment in self.snake:
+            pygame.draw.rect(self.screen, self.GREEN, [segment[0], segment[1], self.block_size, self.block_size])
+        
+        # Yemi çiz
+        pygame.draw.rect(self.screen, self.RED, [self.food_x, self.food_y, self.block_size, self.block_size])
+        
+        # Skoru göster
+        font = pygame.font.SysFont('Arial', 30)
+        score_text = font.render(f'Skor: {self.score}', True, self.WHITE)
+        self.screen.blit(score_text, [10, 10])
+        
+        pygame.display.update()
+    
+    def run(self):
+        running = True
+        while running:
+            running = self.handle_events()
+            if not running:
+                break
+            
+            running = self.update()
+            if not running:
+                break
+            
+            self.draw()
+            self.clock.tick(self.snake_speed)
+        
+        # Game Over ekranı
+        font = pygame.font.SysFont('Arial', 50)
+        game_over_text = font.render('Oyun Bitti!', True, self.RED)
+        final_score_text = font.render(f'Final Skor: {self.score}', True, self.WHITE)
+        
+        self.screen.blit(game_over_text, [self.width // 2 - 150, self.height // 2 - 50])
+        self.screen.blit(final_score_text, [self.width // 2 - 150, self.height // 2 + 10])
+        pygame.display.update()
+        
+        pygame.time.wait(3000)
+        pygame.quit()
+        sys.exit()
+
+# Oyunu başlat
+if __name__ == "__main__":
+    game = SnakeGame()
+    game.run()</code></pre>
+                    </div>
+                    <div class="demo-features">
+                        <span class="feature-tag"><i class="fas fa-gamepad"></i> Pygame</span>
+                        <span class="feature-tag"><i class="fas fa-cube"></i> OOP</span>
+                        <span class="feature-tag"><i class="fas fa-bolt"></i> Event Loop</span>
+                    </div>
+                </div>
             </div>
         </section>
         
