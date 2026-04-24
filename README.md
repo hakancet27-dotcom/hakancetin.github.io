@@ -23,4 +23,4 @@ Python ile oluşturulmuş GitHub Pages tabanlı kişisel web sitesi.
 - Web: https://hakancetin.com
 
 ---
-© 2024 Hakan Çetin
+© 2026 Hakan Çetin
