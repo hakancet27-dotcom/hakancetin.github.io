@@ -3,45 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hakan Çetin - Kişisel Web Sitesi</title>
+    <title>Hakan Çetin - Python Geliştirici</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
         <nav>
             <h1>Hakancetin.com</h1>
-            <ul>
+            <button class="hamburger-menu" id="hamburgerMenu" aria-label="Menüyü aç">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul id="navMenu">
+                <li><a href="#hero">Ana Sayfa</a></li>
                 <li><a href="#hakkimda">Hakkımda</a></li>
+                <li><a href="#yetenekler">Yetenekler</a></li>
                 <li><a href="#projeler">Projeler</a></li>
                 <li><a href="#iletisim">İletişim</a></li>
             </ul>
+            <button class="dark-mode-toggle" id="darkModeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
         </nav>
     </header>
     
     <main>
-        <section id="hakkimda">
-            <h2>Merhaba, Ben Hakan!</h2>
-            <p>Python geliştiricisi ve teknoloji meraklısı...</p>
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Merhaba, Ben Hakan Çetin</h1>
+                    <h2>Python Geliştirici & Teknoloji Meraklısı</h2>
+                    <p>Web scraping, otomasyon ve veri işleme projeleri geliştiriyorum. Modern teknolojilerle yenilikçi çözümler üretiyorum.</p>
+                    <div class="hero-buttons">
+                        <a href="#projeler" class="btn btn-primary">Projelerimi Gör</a>
+                        <a href="#iletisim" class="btn btn-secondary">İletişime Geç</a>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/hakancet27-dotcom" target="_blank" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="mailto:info@hakancetin.com" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="profile-placeholder">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
         </section>
-        
-        <section id="projeler">
-            <h2>Projelerim</h2>
-            <div class="project-grid">
-                <div class="project">
-                    <h3>Proje 1</h3>
-                    <p>Açıklama burada...</p>
+
+        <!-- Hakkımda Section -->
+        <section id="hakkimda">
+            <h2><i class="fas fa-user-circle"></i> Hakkımda</h2>
+            <div class="about-content">
+                <p>Python ile web scraping, veri işleme ve otomasyon projeleri geliştiriyorum. Teknolojiye olan tutkumla sürekli yeni şeyler öğreniyor ve pratik projelerle bilgilerimi geliştiriyorum. GitHub üzerinde açık kaynak projeler paylaşarak topluluğa katkıda bulunmayı hedefliyorum.</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <h3>10+</h3>
+                        <p>Proje</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Python</h3>
+                        <p>Uzmanlık</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Web Scraping</h3>
+                        <p>Özel İlgi</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Yetenekler Section -->
+        <section id="yetenekler">
+            <h2><i class="fas fa-code"></i> Teknik Yetenekler</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programlama Dilleri</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Python Kütüphaneleri</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">BeautifulSoup</span>
+                        <span class="skill-tag">Selenium</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">Requests</span>
+                        <span class="skill-tag">Flask</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Araçlar & Platformlar</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">Docker</span>
+                    </div>
                 </div>
             </div>
         </section>
         
+        <!-- Projeler Section -->
+        <section id="projeler">
+            <h2><i class="fas fa-project-diagram"></i> Projelerim</h2>
+            <div class="project-grid">
+                <div class="project">
+                    <div class="project-icon">
+                        <i class="fas fa-spider"></i>
+                    </div>
+                    <h3>Web Scraping Agent</h3>
+                    <p>Çoklu web sitesinden veri çekme ve işleme otomasyonu. Agent tabanlı yapı ile esnek veri toplama.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/hakancet27-dotcom" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>BeautifulSoup</span>
+                        <span>Selenium</span>
+                    </div>
+                </div>
+                <div class="project">
+                    <div class="project-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Fiyat Takip Sistemi</h3>
+                    <p>Sahibinden ve benzeri platformlardan ürün fiyatlarını takip eden ve değişimleri raporlayan sistem.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/hakancet27-dotcom" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>Pandas</span>
+                        <span>API</span>
+                    </div>
+                </div>
+                <div class="project">
+                    <div class="project-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>Medya İndirici</h3>
+                    <p>Çeşitli platformlardan video ve medya içerikleri indirme aracı. Batch işleme desteği.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/hakancet27-dotcom" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>yt-dlp</span>
+                        <span>FFmpeg</span>
+                    </div>
+                </div>
+                <div class="project">
+                    <div class="project-icon">
+                        <i class="fas fa-file-csv"></i>
+                    </div>
+                    <h3>Bulk URL Extractor</h3>
+                    <p>Büyük metin dosyalarından URL'leri çıkaran ve kategorize eden otomasyon aracı.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/hakancet27-dotcom" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>Regex</span>
+                        <span>Pandas</span>
+                    </div>
+                </div>
+                <div class="project">
+                    <div class="project-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Splitwise Entegrasyonu</h3>
+                    <p>Splitwise API ile masrafları takip eden ve raporlayan kişisel finans aracı.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/hakancet27-dotcom" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>REST API</span>
+                        <span>JSON</span>
+                    </div>
+                </div>
+                <div class="project">
+                    <div class="project-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>WebSift</h3>
+                    <p>Web içeriklerini analiz eden ve filtreleyen akıllı içerik işleme aracı.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/hakancet27-dotcom" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>NLP</span>
+                        <span>ML</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- İletişim Section -->
         <section id="iletisim">
-            <h2>İletişim</h2>
-            <p>Email: info@hakancetin.com</p>
+            <h2><i class="fas fa-envelope"></i> İletişim</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>info@hakancetin.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-globe"></i>
+                        <div>
+                            <h3>Web Sitesi</h3>
+                            <p>https://hakancetin.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <div>
+                            <h3>GitHub</h3>
+                            <p>github.com/hakancet27-dotcom</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Adınız" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Emailiniz" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" rows="5" placeholder="Mesajınız" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Gönder</button>
+                    </form>
+                </div>
+            </div>
         </section>
     </main>
     
     <footer>
-        <p>&copy; 2026 Hakan Çetin. Tüm hakları saklıdır.</p>
+        <div class="footer-content">
+            <p>&copy; 2026 Hakan Çetin. Tüm hakları saklıdır.</p>
+            <div class="footer-social">
+                <a href="https://github.com/hakancet27-dotcom" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
     </footer>
     
     <script src="assets/js/script.js"></script>
