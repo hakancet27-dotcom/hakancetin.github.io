@@ -131,7 +131,7 @@
             <div class="code-demos-grid">
                 <!-- Demo 1: Advanced Web Scraping -->
                 <div class="code-demo">
-                    <div class="demo-header">
+                    <div class="demo-header" onclick="toggleCode(this)">
                         <div class="demo-icon">
                             <i class="fas fa-spider"></i>
                         </div>
@@ -139,8 +139,11 @@
                             <h3>İleri Düzey Web Scraping</h3>
                             <p>Anti-bot sistemlerini aşan, rate-limiting ve proxy rotasyonu kullanan profesyonel scraper</p>
                         </div>
+                        <div class="toggle-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
                     </div>
-                    <div class="code-block">
+                    <div class="code-block collapsed">
                         <pre><code class="language-python">import asyncio
 import aiohttp
 from bs4 import BeautifulSoup
@@ -192,7 +195,7 @@ data = asyncio.run(scraper.scrape_multiple(urls))</code></pre>
 
                 <!-- Demo 2: Data Processing Pipeline -->
                 <div class="code-demo">
-                    <div class="demo-header">
+                    <div class="demo-header" onclick="toggleCode(this)">
                         <div class="demo-icon">
                             <i class="fas fa-cogs"></i>
                         </div>
@@ -200,8 +203,11 @@ data = asyncio.run(scraper.scrape_multiple(urls))</code></pre>
                             <h3>Veri İşleme Pipeline</h3>
                             <p>Büyük veri setlerini otomatik temizleyen, dönüştüren ve analiz eden pipeline</p>
                         </div>
+                        <div class="toggle-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
                     </div>
-                    <div class="code-block">
+                    <div class="code-block collapsed">
                         <pre><code class="language-python">import pandas as pd
 import numpy as np
 from typing import List, Dict
@@ -270,7 +276,7 @@ clean_data = pipeline.process(raw_data)</code></pre>
 
                 <!-- Demo 3: Intelligent Agent -->
                 <div class="code-demo">
-                    <div class="demo-header">
+                    <div class="demo-header" onclick="toggleCode(this)">
                         <div class="demo-icon">
                             <i class="fas fa-robot"></i>
                         </div>
@@ -278,8 +284,11 @@ clean_data = pipeline.process(raw_data)</code></pre>
                             <h3>Akıllı Veri Agent</h3>
                             <p>Kendiliğinden öğrenen ve strateji geliştiren otonom veri toplama agent</p>
                         </div>
+                        <div class="toggle-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
                     </div>
-                    <div class="code-block">
+                    <div class="code-block collapsed">
                         <pre><code class="language-python">import json
 from datetime import datetime
 from typing import Dict, List
