@@ -1,8 +1,39 @@
-# Hakancetin.com
+# Hakancetin.com.tr
 
 ## Kişisel Web Sitesi
 
-Python ile oluşturulmuş GitHub Pages tabanlı kişisel web sitesi.
+GitHub Pages tabanlı kişisel web sitesi ve FaceRacer oyunu.
+
+## FaceRacer Oyunu
+
+Yüz takibi ile oynanan yeni nesil kafa kontrol oyunu. Engelli bireyler ve ofis çalışanları için erişilebilir oyun deneyimi.
+
+### Özellikler
+- Yüz takibi ile kafa kontrolü
+- Göz kırpmak ile turbo aktif etme
+- 3 renk sistemi (Turbo, Altın, Arıza)
+- Particle efektleri
+- Ses efektleri
+- Zorluk modları (Normal, Kolay)
+
+### Teknolojiler
+- Three.js (3D rendering)
+- MediaPipe Face Mesh (Yüz takibi)
+- Web Audio API (Ses efektleri)
+- Vanilla JavaScript
+
+### Telif Hakkı
+Copyright (c) 2026 Hakan Çetin
+Tüm hakları saklıdır.
+
+### Lisans
+MIT License - https://opensource.org/licenses/MIT
+
+### Güvenlik
+- Domain locking (sadece hakancetin.com.tr)
+- HTTPS (SSL sertifikası)
+- Content Security Policy
+- Clickjacking koruması
 
 ## Kurulum
 
@@ -19,8 +50,8 @@ Python ile oluşturulmuş GitHub Pages tabanlı kişisel web sitesi.
 
 ## İletişim
 
-- Email: info@hakancetin.com
-- Web: https://hakancetin.com
+- Email: info@hakancetin.com.tr
+- Web: https://hakancetin.com.tr
 
 ---
-© 2026 Hakan Çetin
+© 2026 Hakan Çetin - Tüm hakları saklıdır

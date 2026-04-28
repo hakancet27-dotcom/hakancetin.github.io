@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FaceRacer - Kafa Kontrol Oyunu | Hakan Çetin</title>
+    <meta name="description" content="Yüz takibi ile oynanan yeni nesil kafa kontrol oyunu. Engelli bireyler ve ofis çalışanları için erişilebilir oyun deneyimi.">
+    <meta name="author" content="Hakan Çetin">
+    <meta name="copyright" content="© 2026 Hakan Çetin - Tüm hakları saklıdır">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.jsdelivr.net/npm/@mediapipe; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://cdn.jsdelivr.net https://cdn.jsdelivr.net/npm/@mediapipe; font-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none';">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(self), microphone=(), geolocation=()">
+    
+    <link rel="stylesheet" href="assets/css/faceracer.css">
+    <script src="assets/js/faceracer.js"></script>
+</head>
+<body>
+    <div id="gameContainer">
+        <canvas id="gameCanvas"></canvas>
+        
+        <video id="cameraVideo" autoplay playsinline></video>
+        
+        <div id="calibrationOverlay">
+            <div class="calibration-content">
+                <h1> FaceRacer</h1>
+                <p>Yüzünüzü tam ortaya getirin</p>
+                <p style="font-size: 1rem; color: #888;">Dik durun, alnınız çerçevenin tam ortasında olsun</p>
+                <div class="countdown" id="countdown">3</div>
+            </div>
+        </div>
+
+        <div id="difficultyOverlay" class="hidden">
+            <div class="calibration-content">
+                <h1>🎮 Zorluk Seçin</h1>
+                <p style="margin: 20px 0;">Oyun modunu seçin:</p>
+                <button onclick="selectDifficulty('normal')" style="margin: 10px; padding: 15px 30px; background: #ff6b6b; border: none; border-radius: 10px; cursor: pointer; font-size: 1.1rem; font-weight: bold; color: white;">
+                    🔴 Normal
+                </button>
+                <button onclick="selectDifficulty('easy')" style="margin: 10px; padding: 15px 30px; background: #4ecdc4; border: none; border-radius: 10px; cursor: pointer; font-size: 1.1rem; font-weight: bold; color: white;">
+                    🟢 Kolay
+                </button>
+                <p style="margin-top: 20px; font-size: 0.9rem; color: #888;">
+                    Normal: %20.7 kırmızı engel<br>
+                    Kolay: %16.6 kırmızı engel (%20 daha az)
+                </p>
+            </div>
+        </div>
+
+        <div id="controls" class="hidden">
+            <h3>Kontroller</h3>
+            <p>👀 Göz kırpmak: Turbo aktif (10 yeşil toplayınca)</p>
+            <p>↔️ Kafayı sağa/sola çevir: Araba yönü</p>
+            <p>↕️ Kafayı yukarı/aşağı eğ: Hız kontrolü</p>
+        </div>
+
+        <button id="easyModeBtn" onclick="toggleEasyMode()" style="position: fixed; bottom: 20px; right: 20px; padding: 12px 24px; background: #4ecdc4; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: bold; color: white; z-index: 1000; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+            🟢 Kolay Moda Geç
+        </button>
+
+        <div id="loading">
+            <div class="spinner"></div>
+            <p>Yükleniyor...</p>
+        </div>
+
+        <div id="hud" class="hidden">
+            <h2>📊 Oyun Bilgileri</h2>
+            <div class="hud-item">Skor: <span class="hud-value" id="score">0</span></div>
+            <div class="hud-item">Hız: <span class="hud-value" id="speed">0</span> km/h</div>
+            <div class="hud-item">🟡 Altın: <span class="hud-value" id="goldPoints">0</span></div>
+            <div class="hud-item">🔴 Arıza: <span class="hud-value" id="damageLevel">0</span>%</div>
+            <div class="hud-item">🟢 Turbo: <span class="hud-value" id="turboPoints">0</span>/<span id="turboThreshold">100</span></div>
+            <div class="hud-item">💥 Kaza: <span class="hud-value" id="crashCount">0</span>/5</div>
+            <div class="hud-item">📏 Mesafe: <span class="hud-value" id="distance">0</span>m</div>
+            <div class="hud-item">Yaw: <span class="hud-value" id="yawValue">0</span></div>
+            <div class="hud-item">Pitch: <span class="hud-value" id="pitchValue">0</span></div>
+            <div class="hud-item">Nitro: <span class="hud-value" id="nitroStatus">Kapalı</span></div>
+            <div class="hud-item" style="font-size: 0.8rem; color: #888;">
+                Raw Yaw: <span id="rawYaw">0</span> | Raw Pitch: <span id="rawPitch">0</span>
+            </div>
+        </div>
+
+        <button id="toggleControls" class="hidden" style="position: fixed; top: 10px; right: 10px; padding: 10px 15px; background: rgba(0,0,0,0.7); color: white; border: 1px solid #444; border-radius: 5px; cursor: pointer; z-index: 1000; font-size: 1.2rem;">❓</button>
+
+        <div id="controls" class="hidden" style="position: fixed; top: 50px; right: 10px; background: rgba(0,0,0,0.9); padding: 20px; border-radius: 10px; border: 1px solid #444; z-index: 999; max-width: 300px; display: none;">
+            <h3>🎯 Kontroller</h3>
+            <p>↔️ Kafanızı sağa/sola çevirin: Dönüş</p>
+            <p>↕️ Kafanızı yukarı/aşağı eğin: Hız</p>
+            <p>😉 Göz kırpma: Nitro</p>
+            <hr style="margin: 15px 0; border: none; border-top: 1px solid #444;">
+            <h3>🎮 Oyun Mekanikleri</h3>
+            <p>🟢 <strong>Yeşil:</strong> Turbo puanı +10, arıza -5%</p>
+            <p>🟡 <strong>Sarı:</strong> Altın puanı +10</p>
+            <p>🔴 <strong>Kırmızı:</strong> Arıza +10%, kaza +1, hız düşer</p>
+            <p>💥 <strong>5 Kaza:</strong> Araba patlar, oyun biter</p>
+            <hr style="margin: 15px 0; border: none; border-top: 1px solid #444;">
+            <h3>📊 Toplam Skor Hesaplaması</h3>
+            <p>Skor = Altın + Turbo + (Mesafe/10) - (Kaza × 50)</p>
+        </div>
+
+        <button id="startButton" class="hidden">Oyunu Başlat</button>
+    </div>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- MediaPipe Face Mesh -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+
+    <!-- FaceRacer Game Script -->
+    <script src="assets/js/faceracer.js"></script>
+</body>
+</html>

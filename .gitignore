@@ -1,0 +1,28 @@
+# FaceRacer Source Code (Gizli - Production için değil)
+assets/js/faceracer.source.js
+
+# Obfuscated (optional)
+assets/js/faceracer.obfuscated.js
+
+# Backup
+backup/
+
+# Security plan (internal)
+SECURITY_PLAN.md
+PROJECT_ANALYSIS.md
+
+# Node modules (eğer gelecekte kullanılırsa)
+node_modules/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
