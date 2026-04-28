@@ -229,22 +229,25 @@ body {
 @media (max-width: 768px) {
     #hud {
         top: 10px;
-        left: 10px;
-        padding: 8px;
-        font-size: 0.7rem;
+        left: 0;
+        right: 0;
+        padding: 0;
+        font-size: 0.8rem;
+        background: transparent;
+        border: none;
+        text-align: center;
     }
 
     #hud h2 {
-        font-size: 0.9rem;
-        margin-bottom: 5px;
+        display: none;
     }
 
     .hud-item {
-        margin: 3px 0;
+        margin: 0;
         font-size: 0.65rem;
     }
 
-    /* Mobilde üstte ortada skor, hız, mesafe göster */
+    /* Mobilde üstte ortada skor, hız, mesafe göster - şeffaf arka plan */
     .hud-item:nth-child(1), /* Skor */
     .hud-item:nth-child(2), /* Hız */
     .hud-item:nth-child(7)   /* Mesafe */
@@ -252,27 +255,28 @@ body {
         display: inline-block;
         position: fixed;
         top: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(0,0,0,0.6);
-        padding: 5px 10px;
-        border-radius: 5px;
-        font-size: 0.6rem;
-        margin: 0 2px;
+        background: transparent;
+        padding: 3px 8px;
+        font-size: 0.65rem;
+        margin: 0 5px;
     }
     
     /* Skor sola kaydır */
-    .hud-item:nth-child(1) { left: 30%; transform: translateX(-50%); }
+    .hud-item:nth-child(1) { left: 15%; transform: translateX(-50%); }
     /* Hız ortada */
     .hud-item:nth-child(2) { left: 50%; transform: translateX(-50%); }
     /* Mesafe sağa kaydır */
-    .hud-item:nth-child(7) { left: 70%; transform: translateX(-50%); }
+    .hud-item:nth-child(7) { left: 85%; transform: translateX(-50%); }
 
-    /* Gereksiz elementleri gizle */
-    .hud-item:nth-child(8), /* Yaw */
-    .hud-item:nth-child(9), /* Pitch */
-    .hud-item:nth-child(10), /* Nitro */
-    .hud-item:nth-child(11)  /* Raw values */
+    /* Gereksiz elementleri gizle - Yaw, Pitch, Nitro, Raw values, Raw Yaw/Pitch */
+    .hud-item:nth-child(4), /* Altın - göster */
+    .hud-item:nth-child(5), /* Arıza - göster */
+    .hud-item:nth-child(6), /* Turbo - göster */
+    .hud-item:nth-child(8), /* Kaza - göster */
+    .hud-item:nth-child(9), /* Yaw - gizle */
+    .hud-item:nth-child(10), /* Pitch - gizle */
+    .hud-item:nth-child(11), /* Nitro - gizle */
+    .hud-item:nth-child(12)  /* Raw values - gizle */
     {
         display: none;
     }
