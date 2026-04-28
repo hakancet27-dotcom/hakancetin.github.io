@@ -1417,17 +1417,43 @@ function endGame() {
     toggleControls.classList.add('hidden');
     
     const calibrationContent = document.querySelector('.calibration-content');
+    const finalScore = gameState.score;
+    
     calibrationContent.innerHTML = `
         <h1>💥 Araba Patladı!</h1>
         <div style="margin: 20px 0; padding: 20px; background: rgba(255, 0, 0, 0.1); border-radius: 10px; border: 1px solid #ff0000;">
-            <p style="font-size: 1.1rem; color: #ff6b00; margin: 10px 0;">📊 Skor: ${gameState.score}</p>
+            <p style="font-size: 1.5rem; color: #00ff88; margin: 10px 0; font-weight: bold;">📊 Skor: ${finalScore}</p>
             <p style="font-size: 1rem; color: #ffd700; margin: 10px 0;">🟡 Altın: ${gameState.goldPoints}</p>
             <p style="font-size: 1rem; color: #00bfff; margin: 10px 0;">📏 Mesafe: ${Math.round(gameState.distance)}m</p>
         </div>
+        
+        <!-- Score Submission Form -->
+        <div id="scoreSubmission" style="margin: 20px 0; padding: 20px; background: rgba(0, 255, 136, 0.1); border-radius: 10px; border: 1px solid #00ff88;">
+            <h3 style="color: #00ff88; margin-bottom: 15px;">🏆 Skorunu Kaydet</h3>
+            <input type="text" id="playerName" placeholder="Adınız" maxlength="20" style="padding: 10px; font-size: 1rem; border-radius: 5px; border: 1px solid #00ff88; background: rgba(0,0,0,0.5); color: white; margin-right: 10px;">
+            <button onclick="submitScore(${finalScore})" style="padding: 10px 20px; background: #00ff88; border: none; border-radius: 5px; cursor: pointer; font-size: 1rem; font-weight: bold;">
+                Kaydet
+            </button>
+            <p id="submitMessage" style="margin-top: 10px; font-size: 0.9rem; color: #888;"></p>
+        </div>
+        
+        <!-- Leaderboard Display -->
+        <div id="leaderboard" style="margin: 20px 0; padding: 20px; background: rgba(0,0,0,0.5); border-radius: 10px; border: 1px solid #444;">
+            <h3 style="color: #00ff88; margin-bottom: 15px;">🌎 Global Sıralama - Top 10</h3>
+            <div id="leaderboardList" style="max-height: 200px; overflow-y: auto;">
+                <p style="color: #888;">Yükleniyor...</p>
+            </div>
+        </div>
+        
         <button onclick="restartGame()" style="margin-top: 20px; padding: 15px 30px; background: #00ff88; border: none; border-radius: 10px; cursor: pointer; font-size: 1.2rem; font-weight: bold;">
             🔄 Tekrar Oyna
         </button>
     `;
+    
+    // Load leaderboard after displaying game over screen
+    setTimeout(() => {
+        loadLeaderboard();
+    }, 100);
 }
 
 function restartGame() {
@@ -1467,6 +1493,126 @@ function restartGame() {
 
 // Make restartGame globally accessible
 window.restartGame = restartGame;
+
+// Leaderboard Functions
+function submitScore(score) {
+    const playerNameInput = document.getElementById('playerName');
+    const submitMessage = document.getElementById('submitMessage');
+    const playerName = playerNameInput.value.trim();
+    
+    if (!playerName) {
+        submitMessage.textContent = 'Lütfen adınızı girin';
+        submitMessage.style.color = '#ff6b00';
+        return;
+    }
+    
+    if (playerName.length > 20) {
+        submitMessage.textContent = 'Adınız 20 karakterden kısa olmalı';
+        submitMessage.style.color = '#ff6b00';
+        return;
+    }
+    
+    // Spam protection - check localStorage
+    const lastSubmit = localStorage.getItem('lastScoreSubmit');
+    const now = Date.now();
+    if (lastSubmit && (now - parseInt(lastSubmit)) < 30000) { // 30 seconds
+        submitMessage.textContent = '30 saniye sonra tekrar deneyin';
+        submitMessage.style.color = '#ff6b00';
+        return;
+    }
+    
+    const scoreData = {
+        name: playerName,
+        score: score,
+        timestamp: firebase.database.ServerValue.TIMESTAMP
+    };
+    
+    // Save to Firebase
+    const scoresRef = firebase.database().ref('scores');
+    scoresRef.push(scoreData)
+        .then(() => {
+            submitMessage.textContent = '✅ Skor kaydedildi!';
+            submitMessage.style.color = '#00ff88';
+            playerNameInput.disabled = true;
+            localStorage.setItem('lastScoreSubmit', now.toString());
+            
+            // Refresh leaderboard
+            loadLeaderboard();
+        })
+        .catch((error) => {
+            console.error('Score submission error:', error);
+            submitMessage.textContent = '❌ Hata oluştu, tekrar deneyin';
+            submitMessage.style.color = '#ff6b00';
+        });
+}
+
+function loadLeaderboard() {
+    const leaderboardList = document.getElementById('leaderboardList');
+    if (!leaderboardList) return;
+    
+    const scoresRef = firebase.database().ref('scores');
+    
+    scoresRef.orderByChild('score').limitToLast(10).once('value')
+        .then((snapshot) => {
+            const scores = [];
+            snapshot.forEach((childSnapshot) => {
+                scores.push({
+                    key: childSnapshot.key,
+                    ...childSnapshot.val()
+                });
+            });
+            
+            // Sort by score (descending)
+            scores.sort((a, b) => b.score - a.score);
+            
+            if (scores.length === 0) {
+                leaderboardList.innerHTML = '<p style="color: #888;">Henüz skor kaydedilmemiş</p>';
+                return;
+            }
+            
+            // Build leaderboard HTML
+            let html = '<table style="width: 100%; border-collapse: collapse;">';
+            html += '<tr style="border-bottom: 1px solid #444;">';
+            html += '<th style="padding: 8px; text-align: left; color: #888; font-size: 0.9rem;">#</th>';
+            html += '<th style="padding: 8px; text-align: left; color: #888; font-size: 0.9rem;">Oyuncu</th>';
+            html += '<th style="padding: 8px; text-align: right; color: #888; font-size: 0.9rem;">Skor</th>';
+            html += '</tr>';
+            
+            scores.forEach((score, index) => {
+                const rank = index + 1;
+                let rankEmoji = '';
+                if (rank === 1) rankEmoji = '🥇 ';
+                else if (rank === 2) rankEmoji = '🥈 ';
+                else if (rank === 3) rankEmoji = '🥉 ';
+                else rankEmoji = `${rank}. `;
+                
+                const rowColor = rank <= 3 ? '#00ff88' : (index % 2 === 0 ? '#fff' : '#ccc');
+                
+                html += `<tr style="border-bottom: 1px solid #333;">`;
+                html += `<td style="padding: 8px; color: ${rowColor}; font-weight: bold;">${rankEmoji}</td>`;
+                html += `<td style="padding: 8px; color: ${rowColor};">${escapeHtml(score.name)}</td>`;
+                html += `<td style="padding: 8px; text-align: right; color: ${rowColor}; font-weight: bold;">${score.score}</td>`;
+                html += '</tr>';
+            });
+            
+            html += '</table>';
+            leaderboardList.innerHTML = html;
+        })
+        .catch((error) => {
+            console.error('Leaderboard load error:', error);
+            leaderboardList.innerHTML = '<p style="color: #ff6b00;">❌ Sıralama yüklenemedi</p>';
+        });
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+// Make leaderboard functions globally accessible
+window.submitScore = submitScore;
+window.loadLeaderboard = loadLeaderboard;
 
 function processCalibrationPhase() {
     if (gameState.calibrationSamples.length === 0) return;
