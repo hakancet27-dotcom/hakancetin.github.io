@@ -254,6 +254,11 @@ body {
         display: none;
     }
 
+    /* Mobilde Raw Yaw/Pitch satırını tamamen gizle */
+    .hud-item:last-child {
+        display: none !important;
+    }
+
     #cameraVideo {
         width: 100px;
         height: 75px;
