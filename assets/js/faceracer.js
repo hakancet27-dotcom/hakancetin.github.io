@@ -39,6 +39,11 @@ let gameState = {
     wallTouching: false,
     wallTouchStart: null,
     lastWallDamage: 0,
+    // Pause system - eyebrow raise
+    isPaused: false,
+    eyebrowRaiseStart: null,
+    eyebrowRaiseCount: 0,
+    lastEyebrowCheck: 0
     };
 
 // Three.js Setup
@@ -750,6 +755,9 @@ function animate() {
 }
 
 function updateGame() {
+    // Don't update if paused
+    if (gameState.isPaused) return;
+    
     // Update particles
     updateParticles();
     
@@ -1011,6 +1019,9 @@ function onFaceResults(results) {
                 gameState.calibrationSamples.shift();
             }
         } else {
+            // Check for pause gesture (eyebrow raise 3 times)
+            checkPauseGesture(landmarks);
+            
             // Apply smooth filtering (low-pass filter)
             const yawAlpha = 0.3; // Yaw smoothing (değişmeyecek - sağ-sol hassasiyeti koru)
             const pitchAlpha = 0.5; // Pitch smoothing (artırıldı - hız/fren tepkisi artar)
@@ -1710,6 +1721,145 @@ toggleControls.addEventListener('click', () => {
 console.log('%c FaceRacer © 2026 Hakan Çetin', 'color: #00ff88; font-size: 20px; font-weight: bold;');
 console.log('%c Tüm hakları saklıdır. https://hakancetin.com.tr', 'color: #888; font-size: 12px;');
 
+
+// Pause System Functions - Smooth Eyebrow Raise
+function checkPauseGesture(landmarks) {
+    if (!gameState.isPlaying || gameState.isPaused) return;
+    
+    const now = Date.now();
+    
+    // Prevent too frequent checks - more relaxed timing
+    if (now - gameState.lastEyebrowCheck < 150) return; // Check every 150ms
+    gameState.lastEyebrowCheck = now;
+    
+    // Get eyebrow landmarks - only right eyebrow for simplicity
+    const rightEyebrowTop = landmarks[70]; // Right eyebrow top
+    const rightEyebrowBottom = landmarks[105]; // Right eyebrow bottom
+    const rightEye = landmarks[33]; // Right eye center
+    
+    // Calculate eyebrow height relative to eye
+    const eyebrowHeight = Math.abs(rightEyebrowTop.y - rightEye.y);
+    
+    // More relaxed threshold for eyebrow raise
+    const eyebrowRaised = eyebrowHeight > 0.06; // Lowered threshold for easier detection
+    
+    if (eyebrowRaised) {
+        if (!gameState.eyebrowRaiseStart) {
+            // Just started raising eyebrow
+            gameState.eyebrowRaiseStart = now;
+            gameState.eyebrowRaiseCount = 1;
+        } else {
+            // Check if it's a new raise (after lowering)
+            const timeSinceLastRaise = now - gameState.eyebrowRaiseStart;
+            if (timeSinceLastRaise > 600) { // 600ms gap (more relaxed)
+                gameState.eyebrowRaiseCount++;
+                gameState.eyebrowRaiseStart = now;
+                
+                // Check if we have 3 raises
+                if (gameState.eyebrowRaiseCount >= 3) {
+                    togglePause();
+                    gameState.eyebrowRaiseCount = 0;
+                    gameState.eyebrowRaiseStart = null;
+                }
+            }
+        }
+    } else {
+        // Eyebrow not raised, check if we should reset
+        if (gameState.eyebrowRaiseStart && (now - gameState.eyebrowRaiseStart > 1500)) {
+            // More time before reset (1.5 seconds)
+            gameState.eyebrowRaiseCount = 0;
+            gameState.eyebrowRaiseStart = null;
+        }
+    }
+}
+
+function togglePause() {
+    gameState.isPaused = !gameState.isPaused;
+    
+    if (gameState.isPaused) {
+        // Pause the game
+        showPauseOverlay();
+        // Stop the animation loop
+        if (animationId) {
+            cancelAnimationFrame(animationId);
+            animationId = null;
+        }
+        playPauseSound();
+    } else {
+        // Resume the game
+        hidePauseOverlay();
+        // Restart the animation loop
+        animate();
+        playResumeSound();
+    }
+}
+
+function showPauseOverlay() {
+    const calibrationOverlay = document.getElementById('calibrationOverlay');
+    const calibrationContent = document.querySelector('.calibration-content');
+    
+    calibrationOverlay.style.display = 'flex';
+    calibrationOverlay.classList.remove('hidden');
+    
+    calibrationContent.innerHTML = `
+        <h1>⏸️ OYUN DURAKLATILDI</h1>
+        <div style="margin: 20px 0; padding: 20px; background: rgba(0, 255, 136, 0.1); border-radius: 10px; border: 1px solid #00ff88;">
+            <p style="font-size: 1.2rem; color: #00ff88; margin: 10px 0;">Kaşınızı 3 kez kaldırın</p>
+            <p style="font-size: 1rem; color: #ccc; margin: 10px 0;">Oyuna devam etmek için</p>
+        </div>
+        <button onclick="togglePause()" style="margin-top: 20px; padding: 15px 30px; background: #00ff88; border: none; border-radius: 10px; cursor: pointer; font-size: 1.2rem; font-weight: bold;">
+            ▶️ Devam Et
+        </button>
+    `;
+}
+
+function hidePauseOverlay() {
+    const calibrationOverlay = document.getElementById('calibrationOverlay');
+    calibrationOverlay.style.display = 'none';
+}
+
+function playPauseSound() {
+    if (!audioContext) return;
+    
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+    
+    oscillator.type = 'sine';
+    oscillator.frequency.setValueAtTime(440, audioContext.currentTime); // A4
+    oscillator.frequency.exponentialRampToValueAtTime(220, audioContext.currentTime + 0.3); // A3 (longer)
+    
+    gainNode.gain.setValueAtTime(0.2, audioContext.currentTime); // Quieter
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+    
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    
+    oscillator.start();
+    oscillator.stop(audioContext.currentTime + 0.3);
+}
+
+function playResumeSound() {
+    if (!audioContext) return;
+    
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+    
+    oscillator.type = 'sine';
+    oscillator.frequency.setValueAtTime(220, audioContext.currentTime); // A3
+    oscillator.frequency.exponentialRampToValueAtTime(440, audioContext.currentTime + 0.3); // A4 (longer)
+    
+    gainNode.gain.setValueAtTime(0.2, audioContext.currentTime); // Quieter
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+    
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    
+    oscillator.start();
+    oscillator.stop(audioContext.currentTime + 0.3);
+}
+
+// Make togglePause globally accessible
+window.togglePause = togglePause;
 
 // Initialize
 initThreeJS();
