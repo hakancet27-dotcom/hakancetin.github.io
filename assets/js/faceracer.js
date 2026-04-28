@@ -41,8 +41,9 @@ let gameState = {
     lastWallDamage: 0,
     // Pause system
     isPaused: false,
-    eyeClosedStart: null,
-    lastEyeCheck: 0
+    eyebrowRaiseStart: null,
+    eyebrowRaiseCount: 0,
+    lastEyebrowCheck: 0
 };
 
 // Three.js Setup
@@ -1726,35 +1727,52 @@ function checkPauseGesture(landmarks) {
     
     const now = Date.now();
     
-    // Get eye landmarks (left and right eye)
-    const leftEyeUpper = landmarks[159]; // Upper eyelid
-    const leftEyeLower = landmarks[145]; // Lower eyelid
-    const rightEyeUpper = landmarks[386]; // Upper eyelid
-    const rightEyeLower = landmarks[374]; // Lower eyelid
+    // Prevent too frequent checks
+    if (now - gameState.lastEyebrowCheck < 100) return; // Check every 100ms
+    gameState.lastEyebrowCheck = now;
     
-    // Calculate eye openness (vertical distance)
-    const leftEyeOpenness = Math.abs(leftEyeUpper.y - leftEyeLower.y);
-    const rightEyeOpenness = Math.abs(rightEyeUpper.y - rightEyeLower.y);
-    const avgEyeOpenness = (leftEyeOpenness + rightEyeOpenness) / 2;
+    // Get eyebrow landmarks
+    const leftEyebrowTop = landmarks[70]; // Left eyebrow top
+    const leftEyebrowBottom = landmarks[105]; // Left eyebrow bottom
+    const rightEyebrowTop = landmarks[300]; // Right eyebrow top
+    const rightEyebrowBottom = landmarks[334]; // Right eyebrow bottom
+    const leftEye = landmarks[33]; // Left eye center
+    const rightEye = landmarks[263]; // Right eye center
     
-    // Eyes are considered closed if openness is very small
-    const eyesClosed = avgEyeOpenness < 0.01;
+    // Calculate eyebrow height relative to eyes
+    const leftEyebrowHeight = Math.abs(leftEyebrowTop.y - leftEye.y);
+    const rightEyebrowHeight = Math.abs(rightEyebrowTop.y - rightEye.y);
+    const avgEyebrowHeight = (leftEyebrowHeight + rightEyebrowHeight) / 2;
     
-    if (eyesClosed) {
-        if (!gameState.eyeClosedStart) {
-            // Just started closing eyes
-            gameState.eyeClosedStart = now;
+    // Eyebrow is raised if height is above threshold
+    const eyebrowRaised = avgEyebrowHeight > 0.08;
+    
+    if (eyebrowRaised) {
+        if (!gameState.eyebrowRaiseStart) {
+            // Just started raising eyebrow
+            gameState.eyebrowRaiseStart = now;
+            gameState.eyebrowRaiseCount = 1;
         } else {
-            // Eyes have been closed for some time
-            const closedDuration = now - gameState.eyeClosedStart;
-            if (closedDuration >= 2000) { // 2 seconds
-                togglePause();
-                gameState.eyeClosedStart = null; // Reset to prevent multiple triggers
+            // Still raising - check if it's a new raise (after lowering)
+            if (now - gameState.eyebrowRaiseStart > 500) { // 500ms gap
+                gameState.eyebrowRaiseCount++;
+                gameState.eyebrowRaiseStart = now;
+                
+                // Check if we have 3 raises
+                if (gameState.eyebrowRaiseCount >= 3) {
+                    togglePause();
+                    gameState.eyebrowRaiseCount = 0;
+                    gameState.eyebrowRaiseStart = null;
+                }
             }
         }
     } else {
-        // Eyes are open, reset the timer
-        gameState.eyeClosedStart = null;
+        // Eyebrow not raised, check if we should reset
+        if (gameState.eyebrowRaiseStart && (now - gameState.eyebrowRaiseStart > 1000)) {
+            // Too long since last raise, reset
+            gameState.eyebrowRaiseCount = 0;
+            gameState.eyebrowRaiseStart = null;
+        }
     }
 }
 
@@ -1789,7 +1807,7 @@ function showPauseOverlay() {
     calibrationContent.innerHTML = `
         <h1>⏸️ OYUN DURAKLATILDI</h1>
         <div style="margin: 20px 0; padding: 20px; background: rgba(0, 255, 136, 0.1); border-radius: 10px; border: 1px solid #00ff88;">
-            <p style="font-size: 1.2rem; color: #00ff88; margin: 10px 0;">Gözlerinizi 2 saniye kapatın</p>
+            <p style="font-size: 1.2rem; color: #00ff88; margin: 10px 0;">Kaşınızı 3 kez kaldırın</p>
             <p style="font-size: 1rem; color: #ccc; margin: 10px 0;">Oyuna devam etmek için</p>
         </div>
         <button onclick="togglePause()" style="margin-top: 20px; padding: 15px 30px; background: #00ff88; border: none; border-radius: 10px; cursor: pointer; font-size: 1.2rem; font-weight: bold;">
