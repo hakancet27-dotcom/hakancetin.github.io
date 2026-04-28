@@ -244,10 +244,31 @@ body {
         font-size: 0.65rem;
     }
 
-    /* Mobilde sadece Altın, Arıza, Turbo, Kaza göster */
+    /* Mobilde üstte ortada skor, hız, mesafe göster */
     .hud-item:nth-child(1), /* Skor */
     .hud-item:nth-child(2), /* Hız */
-    .hud-item:nth-child(7), /* Mesafe */
+    .hud-item:nth-child(7)   /* Mesafe */
+    {
+        display: inline-block;
+        position: fixed;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0,0,0,0.6);
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 0.6rem;
+        margin: 0 2px;
+    }
+    
+    /* Skor sola kaydır */
+    .hud-item:nth-child(1) { left: 30%; transform: translateX(-50%); }
+    /* Hız ortada */
+    .hud-item:nth-child(2) { left: 50%; transform: translateX(-50%); }
+    /* Mesafe sağa kaydır */
+    .hud-item:nth-child(7) { left: 70%; transform: translateX(-50%); }
+
+    /* Gereksiz elementleri gizle */
     .hud-item:nth-child(8), /* Yaw */
     .hud-item:nth-child(9), /* Pitch */
     .hud-item:nth-child(10), /* Nitro */
