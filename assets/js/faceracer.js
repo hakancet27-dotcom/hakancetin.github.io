@@ -1427,21 +1427,23 @@ function endGame() {
             <p style="font-size: 1rem; color: #00bfff; margin: 10px 0;">📏 Mesafe: ${Math.round(gameState.distance)}m</p>
         </div>
         
-        <!-- Score Submission Form -->
-        <div id="scoreSubmission" style="margin: 20px 0; padding: 20px; background: rgba(0, 255, 136, 0.1); border-radius: 10px; border: 1px solid #00ff88;">
-            <h3 style="color: #00ff88; margin-bottom: 15px;">🏆 Skorunu Kaydet</h3>
-            <input type="text" id="playerName" placeholder="Adınız" maxlength="20" style="padding: 10px; font-size: 1rem; border-radius: 5px; border: 1px solid #00ff88; background: rgba(0,0,0,0.5); color: white; margin-right: 10px;">
-            <button onclick="submitScore(${finalScore})" style="padding: 10px 20px; background: #00ff88; border: none; border-radius: 5px; cursor: pointer; font-size: 1rem; font-weight: bold;">
-                Kaydet
-            </button>
-            <p id="submitMessage" style="margin-top: 10px; font-size: 0.9rem; color: #888;"></p>
-        </div>
-        
-        <!-- Leaderboard Display -->
-        <div id="leaderboard" style="margin: 20px 0; padding: 20px; background: rgba(0,0,0,0.5); border-radius: 10px; border: 1px solid #444;">
-            <h3 style="color: #00ff88; margin-bottom: 15px;">🌎 Global Sıralama - Top 10</h3>
-            <div id="leaderboardList" style="max-height: 200px; overflow-y: auto;">
-                <p style="color: #888;">Yükleniyor...</p>
+        <div style="display: flex; gap: 20px; margin: 20px 0;">
+            <!-- Score Submission Form -->
+            <div id="scoreSubmission" style="flex: 1; padding: 20px; background: rgba(0, 255, 136, 0.1); border-radius: 10px; border: 1px solid #00ff88;">
+                <h3 style="color: #00ff88; margin-bottom: 15px;">🏆 Skorunu Kaydet</h3>
+                <input type="text" id="playerName" placeholder="Adınız" maxlength="20" style="width: 100%; padding: 10px; font-size: 1rem; border-radius: 5px; border: 1px solid #00ff88; background: rgba(0,0,0,0.5); color: white; margin-bottom: 10px; box-sizing: border-box;">
+                <button onclick="submitScore(${finalScore})" style="width: 100%; padding: 10px 20px; background: #00ff88; border: none; border-radius: 5px; cursor: pointer; font-size: 1rem; font-weight: bold;">
+                    Kaydet
+                </button>
+                <p id="submitMessage" style="margin-top: 10px; font-size: 0.9rem; color: #888;"></p>
+            </div>
+            
+            <!-- Leaderboard Display -->
+            <div id="leaderboard" style="flex: 2; padding: 20px; background: rgba(0,0,0,0.5); border-radius: 10px; border: 1px solid #444;">
+                <h3 style="color: #00ff88; margin-bottom: 15px;">🌎 Global Sıralama - Top 10</h3>
+                <div id="leaderboardList" style="max-height: 200px; overflow-y: auto;">
+                    <p style="color: #888;">Yükleniyor...</p>
+                </div>
             </div>
         </div>
         

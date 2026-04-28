@@ -253,12 +253,8 @@ body {
         display: none;
     }
 
-    .hud-grid {
-        gap: 10px;
-    }
-    
     .hud-item {
-        margin: 2px 0;
+        margin: 3px 0;
         font-size: 0.65rem;
     }
 
