@@ -34,7 +34,11 @@ let gameState = {
     acceleration: 0.2, // Speed change per frame (realistic acceleration)
     nitroTimer: 0, // Turbo süresi sayacı
     nitroDuration: 5, // Turbo süresi (saniye)
-    difficulty: 'normal' // 'normal' veya 'easy'
+    difficulty: 'normal', // 'normal' veya 'easy'
+    // Wall collision tracking
+    wallTouching: false,
+    wallTouchStart: null,
+    lastWallDamage: 0
 };
 
 // Three.js Setup
@@ -170,6 +174,90 @@ function playExplosionSound() {
     gainNode.connect(audioContext.destination);
     
     source.start();
+}
+
+function playWallFrictionSound() {
+    if (!audioContext) return;
+    
+    // Create scratch/screech sound for wall friction
+    const bufferSize = audioContext.sampleRate * 0.5;
+    const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+    const data = buffer.getChannelData(0);
+    
+    for (let i = 0; i < bufferSize; i++) {
+        // Metallic screech noise
+        data[i] = (Math.random() * 2 - 1) * 0.5;
+    }
+    
+    const source = audioContext.createBufferSource();
+    const gainNode = audioContext.createGain();
+    const filter = audioContext.createBiquadFilter();
+    
+    source.buffer = buffer;
+    filter.type = 'bandpass';
+    filter.frequency.setValueAtTime(800, audioContext.currentTime);
+    filter.Q.value = 5;
+    
+    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+    
+    source.connect(filter);
+    filter.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    
+    source.start();
+}
+
+function createWallFrictionParticles(wallX) {
+    // Create spark particles at wall contact point
+    for (let i = 0; i < 10; i++) {
+        const geometry = new THREE.BufferGeometry();
+        const positions = new Float32Array(3);
+        positions[0] = wallX + (Math.random() - 0.5) * 0.5;
+        positions[1] = 0.5 + Math.random() * 0.5;
+        positions[2] = car.position.z + (Math.random() - 0.5) * 2;
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        
+        const material = new THREE.PointsMaterial({
+            color: 0xffaa00,
+            size: 0.3,
+            transparent: true,
+            opacity: 1
+        });
+        
+        const particle = new THREE.Points(geometry, material);
+        scene.add(particle);
+        
+        // Animate particle
+        const velocity = {
+            x: (wallX < 0 ? 1 : -1) * Math.random() * 0.3,
+            y: Math.random() * 0.3,
+            z: -gameState.speed * 0.02
+        };
+        
+        // Remove after animation
+        setTimeout(() => {
+            scene.remove(particle);
+            geometry.dispose();
+            material.dispose();
+        }, 500);
+        
+        // Simple animation
+        let frame = 0;
+        const animateParticle = () => {
+            if (frame < 30) {
+                const positions = particle.geometry.attributes.position.array;
+                positions[0] += velocity.x;
+                positions[1] += velocity.y;
+                positions[2] += velocity.z;
+                particle.geometry.attributes.position.needsUpdate = true;
+                material.opacity = 1 - (frame / 30);
+                frame++;
+                requestAnimationFrame(animateParticle);
+            }
+        };
+        animateParticle();
+    }
 }
 
 // DOM Elements
@@ -738,6 +826,42 @@ function updateGame() {
     const targetX = gameState.yaw * 10;
     car.position.x += (targetX - car.position.x) * 0.1;
     car.rotation.z = -gameState.yaw * 0.3;
+
+    // Wall collision detection
+    const WALL_LEFT = -9;
+    const WALL_RIGHT = 9;
+    const now = Date.now();
+    
+    if (car.position.x <= WALL_LEFT || car.position.x >= WALL_RIGHT) {
+        // Car is touching wall
+        if (!gameState.wallTouching) {
+            // Just started touching wall
+            gameState.wallTouching = true;
+            gameState.wallTouchStart = now;
+            gameState.lastWallDamage = now;
+        } else {
+            // Still touching wall - check if 1 second passed
+            if (now - gameState.lastWallDamage >= 1000) {
+                // Apply 20% damage every second
+                gameState.damageLevel = Math.min(100, gameState.damageLevel + 20);
+                gameState.lastWallDamage = now;
+                playWallFrictionSound();
+                
+                // Create wall friction particles
+                createWallFrictionParticles(car.position.x <= WALL_LEFT ? WALL_LEFT : WALL_RIGHT);
+                
+                // Check if car explodes
+                if (gameState.damageLevel >= 100) {
+                    endGame();
+                    return;
+                }
+            }
+        }
+    } else {
+        // Not touching wall anymore
+        gameState.wallTouching = false;
+        gameState.wallTouchStart = null;
+    }
 
     // Apply nitro
     let currentSpeed = gameState.speed;
