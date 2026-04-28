@@ -179,29 +179,50 @@ function playExplosionSound() {
 function playWallFrictionSound() {
     if (!audioContext) return;
     
-    // Create scratch/screech sound for wall friction
-    const bufferSize = audioContext.sampleRate * 0.5;
+    // Create harsh metallic screech sound for wall friction
+    const bufferSize = audioContext.sampleRate * 0.8;
     const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
     const data = buffer.getChannelData(0);
     
     for (let i = 0; i < bufferSize; i++) {
-        // Metallic screech noise
-        data[i] = (Math.random() * 2 - 1) * 0.5;
+        // Harsh metallic noise with sawtooth-like characteristics
+        const t = i / bufferSize;
+        const noise = (Math.random() * 2 - 1);
+        const sawtooth = (t * 10) % 2 - 1;
+        data[i] = (noise * 0.7 + sawtooth * 0.3) * 0.8;
     }
     
     const source = audioContext.createBufferSource();
     const gainNode = audioContext.createGain();
     const filter = audioContext.createBiquadFilter();
+    const distortion = audioContext.createWaveShaper();
+    
+    // Add distortion for harsher sound
+    function makeDistortionCurve(amount) {
+        const k = typeof amount === 'number' ? amount : 50;
+        const n_samples = 44100;
+        const curve = new Float32Array(n_samples);
+        const deg = Math.PI / 180;
+        for (let i = 0; i < n_samples; i++) {
+            const x = i * 2 / n_samples - 1;
+            curve[i] = (3 + k) * x * 20 * deg / (Math.PI + k * Math.abs(x));
+        }
+        return curve;
+    }
+    
+    distortion.curve = makeDistortionCurve(100);
+    distortion.oversample = '4x';
     
     source.buffer = buffer;
-    filter.type = 'bandpass';
-    filter.frequency.setValueAtTime(800, audioContext.currentTime);
-    filter.Q.value = 5;
+    filter.type = 'highpass';
+    filter.frequency.setValueAtTime(1000, audioContext.currentTime);
+    filter.Q.value = 10;
     
-    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+    gainNode.gain.setValueAtTime(0.5, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.8);
     
-    source.connect(filter);
+    source.connect(distortion);
+    distortion.connect(filter);
     filter.connect(gainNode);
     gainNode.connect(audioContext.destination);
     
@@ -828,10 +849,18 @@ function updateGame() {
     car.rotation.z = -gameState.yaw * 0.3;
 
     // Wall collision detection
-    const WALL_LEFT = -9;
-    const WALL_RIGHT = 9;
+    const WALL_LEFT = -8;
+    const WALL_RIGHT = 8;
     const now = Date.now();
     
+    // Prevent car from going through walls
+    if (car.position.x < WALL_LEFT) {
+        car.position.x = WALL_LEFT;
+    } else if (car.position.x > WALL_RIGHT) {
+        car.position.x = WALL_RIGHT;
+    }
+    
+    // Check if car is touching wall
     if (car.position.x <= WALL_LEFT || car.position.x >= WALL_RIGHT) {
         // Car is touching wall
         if (!gameState.wallTouching) {
@@ -839,6 +868,7 @@ function updateGame() {
             gameState.wallTouching = true;
             gameState.wallTouchStart = now;
             gameState.lastWallDamage = now;
+            playWallFrictionSound(); // Immediate sound on first contact
         } else {
             // Still touching wall - check if 1 second passed
             if (now - gameState.lastWallDamage >= 1000) {
