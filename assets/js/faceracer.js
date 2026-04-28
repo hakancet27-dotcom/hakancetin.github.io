@@ -894,6 +894,12 @@ function onFaceResults(results) {
             const rawPitchEl = document.getElementById('rawPitch');
             if (rawYawEl) rawYawEl.textContent = rawYaw.toFixed(3);
             if (rawPitchEl) rawPitchEl.textContent = rawPitch.toFixed(3);
+
+            // Update control panel debug values
+            const controlRawYawEl = document.getElementById('controlRawYaw');
+            const controlRawPitchEl = document.getElementById('controlRawPitch');
+            if (controlRawYawEl) controlRawYawEl.textContent = rawYaw.toFixed(3);
+            if (controlRawPitchEl) controlRawPitchEl.textContent = rawPitch.toFixed(3);
         }
 
         // Detect eye blink for nitro
