@@ -858,9 +858,10 @@ function onFaceResults(results) {
             }
         } else {
             // Apply smooth filtering (low-pass filter)
-            const alpha = 0.3; // Lower = more smoothing (stabilize)
-            gameState.smoothedYaw = alpha * yaw + (1 - alpha) * gameState.smoothedYaw;
-            gameState.smoothedPitch = alpha * pitch + (1 - alpha) * gameState.smoothedPitch;
+            const yawAlpha = 0.3; // Yaw smoothing (değişmeyecek - sağ-sol hassasiyeti koru)
+            const pitchAlpha = 0.5; // Pitch smoothing (artırıldı - hız/fren tepkisi artar)
+            gameState.smoothedYaw = yawAlpha * yaw + (1 - yawAlpha) * gameState.smoothedYaw;
+            gameState.smoothedPitch = pitchAlpha * pitch + (1 - pitchAlpha) * gameState.smoothedPitch;
             
             // Use calibrated values with smoothing
             const rawYaw = gameState.smoothedYaw - gameState.baseYaw;
