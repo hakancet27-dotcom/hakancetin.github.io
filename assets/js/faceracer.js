@@ -872,8 +872,9 @@ function onFaceResults(results) {
             gameState.yaw = Math.max(-1, Math.min(1, 
                 Math.abs(rawYaw) > deadzone ? rawYaw : 0
             ));
+            // Pitch değerini normalize et - 1'e çıkmasını engelle
             gameState.pitch = Math.max(-1, Math.min(1, 
-                Math.abs(rawPitch) > deadzone ? rawPitch : 0
+                Math.abs(rawPitch) > deadzone ? rawPitch * 0.5 : 0
             ));
             
             // Map pitch to target speed (inverted: head up = faster)
