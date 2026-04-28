@@ -130,9 +130,22 @@ body {
     color: #00ff88;
 }
 
+.hud-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.hud-column {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
 .hud-item {
-    margin: 10px 0;
-    font-size: 1.1rem;
+    margin: 5px 0;
+    font-size: 0.9rem;
+    white-space: nowrap;
 }
 
 .hud-value {
@@ -240,8 +253,12 @@ body {
         display: none;
     }
 
+    .hud-grid {
+        gap: 10px;
+    }
+    
     .hud-item {
-        margin: 3px 0;
+        margin: 2px 0;
         font-size: 0.65rem;
     }
 
