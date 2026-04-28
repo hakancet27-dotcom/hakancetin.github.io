@@ -39,11 +39,7 @@ let gameState = {
     wallTouching: false,
     wallTouchStart: null,
     lastWallDamage: 0,
-    // Pause system
-    isPaused: false,
-    eyeClosedStart: null,
-    lastEyeCheck: 0
-};
+    };
 
 // Three.js Setup
 let scene, camera, renderer, car, road;
@@ -754,9 +750,6 @@ function animate() {
 }
 
 function updateGame() {
-    // Don't update if paused
-    if (gameState.isPaused) return;
-    
     // Update particles
     updateParticles();
     
@@ -1018,9 +1011,6 @@ function onFaceResults(results) {
                 gameState.calibrationSamples.shift();
             }
         } else {
-            // Check for pause gesture (eyes closed for 2 seconds)
-            checkPauseGesture(landmarks);
-            
             // Apply smooth filtering (low-pass filter)
             const yawAlpha = 0.3; // Yaw smoothing (değişmeyecek - sağ-sol hassasiyeti koru)
             const pitchAlpha = 0.5; // Pitch smoothing (artırıldı - hız/fren tepkisi artar)
@@ -1720,131 +1710,6 @@ toggleControls.addEventListener('click', () => {
 console.log('%c FaceRacer © 2026 Hakan Çetin', 'color: #00ff88; font-size: 20px; font-weight: bold;');
 console.log('%c Tüm hakları saklıdır. https://hakancetin.com.tr', 'color: #888; font-size: 12px;');
 
-// Pause System Functions
-function checkPauseGesture(landmarks) {
-    if (!gameState.isPlaying || gameState.isPaused) return;
-    
-    const now = Date.now();
-    
-    // Get eye landmarks (left and right eye)
-    const leftEyeUpper = landmarks[159]; // Upper eyelid
-    const leftEyeLower = landmarks[145]; // Lower eyelid
-    const rightEyeUpper = landmarks[386]; // Upper eyelid
-    const rightEyeLower = landmarks[374]; // Lower eyelid
-    
-    // Calculate eye openness (vertical distance)
-    const leftEyeOpenness = Math.abs(leftEyeUpper.y - leftEyeLower.y);
-    const rightEyeOpenness = Math.abs(rightEyeUpper.y - rightEyeLower.y);
-    const avgEyeOpenness = (leftEyeOpenness + rightEyeOpenness) / 2;
-    
-    // Eyes are considered closed if openness is very small
-    const eyesClosed = avgEyeOpenness < 0.01;
-    
-    if (eyesClosed) {
-        if (!gameState.eyeClosedStart) {
-            // Just started closing eyes
-            gameState.eyeClosedStart = now;
-        } else {
-            // Eyes have been closed for some time
-            const closedDuration = now - gameState.eyeClosedStart;
-            if (closedDuration >= 2000) { // 2 seconds
-                togglePause();
-                gameState.eyeClosedStart = null; // Reset to prevent multiple triggers
-            }
-        }
-    } else {
-        // Eyes are open, reset the timer
-        gameState.eyeClosedStart = null;
-    }
-}
-
-function togglePause() {
-    gameState.isPaused = !gameState.isPaused;
-    
-    if (gameState.isPaused) {
-        // Pause the game
-        showPauseOverlay();
-        // Stop the animation loop
-        if (animationId) {
-            cancelAnimationFrame(animationId);
-            animationId = null;
-        }
-        playPauseSound();
-    } else {
-        // Resume the game
-        hidePauseOverlay();
-        // Restart the animation loop
-        animate();
-        playResumeSound();
-    }
-}
-
-function showPauseOverlay() {
-    const calibrationOverlay = document.getElementById('calibrationOverlay');
-    const calibrationContent = document.querySelector('.calibration-content');
-    
-    calibrationOverlay.style.display = 'flex';
-    calibrationOverlay.classList.remove('hidden');
-    
-    calibrationContent.innerHTML = `
-        <h1>⏸️ OYUN DURAKLATILDI</h1>
-        <div style="margin: 20px 0; padding: 20px; background: rgba(0, 255, 136, 0.1); border-radius: 10px; border: 1px solid #00ff88;">
-            <p style="font-size: 1.2rem; color: #00ff88; margin: 10px 0;">Gözlerinizi 2 saniye kapatın</p>
-            <p style="font-size: 1rem; color: #ccc; margin: 10px 0;">Oyuna devam etmek için</p>
-        </div>
-        <button onclick="togglePause()" style="margin-top: 20px; padding: 15px 30px; background: #00ff88; border: none; border-radius: 10px; cursor: pointer; font-size: 1.2rem; font-weight: bold;">
-            ▶️ Devam Et
-        </button>
-    `;
-}
-
-function hidePauseOverlay() {
-    const calibrationOverlay = document.getElementById('calibrationOverlay');
-    calibrationOverlay.style.display = 'none';
-}
-
-function playPauseSound() {
-    if (!audioContext) return;
-    
-    const oscillator = audioContext.createOscillator();
-    const gainNode = audioContext.createGain();
-    
-    oscillator.type = 'sine';
-    oscillator.frequency.setValueAtTime(440, audioContext.currentTime); // A4
-    oscillator.frequency.exponentialRampToValueAtTime(220, audioContext.currentTime + 0.2); // A3
-    
-    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2);
-    
-    oscillator.connect(gainNode);
-    gainNode.connect(audioContext.destination);
-    
-    oscillator.start();
-    oscillator.stop(audioContext.currentTime + 0.2);
-}
-
-function playResumeSound() {
-    if (!audioContext) return;
-    
-    const oscillator = audioContext.createOscillator();
-    const gainNode = audioContext.createGain();
-    
-    oscillator.type = 'sine';
-    oscillator.frequency.setValueAtTime(220, audioContext.currentTime); // A3
-    oscillator.frequency.exponentialRampToValueAtTime(440, audioContext.currentTime + 0.2); // A4
-    
-    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2);
-    
-    oscillator.connect(gainNode);
-    gainNode.connect(audioContext.destination);
-    
-    oscillator.start();
-    oscillator.stop(audioContext.currentTime + 0.2);
-}
-
-// Make togglePause globally accessible
-window.togglePause = togglePause;
 
 // Initialize
 initThreeJS();
