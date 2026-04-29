@@ -67,7 +67,6 @@
         <div id="hud" class="hidden">
             <h2> Oyun Bilgileri</h2>
             <div class="hud-item">Skor: <span class="hud-value" id="score">0</span></div>
-            <div class="hud-item">Hız: <span class="hud-value" id="speed">0</span> km/h</div>
             <div class="hud-item"> Altın: <span class="hud-value" id="goldPoints">0</span></div>
             <div class="hud-item"> Arıza: <span class="hud-value" id="damageLevel">0</span>%</div>
             <div class="hud-item"> Turbo: <span class="hud-value" id="turboPoints">0</span>/<span id="turboThreshold">100</span></div>
@@ -79,6 +78,11 @@
             <div class="hud-item" style="font-size: 0.8rem; color: #888;">
                 Raw Yaw: <span id="rawYaw">0</span> | Raw Pitch: <span id="rawPitch">0</span>
             </div>
+        </div>
+
+        <div id="speedometer" class="hidden">
+            <div class="speed-value speed-low" id="speedMain">0</div>
+            <div class="speed-unit">KM/H</div>
         </div>
 
         <button id="toggleControls" class="hidden" style="position: fixed; top: 10px; right: 10px; padding: 10px 15px; background: rgba(0,0,0,0.7); color: white; border: 1px solid #444; border-radius: 5px; cursor: pointer; z-index: 1000; font-size: 1.2rem;">❓</button>
