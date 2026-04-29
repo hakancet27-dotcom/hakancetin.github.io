@@ -10,6 +10,56 @@
     box-sizing: border-box;
 }
 
+.hidden {
+    display: none !important;
+}
+
+/* Turbo Bar */
+.turbo-bar-container {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.turbo-bar {
+    flex: 1;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    border: 2px solid #444;
+    overflow: hidden;
+    position: relative;
+}
+
+.turbo-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #444, #888, #00ff88);
+    border-radius: 8px;
+    transition: width 0.3s ease, background 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+.turbo-fill.full {
+    background: linear-gradient(90deg, #00ff88, #ffff00, #ff4444);
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
+    animation: turboPulse 0.5s ease infinite;
+}
+
+@keyframes turboPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.turbo-label {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #00ff88;
+    text-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
+    min-width: 50px;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
@@ -49,8 +99,8 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scaleX(-1);
-    width: 280px;
-    height: 280px;
+    width: 220px;
+    height: 220px;
     border-radius: 50%;
     border: 4px solid #00ff88;
     z-index: 160;
@@ -369,4 +419,31 @@ body {
     .speed-unit {
         font-size: 12px;
     }
+}
+
+/* Car Selection */
+.car-option:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+@media (max-width: 768px) {
+    .car-option {
+        width: 150px !important;
+        padding: 15px !important;
+    }
+}
+
+.car-select-btn.car-selected {
+    box-shadow: 0 0 15px rgba(255,255,255,0.3);
+    transform: scale(1.05);
+}
+
+.car-select-btn.car-locked {
+    filter: grayscale(0.5);
+}
+
+.car-select-btn:not(.car-locked):hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 10px rgba(255,255,255,0.2);
 }

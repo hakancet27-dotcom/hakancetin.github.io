@@ -31,6 +31,8 @@
             </div>
         </div>
 
+
+        
         <div id="difficultyOverlay" class="hidden">
             <div class="calibration-content">
                 <h1>🎮 Zorluk Seçin</h1>
@@ -55,7 +57,7 @@
             <p>↕️ Kafayı yukarı/aşağı eğ: Hız kontrolü</p>
         </div>
 
-        <button id="easyModeBtn" onclick="toggleEasyMode()" style="position: fixed; bottom: 20px; right: 20px; padding: 12px 24px; background: #4ecdc4; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: bold; color: white; z-index: 1000; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+        <button id="easyModeBtn" class="hidden" onclick="toggleEasyMode()" style="position: fixed; bottom: 20px; right: 20px; padding: 12px 24px; background: #4ecdc4; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: bold; color: white; z-index: 1000; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
             🟢 Kolay Moda Geç
         </button>
 
@@ -66,24 +68,24 @@
 
         <div id="hud" class="hidden">
             <h2> Oyun Bilgileri</h2>
-            <div class="hud-item">Skor: <span class="hud-value" id="score">0</span></div>
-            <div class="hud-item"> Altın: <span class="hud-value" id="goldPoints">0</span></div>
-            <div class="hud-item"> Arıza: <span class="hud-value" id="damageLevel">0</span>%</div>
-            <div class="hud-item"> Turbo: <span class="hud-value" id="turboPoints">0</span>/<span id="turboThreshold">100</span></div>
-            <div class="hud-item"> Kaza: <span class="hud-value" id="crashCount">0</span>/5</div>
-            <div class="hud-item"> Mesafe: <span class="hud-value" id="distance">0</span>m</div>
-            <div class="hud-item">Yaw: <span class="hud-value" id="yawValue">0</span></div>
-            <div class="hud-item">Pitch: <span class="hud-value" id="pitchValue">0</span></div>
-            <div class="hud-item">Nitro: <span class="hud-value" id="nitroStatus">Kapalı</span></div>
-            <div class="hud-item" style="font-size: 0.8rem; color: #888;">
-                Raw Yaw: <span id="rawYaw">0</span> | Raw Pitch: <span id="rawPitch">0</span>
-            </div>
+            <div class="hud-item">🏆 Skor: <span class="hud-value" id="score">0</span></div>
+            <div class="hud-item">❤️ Sağlamlık: <span class="hud-value" id="damageLevel">100</span></div>
+            <div class="hud-item">⚡ Turbo: <span class="hud-value" id="turboPoints">0</span>/<span id="turboThreshold">100</span></div>
+            <div class="hud-item">📏 Mesafe: <span class="hud-value" id="distance">0</span>m</div>
         </div>
 
         <div id="speedometer" class="hidden">
             <div class="speed-value speed-low" id="speedMain">0</div>
             <div class="speed-unit">KM/H</div>
         </div>
+        <div id="turboBarContainer" class="hidden" style="position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; z-index: 1000;">
+            <div class="turbo-bar" id="turboBar" style="width: 300px; height: 25px; background: rgba(0, 0, 0, 0.5); border-radius: 12px; border: 2px solid #444; overflow: hidden;">
+                <div class="turbo-fill" id="turboFill" style="height: 100%; width: 0%; background: linear-gradient(90deg, #444, #888, #00ff88); border-radius: 10px; transition: width 0.3s ease, background 0.3s ease; box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);"></div>
+            </div>
+            <span class="turbo-label" style="font-size: 0.9rem; font-weight: bold; color: #00ff88; text-shadow: 0 0 5px rgba(0, 255, 136, 0.5);">TURBO</span>
+        </div>
+
+        <button id="toggleCamera" class="hidden" onclick="toggleCameraPreset()" style="position: fixed; bottom: 30px; left: 30px; padding: 10px 15px; background: rgba(0,0,0,0.7); color: white; border: 1px solid #444; border-radius: 8px; cursor: pointer; z-index: 1000; font-size: 0.9rem;">📷 Yakın</button>
 
         <button id="toggleControls" class="hidden" style="position: fixed; top: 10px; right: 10px; padding: 10px 15px; background: rgba(0,0,0,0.7); color: white; border: 1px solid #444; border-radius: 5px; cursor: pointer; z-index: 1000; font-size: 1.2rem;">❓</button>
 
