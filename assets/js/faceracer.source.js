@@ -1049,8 +1049,8 @@ function updateGame() {
 
     // Wall collision detection
     const isPortrait = window.innerHeight > window.innerWidth;
-      const WALL_LEFT = -7;
-    const WALL_RIGHT = 7;
+    const WALL_LEFT = isPortrait ? -5 : -7;
+    const WALL_RIGHT = isPortrait ? 5 : 7;
     const now = Date.now();
 
     // Prevent car from going through walls
