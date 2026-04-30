@@ -1819,8 +1819,37 @@ function loadLeaderboard() {
         });
         scores.reverse();
         console.log('Leaderboard loaded:', scores);
+
+        // Update UI - update both leaderboardContent and leaderboardList
+        const leaderboardContent = document.getElementById('leaderboardContent');
+        const leaderboardList = document.getElementById('leaderboardList');
+        
+        const htmlContent = scores.length === 0 
+            ? '<p style="font-size: 0.9rem; color: #888;">Henüz skor yok</p>'
+            : scores.map((score, index) => 
+                `<div style="padding: 8px; border-bottom: 1px solid #444; display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 0.9rem; color: #888;">#${index + 1}</span>
+                    <span style="font-size: 0.9rem; font-weight: bold; color: #00ff88;">${score.score}</span>
+                </div>`
+            ).join('');
+        
+        if (leaderboardContent) {
+            leaderboardContent.innerHTML = htmlContent;
+        }
+        if (leaderboardList) {
+            leaderboardList.innerHTML = htmlContent;
+        }
     }).catch((error) => {
         console.error('Error loading leaderboard:', error);
+        const errorHtml = '<p style="font-size: 0.9rem; color: #ff0000;">Hata: ' + error.message + '</p>';
+        const leaderboardContent = document.getElementById('leaderboardContent');
+        const leaderboardList = document.getElementById('leaderboardList');
+        if (leaderboardContent) {
+            leaderboardContent.innerHTML = errorHtml;
+        }
+        if (leaderboardList) {
+            leaderboardList.innerHTML = errorHtml;
+        }
     });
 }
 
@@ -1851,6 +1880,13 @@ function endGame() {
     }
     toggleControls.classList.add('hidden');
     easyModeBtn.classList.remove('hidden');  // Show easy mode button
+    
+    // Show leaderboard element
+    const leaderboard = document.getElementById('leaderboard');
+    if (leaderboard) {
+        leaderboard.classList.remove('hidden');
+        leaderboard.style.display = 'block';
+    }
 
     const calibrationContent = document.querySelector('.calibration-content');
     const finalScore = gameState.score;
@@ -1971,6 +2007,14 @@ function endGame() {
     video.classList.remove('calibrating');  // Remove calibrating class
     createCar();  // Apply car config
     easyModeBtn.classList.add('hidden');  // Hide easy mode button
+    
+    // Hide leaderboard element
+    const leaderboard = document.getElementById('leaderboard');
+    if (leaderboard) {
+        leaderboard.classList.add('hidden');
+        leaderboard.style.display = 'none';
+    }
+    
     gameState.isPlaying = true;
     updateEasyModeButton();
 }
