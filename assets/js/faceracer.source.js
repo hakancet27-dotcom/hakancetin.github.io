@@ -168,6 +168,52 @@ const CAR_CONFIGS = {
 let scene, camera, renderer, car, road;
 let animationId;
 
+// Play start tracking (used to prevent post-calibration "frozen" feel)
+let playStartedAtMs = 0;
+
+// Lightweight on-screen diagnostics (helps debug without DevTools)
+let debugOverlayEl = null;
+let lastRuntimeError = '';
+function ensureDebugOverlay() {
+    if (debugOverlayEl) return debugOverlayEl;
+    debugOverlayEl = document.createElement('div');
+    debugOverlayEl.id = 'debugOverlay';
+    debugOverlayEl.style.cssText = [
+        'position:fixed',
+        'top:10px',
+        'left:10px',
+        'z-index:99999',
+        'background:rgba(0,0,0,0.65)',
+        'color:#fff',
+        'padding:8px 10px',
+        'border:1px solid rgba(255,255,255,0.2)',
+        'border-radius:8px',
+        'font:12px/1.3 system-ui, -apple-system, Segoe UI, Roboto, sans-serif',
+        'max-width:min(360px, calc(100vw - 20px))',
+        'white-space:pre-wrap',
+        'pointer-events:none',
+        'display:none'
+    ].join(';');
+    document.body.appendChild(debugOverlayEl);
+    return debugOverlayEl;
+}
+
+function setDebugOverlayVisible(visible) {
+    const el = ensureDebugOverlay();
+    el.style.display = visible ? 'block' : 'none';
+}
+
+window.addEventListener('error', (e) => {
+    lastRuntimeError = (e && e.message) ? String(e.message) : 'Unknown error';
+    setDebugOverlayVisible(true);
+});
+
+window.addEventListener('unhandledrejection', (e) => {
+    const reason = e && e.reason ? e.reason : 'Unknown rejection';
+    lastRuntimeError = typeof reason === 'string' ? reason : (reason && reason.message) ? reason.message : JSON.stringify(reason);
+    setDebugOverlayVisible(true);
+});
+
 // Particle systems
 let exhaustParticles = [];
 let smokeParticles = [];
@@ -1120,6 +1166,24 @@ function animate() {
 }
 
 function updateGame() {
+    // Ensure playStartedAtMs is initialized when gameplay begins
+    if (gameState.isCalibrated && gameState.isPlaying && !playStartedAtMs) {
+        playStartedAtMs = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
+    }
+
+    // Post-calibration anti-freeze: keep a small minimum speed for a short grace period
+    // This prevents a "stuck" look if face tracking is delayed or returns neutral values.
+    if (gameState.isCalibrated && gameState.isPlaying && playStartedAtMs) {
+        const nowMs = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
+        const elapsed = nowMs - playStartedAtMs;
+        if (elapsed < 3000) { // first 3 seconds
+            const minSpeed = 12; // noticeable movement
+            if (gameState.speed < minSpeed) gameState.speed = minSpeed;
+            if (gameState.targetSpeed < minSpeed) gameState.targetSpeed = minSpeed;
+            setDebugOverlayVisible(true);
+        }
+    }
+
     // Update particles
     updateParticles();
     
@@ -1303,6 +1367,39 @@ function updateGame() {
 
     // Update speedometer (optimized)
     updateSpeedometer(currentSpeed);
+
+    // Update on-screen diagnostics only when needed
+    if (lastRuntimeError) setDebugOverlayVisible(true);
+    if (debugOverlayEl && debugOverlayEl.style.display !== 'none') {
+        debugOverlayEl.textContent =
+            `FaceRacer Debug\n` +
+            `calibrated=${gameState.isCalibrated} playing=${gameState.isPlaying}\n` +
+            `speed=${gameState.speed.toFixed(2)} target=${gameState.targetSpeed.toFixed(2)}\n` +
+            `yaw=${gameState.yaw.toFixed(3)} pitch=${gameState.pitch.toFixed(3)}\n` +
+            `obstacles=${gameState.obstacles.length} distance=${Math.round(gameState.distance)}\n` +
+            (lastRuntimeError ? `\nERROR: ${lastRuntimeError}` : '');
+    }
+}
+
+function updateSpeedometer(speed) {
+    const speedEl = document.getElementById('speedMain');
+    if (!speedEl) return;
+
+    const rounded = Math.max(0, Math.round(speed || 0));
+    if (rounded === gameState.lastSpeed) return;
+    gameState.lastSpeed = rounded;
+
+    speedEl.textContent = String(rounded);
+
+    let cls = 'speed-low';
+    if (rounded >= 220) cls = 'speed-high';
+    else if (rounded >= 120) cls = 'speed-medium';
+
+    if (cls !== gameState.lastSpeedClass) {
+        speedEl.classList.remove('speed-low', 'speed-medium', 'speed-high');
+        speedEl.classList.add(cls);
+        gameState.lastSpeedClass = cls;
+    }
 }
 
 
@@ -1702,6 +1799,7 @@ function selectDifficulty(difficulty) {
     video.classList.remove('calibrating');  // Remove calibrating class
     createCar();  // Apply car config (maxSpeed, acceleration)
     gameState.isPlaying = true;
+    playStartedAtMs = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
     updateEasyModeButton();
 }
 
@@ -2268,6 +2366,7 @@ function restartGame() {
     easyModeBtn.classList.add('hidden');  // Hide easy mode button
     
     gameState.isPlaying = true;
+    playStartedAtMs = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
     updateEasyModeButton();
 }
 
@@ -2328,14 +2427,21 @@ function finalizeCalibration() {
     `;
     
     setTimeout(() => {
+        // Fail-safe: ensure game actually starts even if UI updates fail
         gameState.isCalibrated = true;
-        calibrationOverlay.classList.add('hidden');
-        video.classList.remove('calibrating');  // Remove calibrating class
+        gameState.isPlaying = true;
+        playStartedAtMs = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
+        // Kick-start movement so the scene doesn't look frozen if face tracking lags
+        gameState.targetSpeed = Math.max(gameState.targetSpeed || 0, 5);
+        gameState.speed = Math.max(gameState.speed || 0, 5);
+
+        if (calibrationOverlay) calibrationOverlay.classList.add('hidden');
+        if (video) video.classList.remove('calibrating');  // Remove calibrating class
         createCar();  // Apply car config
         
         // Restore canvas opacity
         const canvas = document.getElementById('gameCanvas');
-        canvas.style.opacity = '1';
+        if (canvas) canvas.style.opacity = '1';
         
         // Restore turbo bar opacity
         const turboContainer = document.getElementById('turboBarContainer');
@@ -2345,13 +2451,14 @@ function finalizeCalibration() {
         if (car) {
             car.scale.set(1, 1, 1);  // Reset scale
         }
-        hud.classList.remove('hidden');
-        speedometer.classList.remove('hidden');
-        document.getElementById('turboBarContainer').classList.remove('hidden');
-        document.getElementById('toggleCamera').classList.remove('hidden');
-        toggleControls.classList.remove('hidden');
-        easyModeBtn.classList.add('hidden');  // Hide easy mode button
-        gameState.isPlaying = true;
+        if (hud) hud.classList.remove('hidden');
+        if (speedometer) speedometer.classList.remove('hidden');
+        const turboEl = document.getElementById('turboBarContainer');
+        if (turboEl) turboEl.classList.remove('hidden');
+        const toggleCameraBtn = document.getElementById('toggleCamera');
+        if (toggleCameraBtn) toggleCameraBtn.classList.remove('hidden');
+        if (toggleControls) toggleControls.classList.remove('hidden');
+        if (easyModeBtn) easyModeBtn.classList.add('hidden');  // Hide easy mode button
         updateEasyModeButton();
     }, 100);
 }
