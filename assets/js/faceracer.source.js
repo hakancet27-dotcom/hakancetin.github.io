@@ -1845,7 +1845,7 @@ function loadLeaderboard(difficulty = 'normal') {
                     <span style="font-size: 0.9rem; color: #888;">#${index + 1}</span>
                     <div style="text-align: right;">
                         <span style="font-size: 0.9rem; font-weight: bold; color: #00ff88;">${score.score}</span>
-                        <span style="font-size: 0.7rem; color: #888; margin-left: 8px;">${score.playerName || 'Anonim'}</span>
+                        <span style="font-size: 0.85rem; font-weight: bold; color: #fff; margin-left: 8px;">${score.playerName || 'Anonim'}</span>
                     </div>
                 </div>`
             ).join('');
