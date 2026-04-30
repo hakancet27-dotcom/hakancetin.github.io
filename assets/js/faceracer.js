@@ -7,22 +7,45 @@ window.loadLeaderboard = loadLeaderboard;
 
 
 
+
+
+
+
+
+
+
+
 // Firebase Leaderboard Functions (not obfuscated)
 function submitScore(score) {
+    console.log('submitScore called with score:', score);
+    console.log('firebase:', firebase);
+    console.log('firebase.database():', firebase ? firebase.database() : 'undefined');
+    
     if (!firebase || !firebase.database()) {
         console.error('Firebase not initialized');
+        const submitMessage = document.getElementById('submitMessage');
+        if (submitMessage) {
+            submitMessage.textContent = 'Firebase not initialized';
+            submitMessage.style.color = '#ff0000';
+        }
         return;
     }
     
     const leaderboardRef = firebase.database().ref('leaderboard');
     const newScoreRef = leaderboardRef.push();
     
-    newScoreRef.set({
+    console.log('newScoreRef:', newScoreRef);
+    
+    const scoreData = {
         score: score,
         timestamp: Date.now(),
         car: gameState.selectedCar,
         difficulty: gameState.difficulty
-    }).then(() => {
+    };
+    
+    console.log('scoreData:', scoreData);
+    
+    newScoreRef.set(scoreData).then(() => {
         console.log('Score submitted successfully');
         const submitMessage = document.getElementById('submitMessage');
         if (submitMessage) {
@@ -54,6 +77,17 @@ function loadLeaderboard() {
         });
         scores.reverse();
         console.log('Leaderboard loaded:', scores);
+        
+        // Update UI if leaderboard element exists
+        const leaderboardElement = document.getElementById('leaderboard');
+        if (leaderboardElement) {
+            leaderboardElement.innerHTML = scores.map((score, index) => 
+                `<div style="padding: 8px; border-bottom: 1px solid #444; display: flex; justify-content: space-between;">
+                    <span>#${index + 1}</span>
+                    <span>${score.score}</span>
+                </div>`
+            ).join('');
+        }
     }).catch((error) => {
         console.error('Error loading leaderboard:', error);
     });
