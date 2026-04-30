@@ -4,3 +4,60 @@ const _0x357711=_0xd164;(function(_0x2d2c18,_0x4d5729){const _0x2686fc=_0xd164,_
 // Make functions globally accessible
 window.submitScore = submitScore;
 window.loadLeaderboard = loadLeaderboard;
+
+
+
+// Firebase Leaderboard Functions (not obfuscated)
+function submitScore(score) {
+    if (!firebase || !firebase.database()) {
+        console.error('Firebase not initialized');
+        return;
+    }
+    
+    const leaderboardRef = firebase.database().ref('leaderboard');
+    const newScoreRef = leaderboardRef.push();
+    
+    newScoreRef.set({
+        score: score,
+        timestamp: Date.now(),
+        car: gameState.selectedCar,
+        difficulty: gameState.difficulty
+    }).then(() => {
+        console.log('Score submitted successfully');
+        const submitMessage = document.getElementById('submitMessage');
+        if (submitMessage) {
+            submitMessage.textContent = 'Skor kaydedildi!';
+            submitMessage.style.color = '#00ff88';
+        }
+        loadLeaderboard();
+    }).catch((error) => {
+        console.error('Error submitting score:', error);
+        const submitMessage = document.getElementById('submitMessage');
+        if (submitMessage) {
+            submitMessage.textContent = 'Hata: ' + error.message;
+            submitMessage.style.color = '#ff0000';
+        }
+    });
+}
+
+function loadLeaderboard() {
+    if (!firebase || !firebase.database()) {
+        console.error('Firebase not initialized');
+        return;
+    }
+    
+    const leaderboardRef = firebase.database().ref('leaderboard');
+    leaderboardRef.orderByChild('score').limitToLast(10).once('value', (snapshot) => {
+        const scores = [];
+        snapshot.forEach((childSnapshot) => {
+            scores.push(childSnapshot.val());
+        });
+        scores.reverse();
+        console.log('Leaderboard loaded:', scores);
+    }).catch((error) => {
+        console.error('Error loading leaderboard:', error);
+    });
+}
+
+window.submitScore = submitScore;
+window.loadLeaderboard = loadLeaderboard;
