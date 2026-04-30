@@ -1958,7 +1958,7 @@ function endGame() {
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 12px 0;">
             <div id="easyLeaderboard" style="padding: 10px; background: rgba(0,0,0,0.5); border-radius: 10px; border: 1px solid #4ecdc4;">
                 <h3 style="color: #4ecdc4; margin-bottom: 8px; font-size: 0.9rem;">&#127942; Kolay Mod</h3>
-                <div id="easyLeaderboardList" style="max-height: 200px; overflow-y: auto;">
+                <div id="easyLeaderboardList" style="max-height: 150px; overflow-y: auto;">
                     <p style="color: #888; font-size: 0.8rem;">Y&#252;kleniyor...</p>
                 </div>
             </div>
@@ -1972,7 +1972,7 @@ function endGame() {
             </div>
             <div id="normalLeaderboard" style="padding: 10px; background: rgba(0,0,0,0.5); border-radius: 10px; border: 1px solid #ff6b6b;">
                 <h3 style="color: #ff6b6b; margin-bottom: 8px; font-size: 0.9rem;">&#127942; Normal Mod</h3>
-                <div id="normalLeaderboardList" style="max-height: 200px; overflow-y: auto;">
+                <div id="normalLeaderboardList" style="max-height: 150px; overflow-y: auto;">
                     <p style="color: #888; font-size: 0.8rem;">Y&#252;kleniyor...</p>
                 </div>
             </div>
