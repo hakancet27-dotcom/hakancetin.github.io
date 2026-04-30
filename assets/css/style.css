@@ -803,3 +803,38 @@ footer {
         gap: 1rem;
     }
 }
+
+/* FaceRacer Features */
+.faceracer-features {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.faceracer-features h3 {
+    color: var(--accent);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.faceracer-features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.faceracer-features li {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 1rem;
+}
+
+.faceracer-features li:last-child {
+    border-bottom: none;
+}
+
+body.dark-mode .faceracer-features {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.05);
+}
