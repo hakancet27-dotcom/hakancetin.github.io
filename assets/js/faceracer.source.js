@@ -179,6 +179,46 @@ let cameraUtils;
 // Audio Context
 let audioContext;
 
+function isMobileCalibrationDevice() {
+    return window.innerWidth <= 768 || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+function getCalibrationProfile() {
+    if (isMobileCalibrationDevice()) {
+        return {
+            yawMultiplier: 1.65,
+            pitchMultiplier: 0.82,
+            smoothingAlpha: 0.18,
+            deadzone: 0.08,
+            sampleLimit: 135,
+            minSamples: 30,
+            minMovementThreshold: 0.035,
+            centerStabilityThreshold: 0.42,
+            centerDuration: 3,
+            movementDuration: 4,
+            cameraWidth: 480,
+            cameraHeight: 640,
+            blinkThreshold: 0.012
+        };
+    }
+
+    return {
+        yawMultiplier: 2.5,
+        pitchMultiplier: 1,
+        smoothingAlpha: 0.3,
+        deadzone: 0.05,
+        sampleLimit: 90,
+        minSamples: 20,
+        minMovementThreshold: 0.05,
+        centerStabilityThreshold: 0.3,
+        centerDuration: 2,
+        movementDuration: 3,
+        cameraWidth: 640,
+        cameraHeight: 480,
+        blinkThreshold: 0.015
+    };
+}
+
 // Sound functions
 function initAudio() {
     audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -1369,8 +1409,9 @@ async function initMediaPipe() {
 
 async function startCamera() {
     try {
+        const profile = getCalibrationProfile();
         const stream = await navigator.mediaDevices.getUserMedia({
-            video: { facingMode: 'user', width: 640, height: 480 }
+            video: { facingMode: 'user', width: profile.cameraWidth, height: profile.cameraHeight }
         });
         video.srcObject = stream;
         
@@ -1412,26 +1453,28 @@ function onFaceResults(results) {
         const faceHeight = Math.abs(forehead.y - noseBridge.y);
         const faceWidth = Math.abs(rightEyebrow.x - leftEyebrow.x);
         
+        const calibrationProfile = getCalibrationProfile();
+
         // Yaw: Use nose tip position directly (simplified)
-        // PERFECT YAW SETTINGS: nose tip directly, 2.5x sensitivity, center 0.5
-        const yawSensitivity = gameState.calibrationData ? gameState.calibrationData.yawSensitivity * 2.5 : 50; // 2.5x sensitivity
+        // PERFECT YAW SETTINGS: nose tip directly, calibrated sensitivity, center 0.5
+        const yawSensitivity = gameState.calibrationData ? gameState.calibrationData.yawSensitivity * calibrationProfile.yawMultiplier : 50;
         const yaw = (0.5 - noseTip.x) * yawSensitivity; // Center is 0.5
         
         // Pitch: Use nose tip relative to upper face center (original method)
-        const pitchSensitivity = gameState.calibrationData ? gameState.calibrationData.pitchSensitivity : 25;
+        const pitchSensitivity = gameState.calibrationData ? gameState.calibrationData.pitchSensitivity * calibrationProfile.pitchMultiplier : 25;
         const pitch = (noseTip.y - upperFaceCenterY) / faceHeight * pitchSensitivity;
 
         if (!gameState.isCalibrated) {
             // Collect calibration samples
             gameState.calibrationSamples.push({ yaw, pitch });
             
-            // Keep last 90 samples (about 3 seconds at 30fps) for better averaging
-            if (gameState.calibrationSamples.length > 90) {
+            // Keep latest samples for stable averaging
+            if (gameState.calibrationSamples.length > calibrationProfile.sampleLimit) {
                 gameState.calibrationSamples.shift();
             }
         } else {
             // Apply smooth filtering (low-pass filter)
-            const alpha = 0.3; // Lower = more smoothing (stabilize)
+            const alpha = calibrationProfile.smoothingAlpha; // Lower = more smoothing (stabilize)
             gameState.smoothedYaw = alpha * yaw + (1 - alpha) * gameState.smoothedYaw;
             gameState.smoothedPitch = alpha * pitch + (1 - alpha) * gameState.smoothedPitch;
             
@@ -1439,8 +1482,8 @@ function onFaceResults(results) {
             const rawYaw = gameState.smoothedYaw - gameState.baseYaw;
             const rawPitch = gameState.smoothedPitch - gameState.basePitch;
             
-            // Apply deadzone to reduce jitter (higher to prevent sticking)
-            const deadzone = 0.05; // Higher deadzone to prevent sticking
+            // Apply deadzone to reduce jitter
+            const deadzone = calibrationProfile.deadzone;
             gameState.yaw = Math.max(-1, Math.min(1, 
                 Math.abs(rawYaw) > deadzone ? rawYaw : 0
             ));
@@ -1475,7 +1518,8 @@ function onFaceResults(results) {
         const rightEyeOpen = Math.abs(rightEyeTop.y - rightEyeBottom.y);
         
         // Adjusted blink threshold
-        if ((leftEyeOpen < 0.015 || rightEyeOpen < 0.015) && gameState.turboPoints >= gameState.turboThreshold && gameState.nitroTimer <= 0) {
+        const blinkThreshold = getCalibrationProfile().blinkThreshold;
+        if ((leftEyeOpen < blinkThreshold || rightEyeOpen < blinkThreshold) && gameState.turboPoints >= gameState.turboThreshold && gameState.nitroTimer <= 0) {
             gameState.nitroActive = true;
             gameState.nitroTimer = gameState.nitroDuration;
             gameState.turboPoints = 0; // Turbo puanini tuket
@@ -1645,24 +1689,25 @@ function startCalibration() {
 }
 
 function runCalibrationPhase() {
+    const profile = getCalibrationProfile();
     const phases = [
         { 
             text: 'Yüzünüzü tam ortaya getirin', 
-            duration: 2, 
+            duration: profile.centerDuration, 
             instruction: 'Dik durun, alnınız çerçevenin tam ortasında olsun',
             type: 'center',
             detail: 'Bu pozisyon referans noktanız olacak'
         },
         { 
             text: 'Kafanızı sağa ve sola hareket ettirin', 
-            duration: 3, 
+            duration: profile.movementDuration, 
             instruction: '↔️ Kafanızı hafifçe sağa ve sola çevirin',
             type: 'horizontal',
             detail: 'Küçük hareketler yeterli, omuzları hareket ettirmeyin'
         },
         { 
             text: 'Kafanızı yukarı ve aşağı hareket ettirin', 
-            duration: 3, 
+            duration: profile.movementDuration, 
             instruction: '↕️ Kafanızı hafifçe yukarı ve aşağı eğin',
             type: 'vertical',
             detail: 'Gövdenizi hareket ettirmeden sadece kafayı eğin'
@@ -1838,9 +1883,10 @@ function runCalibrationPhase() {
 }
 
 function checkPhaseQuality(phase) {
-    if (gameState.calibrationSamples.length < 20) return false; // Need at least 20 samples (lowered for laptops)
+    const profile = getCalibrationProfile();
+    if (gameState.calibrationSamples.length < profile.minSamples) return false;
     
-    const minMovementThreshold = 0.05; // Lowered threshold for laptops
+    const minMovementThreshold = profile.minMovementThreshold;
     
     if (phase === 1) { // Horizontal
         const yawValues = gameState.calibrationSamples.map(s => s.yaw);
@@ -1859,8 +1905,7 @@ function checkPhaseQuality(phase) {
         const pitchValues = gameState.calibrationSamples.map(s => s.pitch);
         const yawVariance = Math.max(...yawValues) - Math.min(...yawValues);
         const pitchVariance = Math.max(...pitchValues) - Math.min(...pitchValues);
-        // Center should be stable (low movement) - relaxed threshold
-        return yawVariance < 0.3 && pitchVariance < 0.3;
+        return yawVariance < profile.centerStabilityThreshold && pitchVariance < profile.centerStabilityThreshold;
     }
 }
 
@@ -2025,7 +2070,9 @@ function endGame() {
         turboContainer.style.opacity = '0.3';
     }
     toggleControls.classList.add('hidden');
-    easyModeBtn.classList.remove('hidden');  // Show easy mode button
+    document.getElementById('toggleCamera').classList.add('hidden');
+    easyModeBtn.classList.remove('hidden');
+    easyModeBtn.classList.add('game-over-mode-toggle');
 
     const calibrationContent = document.querySelector('.calibration-content');
     const finalScore = gameState.score;
@@ -2152,6 +2199,7 @@ function endGame() {
     toggleControls.classList.remove('hidden');
     video.classList.remove('calibrating');  // Remove calibrating class
     createCar();  // Apply car config
+    easyModeBtn.classList.remove('game-over-mode-toggle');
     easyModeBtn.classList.add('hidden');  // Hide easy mode button
     
     gameState.isPlaying = true;
