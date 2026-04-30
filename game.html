@@ -16,6 +16,38 @@
     <meta http-equiv="Permissions-Policy" content="camera=(self), microphone=(), geolocation=(), fullscreen=(self)">
     
     <link rel="stylesheet" href="assets/css/faceracer.css">
+    
+    <!-- Security Script -->
+    <script>
+        // Domain Locking
+        const ALLOWED_DOMAINS = ['hakancetin.com.tr', 'hakancetin.github.io', 'localhost'];
+        const currentDomain = window.location.hostname;
+
+        if (!ALLOWED_DOMAINS.includes(currentDomain)) {
+            alert('⚠️ Bu oyun yetkisiz kullanımdır.\nLütfen hakancetin.com.tr adresini kullanın.');
+            window.location.href = 'https://hakancetin.com.tr';
+        }
+
+        // Anti-Debugging
+        let devtools = { open: false };
+        setInterval(() => {
+            const threshold = 160;
+            if (window.outerWidth - window.innerWidth > threshold || 
+                window.outerHeight - window.innerHeight > threshold) {
+                if (!devtools.open) {
+                    devtools.open = true;
+                    alert('⚠️ Developer tools kullanımı yasaktır!');
+                    window.location.href = 'https://hakancetin.com.tr';
+                }
+            } else {
+                devtools.open = false;
+            }
+        }, 1000);
+
+        // Console Protection
+        console.log('%c⚠️ FaceRacer Korumalıdır!', 'color: red; font-size: 20px; font-weight: bold;');
+        console.log('%c© 2026 Hakan Çetin - Tüm hakları saklıdır.', 'color: #00ff88; font-size: 14px;');
+    </script>
 </head>
 <body>
     <div id="gameContainer">
