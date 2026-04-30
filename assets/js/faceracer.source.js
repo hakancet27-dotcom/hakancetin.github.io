@@ -628,38 +628,22 @@ function createEnvironment() {
 
 function createTree(x, z) {
     const tree = new THREE.Group();
-    
-    const type = Math.floor(Math.random() * 3);
-    const scale = 0.85 + Math.random() * 1.35;
-    
-    const trunkGeometry = new THREE.CylinderGeometry(0.22 * scale, 0.34 * scale, 2.2 * scale, 6);
+
+    const trunkGeometry = new THREE.CylinderGeometry(0.3, 0.4, 2, 8);
     const trunkMaterial = new THREE.MeshStandardMaterial({ color: 0x8B4513 });
     const trunk = new THREE.Mesh(trunkGeometry, trunkMaterial);
-    trunk.position.y = 1.1 * scale;
+    trunk.position.y = 1;
     tree.add(trunk);
-    
-    const leafColors = [0x1f7a2e, 0x2d9b3f, 0x17612b];
-    const leafColor = leafColors[type];
-    const leavesMaterial = new THREE.MeshStandardMaterial({ color: leafColor });
-    
-    const layerCounts = [3, 2, 4];
-    const layers = layerCounts[type];
-    
-    for (let i = 0; i < layers; i++) {
-        const layerScale = (layers - i) / layers;
-        const leavesGeometry = new THREE.ConeGeometry(1.2 * scale * layerScale, 1.8 * scale * layerScale, 7);
-        const leaves = new THREE.Mesh(leavesGeometry, leavesMaterial);
-        leaves.position.y = (2.2 + 1.2 + i * 1.1) * scale;
-        tree.add(leaves);
-    }
-    
+
+    const leavesGeometry = new THREE.ConeGeometry(1.5, 3, 8);
+    const leavesMaterial = new THREE.MeshStandardMaterial({ color: 0x228B22 });
+    const leaves = new THREE.Mesh(leavesGeometry, leavesMaterial);
+    leaves.position.y = 3;
+    tree.add(leaves);
+
     tree.position.set(x, 0, z);
-    tree.scale.set(scale, scale, scale);
     tree.castShadow = true;
-    tree.userData.side = x < 0 ? -1 : 1;
-    
     scene.add(tree);
-    gameState.trees.push(tree);
 }
 
 function createObstacle() {
