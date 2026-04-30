@@ -370,6 +370,10 @@ body {
         margin: 2px 0;
     }
 
+    .hud-item:last-child {
+        display: none;
+    }
+
     #speedometer {
         padding: 9px 18px;
     }

@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+Mobil turbo bar genişliği mi# -*- coding: utf-8 -*-
 filepath = r'assets/js/faceracer.source.js'
 
 with open(filepath, 'r', encoding='utf-8') as f:
