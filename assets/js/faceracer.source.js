@@ -812,17 +812,71 @@ function createObstacle() {
         }
     }
     
-    const obstacleMaterial = new THREE.MeshStandardMaterial({ color });
-    const obstacle = new THREE.Mesh(obstacleGeometry, obstacleMaterial);
+    const obstacleMaterial = new THREE.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: 0.25, roughness: 0.35 });
+    const obstacle = new THREE.Group();
+    const core = new THREE.Mesh(obstacleGeometry, obstacleMaterial);
+    core.castShadow = true;
+    obstacle.add(core);
+    addObstacleDetails(obstacle, type, color);
     obstacle.position.set(
         (Math.random() - 0.5) * 14,
         1,
         -200
     );
-    obstacle.castShadow = true;
     obstacle.userData = { type }; // Store type for collision logic
     scene.add(obstacle);
     gameState.obstacles.push(obstacle);
+}
+
+function addObstacleDetails(obstacle, type, color) {
+    const glowMaterial = new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.22 });
+    const iconMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xffffff, emissiveIntensity: 0.35 });
+    const darkMaterial = new THREE.MeshStandardMaterial({ color: 0x330000, emissive: 0x220000, emissiveIntensity: 0.25 });
+
+    const halo = new THREE.Mesh(new THREE.TorusGeometry(1.45, 0.06, 6, 24), glowMaterial);
+    halo.rotation.x = Math.PI / 2;
+    halo.position.y = 1.05;
+    obstacle.add(halo);
+
+    if (type === 'turbo') {
+        const bolt = new THREE.Mesh(new THREE.ConeGeometry(0.38, 1.15, 3), iconMaterial);
+        bolt.rotation.z = -0.35;
+        bolt.position.set(0, 0.25, -1.04);
+        obstacle.add(bolt);
+
+        const boostLineGeo = new THREE.BoxGeometry(0.12, 0.08, 0.9);
+        [-0.55, 0, 0.55].forEach(x => {
+            const line = new THREE.Mesh(boostLineGeo, iconMaterial);
+            line.position.set(x, -0.55, 1.04);
+            obstacle.add(line);
+        });
+    } else if (type === 'gold') {
+        const coin = new THREE.Mesh(new THREE.CylinderGeometry(0.55, 0.55, 0.12, 18), iconMaterial);
+        coin.rotation.x = Math.PI / 2;
+        coin.position.set(0, 0.12, -1.04);
+        obstacle.add(coin);
+
+        const shineGeo = new THREE.BoxGeometry(0.16, 0.08, 0.8);
+        [-0.28, 0.28].forEach(x => {
+            const shine = new THREE.Mesh(shineGeo, iconMaterial);
+            shine.rotation.z = x < 0 ? 0.55 : -0.55;
+            shine.position.set(x, 0.14, -1.12);
+            obstacle.add(shine);
+        });
+    } else {
+        const barGeo = new THREE.BoxGeometry(0.22, 1.35, 0.12);
+        [0.75, -0.75].forEach(angle => {
+            const bar = new THREE.Mesh(barGeo, darkMaterial);
+            bar.rotation.z = angle;
+            bar.position.set(0, 0.08, -1.04);
+            obstacle.add(bar);
+        });
+
+        const warning = new THREE.Mesh(new THREE.ConeGeometry(0.45, 0.8, 3), darkMaterial);
+        warning.rotation.z = Math.PI;
+        warning.position.set(0, -0.7, -1.04);
+        obstacle.add(warning);
+    }
 }
 
 // Create smoke texture
