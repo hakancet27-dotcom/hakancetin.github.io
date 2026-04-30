@@ -318,16 +318,8 @@ function initThreeJS() {
     scene.background = new THREE.Color(0x87CEEB);
     scene.fog = new THREE.Fog(0x87CEEB, 50, 200);
 
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    // Default camera: Yakin (Preset 1)
-    // Mobilde kamera pozisyonunu optimize et
-    if (window.innerWidth <= 768) {
-        camera.position.set(0, 6, 15);
-        camera.lookAt(0, 0.5, -3);
-    } else {
-        camera.position.set(0, 5, 12);
-        camera.lookAt(0, 0.5, -3);
-    }
+    camera = new THREE.PerspectiveCamera(getCameraFov(), window.innerWidth / window.innerHeight, 0.1, 1000);
+    applyCameraPreset();
 
     renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -915,7 +907,9 @@ function updateParticles() {
 
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
+    camera.fov = getCameraFov();
     camera.updateProjectionMatrix();
+    applyCameraPreset();
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
@@ -1195,29 +1189,50 @@ function createWallFrictionParticles(wallX) {
 }
 
 // Camera toggle (Yakin / Uzak)
-function toggleCameraPreset() {
-    const btn = document.getElementById('toggleCamera');
+function getCameraFov() {
+    return window.innerWidth <= 768 && window.innerHeight > window.innerWidth ? 85 : 75;
+}
+
+function applyCameraPreset() {
+    if (!camera) return;
     const isMobile = window.innerWidth <= 768;
+    const isPortrait = window.innerHeight > window.innerWidth;
     
-    if (gameState.cameraPreset === 1) {
-        gameState.cameraPreset = 2;
-        if (isMobile) {
+    if (gameState.cameraPreset === 2) {
+        if (isMobile && isPortrait) {
+            camera.position.set(0, 8, 20);
+            camera.lookAt(0, 0, -2);
+        } else if (isMobile) {
             camera.position.set(0, 8, 18);
             camera.lookAt(0, 0, -2);
         } else {
             camera.position.set(0, 7, 14);
             camera.lookAt(0, 0, -2);
         }
-        if (btn) btn.textContent = '\u{1F4F7} Uzak';
     } else {
-        gameState.cameraPreset = 1;
-        if (isMobile) {
+        if (isMobile && isPortrait) {
+            camera.position.set(0, 7, 18);
+            camera.lookAt(0, 0.5, -3);
+        } else if (isMobile) {
             camera.position.set(0, 6, 15);
             camera.lookAt(0, 0.5, -3);
         } else {
             camera.position.set(0, 5, 12);
             camera.lookAt(0, 0.5, -3);
         }
+    }
+}
+
+function toggleCameraPreset() {
+    const btn = document.getElementById('toggleCamera');
+    
+    if (gameState.cameraPreset === 1) {
+        gameState.cameraPreset = 2;
+        applyCameraPreset();
+        if (btn) btn.textContent = '\u{1F4F7} Uzak';
+    } else {
+        gameState.cameraPreset = 1;
+        applyCameraPreset();
         if (btn) btn.textContent = '\u{1F4F7} Yakin';
     }
 }
