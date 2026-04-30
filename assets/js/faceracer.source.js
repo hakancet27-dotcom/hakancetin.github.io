@@ -26,15 +26,9 @@ let gameState = {
     distance: 0,
     targetSpeed: 0,
     acceleration: 1.5, // DÜZELTME: 0.2'den 1.5'e
-<<<<<<< HEAD
     nitroTimer: 0, // Turbo süresi sayacı
     nitroDuration: 5, // Turbo süresi (saniye)
     difficulty: 'normal', // 'normal' veya 'easy'
-=======
-    nitroTimer: 0,
-    nitroDuration: 5,
-    difficulty: 'normal',
->>>>>>> 3d5ca52fb562068c5cbf29586a14cbdc108941bb
     wallTouching: false,
     wallTouchStart: null,
     lastWallDamage: 0,
@@ -79,53 +73,7 @@ const CAR_CONFIGS = {
 
 let scene, camera, renderer, car, road;
 let animationId;
-<<<<<<< HEAD
-
-// Play start tracking (used to prevent post-calibration "frozen" feel)
 let playStartedAtMs = 0;
-
-// Lightweight on-screen diagnostics (helps debug without DevTools)
-let debugOverlayEl = null;
-let lastRuntimeError = '';
-function ensureDebugOverlay() {
-    if (debugOverlayEl) return debugOverlayEl;
-    debugOverlayEl = document.createElement('div');
-    debugOverlayEl.id = 'debugOverlay';
-    debugOverlayEl.style.cssText = [
-        'position:fixed',
-        'top:10px',
-        'left:10px',
-        'z-index:99999',
-        'background:rgba(0,0,0,0.65)',
-        'color:#fff',
-        'padding:8px 10px',
-        'border:1px solid rgba(255,255,255,0.2)',
-        'border-radius:8px',
-        'font:12px/1.3 system-ui, -apple-system, Segoe UI, Roboto, sans-serif',
-        'max-width:min(360px, calc(100vw - 20px))',
-        'white-space:pre-wrap',
-        'pointer-events:none',
-        'display:none'
-    ].join(';');
-    document.body.appendChild(debugOverlayEl);
-    return debugOverlayEl;
-}
-
-function setDebugOverlayVisible(visible) {
-    const el = ensureDebugOverlay();
-    el.style.display = visible ? 'block' : 'none';
-}
-
-window.addEventListener('error', (e) => {
-    lastRuntimeError = (e && e.message) ? String(e.message) : 'Unknown error';
-    setDebugOverlayVisible(true);
-});
-
-window.addEventListener('unhandledrejection', (e) => {
-    const reason = e && e.reason ? e.reason : 'Unknown rejection';
-    lastRuntimeError = typeof reason === 'string' ? reason : (reason && reason.message) ? reason.message : JSON.stringify(reason);
-    setDebugOverlayVisible(true);
-});
 
 // Particle systems
 let exhaustParticles = [];
