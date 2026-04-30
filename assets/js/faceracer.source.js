@@ -1789,6 +1789,9 @@ function submitScore(score) {
         return;
     }
     
+    const playerNameInput = document.getElementById('playerName');
+    const playerName = playerNameInput ? playerNameInput.value : 'Anonim';
+    
     const leaderboardRef = firebase.database().ref('leaderboard');
     const newScoreRef = leaderboardRef.push();
     
@@ -1796,7 +1799,8 @@ function submitScore(score) {
         score: score,
         timestamp: Date.now(),
         car: gameState.selectedCar,
-        difficulty: gameState.difficulty
+        difficulty: gameState.difficulty,
+        playerName: playerName
     }).then(() => {
         console.log('Score submitted successfully');
         loadLeaderboard();
@@ -1824,31 +1828,23 @@ function loadLeaderboard() {
         const leaderboardContent = document.getElementById('leaderboardContent');
         const leaderboardList = document.getElementById('leaderboardList');
         
-        console.log('leaderboardContent:', leaderboardContent);
-        console.log('leaderboardList:', leaderboardList);
-        
         const htmlContent = scores.length === 0 
             ? '<p style="font-size: 0.9rem; color: #888;">Henüz skor yok</p>'
             : scores.map((score, index) => 
                 `<div style="padding: 8px; border-bottom: 1px solid #444; display: flex; justify-content: space-between; align-items: center;">
                     <span style="font-size: 0.9rem; color: #888;">#${index + 1}</span>
-                    <span style="font-size: 0.9rem; font-weight: bold; color: #00ff88;">${score.score}</span>
+                    <div style="text-align: right;">
+                        <span style="font-size: 0.9rem; font-weight: bold; color: #00ff88;">${score.score}</span>
+                        <span style="font-size: 0.7rem; color: #888; margin-left: 8px;">${score.playerName || 'Anonim'}</span>
+                    </div>
                 </div>`
             ).join('');
         
-        console.log('htmlContent:', htmlContent);
-        
         if (leaderboardContent) {
             leaderboardContent.innerHTML = htmlContent;
-            console.log('Updated leaderboardContent');
-        } else {
-            console.error('leaderboardContent not found');
         }
         if (leaderboardList) {
             leaderboardList.innerHTML = htmlContent;
-            console.log('Updated leaderboardList');
-        } else {
-            console.error('leaderboardList not found');
         }
     }).catch((error) => {
         console.error('Error loading leaderboard:', error);
