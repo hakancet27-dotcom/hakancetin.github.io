@@ -1955,8 +1955,14 @@ function endGame() {
             </div>
         </div>
 
-        <div style="display: flex; gap: 12px; margin: 12px 0;">
-            <div id="scoreSubmission" style="flex: 1; padding: 10px; background: rgba(0, 255, 136, 0.1); border-radius: 10px; border: 1px solid #00ff88;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 12px 0;">
+            <div id="easyLeaderboard" style="padding: 10px; background: rgba(0,0,0,0.5); border-radius: 10px; border: 1px solid #4ecdc4;">
+                <h3 style="color: #4ecdc4; margin-bottom: 8px; font-size: 0.9rem;">&#127942; Kolay Mod</h3>
+                <div id="easyLeaderboardList" style="max-height: 200px; overflow-y: auto;">
+                    <p style="color: #888; font-size: 0.8rem;">Y&#252;kleniyor...</p>
+                </div>
+            </div>
+            <div id="scoreSubmission" style="padding: 10px; background: rgba(0, 255, 136, 0.1); border-radius: 10px; border: 1px solid #00ff88;">
                 <h3 style="color: #00ff88; margin-bottom: 8px;">&#128196; Skorunu Kaydet</h3>
                 <input type="text" id="playerName" placeholder="Ad&#305;n&#305;z" maxlength="20" style="width: 100%; padding: 10px; font-size: 0.85rem; border-radius: 5px; border: 1px solid #00ff88; background: rgba(0,0,0,0.5); color: white; margin-bottom: 6px; box-sizing: border-box;">
                 <button onclick="submitScore(${finalScore})" style="width: 100%; padding: 8px 16px; background: #00ff88; border: none; border-radius: 5px; cursor: pointer; font-size: 0.85rem; font-weight: bold;">
@@ -1964,13 +1970,7 @@ function endGame() {
                 </button>
                 <p id="submitMessage" style="margin-top: 6px; font-size: 0.75rem; color: #888;"></p>
             </div>
-            <div id="easyLeaderboard" style="flex: 0.5; padding: 10px; background: rgba(0,0,0,0.5); border-radius: 10px; border: 1px solid #4ecdc4;">
-                <h3 style="color: #4ecdc4; margin-bottom: 8px; font-size: 0.9rem;">&#127942; Kolay Mod</h3>
-                <div id="easyLeaderboardList" style="max-height: 200px; overflow-y: auto;">
-                    <p style="color: #888; font-size: 0.8rem;">Y&#252;kleniyor...</p>
-                </div>
-            </div>
-            <div id="normalLeaderboard" style="flex: 0.5; padding: 10px; background: rgba(0,0,0,0.5); border-radius: 10px; border: 1px solid #ff6b6b;">
+            <div id="normalLeaderboard" style="padding: 10px; background: rgba(0,0,0,0.5); border-radius: 10px; border: 1px solid #ff6b6b;">
                 <h3 style="color: #ff6b6b; margin-bottom: 8px; font-size: 0.9rem;">&#127942; Normal Mod</h3>
                 <div id="normalLeaderboardList" style="max-height: 200px; overflow-y: auto;">
                     <p style="color: #888; font-size: 0.8rem;">Y&#252;kleniyor...</p>
