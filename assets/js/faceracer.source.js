@@ -837,25 +837,6 @@ function updateSpeedometer(speed) {
         speedEl.classList.add(cls);
         gameState.lastSpeedClass = cls;
     }
-=======
-    document.getElementById('distance').textContent = Math.round(gameState.distance) + 'm';
-    updateSpeedometer(gameState.speed);
->>>>>>> 3d5ca52fb562068c5cbf29586a14cbdc108941bb
-}
-
-function updateSpeedometer(speed) {
-    const el = document.getElementById('speedMain');
-    if (!el) return;
-    const rounded = Math.max(0, Math.round(speed || 0));
-    if (rounded === gameState.lastSpeed) return;
-    gameState.lastSpeed = rounded;
-    el.textContent = String(rounded);
-    let cls = rounded >= 220 ? 'speed-high' : rounded >= 120 ? 'speed-medium' : 'speed-low';
-    if (cls !== gameState.lastSpeedClass) {
-        el.classList.remove('speed-low', 'speed-medium', 'speed-high');
-        el.classList.add(cls);
-        gameState.lastSpeedClass = cls;
-    }
 }
 
 function createWallFrictionParticles(wallX) {
