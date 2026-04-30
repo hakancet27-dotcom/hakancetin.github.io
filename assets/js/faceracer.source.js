@@ -1246,6 +1246,56 @@ function toggleCameraPreset() {
 // Make toggleCameraPreset globally accessible
 window.toggleCameraPreset = toggleCameraPreset;
 
+// Music control functions
+let gameStateMusic = {
+    isPlaying: false,
+    volume: 0.5
+};
+
+function toggleMusic() {
+    const audio = document.getElementById('backgroundMusic');
+    const btn = document.getElementById('toggleMusic');
+    const volumeControl = document.getElementById('musicVolumeControl');
+
+    if (!audio) return;
+
+    if (gameStateMusic.isPlaying) {
+        audio.pause();
+        audio.currentTime = 0;
+        gameStateMusic.isPlaying = false;
+        if (btn) btn.textContent = '🎵 Müzik';
+        if (volumeControl) volumeControl.style.display = 'none';
+    } else {
+        audio.volume = gameStateMusic.volume;
+        audio.play().catch(e => console.log('Audio play failed:', e));
+        gameStateMusic.isPlaying = true;
+        if (btn) btn.textContent = '🔇 Kapat';
+        if (volumeControl) volumeControl.style.display = 'block';
+    }
+}
+
+function updateMusicVolume(volume) {
+    const audio = document.getElementById('backgroundMusic');
+    if (audio) {
+        audio.volume = volume / 100;
+        gameStateMusic.volume = volume / 100;
+    }
+}
+
+// Make music functions globally accessible
+window.toggleMusic = toggleMusic;
+window.updateMusicVolume = updateMusicVolume;
+
+// Initialize music volume slider
+document.addEventListener('DOMContentLoaded', () => {
+    const volumeSlider = document.getElementById('musicVolume');
+    if (volumeSlider) {
+        volumeSlider.addEventListener('input', (e) => {
+            updateMusicVolume(e.target.value);
+        });
+    }
+});
+
 // Optimized speedometer update (only when speed changes)
 function updateSpeedometer(currentSpeed) {
     const speed = Math.round(currentSpeed);
@@ -2160,6 +2210,7 @@ function finalizeCalibration() {
         speedometer.classList.remove('hidden');
         document.getElementById('turboBarContainer').classList.remove('hidden');
         document.getElementById('toggleCamera').classList.remove('hidden');
+        document.getElementById('toggleMusic').classList.remove('hidden');
         toggleControls.classList.remove('hidden');
         easyModeBtn.classList.add('hidden');  // Hide easy mode button
         gameState.isPlaying = true;
