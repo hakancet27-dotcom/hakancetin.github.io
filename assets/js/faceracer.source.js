@@ -1834,8 +1834,6 @@ function loadLeaderboard(difficulty = 'normal') {
         const leaderboardList = document.getElementById('leaderboardList');
         const easyLeaderboardList = document.getElementById('easyLeaderboardList');
         const normalLeaderboardList = document.getElementById('normalLeaderboardList');
-        const easyLeaderboardListFixed = document.getElementById('easyLeaderboardListFixed');
-        const normalLeaderboardListFixed = document.getElementById('normalLeaderboardListFixed');
         
         const htmlContent = scores.length === 0 
             ? '<p style="font-size: 0.9rem; color: #888;">Henüz skor yok</p>'
@@ -1861,12 +1859,6 @@ function loadLeaderboard(difficulty = 'normal') {
         if (normalLeaderboardList && difficulty === 'normal') {
             normalLeaderboardList.innerHTML = htmlContent;
         }
-        if (easyLeaderboardListFixed && difficulty === 'easy') {
-            easyLeaderboardListFixed.innerHTML = htmlContent;
-        }
-        if (normalLeaderboardListFixed && difficulty === 'normal') {
-            normalLeaderboardListFixed.innerHTML = htmlContent;
-        }
     }).catch((error) => {
         console.error('Error loading leaderboard:', error);
         const errorHtml = '<p style="font-size: 0.9rem; color: #ff0000;">Hata: ' + error.message + '</p>';
@@ -1874,8 +1866,6 @@ function loadLeaderboard(difficulty = 'normal') {
         const leaderboardList = document.getElementById('leaderboardList');
         const easyLeaderboardList = document.getElementById('easyLeaderboardList');
         const normalLeaderboardList = document.getElementById('normalLeaderboardList');
-        const easyLeaderboardListFixed = document.getElementById('easyLeaderboardListFixed');
-        const normalLeaderboardListFixed = document.getElementById('normalLeaderboardListFixed');
         if (leaderboardContent) {
             leaderboardContent.innerHTML = errorHtml;
         }
@@ -1887,12 +1877,6 @@ function loadLeaderboard(difficulty = 'normal') {
         }
         if (normalLeaderboardList) {
             normalLeaderboardList.innerHTML = errorHtml;
-        }
-        if (easyLeaderboardListFixed) {
-            easyLeaderboardListFixed.innerHTML = errorHtml;
-        }
-        if (normalLeaderboardListFixed) {
-            normalLeaderboardListFixed.innerHTML = errorHtml;
         }
     });
 }
@@ -1991,20 +1975,6 @@ function endGame() {
                 <div id="normalLeaderboardList" style="max-height: 120px; overflow-y: auto;">
                     <p style="color: #888; font-size: 0.8rem;">Y&#252;kleniyor...</p>
                 </div>
-            </div>
-        </div>
-        
-        <div id="easyLeaderboardFixed" style="position: absolute; top: 20px; left: 20px; padding: 15px; background: rgba(0,0,0,0.9); border-radius: 10px; border: 1px solid #4ecdc4; z-index: 1000; max-width: 200px;">
-            <h3 style="color: #4ecdc4; margin-bottom: 8px; font-size: 0.85rem;">&#127942; Kolay Mod</h3>
-            <div id="easyLeaderboardListFixed" style="max-height: 200px; overflow-y: auto;">
-                <p style="color: #888; font-size: 0.75rem;">Y&#252;kleniyor...</p>
-            </div>
-        </div>
-        
-        <div id="normalLeaderboardFixed" style="position: absolute; top: 20px; right: 20px; padding: 15px; background: rgba(0,0,0,0.9); border-radius: 10px; border: 1px solid #ff6b6b; z-index: 1000; max-width: 200px;">
-            <h3 style="color: #ff6b6b; margin-bottom: 8px; font-size: 0.85rem;">&#127942; Normal Mod</h3>
-            <div id="normalLeaderboardListFixed" style="max-height: 200px; overflow-y: auto;">
-                <p style="color: #888; font-size: 0.75rem;">Y&#252;kleniyor...</p>
             </div>
         </div>
 
