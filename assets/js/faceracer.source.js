@@ -1225,7 +1225,7 @@ function updateGame() {
 
     // Update car position based on yaw
     const targetX = gameState.yaw * 10;
-    car.position.x += (targetX - car.position.x) * 0.1;
+    car.position.x += (targetX - car.position.x) * 0.15; // Daha hızlı tepki için 0.1'den 0.15'e artırıldı
     car.rotation.z = -gameState.yaw * 0.3;
     
     // Ensure car stays within road bounds
