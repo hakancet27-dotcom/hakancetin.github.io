@@ -1045,11 +1045,7 @@ function selectDifficulty(difficulty) {
     video.classList.remove('calibrating');
     createCar();
     gameState.isPlaying = true;
-<<<<<<< HEAD
-    playStartedAtMs = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
-=======
     playStartedAtMs = performance.now();
->>>>>>> 3d5ca52fb562068c5cbf29586a14cbdc108941bb
     updateEasyModeButton();
 }
 
@@ -1300,11 +1296,7 @@ function restartGame() {
     easyModeBtn.classList.remove('game-over-mode-toggle');
     easyModeBtn.classList.add('hidden');
     gameState.isPlaying = true;
-<<<<<<< HEAD
-    playStartedAtMs = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
-=======
     playStartedAtMs = performance.now();
->>>>>>> 3d5ca52fb562068c5cbf29586a14cbdc108941bb
     updateEasyModeButton();
 }
 window.restartGame = restartGame;
@@ -1335,12 +1327,8 @@ function finalizeCalibration() {
     gameState.calibrationData = {
         baseYaw: gameState.baseYaw,
         basePitch: gameState.basePitch,
-<<<<<<< HEAD
         yawRange: yawRange,
         pitchRange: pitchRange,
-=======
-        yawRange, pitchRange,
->>>>>>> 3d5ca52fb562068c5cbf29586a14cbdc108941bb
         yawSensitivity: yawRange > 0 ? 60 / yawRange : 20,
         pitchSensitivity: pitchRange > 0 ? 60 / pitchRange : 25
     };
@@ -1361,22 +1349,19 @@ function finalizeCalibration() {
         gameState.targetSpeed = 30;
         playStartedAtMs = performance.now();
 
-<<<<<<< HEAD
         if (calibrationOverlay) calibrationOverlay.classList.add('hidden');
-        if (video) video.classList.remove('calibrating');  // Remove calibrating class
-        createCar();  // Apply car config
+        if (video) video.classList.remove('calibrating');
+        createCar();
         
-        // Restore canvas opacity
         const canvas = document.getElementById('gameCanvas');
         if (canvas) canvas.style.opacity = '1';
         
-        // Restore turbo bar opacity
         const turboContainer = document.getElementById('turboBarContainer');
         if (turboContainer) {
             turboContainer.style.opacity = '1';
         }
         if (car) {
-            car.scale.set(1, 1, 1);  // Reset scale
+            car.scale.set(1, 1, 1);
         }
         if (hud) hud.classList.remove('hidden');
         if (speedometer) speedometer.classList.remove('hidden');
@@ -1385,7 +1370,7 @@ function finalizeCalibration() {
         const toggleCameraBtn = document.getElementById('toggleCamera');
         if (toggleCameraBtn) toggleCameraBtn.classList.remove('hidden');
         if (toggleControls) toggleControls.classList.remove('hidden');
-        if (easyModeBtn) easyModeBtn.classList.add('hidden');  // Hide easy mode button
+        if (easyModeBtn) easyModeBtn.classList.add('hidden');
         updateEasyModeButton();
     }, 100);
 }
