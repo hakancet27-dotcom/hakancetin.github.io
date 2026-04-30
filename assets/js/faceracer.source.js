@@ -939,49 +939,6 @@ function onFaceResults(results) {
     const noseBridge = landmarks[6];
     const noseTip = landmarks[1];
 
-<<<<<<< HEAD
-        if (!gameState.isCalibrated) {
-            // Collect calibration samples
-            gameState.calibrationSamples.push({ yaw, pitch });
-            
-            // Keep latest samples for stable averaging
-            if (gameState.calibrationSamples.length > calibrationProfile.sampleLimit) {
-                gameState.calibrationSamples.shift();
-            }
-        } else {
-            // Apply smooth filtering (low-pass filter)
-            const alpha = calibrationProfile.smoothingAlpha; // Lower = more smoothing (stabilize)
-            gameState.smoothedYaw = alpha * yaw + (1 - alpha) * gameState.smoothedYaw;
-            gameState.smoothedPitch = alpha * pitch + (1 - alpha) * gameState.smoothedPitch;
-            
-            // Use calibrated values with smoothing
-            const rawYaw = gameState.smoothedYaw - gameState.baseYaw;
-            const rawPitch = gameState.smoothedPitch - gameState.basePitch;
-            
-            // Apply deadzone to reduce jitter
-            const deadzone = calibrationProfile.deadzone;
-            gameState.yaw = Math.max(-1, Math.min(1, 
-                Math.abs(rawYaw) > deadzone ? rawYaw : 0
-            ));
-            gameState.pitch = Math.max(-1, Math.min(1, 
-                Math.abs(rawPitch) > deadzone ? rawPitch : 0
-            ));
-            
-            
-            // DÜZELTME: Minimum hız garantisi — araba asla durmasın
-            const normalizedPitch = Math.max(-1, Math.min(1, gameState.pitch));
-            gameState.targetSpeed = Math.max(
-                30, // minimum 30 km/h
-                Math.min(gameState.maxSpeed, (1 - normalizedPitch) * 160)
-            );
-
-            // Kademeli hızlanma/yavaşlama
-            if (gameState.speed < gameState.targetSpeed) {
-                gameState.speed = Math.min(gameState.targetSpeed, gameState.speed + gameState.acceleration);
-            } else if (gameState.speed > gameState.targetSpeed) {
-                gameState.speed = Math.max(gameState.targetSpeed, gameState.speed - gameState.acceleration);
-            }
-
     const upperFaceCenterY = (forehead.y * 0.7 + foreheadUpper.y * 0.3 + noseBridge.y * 0.3) / 1.3;
     const faceHeight = Math.abs(forehead.y - noseBridge.y);
 
