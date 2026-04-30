@@ -398,6 +398,14 @@ body {
     #controls p {
         font-size: 0.57rem;
     }
+
+    #turboBar {
+        width: 180px !important;
+    }
+
+    #turboBarContainer {
+        width: auto !important;
+    }
 }
 
 /* Speedometer */
