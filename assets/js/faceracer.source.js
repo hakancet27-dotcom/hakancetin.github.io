@@ -127,6 +127,8 @@ let gameState = {
 
     cameraPreset: 1,
     lastSpeed: -1,
+    fps: 0,
+    lastFrameTime: 0,
     lastSpeedClass: ''
 };
 
@@ -937,6 +939,12 @@ function animate() {
 }
 
 function updateGame() {
+    // Calculate FPS
+    const currentTime = performance.now();
+    const delta = currentTime - gameState.lastFrameTime;
+    gameState.lastFrameTime = currentTime;
+    gameState.fps = Math.round(1000 / delta);
+
     // Update particles
     updateParticles();
     
@@ -1104,6 +1112,7 @@ function updateGame() {
     document.getElementById('damageLevel').textContent = gameState.health;
     document.getElementById('turboPoints').textContent = gameState.turboPoints;
     document.getElementById('turboThreshold').textContent = gameState.turboThreshold;
+    document.getElementById('fps').textContent = gameState.fps;
     
     // Update turbo bar
     const turboFill = document.getElementById('turboFill');
