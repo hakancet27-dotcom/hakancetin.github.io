@@ -101,6 +101,7 @@ let gameState = {
     carPosition: 0,
     obstacles: [],
     roadSegments: [],
+    trees: [],
     calibrationSamples: [],
     smoothedYaw: 0,
     smoothedPitch: 0,
@@ -731,30 +732,51 @@ function createEnvironment() {
     scene.add(ground);
 
     // Trees
-    for (let i = 0; i < 30; i++) {
-        createTree(-15 - Math.random() * 20, -i * 20);
-        createTree(15 + Math.random() * 20, -i * 20);
+    gameState.trees = [];
+    for (let i = 0; i < 42; i++) {
+        createTree(-14 - Math.random() * 26, -i * 14 - Math.random() * 8);
+        createTree(14 + Math.random() * 26, -i * 14 - Math.random() * 8);
     }
 }
 
 function createTree(x, z) {
     const tree = new THREE.Group();
+    const type = Math.floor(Math.random() * 3);
+    const scale = 0.85 + Math.random() * 1.35;
 
-    const trunkGeometry = new THREE.CylinderGeometry(0.3, 0.4, 2, 8);
+    const trunkGeometry = new THREE.CylinderGeometry(0.22 * scale, 0.34 * scale, 2.2 * scale, 6);
     const trunkMaterial = new THREE.MeshStandardMaterial({ color: 0x8B4513 });
     const trunk = new THREE.Mesh(trunkGeometry, trunkMaterial);
-    trunk.position.y = 1;
+    trunk.position.y = 1.1 * scale;
     tree.add(trunk);
 
-    const leavesGeometry = new THREE.ConeGeometry(1.5, 3, 8);
-    const leavesMaterial = new THREE.MeshStandardMaterial({ color: 0x228B22 });
-    const leaves = new THREE.Mesh(leavesGeometry, leavesMaterial);
-    leaves.position.y = 3;
-    tree.add(leaves);
+    const leafColor = [0x1f7a2e, 0x2d9b3f, 0x17612b][type];
+    const leavesMaterial = new THREE.MeshStandardMaterial({ color: leafColor });
+
+    if (type === 0) {
+        const leavesGeometry = new THREE.ConeGeometry(1.25 * scale, 3.1 * scale, 7);
+        const leaves = new THREE.Mesh(leavesGeometry, leavesMaterial);
+        leaves.position.y = 3.2 * scale;
+        tree.add(leaves);
+    } else if (type === 1) {
+        const leavesGeometry = new THREE.SphereGeometry(1.25 * scale, 8, 6);
+        const leaves = new THREE.Mesh(leavesGeometry, leavesMaterial);
+        leaves.position.y = 3.1 * scale;
+        tree.add(leaves);
+    } else {
+        [2.4, 3.25, 4.0].forEach((height, index) => {
+            const leavesGeometry = new THREE.ConeGeometry((1.25 - index * 0.22) * scale, 1.5 * scale, 7);
+            const leaves = new THREE.Mesh(leavesGeometry, leavesMaterial);
+            leaves.position.y = height * scale;
+            tree.add(leaves);
+        });
+    }
 
     tree.position.set(x, 0, z);
     tree.castShadow = true;
+    tree.userData.side = x < 0 ? -1 : 1;
     scene.add(tree);
+    gameState.trees.push(tree);
 }
 
 function createObstacle() {
@@ -1082,6 +1104,14 @@ function updateGame() {
         segment.position.z += gameState.speed * 0.01;
         if (segment.position.z > 20) {
             segment.position.z = -480;
+        }
+    });
+
+    gameState.trees.forEach(tree => {
+        tree.position.z += gameState.speed * 0.012;
+        if (tree.position.z > 35) {
+            tree.position.z = -560 - Math.random() * 40;
+            tree.position.x = tree.userData.side * (14 + Math.random() * 26);
         }
     });
 
