@@ -650,47 +650,48 @@ function createTree(x, z) {
 }
 
 function createObstacle() {
-    const obstacleGeometry = new THREE.BoxGeometry(2, 2, 2);
-    // 3 colors: Green (turbo), Yellow (gold), Red (damage)
-    // Normal: Red 20.7%, Easy: Red 16.56% (20% less)
     const rand = Math.random();
-    let color, type;
+    let color, type, geometry;
     
     if (gameState.difficulty === 'easy') {
-        // Easy mode: Less red obstacles
         if (rand < 0.4172) {
-            color = 0x00ff00; // Green - Turbo (41.72%)
+            color = 0x00ff00;
             type = 'turbo';
+            geometry = new THREE.CylinderGeometry(0.8, 0.8, 1.5, 8);
         } else if (rand < 0.8344) {
-            color = 0xffd700; // Yellow/Gold - Points (41.72%)
+            color = 0xffd700;
             type = 'gold';
+            geometry = new THREE.OctahedronGeometry(1.2, 0);
         } else {
-            color = 0xff0000; // Red - Damage (16.56%)
+            color = 0xff0000;
             type = 'damage';
+            geometry = new THREE.BoxGeometry(2, 2, 2);
         }
     } else {
-        // Normal mode
         if (rand < 0.3965) {
-            color = 0x00ff00; // Green - Turbo (39.65%)
+            color = 0x00ff00;
             type = 'turbo';
+            geometry = new THREE.CylinderGeometry(0.8, 0.8, 1.5, 8);
         } else if (rand < 0.793) {
-            color = 0xffd700; // Yellow/Gold - Points (39.65%)
+            color = 0xffd700;
             type = 'gold';
+            geometry = new THREE.OctahedronGeometry(1.2, 0);
         } else {
-            color = 0xff0000; // Red - Damage (20.7%)
+            color = 0xff0000;
             type = 'damage';
+            geometry = new THREE.BoxGeometry(2, 2, 2);
         }
     }
     
-    const obstacleMaterial = new THREE.MeshStandardMaterial({ color });
-    const obstacle = new THREE.Mesh(obstacleGeometry, obstacleMaterial);
+    const obstacleMaterial = new THREE.MeshStandardMaterial({ color, metalness: 0.3, roughness: 0.4 });
+    const obstacle = new THREE.Mesh(geometry, obstacleMaterial);
     obstacle.position.set(
         (Math.random() - 0.5) * 14,
         1,
         -200
     );
     obstacle.castShadow = true;
-    obstacle.userData = { type }; // Store type for collision logic
+    obstacle.userData = { type };
     scene.add(obstacle);
     gameState.obstacles.push(obstacle);
 }
