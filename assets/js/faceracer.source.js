@@ -692,28 +692,6 @@ function animate() {
 }
 
 function updateGame() {
-<<<<<<< HEAD
-    // Ensure playStartedAtMs is initialized when gameplay begins
-    if (gameState.isCalibrated && gameState.isPlaying && !playStartedAtMs) {
-        playStartedAtMs = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
-    }
-
-    // Post-calibration anti-freeze: keep a small minimum speed for a short grace period
-    // This prevents a "stuck" look if face tracking is delayed or returns neutral values.
-    if (gameState.isCalibrated && gameState.isPlaying && playStartedAtMs) {
-        const nowMs = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
-        const elapsed = nowMs - playStartedAtMs;
-        if (elapsed < 3000) { // first 3 seconds
-            const minSpeed = 12; // noticeable movement
-            if (gameState.speed < minSpeed) gameState.speed = minSpeed;
-            if (gameState.targetSpeed < minSpeed) gameState.targetSpeed = minSpeed;
-            setDebugOverlayVisible(true);
-        }
-    }
-
-    // Update particles
-=======
->>>>>>> 3d5ca52fb562068c5cbf29586a14cbdc108941bb
     updateParticles();
 
     if (gameState.speed > 10) {
