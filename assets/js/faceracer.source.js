@@ -1225,13 +1225,10 @@ function updateGame() {
 
     // Update car position based on yaw
     const targetX = gameState.yaw * 10;
-    car.position.x += (targetX - car.position.x) * 0.15; // Daha hızlı tepki için 0.1'den 0.15'e artırıldı
+    car.position.x += (targetX - car.position.x) * 0.1;
     car.rotation.z = -gameState.yaw * 0.3;
     
-    // Ensure car stays within road bounds
-    if (car.position.x < -10) car.position.x = -10;
-    if (car.position.x > 10) car.position.x = 10;
-    
+
 
     // Wall collision detection
     const isPortrait = window.innerHeight > window.innerWidth;
@@ -1555,6 +1552,7 @@ function onFaceResults(results) {
             gameState.pitch = Math.max(-1, Math.min(1, 
                 Math.abs(rawPitch) > deadzone ? rawPitch : 0
             ));
+            
             
             // Map pitch to target speed (inverted: head up = faster)
             gameState.targetSpeed = Math.max(0, Math.min(gameState.maxSpeed, 
