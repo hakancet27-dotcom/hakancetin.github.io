@@ -1981,7 +1981,7 @@ function endGame() {
             </div>
         </div>
 
-        <button onclick="restartGame()" style="margin-top: 12px; padding: 10px 20px; background: #00ff88; border: none; border-radius: 10px; cursor: pointer; font-size: 1.02rem; font-weight: bold;">
+        <button onclick="restartGame()" style="margin-top: 0px; padding: 10px 20px; background: #00ff88; border: none; border-radius: 10px; cursor: pointer; font-size: 1.02rem; font-weight: bold;">
             &#128257; Tekrar Oyna
         </button>
     `;
