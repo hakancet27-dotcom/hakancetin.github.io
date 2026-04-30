@@ -1538,21 +1538,6 @@ function finalizeCalibration() {
         if (toggleCameraBtn) toggleCameraBtn.classList.remove('hidden');
         if (toggleControls) toggleControls.classList.remove('hidden');
         if (easyModeBtn) easyModeBtn.classList.add('hidden');  // Hide easy mode button
-=======
-        calibrationOverlay.classList.add('hidden');
-        video.classList.remove('calibrating');
-        createCar();
-        if (car) car.scale.set(1, 1, 1);
-
-        document.getElementById('gameCanvas').style.opacity = '1';
-        const turboContainer = document.getElementById('turboBarContainer');
-        if (turboContainer) { turboContainer.style.opacity = '1'; turboContainer.classList.remove('hidden'); }
-        hud.classList.remove('hidden');
-        speedometer.classList.remove('hidden');
-        document.getElementById('toggleCamera').classList.remove('hidden');
-        toggleControls.classList.remove('hidden');
-        easyModeBtn.classList.add('hidden');
->>>>>>> 3d5ca52fb562068c5cbf29586a14cbdc108941bb
         updateEasyModeButton();
     }, 100);
 }
@@ -1562,6 +1547,48 @@ toggleControls.addEventListener('click', () => {
     const panel = document.getElementById('controlsPanel');
     panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
 });
+
+function toggleCameraPreset() {
+    const btn = document.getElementById('toggleCamera');
+    gameState.cameraPreset = gameState.cameraPreset === 1 ? 2 : 1;
+    applyCameraPreset();
+    if (btn) btn.textContent = gameState.cameraPreset === 2 ? '📷 Uzak' : '📷 Yakın';
+}
+window.toggleCameraPreset = toggleCameraPreset;
+
+async function initMediaPipe() {
+    try {
+        faceMesh = new FaceMesh({ locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}` });
+        faceMesh.setOptions({ maxNumFaces: 1, refineLandmarks: true, minDetectionConfidence: 0.5, minTrackingConfidence: 0.5 });
+        faceMesh.onResults(onFaceResults);
+        await startCamera();
+        loadingEl.style.display = 'none';
+        startButton.classList.remove('hidden');
+    } catch (error) {
+        console.error('MediaPipe initialization error:', error);
+        loadingEl.innerHTML = '<p style="color: red;">Hata: Kamera yüklenemedi</p>';
+    }
+}
+
+async function startCamera() {
+    try {
+        const profile = getCalibrationProfile();
+        const stream = await navigator.mediaDevices.getUserMedia({
+            video: { facingMode: 'user', width: profile.cameraWidth, height: profile.cameraHeight }
+        });
+        video.srcObject = stream;
+        video.addEventListener('loadeddata', () => detectFace());
+    } catch (error) {
+        console.error('Camera access error:', error);
+        loadingEl.innerHTML = '<p style="color: red;">Hata: Kameraya erişilemedi</p>';
+    }
+}
+
+async function detectFace() {
+    if (!faceMesh || !video) return;
+    await faceMesh.send({ image: video });
+    requestAnimationFrame(detectFace);
+}
 
 initThreeJS();
 initMediaPipe();
