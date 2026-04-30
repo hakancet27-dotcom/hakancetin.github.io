@@ -25,7 +25,7 @@ let gameState = {
     turboThreshold: 100,
     distance: 0,
     targetSpeed: 0,
-    acceleration: 1.5, // DÜZELTME: 0.2'den 1.5'e
+    acceleration: 0.2,
     nitroTimer: 0, // Turbo süresi sayacı
     nitroDuration: 5, // Turbo süresi (saniye)
     difficulty: 'normal', // 'normal' veya 'easy'
@@ -49,7 +49,7 @@ const CAR_CONFIGS = {
         name: 'Standart',
         maxSpeed: 320,
         turboMaxSpeed: 350,
-        acceleration: 1.5,
+        acceleration: 0.2,
         color: 0x00ff88,
         topColor: 0x00cc6a
     },
@@ -57,7 +57,7 @@ const CAR_CONFIGS = {
         name: 'Hizli',
         maxSpeed: 340,
         turboMaxSpeed: 370,
-        acceleration: 1.65,
+        acceleration: 0.2,
         color: 0x4488ff,
         topColor: 0x2266dd
     },
@@ -65,7 +65,7 @@ const CAR_CONFIGS = {
         name: 'Super',
         maxSpeed: 360,
         turboMaxSpeed: 390,
-        acceleration: 1.8,
+        acceleration: 0.2,
         color: 0xff2244,
         topColor: 0xcc1133
     }
@@ -978,12 +978,10 @@ function onFaceResults(results) {
         Math.abs(rawPitch) > deadzone ? rawPitch : 0
     ));
     
-    // DÜZELTME: Minimum hız garantisi — araba asla durmasın
-    const normalizedPitch = Math.max(-1, Math.min(1, gameState.pitch));
-    gameState.targetSpeed = Math.max(
-        30, // minimum 30 km/h
-        Math.min(gameState.maxSpeed, (1 - normalizedPitch) * 160)
-    );
+    // Map pitch to target speed (inverted: head up = faster)
+    gameState.targetSpeed = Math.max(0, Math.min(gameState.maxSpeed, 
+        (1 - gameState.pitch) * 145
+    ));
 
     // Kademeli hızlanma/yavaşlama
     if (gameState.speed < gameState.targetSpeed) {
@@ -1380,8 +1378,8 @@ function finalizeCalibration() {
     setTimeout(() => {
         gameState.isCalibrated = true;
         gameState.isPlaying = true;
-        gameState.speed = 30;        // DÜZELTME: Başlangıç hızı
-        gameState.targetSpeed = 30;
+        gameState.speed = 0;
+        gameState.targetSpeed = 0;
         playStartedAtMs = performance.now();
 
         if (calibrationOverlay) calibrationOverlay.classList.add('hidden');
