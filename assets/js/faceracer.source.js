@@ -1228,13 +1228,14 @@ function updateGame() {
     car.position.x += (targetX - car.position.x) * 0.1;
     car.rotation.z = -gameState.yaw * 0.3;
     
-
+    // Ensure car stays within road bounds
+    if (car.position.x < -10) car.position.x = -10;
+    if (car.position.x > 10) car.position.x = 10;
     
-
 
     // Wall collision detection
     const isPortrait = window.innerHeight > window.innerWidth;
-      const WALL_LEFT = -7;
+    const WALL_LEFT = -7;
     const WALL_RIGHT = 7;
     const now = Date.now();
 
@@ -2219,7 +2220,9 @@ function endGame() {
         loadLeaderboard('easy');
         loadLeaderboard('normal');
     }, 100);
-}function restartGame() {
+}
+
+function restartGame() {
     // Reset game state (keep calibration, reset difficulty to normal)
     gameState.score = 0;
     gameState.goldPoints = 0;
