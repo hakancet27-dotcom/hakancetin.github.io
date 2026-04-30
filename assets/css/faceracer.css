@@ -358,6 +358,44 @@ body {
     }
 }
 
+/* Portrait Mode Optimizasyon - Dikey ekran için */
+@media (orientation: portrait) {
+    #hud {
+        padding: 9px;
+        font-size: 0.76rem;
+    }
+
+    .hud-item {
+        font-size: 0.62rem;
+        margin: 2px 0;
+    }
+
+    #speedometer {
+        padding: 9px 18px;
+    }
+
+    .speed-value {
+        font-size: 34px;
+    }
+
+    .speed-unit {
+        font-size: 11px;
+    }
+
+    #controls {
+        padding: 7px;
+        font-size: 0.62rem;
+    }
+
+    #controls h3 {
+        font-size: 0.76rem;
+    }
+
+    #controls p {
+        font-size: 0.57rem;
+    }
+}
+
 /* Speedometer */
 #speedometer {
     position: fixed;
