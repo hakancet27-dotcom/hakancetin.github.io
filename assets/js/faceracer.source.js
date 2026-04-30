@@ -1792,16 +1792,6 @@ function submitScore(score) {
     const playerNameInput = document.getElementById('playerName');
     const playerName = playerNameInput ? playerNameInput.value : 'Anonim';
     
-    console.log('playerNameInput:', playerNameInput);
-    console.log('playerName:', playerName);
-    console.log('scoreData:', {
-        score: score,
-        timestamp: Date.now(),
-        car: gameState.selectedCar,
-        difficulty: gameState.difficulty,
-        playerName: playerName
-    });
-    
     const leaderboardRef = firebase.database().ref('leaderboard');
     const newScoreRef = leaderboardRef.push();
     
@@ -1813,13 +1803,14 @@ function submitScore(score) {
         playerName: playerName
     }).then(() => {
         console.log('Score submitted successfully');
-        loadLeaderboard();
+        loadLeaderboard('easy');
+        loadLeaderboard('normal');
     }).catch((error) => {
         console.error('Error submitting score:', error);
     });
 }
 
-function loadLeaderboard() {
+function loadLeaderboard(difficulty = 'normal') {
     if (!firebase || !firebase.database()) {
         console.error('Firebase not initialized');
         return;
@@ -1829,14 +1820,20 @@ function loadLeaderboard() {
     leaderboardRef.orderByChild('score').limitToLast(10).once('value', (snapshot) => {
         const scores = [];
         snapshot.forEach((childSnapshot) => {
-            scores.push(childSnapshot.val());
+            const score = childSnapshot.val();
+            // Filter by difficulty if specified
+            if (!difficulty || score.difficulty === difficulty) {
+                scores.push(score);
+            }
         });
         scores.reverse();
-        console.log('Leaderboard loaded:', scores);
+        console.log('Leaderboard loaded (' + difficulty + '):', scores);
 
         // Update UI - update both leaderboardContent and leaderboardList
         const leaderboardContent = document.getElementById('leaderboardContent');
         const leaderboardList = document.getElementById('leaderboardList');
+        const easyLeaderboardList = document.getElementById('easyLeaderboardList');
+        const normalLeaderboardList = document.getElementById('normalLeaderboardList');
         
         const htmlContent = scores.length === 0 
             ? '<p style="font-size: 0.9rem; color: #888;">Henüz skor yok</p>'
@@ -1856,16 +1853,30 @@ function loadLeaderboard() {
         if (leaderboardList) {
             leaderboardList.innerHTML = htmlContent;
         }
+        if (easyLeaderboardList && difficulty === 'easy') {
+            easyLeaderboardList.innerHTML = htmlContent;
+        }
+        if (normalLeaderboardList && difficulty === 'normal') {
+            normalLeaderboardList.innerHTML = htmlContent;
+        }
     }).catch((error) => {
         console.error('Error loading leaderboard:', error);
         const errorHtml = '<p style="font-size: 0.9rem; color: #ff0000;">Hata: ' + error.message + '</p>';
         const leaderboardContent = document.getElementById('leaderboardContent');
         const leaderboardList = document.getElementById('leaderboardList');
+        const easyLeaderboardList = document.getElementById('easyLeaderboardList');
+        const normalLeaderboardList = document.getElementById('normalLeaderboardList');
         if (leaderboardContent) {
             leaderboardContent.innerHTML = errorHtml;
         }
         if (leaderboardList) {
             leaderboardList.innerHTML = errorHtml;
+        }
+        if (easyLeaderboardList) {
+            easyLeaderboardList.innerHTML = errorHtml;
+        }
+        if (normalLeaderboardList) {
+            normalLeaderboardList.innerHTML = errorHtml;
         }
     });
 }
@@ -1897,13 +1908,6 @@ function endGame() {
     }
     toggleControls.classList.add('hidden');
     easyModeBtn.classList.remove('hidden');  // Show easy mode button
-    
-    // Show leaderboard element
-    const leaderboard = document.getElementById('leaderboard');
-    if (leaderboard) {
-        leaderboard.classList.remove('hidden');
-        leaderboard.style.display = 'block';
-    }
 
     const calibrationContent = document.querySelector('.calibration-content');
     const finalScore = gameState.score;
@@ -1960,10 +1964,16 @@ function endGame() {
                 </button>
                 <p id="submitMessage" style="margin-top: 6px; font-size: 0.75rem; color: #888;"></p>
             </div>
-            <div id="leaderboard" style="flex: 1; padding: 10px; background: rgba(0,0,0,0.5); border-radius: 10px; border: 1px solid #444;">
-                <h3 style="color: #00ff88; margin-bottom: 8px;">&#127942; Global S&#305;ralama - Top 10</h3>
-                <div id="leaderboardList" style="max-height: 120px; overflow-y: auto;">
-                    <p style="color: #888;">Y&#252;kleniyor...</p>
+            <div id="easyLeaderboard" style="flex: 0.5; padding: 10px; background: rgba(0,0,0,0.5); border-radius: 10px; border: 1px solid #4ecdc4;">
+                <h3 style="color: #4ecdc4; margin-bottom: 8px; font-size: 0.9rem;">&#127942; Kolay Mod</h3>
+                <div id="easyLeaderboardList" style="max-height: 200px; overflow-y: auto;">
+                    <p style="color: #888; font-size: 0.8rem;">Y&#252;kleniyor...</p>
+                </div>
+            </div>
+            <div id="normalLeaderboard" style="flex: 0.5; padding: 10px; background: rgba(0,0,0,0.5); border-radius: 10px; border: 1px solid #ff6b6b;">
+                <h3 style="color: #ff6b6b; margin-bottom: 8px; font-size: 0.9rem;">&#127942; Normal Mod</h3>
+                <div id="normalLeaderboardList" style="max-height: 200px; overflow-y: auto;">
+                    <p style="color: #888; font-size: 0.8rem;">Y&#252;kleniyor...</p>
                 </div>
             </div>
         </div>
@@ -1975,9 +1985,10 @@ function endGame() {
 
     updateCarSelection();
 
-    // Load leaderboard after displaying game over screen
+    // Load both leaderboards after displaying game over screen
     setTimeout(() => {
-        loadLeaderboard();
+        loadLeaderboard('easy');
+        loadLeaderboard('normal');
     }, 100);
 }function restartGame() {
     // Reset game state (keep calibration, reset difficulty to normal)
@@ -2024,13 +2035,6 @@ function endGame() {
     video.classList.remove('calibrating');  // Remove calibrating class
     createCar();  // Apply car config
     easyModeBtn.classList.add('hidden');  // Hide easy mode button
-    
-    // Hide leaderboard element
-    const leaderboard = document.getElementById('leaderboard');
-    if (leaderboard) {
-        leaderboard.classList.add('hidden');
-        leaderboard.style.display = 'none';
-    }
     
     gameState.isPlaying = true;
     updateEasyModeButton();
