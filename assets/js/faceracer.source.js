@@ -1116,13 +1116,24 @@ function updateGame() {
     
     // Update turbo bar
     const turboFill = document.getElementById('turboFill');
+    const turboIcon = document.getElementById('turboIcon');
+    const turboIconSecondary = document.getElementById('turboIconSecondary');
     if (turboFill) {
         const percentage = (gameState.turboPoints / gameState.turboThreshold) * 100;
         turboFill.style.width = percentage + '%';
         if (gameState.turboPoints >= gameState.turboThreshold) {
             turboFill.classList.add('full');
+            if (turboIcon) turboIcon.classList.add('full');
+            if (turboIconSecondary) {
+                turboIconSecondary.style.display = 'inline';
+                turboIconSecondary.style.animation = 'flameFloat 0.5s ease-in-out infinite';
+            }
         } else {
             turboFill.classList.remove('full');
+            if (turboIcon) turboIcon.classList.remove('full');
+            if (turboIconSecondary) {
+                turboIconSecondary.style.display = 'none';
+            }
         }
     }
     document.getElementById('distance').textContent = Math.round(gameState.distance) + 'm';
