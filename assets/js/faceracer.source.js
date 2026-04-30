@@ -816,6 +816,9 @@ function updateGame() {
         turboFill.style.width = Math.min(100, (gameState.turboPoints / gameState.turboThreshold) * 100) + '%';
         turboFill.classList.toggle('full', gameState.turboPoints >= gameState.turboThreshold);
     }
+
+    document.getElementById('distance').textContent = Math.round(gameState.distance) + 'm';
+    updateSpeedometer(gameState.speed);
 }
 
 function updateSpeedometer(speed) {
