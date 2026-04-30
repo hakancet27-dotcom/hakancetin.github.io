@@ -1911,7 +1911,6 @@ function endGame() {
     // Show game over screen with play again button
     calibrationOverlay.style.display = 'flex';
     calibrationOverlay.classList.remove('hidden');
-    calibrationOverlay.style.position = 'relative'; // Make overlay relative for absolute positioning
     hud.style.display = 'none';
     
     // Dim the game canvas
@@ -2049,7 +2048,6 @@ function endGame() {
     
     // Hide game over screen and start game directly
     calibrationOverlay.style.display = 'none';
-    calibrationOverlay.style.position = ''; // Reset position
     hud.style.display = 'block';
     
     // Restore canvas opacity
