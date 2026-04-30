@@ -619,8 +619,8 @@ function createEnvironment() {
     ground.position.z = -200;
     scene.add(ground);
 
-    // Trees (reduced count to avoid camera interference)
-    for (let i = 0; i < 15; i++) {
+    // Trees
+    for (let i = 0; i < 30; i++) {
         createTree(-15 - Math.random() * 20, -i * 20);
         createTree(15 + Math.random() * 20, -i * 20);
     }
@@ -628,38 +628,22 @@ function createEnvironment() {
 
 function createTree(x, z) {
     const tree = new THREE.Group();
-    
-    const type = Math.floor(Math.random() * 3);
-    const scale = 0.9 + Math.random() * 0.4;
-    
-    const trunkGeometry = new THREE.CylinderGeometry(0.25 * scale, 0.35 * scale, 2 * scale, 6);
+
+    const trunkGeometry = new THREE.CylinderGeometry(0.3, 0.4, 2, 8);
     const trunkMaterial = new THREE.MeshStandardMaterial({ color: 0x8B4513 });
     const trunk = new THREE.Mesh(trunkGeometry, trunkMaterial);
-    trunk.position.y = 1 * scale;
+    trunk.position.y = 1;
     tree.add(trunk);
-    
-    const leafColors = [0x228B22, 0x2d9b3f, 0x1f7a2e];
-    const leafColor = leafColors[type];
-    const leavesMaterial = new THREE.MeshStandardMaterial({ color: leafColor });
-    
-    const layerCounts = [2, 1, 3];
-    const layers = layerCounts[type];
-    
-    for (let i = 0; i < layers; i++) {
-        const layerScale = (layers - i) / layers;
-        const leavesGeometry = new THREE.ConeGeometry(1.1 * scale * layerScale, 1.5 * scale * layerScale, 6);
-        const leaves = new THREE.Mesh(leavesGeometry, leavesMaterial);
-        leaves.position.y = (2 + 1 + i * 0.9) * scale;
-        tree.add(leaves);
-    }
-    
+
+    const leavesGeometry = new THREE.ConeGeometry(1.5, 3, 8);
+    const leavesMaterial = new THREE.MeshStandardMaterial({ color: 0x228B22 });
+    const leaves = new THREE.Mesh(leavesGeometry, leavesMaterial);
+    leaves.position.y = 3;
+    tree.add(leaves);
+
     tree.position.set(x, 0, z);
-    tree.scale.set(scale, scale, scale);
     tree.castShadow = true;
-    tree.userData.side = x < 0 ? -1 : 1;
-    
     scene.add(tree);
-    gameState.trees.push(tree);
 }
 
 function createObstacle() {
