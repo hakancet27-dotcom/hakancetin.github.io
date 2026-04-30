@@ -1792,6 +1792,16 @@ function submitScore(score) {
     const playerNameInput = document.getElementById('playerName');
     const playerName = playerNameInput ? playerNameInput.value : 'Anonim';
     
+    console.log('playerNameInput:', playerNameInput);
+    console.log('playerName:', playerName);
+    console.log('scoreData:', {
+        score: score,
+        timestamp: Date.now(),
+        car: gameState.selectedCar,
+        difficulty: gameState.difficulty,
+        playerName: playerName
+    });
+    
     const leaderboardRef = firebase.database().ref('leaderboard');
     const newScoreRef = leaderboardRef.push();
     
