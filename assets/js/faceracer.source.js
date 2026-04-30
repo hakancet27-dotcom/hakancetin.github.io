@@ -2307,8 +2307,8 @@ function finalizeCalibration() {
         basePitch: gameState.basePitch,
         yawRange: yawRange,
         pitchRange: pitchRange,
-        yawSensitivity: yawRange > 0 ? 1.2 / yawRange : 20,
-        pitchSensitivity: pitchRange > 0 ? 1.2 / pitchRange : 25
+        yawSensitivity: yawRange > 0 ? 60 / yawRange : 20,
+        pitchSensitivity: pitchRange > 0 ? 60 / pitchRange : 25
     };
     
     console.log('Calibration complete:', gameState.calibrationData);
