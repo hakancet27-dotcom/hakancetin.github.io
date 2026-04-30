@@ -101,6 +101,7 @@ let gameState = {
     carPosition: 0,
     obstacles: [],
     roadSegments: [],
+    trees: [],
     calibrationSamples: [],
     smoothedYaw: 0,
     smoothedPitch: 0,
@@ -643,7 +644,9 @@ function createTree(x, z) {
 
     tree.position.set(x, 0, z);
     tree.castShadow = true;
+    tree.userData.side = x < 0 ? -1 : 1;
     scene.add(tree);
+    gameState.trees.push(tree);
 }
 
 function createObstacle() {
@@ -965,12 +968,18 @@ function updateGame() {
     }
     
     // Move road segments
-    gameState.roadSegments.forEach(segment => {
-        segment.position.z += gameState.speed * 0.01;
-        if (segment.position.z > 20) {
-            segment.position.z = -480;
-        }
+    gameState.roadSegments.forEach(seg => {
+        seg.position.z += gameState.speed * 0.01;
+        if (seg.position.z > 20) seg.position.z = -480;
     });
+
+    gameState.trees.forEach(tree => {
+        tree.position.z += gameState.speed * 0.012;
+        if (tree.position.z > 35) {
+            tree.position.z = -560 - Math.random() * 40;
+            tree.position.x = tree.userData.side * (14 + Math.random() * 26);
+        }
+    });    
 
     // Move obstacles
     for (let i = gameState.obstacles.length - 1; i >= 0; i--) {
