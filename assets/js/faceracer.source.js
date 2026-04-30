@@ -1824,6 +1824,9 @@ function loadLeaderboard() {
         const leaderboardContent = document.getElementById('leaderboardContent');
         const leaderboardList = document.getElementById('leaderboardList');
         
+        console.log('leaderboardContent:', leaderboardContent);
+        console.log('leaderboardList:', leaderboardList);
+        
         const htmlContent = scores.length === 0 
             ? '<p style="font-size: 0.9rem; color: #888;">Henüz skor yok</p>'
             : scores.map((score, index) => 
@@ -1833,11 +1836,19 @@ function loadLeaderboard() {
                 </div>`
             ).join('');
         
+        console.log('htmlContent:', htmlContent);
+        
         if (leaderboardContent) {
             leaderboardContent.innerHTML = htmlContent;
+            console.log('Updated leaderboardContent');
+        } else {
+            console.error('leaderboardContent not found');
         }
         if (leaderboardList) {
             leaderboardList.innerHTML = htmlContent;
+            console.log('Updated leaderboardList');
+        } else {
+            console.error('leaderboardList not found');
         }
     }).catch((error) => {
         console.error('Error loading leaderboard:', error);
