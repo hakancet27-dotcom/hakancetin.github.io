@@ -438,6 +438,8 @@ function createStandardCar(config) {
     top.castShadow = true;
     car.add(top);
 
+    addBaseCarDetails(car, config, 2, 4);
+    addStandardCarDetails(car, config);
     addWheels(car);
     addExhaust(car);
 }
@@ -482,6 +484,8 @@ function createFastCar(config) {
         car.add(stripe);
     });
 
+    addBaseCarDetails(car, config, 2.2, 4.5);
+    addSportCarDetails(car, config);
     addWheels(car);
     addExhaust(car);
 }
@@ -550,8 +554,77 @@ function createSuperCar(config) {
         car.add(stripe);
     });
 
+    addBaseCarDetails(car, config, 2.4, 5);
+    addSuperCarDetails(car, config);
     addWheels(car, 0.45);
     addExhaust(car, true);
+}
+
+function addBoxPart(carGroup, size, position, material) {
+    const geometry = new THREE.BoxGeometry(...size);
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.position.set(...position);
+    mesh.castShadow = true;
+    carGroup.add(mesh);
+    return mesh;
+}
+
+function addBaseCarDetails(carGroup, config, width, length) {
+    const darkMat = new THREE.MeshStandardMaterial({ color: 0x111111, metalness: 0.4, roughness: 0.25 });
+    const glassMat = new THREE.MeshStandardMaterial({ color: 0x071827, metalness: 0.2, roughness: 0.08, emissive: 0x041522, emissiveIntensity: 0.25 });
+    const headlightMat = new THREE.MeshStandardMaterial({ color: 0xffffcc, emissive: 0xffffaa, emissiveIntensity: 0.55 });
+    const tailMat = new THREE.MeshStandardMaterial({ color: 0xff2222, emissive: 0xaa0000, emissiveIntensity: 0.45 });
+    const trimMat = new THREE.MeshStandardMaterial({ color: 0x222222, metalness: 0.5, roughness: 0.35 });
+    const accentMat = new THREE.MeshStandardMaterial({ color: config.color, metalness: 0.45, roughness: 0.22 });
+
+    addBoxPart(carGroup, [width * 0.7, 0.05, 0.12], [0, 1.82, -0.95], glassMat);
+    addBoxPart(carGroup, [width * 0.62, 0.05, 0.12], [0, 1.58, 0.35], glassMat);
+    addBoxPart(carGroup, [0.08, 0.38, 1.25], [-width * 0.48, 1.35, -0.35], glassMat);
+    addBoxPart(carGroup, [0.08, 0.38, 1.25], [width * 0.48, 1.35, -0.35], glassMat);
+
+    [[-width * 0.32, 0.72, -length * 0.5 - 0.03], [width * 0.32, 0.72, -length * 0.5 - 0.03]].forEach(pos => {
+        addBoxPart(carGroup, [0.34, 0.16, 0.08], pos, headlightMat);
+    });
+    [[-width * 0.34, 0.72, length * 0.5 + 0.03], [width * 0.34, 0.72, length * 0.5 + 0.03]].forEach(pos => {
+        addBoxPart(carGroup, [0.32, 0.15, 0.08], pos, tailMat);
+    });
+
+    addBoxPart(carGroup, [width * 0.9, 0.16, 0.18], [0, 0.35, -length * 0.5 - 0.05], trimMat);
+    addBoxPart(carGroup, [width * 0.9, 0.16, 0.18], [0, 0.35, length * 0.5 + 0.05], trimMat);
+    addBoxPart(carGroup, [width * 0.92, 0.04, length * 0.46], [0, 1.04, -0.62], accentMat);
+}
+
+function addStandardCarDetails(carGroup, config) {
+    const chromeMat = new THREE.MeshStandardMaterial({ color: 0xb8c6d1, metalness: 0.85, roughness: 0.18 });
+    const darkMat = new THREE.MeshStandardMaterial({ color: 0x191919, metalness: 0.35, roughness: 0.3 });
+    addBoxPart(carGroup, [1.55, 0.05, 0.12], [0, 1.86, -0.1], chromeMat);
+    addBoxPart(carGroup, [0.28, 0.08, 0.95], [-1.06, 0.82, -0.1], darkMat);
+    addBoxPart(carGroup, [0.28, 0.08, 0.95], [1.06, 0.82, -0.1], darkMat);
+    addBoxPart(carGroup, [0.16, 0.3, 0.08], [-1.08, 1.28, -1.25], darkMat);
+    addBoxPart(carGroup, [0.16, 0.3, 0.08], [1.08, 1.28, -1.25], darkMat);
+}
+
+function addSportCarDetails(carGroup, config) {
+    const blackMat = new THREE.MeshStandardMaterial({ color: 0x080808, metalness: 0.5, roughness: 0.2 });
+    const accentMat = new THREE.MeshStandardMaterial({ color: config.color, metalness: 0.55, roughness: 0.18 });
+    addBoxPart(carGroup, [2.25, 0.08, 0.45], [0, 0.18, -2.45], blackMat);
+    addBoxPart(carGroup, [0.16, 0.22, 3.8], [-1.23, 0.28, 0], blackMat);
+    addBoxPart(carGroup, [0.16, 0.22, 3.8], [1.23, 0.28, 0], blackMat);
+    addBoxPart(carGroup, [0.65, 0.08, 1.05], [0, 0.86, -1.35], blackMat);
+    addBoxPart(carGroup, [0.08, 0.22, 0.85], [-1.2, 1.02, -1.2], accentMat);
+    addBoxPart(carGroup, [0.08, 0.22, 0.85], [1.2, 1.02, -1.2], accentMat);
+}
+
+function addSuperCarDetails(carGroup, config) {
+    const carbonMat = new THREE.MeshStandardMaterial({ color: 0x050505, metalness: 0.7, roughness: 0.12 });
+    const glowMat = new THREE.MeshStandardMaterial({ color: config.color, emissive: config.color, emissiveIntensity: 0.9, transparent: true, opacity: 0.75 });
+    addBoxPart(carGroup, [2.7, 0.08, 0.55], [0, 0.14, -2.72], carbonMat);
+    addBoxPart(carGroup, [1.8, 0.1, 0.45], [0, 0.14, 2.72], carbonMat);
+    addBoxPart(carGroup, [0.22, 0.25, 4.8], [-1.38, 0.2, 0], carbonMat);
+    addBoxPart(carGroup, [0.22, 0.25, 4.8], [1.38, 0.2, 0], carbonMat);
+    addBoxPart(carGroup, [0.35, 0.04, 4.6], [-0.78, 0.76, 0], glowMat);
+    addBoxPart(carGroup, [0.35, 0.04, 4.6], [0.78, 0.76, 0], glowMat);
+    addBoxPart(carGroup, [0.9, 0.08, 1.2], [0, 0.86, -1.45], carbonMat);
 }
 
 function addWheels(carGroup, radius) {
@@ -560,6 +633,8 @@ function addWheels(carGroup, radius) {
     const wheelMaterial = new THREE.MeshStandardMaterial({ color: 0x111111 });
     const rimGeo = new THREE.CylinderGeometry(radius * 0.6, radius * 0.6, 0.32, 8);
     const rimMat = new THREE.MeshStandardMaterial({ color: 0x888888, metalness: 0.8 });
+    const spokeGeo = new THREE.BoxGeometry(0.04, radius * 1.05, 0.34);
+    const spokeMat = new THREE.MeshStandardMaterial({ color: 0xd0d0d0, metalness: 0.75, roughness: 0.2 });
 
     const positions = [
         [-1, radius, 1.4],
@@ -579,6 +654,13 @@ function addWheels(carGroup, radius) {
         rim.rotation.z = Math.PI / 2;
         rim.position.set(...pos);
         carGroup.add(rim);
+
+        [0, Math.PI / 2].forEach(angle => {
+            const spoke = new THREE.Mesh(spokeGeo, spokeMat);
+            spoke.rotation.z = angle;
+            spoke.position.set(...pos);
+            carGroup.add(spoke);
+        });
     });
 }
 
