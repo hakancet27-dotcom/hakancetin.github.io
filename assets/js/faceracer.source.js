@@ -619,8 +619,8 @@ function createEnvironment() {
     ground.position.z = -200;
     scene.add(ground);
 
-    // Trees
-    for (let i = 0; i < 30; i++) {
+    // Trees (reduced count to avoid camera interference)
+    for (let i = 0; i < 15; i++) {
         createTree(-15 - Math.random() * 20, -i * 20);
         createTree(15 + Math.random() * 20, -i * 20);
     }
