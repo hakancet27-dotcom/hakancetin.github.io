@@ -969,8 +969,7 @@ function createSmokeParticle() {
     const geometry = new THREE.PlaneGeometry(size, size);
     
     const gray = 0.4 + Math.random() * 0.2;
-    const material = new THREE.MeshBasicMaterial({ 
-        color: new THREE.Color(gray, gray, gray),
+    const material = new THREE.MeshBasicMaterial({ color: new THREE.Color(gray, gray, gray),
         transparent: true,
         opacity: 0.4,
         map: smokeTexture,
@@ -1010,8 +1009,7 @@ function createFireParticle() {
     const fireColors = [0xff4500, 0xff6600, 0xff8800, 0xffaa00, 0xffcc00];
     const color = fireColors[Math.floor(Math.random() * fireColors.length)];
     
-    const material = new THREE.MeshBasicMaterial({ 
-        color: new THREE.Color(color),
+    const material = new THREE.MeshBasicMaterial({ color: new THREE.Color(color),
         transparent: true,
         opacity: 0.8,
         map: fireTexture,
@@ -1445,24 +1443,6 @@ function toggleCameraPreset() {
 
 // Make toggleCameraPreset globally accessible
 window.toggleCameraPreset = toggleCameraPreset;
-
-// Optimized speedometer update (only when speed changes)
-function updateSpeedometer(currentSpeed) {
-    const speed = Math.round(currentSpeed);
-    if (Math.abs(speed - gameState.lastSpeed) < 1) return;
-    gameState.lastSpeed = speed;
-    const speedMain = document.getElementById('speedMain');
-    if (!speedMain) return;
-    speedMain.textContent = speed;
-    let newClass = '';
-    if (speed < 200) { newClass = 'speed-low'; }
-    else if (speed < 300) { newClass = 'speed-medium'; }
-    else { newClass = 'speed-high'; }
-    if (newClass !== gameState.lastSpeedClass) {
-        speedMain.className = 'speed-value ' + newClass;
-        gameState.lastSpeedClass = newClass;
-    }
-}
 
 // MediaPipe Face Mesh Setup
 async function initMediaPipe() {
