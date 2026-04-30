@@ -1204,6 +1204,9 @@ function toggleCameraPreset() {
     }
 }
 
+// Make toggleCameraPreset globally accessible
+window.toggleCameraPreset = toggleCameraPreset;
+
 // Optimized speedometer update (only when speed changes)
 function updateSpeedometer(currentSpeed) {
     const speed = Math.round(currentSpeed);
