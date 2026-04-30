@@ -816,22 +816,6 @@ function updateGame() {
         turboFill.style.width = Math.min(100, (gameState.turboPoints / gameState.turboThreshold) * 100) + '%';
         turboFill.classList.toggle('full', gameState.turboPoints >= gameState.turboThreshold);
     }
-
-<<<<<<< HEAD
-    // Update speedometer (optimized)
-    updateSpeedometer(currentSpeed);
-
-    // Update on-screen diagnostics only when needed
-    if (lastRuntimeError) setDebugOverlayVisible(true);
-    if (debugOverlayEl && debugOverlayEl.style.display !== 'none') {
-        debugOverlayEl.textContent =
-            `FaceRacer Debug\n` +
-            `calibrated=${gameState.isCalibrated} playing=${gameState.isPlaying}\n` +
-            `speed=${gameState.speed.toFixed(2)} target=${gameState.targetSpeed.toFixed(2)}\n` +
-            `yaw=${gameState.yaw.toFixed(3)} pitch=${gameState.pitch.toFixed(3)}\n` +
-            `obstacles=${gameState.obstacles.length} distance=${Math.round(gameState.distance)}\n` +
-            (lastRuntimeError ? `\nERROR: ${lastRuntimeError}` : '');
-    }
 }
 
 function updateSpeedometer(speed) {
