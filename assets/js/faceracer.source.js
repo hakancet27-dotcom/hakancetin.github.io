@@ -1514,11 +1514,6 @@ function onFaceResults(results) {
             } else if (gameState.speed > gameState.targetSpeed) {
                 gameState.speed = Math.max(gameState.targetSpeed, gameState.speed - gameState.acceleration);
             }
-            
-
-
-            // Update debug values
-            updateDebugInfo(`Y:${gameState.yaw.toFixed(2)} P:${gameState.pitch.toFixed(2)}`);
         }
 
         // Detect eye blink for nitro
