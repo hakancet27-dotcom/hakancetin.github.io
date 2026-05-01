@@ -1411,12 +1411,15 @@ async function detectFace() {
             return;
         }
     }
+    
+    console.log('detectFace: MediaPipe gönderiliyor, frame:', gameState.frameCount, 'usingRemoteCamera:', gameState.usingRemoteCamera);
 
     await faceMesh.send({image: source});
     requestAnimationFrame(detectFace);
 }
 
 function onFaceResults(results) {
+    console.log('onFaceResults: Yüz tespit edildi mi?', results.multiFaceLandmarks && results.multiFaceLandmarks.length > 0);
     if (results.multiFaceLandmarks && results.multiFaceLandmarks.length > 0) {
         const landmarks = results.multiFaceLandmarks[0];
         
