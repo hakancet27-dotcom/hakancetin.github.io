@@ -2288,11 +2288,20 @@ async function startWebRTCHost() {
     };
 
     webrtcPc.onicecandidate = (e) => {
+        console.log('Laptop: ICE candidate:', e.candidate ? 'var' : 'null');
         if (e.candidate) {
             webrtcRoomRef.child('laptopCandidates')
                 .push(e.candidate.toJSON())
                 .catch(err => handleWebRTCError('ICE yazma', err));
         }
+    };
+    
+    webrtcPc.onicegatheringstatechange = () => {
+        console.log('Laptop: ICE gathering state:', webrtcPc.iceGatheringState);
+    };
+    
+    webrtcPc.onsignalingstatechange = () => {
+        console.log('Laptop: Signaling state:', webrtcPc.signalingState);
     };
 
     webrtcPc.onconnectionstatechange = () => {

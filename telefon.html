@@ -195,14 +195,18 @@
                 console.log('Telefon: Answer oluşturuluyor...');
                 try {
                     await pc.setRemoteDescription(new RTCSessionDescription(offer));
+                    console.log('Telefon: setRemoteDescription (offer) başarılı');
                     const answer = await pc.createAnswer();
+                    console.log('Telefon: createAnswer başarılı');
                     answer.sdp = limitVideoBitrate(answer.sdp, 1500);
                     await pc.setLocalDescription(answer);
+                    console.log('Telefon: setLocalDescription (answer) başarılı');
 
                     await roomRef.child('answer').set({
                         type: answer.type,
                         sdp:  answer.sdp
                     });
+                    console.log('Telefon: Answer Firebase\'e yazıldı');
                     setStatus('Bağlantı kuruluyor...');
                 } catch (err) {
                     console.error('Telefon: Answer hatası:', err);
@@ -216,10 +220,19 @@
                 if (!c) return;
                 try {
                     await pc.addIceCandidate(new RTCIceCandidate(c));
+                    console.log('Telefon: ICE candidate eklendi');
                 } catch (err) {
-                    console.warn('ICE aday hatası:', err.message);
+                    console.warn('Telefon: ICE aday hatası:', err.message);
                 }
             });
+            
+            pc.onicegatheringstatechange = () => {
+                console.log('Telefon: ICE gathering state:', pc.iceGatheringState);
+            };
+            
+            pc.onsignalingstatechange = () => {
+                console.log('Telefon: Signaling state:', pc.signalingState);
+            };
 
             window.addEventListener('beforeunload', () => {
                 roomRef.remove();
