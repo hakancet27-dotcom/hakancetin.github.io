@@ -1356,14 +1356,6 @@ function updateSpeedometer(currentSpeed) {
     }
 }
 
-// Debug UI update function
-function updateDebugInfo(message) {
-    const debugEl = document.getElementById('debugInfo');
-    if (debugEl) {
-        debugEl.textContent = message;
-    }
-}
-
 // MediaPipe Face Mesh Setup
 async function initMediaPipe() {
     try {
