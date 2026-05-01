@@ -1437,8 +1437,10 @@ async function detectFace() {
     }
 
     // TV/WebRTC optimizasyonu: Her 3 frame'de bir detectFace (CPU yükünü %70 azalt)
+    // Kalibrasyon sırasında optimizasyonu devre dışı bırak
     gameState.frameCount++;
-    if (gameState.usingRemoteCamera || gameState.isTVMode) {
+    const shouldOptimize = (gameState.usingRemoteCamera || gameState.isTVMode) && gameState.isCalibrated;
+    if (shouldOptimize) {
         if (gameState.frameCount % 3 !== 0) {
             requestAnimationFrame(detectFace);
             return;
@@ -1776,8 +1778,6 @@ function runCalibrationPhase() {
         </div>
         
         <div class="countdown" id="countdown">${currentPhase.duration}</div>
-        
-        <button id="toggleTVModeCalib" onclick="toggleTVMode(); updateTVButtonInCalibration();" style="margin-top: 20px; padding: 12px 20px; background: ${gameState.isTVMode ? 'rgba(0, 255, 136, 0.4)' : 'rgba(255,255,255,0.1)'}; color: ${gameState.isTVMode ? '#00ff88' : 'white'}; border: 2px solid ${gameState.isTVMode ? '#00ff88' : '#666'}; border-radius: 10px; cursor: pointer; font-size: 0.9rem; font-weight: bold; box-shadow: 0 0 15px rgba(0,0,0,0.5);">📺 TV Modu: ${gameState.isTVMode ? 'AÇIK ✓' : 'KAPALI'}</button>
     `;
     
     // Add enhanced CSS
