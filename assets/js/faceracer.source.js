@@ -1063,7 +1063,6 @@ function updateGame() {
 
     // Update car position based on yaw
     const targetX = gameState.yaw * 10;
-    console.log('Car update - yaw:', gameState.yaw.toFixed(3), 'targetX:', targetX.toFixed(3), 'currentX:', car.position.x.toFixed(3));
     car.position.x += (targetX - car.position.x) * 0.1;
     car.rotation.z = -gameState.yaw * 0.3;
     
@@ -1277,21 +1276,9 @@ function toggleTVMode() {
 // Make toggleTVMode globally accessible
 window.toggleTVMode = toggleTVMode;
 
-// Update TV Mode button in calibration screen
-function updateTVButtonInCalibration() {
-    const btn = document.getElementById('toggleTVModeCalib');
-    if (btn) {
-        btn.style.background = gameState.isTVMode ? 'rgba(0, 255, 136, 0.4)' : 'rgba(255,255,255,0.1)';
-        btn.style.color = gameState.isTVMode ? '#00ff88' : 'white';
-        btn.style.borderColor = gameState.isTVMode ? '#00ff88' : '#666';
-        btn.textContent = gameState.isTVMode ? '📺 TV Modu: AÇIK ✓' : '📺 TV Modu: KAPALI';
-    }
-}
-window.updateTVButtonInCalibration = updateTVButtonInCalibration;
-
-// Update TV Mode button on start screen
-function updateTVButtonStart() {
-    const btn = document.getElementById('toggleTVModeStart');
+// Update any TV Mode button by ID
+function updateTVButton(elementId) {
+    const btn = document.getElementById(elementId);
     if (btn) {
         btn.style.background = gameState.isTVMode ? 'rgba(0, 255, 136, 0.4)' : 'rgba(0,0,0,0.7)';
         btn.style.color = gameState.isTVMode ? '#00ff88' : 'white';
@@ -1299,7 +1286,7 @@ function updateTVButtonStart() {
         btn.textContent = gameState.isTVMode ? '📺 TV Modu: AÇIK ✓' : '📺 TV Modu: KAPALI';
     }
 }
-window.updateTVButtonStart = updateTVButtonStart;
+window.updateTVButton = updateTVButton;
 
 // Music control functions
 let gameStateMusic = {
