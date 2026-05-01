@@ -1415,7 +1415,10 @@ function onFaceResults(results) {
         // Yaw: Use nose tip position directly (simplified)
         // PERFECT YAW SETTINGS: nose tip directly, 2.5x sensitivity, center 0.5
         const yawSensitivity = gameState.calibrationData ? gameState.calibrationData.yawSensitivity * 2.5 : 50; // 2.5x sensitivity
-        const yaw = (0.5 - noseTip.x) * yawSensitivity; // Center is 0.5
+        // Telefon kamerası (selfie) aynalı olduğu için yön ters çevir
+        const yaw = gameState.usingRemoteCamera 
+            ? (noseTip.x - 0.5) * yawSensitivity  // Ters: telefon selfie kamerası aynalı
+            : (0.5 - noseTip.x) * yawSensitivity; // Normal: laptop kamerası
         
         // Pitch: Use nose tip relative to upper face center (original method)
         const pitchSensitivity = gameState.calibrationData ? gameState.calibrationData.pitchSensitivity : 25;
