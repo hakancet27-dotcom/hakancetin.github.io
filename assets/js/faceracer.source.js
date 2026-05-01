@@ -2319,17 +2319,24 @@ async function startWebRTCHost() {
 
     let offer;
     try {
+        console.log('Laptop: createOffer başlıyor...');
         offer = await webrtcPc.createOffer();
+        console.log('Laptop: createOffer başarılı');
         offer = new RTCSessionDescription({
             type: offer.type,
             sdp:  limitVideoBitrate(offer.sdp, 1500)
         });
+        console.log('Laptop: setLocalDescription başlıyor...');
         await webrtcPc.setLocalDescription(offer);
+        console.log('Laptop: setLocalDescription başarılı');
+        console.log('Laptop: Firebase offer yazılıyor...');
         await webrtcRoomRef.child('offer').set({
             type: offer.type,
             sdp:  offer.sdp
         });
+        console.log('Laptop: Firebase offer yazıldı');
     } catch (err) {
+        console.error('Laptop: Offer hatası:', err);
         handleWebRTCError('Offer oluşturma', err);
         return;
     }
