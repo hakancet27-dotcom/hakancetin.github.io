@@ -107,19 +107,25 @@
             retryBtn.style.display = 'block';
         }
 
+        console.log('Telefon: Sayfa yüklendi');
         const params = new URLSearchParams(location.search);
         const roomId = params.get('room');
+        console.log('Telefon: Room ID:', roomId);
 
         if (!roomId || !/^[0-9A-F]{8}$/.test(roomId)) {
             showError('Geçersiz bağlantı. QR kodu tekrar okutun.');
         } else {
+            console.log('Telefon: startSensor çağrılıyor...');
             startSensor(roomId);
         }
 
         async function startSensor(roomId) {
+            console.log('Telefon: startSensor başladı');
             const roomRef = db.ref('webrtc_rooms/' + roomId);
 
+            console.log('Telefon: Oda kontrol ediliyor...');
             const roomSnap = await roomRef.once('value');
+            console.log('Telefon: Oda var mı:', roomSnap.exists());
             if (!roomSnap.exists()) {
                 showError('Oda bulunamadı. QR kodu süresi dolmuş olabilir.');
                 return;
