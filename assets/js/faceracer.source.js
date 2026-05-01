@@ -2261,10 +2261,23 @@ function limitVideoBitrate(sdp, maxKbps) {
 }
 
 async function startWebRTCHost() {
+    console.log('startWebRTCHost başladı');
     cancelWebRTC();
+
     webrtcRoomId  = generateSecureRoomId();
-    webrtcRoomRef = firebase.database().ref('webrtc_rooms/' + webrtcRoomId);
-    webrtcPc      = new RTCPeerConnection(WEBRTC_ICE);
+    console.log('Room ID:', webrtcRoomId);
+    
+    try {
+        webrtcRoomRef = firebase.database().ref('webrtc_rooms/' + webrtcRoomId);
+        console.log('Firebase ref oluşturuldu');
+    } catch (e) {
+        console.error('Firebase hatası:', e);
+        alert('Firebase bağlantı hatası: ' + e.message);
+        return;
+    }
+    
+    webrtcPc = new RTCPeerConnection(WEBRTC_ICE);
+    console.log('RTCPeerConnection oluşturuldu');
 
     webrtcPc.ontrack = (event) => {
         const rv = document.getElementById('remoteVideo');
