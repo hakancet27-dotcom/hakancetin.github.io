@@ -88,7 +88,9 @@
                 { urls: 'stun:stun.l.google.com:19302' },
                 { urls: 'stun:stun1.l.google.com:19302' },
                 { urls: 'stun:stun2.l.google.com:19302' }
-            ]
+            ],
+            bundlePolicy: 'max-bundle',
+            rtcpMuxPolicy: 'require'
         };
 
         const statusBox  = document.getElementById('statusBox');
@@ -122,14 +124,6 @@
         async function startSensor(roomId) {
             console.log('Telefon: startSensor başladı');
             const roomRef = db.ref('webrtc_rooms/' + roomId);
-
-            console.log('Telefon: Oda kontrol ediliyor...');
-            const roomSnap = await roomRef.once('value');
-            console.log('Telefon: Oda var mı:', roomSnap.exists());
-            if (!roomSnap.exists()) {
-                showError('Oda bulunamadı. QR kodu süresi dolmuş olabilir.');
-                return;
-            }
 
             setStatus('Kamera açılıyor...');
             let localStream;
@@ -188,10 +182,20 @@
             };
 
             console.log('Telefon: Offer dinleniyor...');
+            let offerHandled = false;
+            
+            const offerTimeout = setTimeout(() => {
+                if (!offerHandled) {
+                    showError('Laptop bağlantısı zaman aşımına uğradı. QR kodu tekrar okutun.');
+                }
+            }, 30000);
+            
             roomRef.child('offer').on('value', async (snap) => {
                 const offer = snap.val();
                 console.log('Telefon: Offer received:', offer ? 'var' : 'yok', 'remoteDescription:', pc.remoteDescription ? 'var' : 'yok');
-                if (!offer || pc.remoteDescription) return;
+                if (!offer || offerHandled || pc.remoteDescription) return;
+                offerHandled = true;
+                clearTimeout(offerTimeout);
                 console.log('Telefon: Answer oluşturuluyor...');
                 try {
                     await pc.setRemoteDescription(new RTCSessionDescription(offer));
