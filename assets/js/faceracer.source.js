@@ -1277,6 +1277,30 @@ function toggleTVMode() {
 // Make toggleTVMode globally accessible
 window.toggleTVMode = toggleTVMode;
 
+// Update TV Mode button in calibration screen
+function updateTVButtonInCalibration() {
+    const btn = document.getElementById('toggleTVModeCalib');
+    if (btn) {
+        btn.style.background = gameState.isTVMode ? 'rgba(0, 255, 136, 0.4)' : 'rgba(255,255,255,0.1)';
+        btn.style.color = gameState.isTVMode ? '#00ff88' : 'white';
+        btn.style.borderColor = gameState.isTVMode ? '#00ff88' : '#666';
+        btn.textContent = gameState.isTVMode ? '📺 TV Modu: AÇIK ✓' : '📺 TV Modu: KAPALI';
+    }
+}
+window.updateTVButtonInCalibration = updateTVButtonInCalibration;
+
+// Update TV Mode button on start screen
+function updateTVButtonStart() {
+    const btn = document.getElementById('toggleTVModeStart');
+    if (btn) {
+        btn.style.background = gameState.isTVMode ? 'rgba(0, 255, 136, 0.4)' : 'rgba(0,0,0,0.7)';
+        btn.style.color = gameState.isTVMode ? '#00ff88' : 'white';
+        btn.style.borderColor = gameState.isTVMode ? '#00ff88' : '#666';
+        btn.textContent = gameState.isTVMode ? '📺 TV Modu: AÇIK ✓' : '📺 TV Modu: KAPALI';
+    }
+}
+window.updateTVButtonStart = updateTVButtonStart;
+
 // Music control functions
 let gameStateMusic = {
     isPlaying: false,
@@ -1753,7 +1777,7 @@ function runCalibrationPhase() {
         
         <div class="countdown" id="countdown">${currentPhase.duration}</div>
         
-        <button id="toggleTVMode" onclick="toggleTVMode()" style="margin-top: 15px; padding: 8px 15px; background: ${gameState.isTVMode ? 'rgba(0, 255, 136, 0.3)' : 'rgba(0,0,0,0.7)'}; color: white; border: 1px solid ${gameState.isTVMode ? '#00ff88' : '#444'}; border-radius: 8px; cursor: pointer; font-size: 0.8rem;">📺 TV Modu: ${gameState.isTVMode ? 'AÇIK' : 'KAPALI'}</button>
+        <button id="toggleTVModeCalib" onclick="toggleTVMode(); updateTVButtonInCalibration();" style="margin-top: 20px; padding: 12px 20px; background: ${gameState.isTVMode ? 'rgba(0, 255, 136, 0.4)' : 'rgba(255,255,255,0.1)'}; color: ${gameState.isTVMode ? '#00ff88' : 'white'}; border: 2px solid ${gameState.isTVMode ? '#00ff88' : '#666'}; border-radius: 10px; cursor: pointer; font-size: 0.9rem; font-weight: bold; box-shadow: 0 0 15px rgba(0,0,0,0.5);">📺 TV Modu: ${gameState.isTVMode ? 'AÇIK ✓' : 'KAPALI'}</button>
     `;
     
     // Add enhanced CSS
