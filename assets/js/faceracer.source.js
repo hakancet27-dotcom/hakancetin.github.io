@@ -1342,26 +1342,22 @@ async function initMediaPipe() {
         loadingEl.style.display = 'none';
         startButton.classList.remove('hidden');
     } catch (error) {
-        console.error('MediaPipe initialization error:', error);
-        loadingEl.innerHTML = '<p style="color: red;">Hata: Kamera yüklenemedi</p>';
+        console.warn('Yerel kamera yok, telefon seçeneği sunuluyor:', error);
+        showCameraChoice();
     }
 }
 
 async function startCamera() {
-    try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-            video: { facingMode: 'user', width: 640, height: 480 }
-        });
-        video.srcObject = stream;
-        
-        video.addEventListener('loadeddata', () => {
-            detectFace();
-        });
-    } catch (error) {
-        console.error('Camera access error:', error);
-        loadingEl.innerHTML = '<p style="color: red;">Hata: Kameraya erişilemedi</p>';
-    }
+    const stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: 'user', width: 640, height: 480 }
+    });
+    video.srcObject = stream;
+    
+    video.addEventListener('loadeddata', () => {
+        detectFace();
+    });
 }
+window.startCamera = startCamera;
 
 async function detectFace() {
     if (!faceMesh || !video) return;
