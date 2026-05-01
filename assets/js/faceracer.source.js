@@ -2300,20 +2300,12 @@ async function startWebRTCHost() {
     console.log('Laptop: Video transceiver eklendi (recvonly)');
 
     webrtcPc.ontrack = (event) => {
-        console.log('Laptop: ontrack event fired', event.streams.length, 'streams');
         const rv = document.getElementById('remoteVideo');
         if (rv && event.streams[0]) {
-            console.log('Laptop: remoteVideo srcObject set ediliyor');
             rv.srcObject = event.streams[0];
-            rv.play().catch((e) => console.log('Laptop: play() hatası:', e));
-            
-            // Video yüklendiğinde detectFace'i başlat
+            rv.play().catch(() => {});
             rv.onloadeddata = () => {
-                console.log('Laptop: remoteVideo loadeddata event!');
-                if (gameState.usingRemoteCamera) {
-                    console.log('Laptop: detectFace başlatılıyor...');
-                    detectFace();
-                }
+                if (gameState.usingRemoteCamera) detectFace();
             };
         }
     };
@@ -2361,37 +2353,26 @@ async function startWebRTCHost() {
 
     let offer;
     try {
-        console.log('Laptop: createOffer başlıyor...');
         offer = await webrtcPc.createOffer();
-        console.log('Laptop: createOffer başarılı');
         offer = new RTCSessionDescription({
             type: offer.type,
-            sdp:  limitVideoBitrate(offer.sdp, 1500)
+            sdp:  limitVideoBitrate(offer.sdp, 800) // Düşük bitrate = daha hızlı
         });
-        console.log('Laptop: setLocalDescription başlıyor...');
         await webrtcPc.setLocalDescription(offer);
-        console.log('Laptop: setLocalDescription başarılı');
-        console.log('Laptop: Firebase offer yazılıyor...');
         await webrtcRoomRef.child('offer').set({
             type: offer.type,
             sdp:  offer.sdp
         });
-        console.log('Laptop: Firebase offer yazıldı');
     } catch (err) {
-        console.error('Laptop: Offer hatası:', err);
         handleWebRTCError('Offer oluşturma', err);
         return;
     }
 
-    console.log('Laptop: Answer dinleniyor...');
     webrtcRoomRef.child('answer').on('value', async (snap) => {
         const answer = snap.val();
-        console.log('Laptop: Answer received:', answer ? 'var' : 'yok', 'remoteDescription:', webrtcPc.remoteDescription ? 'var' : 'yok');
         if (!answer || webrtcPc.remoteDescription) return;
         try {
-            console.log('Laptop: Remote description set ediliyor...');
             await webrtcPc.setRemoteDescription(new RTCSessionDescription(answer));
-            console.log('Laptop: Remote description başarılı');
         } catch (err) {
             handleWebRTCError('Answer alma', err);
         }
@@ -2399,13 +2380,10 @@ async function startWebRTCHost() {
 
     webrtcRoomRef.child('phoneCandidates').on('child_added', async (snap) => {
         const c = snap.val();
-        console.log('Laptop: Phone ICE candidate alındı:', c ? 'var' : 'yok');
         if (!c) return;
         try {
             await webrtcPc.addIceCandidate(new RTCIceCandidate(c));
-        } catch (err) {
-            console.warn('ICE aday (önemsiz):', err.message);
-        }
+        } catch (err) {}
     });
 
     webrtcCleanupTimer = setTimeout(() => {

@@ -181,7 +181,6 @@
                 }
             };
 
-            console.log('Telefon: Offer dinleniyor...');
             let offerHandled = false;
             
             const offerTimeout = setTimeout(() => {
@@ -192,42 +191,30 @@
             
             roomRef.child('offer').on('value', async (snap) => {
                 const offer = snap.val();
-                console.log('Telefon: Offer received:', offer ? 'var' : 'yok', 'remoteDescription:', pc.remoteDescription ? 'var' : 'yok');
                 if (!offer || offerHandled || pc.remoteDescription) return;
                 offerHandled = true;
                 clearTimeout(offerTimeout);
-                console.log('Telefon: Answer oluşturuluyor...');
                 try {
                     await pc.setRemoteDescription(new RTCSessionDescription(offer));
-                    console.log('Telefon: setRemoteDescription (offer) başarılı');
                     const answer = await pc.createAnswer();
-                    console.log('Telefon: createAnswer başarılı');
-                    answer.sdp = limitVideoBitrate(answer.sdp, 1500);
+                    answer.sdp = limitVideoBitrate(answer.sdp, 800); // Düşük bitrate = daha hızlı
                     await pc.setLocalDescription(answer);
-                    console.log('Telefon: setLocalDescription (answer) başarılı');
-
                     await roomRef.child('answer').set({
                         type: answer.type,
                         sdp:  answer.sdp
                     });
-                    console.log('Telefon: Answer Firebase\'e yazıldı');
                     setStatus('Bağlantı kuruluyor...');
                 } catch (err) {
-                    console.error('Telefon: Answer hatası:', err);
                     setStatus('Answer hatası: ' + err.message, 'error');
                 }
             });
 
             roomRef.child('laptopCandidates').on('child_added', async (snap) => {
                 const c = snap.val();
-                console.log('Telefon: Laptop ICE candidate alındı:', c ? 'var' : 'yok');
                 if (!c) return;
                 try {
                     await pc.addIceCandidate(new RTCIceCandidate(c));
-                    console.log('Telefon: ICE candidate eklendi');
-                } catch (err) {
-                    console.warn('Telefon: ICE aday hatası:', err.message);
-                }
+                } catch (err) {}
             });
             
             pc.onicegatheringstatechange = () => {
