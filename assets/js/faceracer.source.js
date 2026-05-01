@@ -1063,6 +1063,7 @@ function updateGame() {
 
     // Update car position based on yaw
     const targetX = gameState.yaw * 10;
+    console.log('Car update - yaw:', gameState.yaw.toFixed(3), 'targetX:', targetX.toFixed(3), 'currentX:', car.position.x.toFixed(3));
     car.position.x += (targetX - car.position.x) * 0.1;
     car.rotation.z = -gameState.yaw * 0.3;
     
