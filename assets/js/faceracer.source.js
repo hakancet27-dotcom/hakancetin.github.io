@@ -1344,6 +1344,14 @@ function updateSpeedometer(currentSpeed) {
     }
 }
 
+// Debug UI update function
+function updateDebugInfo(message) {
+    const debugEl = document.getElementById('debugInfo');
+    if (debugEl) {
+        debugEl.textContent = message;
+    }
+}
+
 // MediaPipe Face Mesh Setup
 async function initMediaPipe() {
     try {
@@ -1392,13 +1400,13 @@ async function detectFace() {
         : video;
     
     if (!source || !source.srcObject) {
-        console.log('detectFace: source yok veya srcObject yok', gameState.usingRemoteCamera ? 'remoteVideo' : 'local video');
+        updateDebugInfo('Video yok');
         requestAnimationFrame(detectFace);
         return;
     }
     
     if (gameState.usingRemoteCamera && source.readyState < 2) {
-        console.log('detectFace: remoteVideo henüz hazır değil, readyState:', source.readyState);
+        updateDebugInfo('Video yükleniyor: ' + source.readyState);
         requestAnimationFrame(detectFace);
         return;
     }
@@ -1412,15 +1420,16 @@ async function detectFace() {
         }
     }
     
-    console.log('detectFace: MediaPipe gönderiliyor, frame:', gameState.frameCount, 'usingRemoteCamera:', gameState.usingRemoteCamera);
+    updateDebugInfo('MediaPipe çalışıyor');
 
     await faceMesh.send({image: source});
     requestAnimationFrame(detectFace);
 }
 
 function onFaceResults(results) {
-    console.log('onFaceResults: Yüz tespit edildi mi?', results.multiFaceLandmarks && results.multiFaceLandmarks.length > 0);
-    if (results.multiFaceLandmarks && results.multiFaceLandmarks.length > 0) {
+    const faceDetected = results.multiFaceLandmarks && results.multiFaceLandmarks.length > 0;
+    updateDebugInfo(faceDetected ? 'Yüz algılanıyor ✓' : 'Yüz yok ✗');
+    if (faceDetected) {
         const landmarks = results.multiFaceLandmarks[0];
         
         // Use only upper face landmarks to focus on head movement, not body
