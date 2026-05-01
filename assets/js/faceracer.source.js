@@ -121,6 +121,8 @@ let gameState = {
     noseHistory: [],           // Son 30 frame'in burun pozisyonları
     lastCircleTime: 0,         // Son daire tespit zamanı
     circleDetected: false,     // Daire tespit edildi mi
+    isTVMode: false,           // TV Modu optimizasyonları
+    frameCount: 0,             // Frame sayacı for detection rate
     turboPoints: 0,
     turboThreshold: 100, // Turbo çalışmak için gereken minimum puan (10 yeşil)
     distance: 0,
@@ -958,10 +960,13 @@ function updateGame() {
     // Update particles
     updateParticles();
     
+    // TV/WebRTC optimizasyonu: Particle sayısı %50 azalt
+    const particleMultiplier = (gameState.usingRemoteCamera || gameState.isTVMode) ? 0.5 : 1.0;
+    
     // Generate exhaust particles (more when nitro is active)
     if (gameState.speed > 10) {
         const exhaustRate = gameState.nitroActive ? 3 : 1;
-        for (let i = 0; i < exhaustRate; i++) {
+        for (let i = 0; i < exhaustRate * particleMultiplier; i++) {
             if (Math.random() < 0.3) {
                 createExhaustParticle();
             }
@@ -970,7 +975,7 @@ function updateGame() {
     
     // Generate smoke particles based on damage level
     const smokeRate = Math.floor((100 - gameState.health) / 10);
-    for (let i = 0; i < smokeRate; i++) {
+    for (let i = 0; i < smokeRate * particleMultiplier; i++) {
         if (Math.random() < 0.2) {
             createSmokeParticle();
         }
@@ -979,7 +984,7 @@ function updateGame() {
     // Generate fire particles when damage is high (near explosion)
     if (gameState.health <= 20) {
         const fireRate = Math.floor((20 - gameState.health) / 5);
-        for (let i = 0; i < fireRate; i++) {
+        for (let i = 0; i < fireRate * particleMultiplier; i++) {
             if (Math.random() < 0.4) {
                 createFireParticle();
             }
@@ -1256,6 +1261,21 @@ function toggleCameraPreset() {
 // Make toggleCameraPreset globally accessible
 window.toggleCameraPreset = toggleCameraPreset;
 
+// TV Mode control function
+function toggleTVMode() {
+    gameState.isTVMode = !gameState.isTVMode;
+    const btn = document.getElementById('toggleTVMode');
+    if (btn) {
+        btn.textContent = gameState.isTVMode ? '📺 TV Modu: AÇIK' : '📺 TV Modu: KAPALI';
+        btn.style.background = gameState.isTVMode ? 'rgba(0, 255, 136, 0.3)' : 'rgba(0,0,0,0.7)';
+        btn.style.borderColor = gameState.isTVMode ? '#00ff88' : '#444';
+    }
+    console.log('TV Mode:', gameState.isTVMode ? 'AÇIK - Optimizasyonlar aktif' : 'KAPALI - Normal kalite');
+}
+
+// Make toggleTVMode globally accessible
+window.toggleTVMode = toggleTVMode;
+
 // Music control functions
 let gameStateMusic = {
     isPlaying: false,
@@ -1381,6 +1401,15 @@ async function detectFace() {
         console.log('detectFace: remoteVideo henüz hazır değil, readyState:', source.readyState);
         requestAnimationFrame(detectFace);
         return;
+    }
+
+    // TV/WebRTC optimizasyonu: Her 3 frame'de bir detectFace (CPU yükünü %70 azalt)
+    gameState.frameCount++;
+    if (gameState.usingRemoteCamera || gameState.isTVMode) {
+        if (gameState.frameCount % 3 !== 0) {
+            requestAnimationFrame(detectFace);
+            return;
+        }
     }
 
     await faceMesh.send({image: source});
@@ -2248,6 +2277,7 @@ function finalizeCalibration() {
         document.getElementById('turboBarContainer').classList.remove('hidden');
         document.getElementById('toggleCamera').classList.remove('hidden');
         document.getElementById('toggleMusic').classList.remove('hidden');
+        document.getElementById('toggleTVMode').classList.remove('hidden');
         toggleControls.classList.remove('hidden');
         easyModeBtn.classList.add('hidden');  // Hide easy mode button
         gameState.isPlaying = true;
