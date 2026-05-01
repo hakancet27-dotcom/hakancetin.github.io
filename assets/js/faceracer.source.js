@@ -1504,6 +1504,7 @@ function onFaceResults(results) {
 
 
             // Update debug values
+            updateDebugInfo(`Y:${gameState.yaw.toFixed(2)} P:${gameState.pitch.toFixed(2)}`);
         }
 
         // Detect eye blink for nitro
