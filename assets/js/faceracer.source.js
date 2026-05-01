@@ -1753,7 +1753,7 @@ function runCalibrationPhase() {
         
         <div class="countdown" id="countdown">${currentPhase.duration}</div>
         
-        <button id="toggleTVMode" onclick="toggleTVMode()" style="margin-top: 15px; padding: 8px 15px; background: rgba(0,0,0,0.7); color: white; border: 1px solid #444; border-radius: 8px; cursor: pointer; font-size: 0.8rem;">📺 TV Modu: KAPALI</button>
+        <button id="toggleTVMode" onclick="toggleTVMode()" style="margin-top: 15px; padding: 8px 15px; background: ${gameState.isTVMode ? 'rgba(0, 255, 136, 0.3)' : 'rgba(0,0,0,0.7)'}; color: white; border: 1px solid ${gameState.isTVMode ? '#00ff88' : '#444'}; border-radius: 8px; cursor: pointer; font-size: 0.8rem;">📺 TV Modu: ${gameState.isTVMode ? 'AÇIK' : 'KAPALI'}</button>
     `;
     
     // Add enhanced CSS
