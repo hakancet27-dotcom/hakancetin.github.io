@@ -2278,6 +2278,10 @@ async function startWebRTCHost() {
     
     webrtcPc = new RTCPeerConnection(WEBRTC_ICE);
     console.log('RTCPeerConnection oluşturuldu');
+    
+    // Add transceiver to receive video from phone
+    webrtcPc.addTransceiver('video', { direction: 'recvonly' });
+    console.log('Laptop: Video transceiver eklendi (recvonly)');
 
     webrtcPc.ontrack = (event) => {
         const rv = document.getElementById('remoteVideo');
@@ -2288,11 +2292,13 @@ async function startWebRTCHost() {
     };
 
     webrtcPc.onicecandidate = (e) => {
-        console.log('Laptop: ICE candidate:', e.candidate ? 'var' : 'null');
         if (e.candidate) {
+            console.log('Laptop: ICE candidate:', e.candidate.candidate.substring(0, 50) + '...');
             webrtcRoomRef.child('laptopCandidates')
                 .push(e.candidate.toJSON())
                 .catch(err => handleWebRTCError('ICE yazma', err));
+        } else {
+            console.log('Laptop: ICE candidate gathering complete (null candidate)');
         }
     };
     
