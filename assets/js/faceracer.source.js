@@ -1329,9 +1329,10 @@ async function initMediaPipe() {
 
         faceMesh.setOptions({
             maxNumFaces: 1,
-            refineLandmarks: true,
-            minDetectionConfidence: 0.5,
-            minTrackingConfidence: 0.5
+            refineLandmarks: false,              // Daha hızlı
+            minDetectionConfidence: 0.3,       // Daha düşük = daha hızlı
+            minTrackingConfidence: 0.3,          // Daha düşük = daha hızlı
+            modelComplexity: 0                 // 0=light, 1=full, 2=heavy
         });
 
         faceMesh.onResults(onFaceResults);
