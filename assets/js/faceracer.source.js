@@ -2198,7 +2198,15 @@ function finalizeCalibration() {
         pitchSensitivity: pitchRange > 0 ? 1.2 / pitchRange : 25
     };
     
+    // Kritik: baseYaw ve basePitch'i calibrationData'dan yeniden ata
+    // Böylece oyun başladığında doğru merkez değerleri kullanılır
+    gameState.baseYaw = gameState.calibrationData.baseYaw;
+    gameState.basePitch = gameState.calibrationData.basePitch;
+    gameState.smoothedYaw = gameState.baseYaw;
+    gameState.smoothedPitch = gameState.basePitch;
+    
     console.log('Calibration complete:', gameState.calibrationData);
+    console.log('Base values set - Yaw:', gameState.baseYaw.toFixed(4), 'Pitch:', gameState.basePitch.toFixed(4));
     
     const calibrationContent = document.querySelector('.calibration-content');
     calibrationContent.innerHTML = `
