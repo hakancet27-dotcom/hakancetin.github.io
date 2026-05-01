@@ -1360,9 +1360,25 @@ async function startCamera() {
 window.startCamera = startCamera;
 
 async function detectFace() {
-    if (!faceMesh || !video) return;
+    if (!faceMesh) return;
+    
+    const source = gameState.usingRemoteCamera 
+        ? document.getElementById('remoteVideo')
+        : video;
+    
+    if (!source || !source.srcObject) {
+        console.log('detectFace: source yok veya srcObject yok', gameState.usingRemoteCamera ? 'remoteVideo' : 'local video');
+        requestAnimationFrame(detectFace);
+        return;
+    }
+    
+    if (gameState.usingRemoteCamera && source.readyState < 2) {
+        console.log('detectFace: remoteVideo henüz hazır değil, readyState:', source.readyState);
+        requestAnimationFrame(detectFace);
+        return;
+    }
 
-    await faceMesh.send({image: video});
+    await faceMesh.send({image: source});
     requestAnimationFrame(detectFace);
 }
 
@@ -2437,11 +2453,17 @@ function showQRCode(roomId) {
 }
 
 function onRemoteCameraConnected() {
+    console.log('Laptop: onRemoteCameraConnected çağrıldı');
     const overlay = document.getElementById('webrtcOverlay');
     if (overlay) overlay.style.display = 'none';
     gameState.usingRemoteCamera = true;
     loadingEl.style.display     = 'none';
     startButton.classList.remove('hidden');
+    
+    const rv = document.getElementById('remoteVideo');
+    console.log('Laptop: remoteVideo var mı:', !!rv);
+    console.log('Laptop: remoteVideo srcObject var mı:', !!(rv && rv.srcObject));
+    console.log('Laptop: remoteVideo readyState:', rv ? rv.readyState : 'N/A');
 }
 
 function cancelWebRTC() {
