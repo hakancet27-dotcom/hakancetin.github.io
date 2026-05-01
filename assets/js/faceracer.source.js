@@ -98,6 +98,7 @@ let gameState = {
     score: 0,
     speed: 0,
     maxSpeed: 320,
+    usingRemoteCamera: false,  // WebRTC telefon sensör modu
     yaw: 0,
     pitch: 0,
     nitroActive: false,
@@ -2221,6 +2222,228 @@ function finalizeCalibration() {
         gameState.isPlaying = true;
         updateEasyModeButton();
     }, 100);
+}
+
+// ════════════════════════════════════════
+//  WebRTC — Telefon Sensör Modu
+// ════════════════════════════════════════
+
+const WEBRTC_ICE = {
+    iceServers: [
+        { urls: 'stun:stun.l.google.com:19302'  },
+        { urls: 'stun:stun1.l.google.com:19302' },
+        { urls: 'stun:stun2.l.google.com:19302' }
+    ]
+};
+
+let webrtcPc      = null;
+let webrtcRoomRef = null;
+let webrtcRoomId  = null;
+let webrtcCleanupTimer = null;
+
+function generateSecureRoomId() {
+    const arr = new Uint8Array(4);
+    crypto.getRandomValues(arr);
+    return Array.from(arr, b => b.toString(16).padStart(2, '0'))
+                .join('').toUpperCase();
+}
+
+function handleWebRTCError(context, err) {
+    console.error(`WebRTC [${context}]:`, err);
+    const el = document.getElementById('webrtcStatus');
+    if (el) {
+        el.textContent = `❌ Hata: ${context} — Sayfayı yenileyin`;
+        el.style.color = '#ff4444';
+    }
+}
+
+function limitVideoBitrate(sdp, maxKbps) {
+    const lines = sdp.split('\n');
+    const idx = lines.findIndex(l => l.startsWith('m=video'));
+    if (idx >= 0) lines.splice(idx + 1, 0, `b=AS:${maxKbps}`);
+    return lines.join('\n');
+}
+
+async function startWebRTCHost() {
+    cancelWebRTC();
+    webrtcRoomId  = generateSecureRoomId();
+    webrtcRoomRef = firebase.database().ref('webrtc_rooms/' + webrtcRoomId);
+    webrtcPc      = new RTCPeerConnection(WEBRTC_ICE);
+
+    webrtcPc.ontrack = (event) => {
+        const rv = document.getElementById('remoteVideo');
+        if (rv && event.streams[0]) {
+            rv.srcObject = event.streams[0];
+            rv.play().catch(() => {});
+        }
+    };
+
+    webrtcPc.onicecandidate = (e) => {
+        if (e.candidate) {
+            webrtcRoomRef.child('laptopCandidates')
+                .push(e.candidate.toJSON())
+                .catch(err => handleWebRTCError('ICE yazma', err));
+        }
+    };
+
+    webrtcPc.onconnectionstatechange = () => {
+        const state  = webrtcPc.connectionState;
+        const el     = document.getElementById('webrtcStatus');
+        const states = {
+            connecting:    ['⏳ Bağlanıyor...', '#888'    ],
+            connected:     ['✅ Telefon bağlandı!', '#00ff88'],
+            disconnected:  ['⚠️ Bağlantı zayıfladı...', '#ff6b00'],
+            failed:        ['❌ Bağlantı başarısız', '#ff4444'],
+            closed:        ['🔌 Bağlantı kapatıldı', '#888'   ]
+        };
+        if (el && states[state]) {
+            const [msg, color] = states[state];
+            el.textContent  = msg;
+            el.style.color  = color;
+        }
+        if (state === 'connected') {
+            onRemoteCameraConnected();
+        } else if (state === 'failed') {
+            webrtcPc.restartIce();
+        }
+    };
+
+    let offer;
+    try {
+        offer = await webrtcPc.createOffer();
+        offer = new RTCSessionDescription({
+            type: offer.type,
+            sdp:  limitVideoBitrate(offer.sdp, 1500)
+        });
+        await webrtcPc.setLocalDescription(offer);
+        await webrtcRoomRef.child('offer').set({
+            type: offer.type,
+            sdp:  offer.sdp
+        });
+    } catch (err) {
+        handleWebRTCError('Offer oluşturma', err);
+        return;
+    }
+
+    webrtcRoomRef.child('answer').on('value', async (snap) => {
+        const answer = snap.val();
+        if (!answer || webrtcPc.remoteDescription) return;
+        try {
+            await webrtcPc.setRemoteDescription(new RTCSessionDescription(answer));
+        } catch (err) {
+            handleWebRTCError('Answer alma', err);
+        }
+    });
+
+    webrtcRoomRef.child('phoneCandidates').on('child_added', async (snap) => {
+        const c = snap.val();
+        if (!c) return;
+        try {
+            await webrtcPc.addIceCandidate(new RTCIceCandidate(c));
+        } catch (err) {
+            console.warn('ICE aday (önemsiz):', err.message);
+        }
+    });
+
+    webrtcCleanupTimer = setTimeout(() => {
+        if (webrtcPc && webrtcPc.connectionState !== 'connected') {
+            cancelWebRTC();
+        }
+    }, 5 * 60 * 1000);
+
+    showQRCode(webrtcRoomId);
+}
+window.startWebRTCHost = startWebRTCHost;
+
+function showQRCode(roomId) {
+    const url    = `https://hakancetin.com.tr/telefon.html?room=${roomId}`;
+    const qrUrl  = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(url)}`;
+    const overlay = document.getElementById('webrtcOverlay');
+    if (!overlay) return;
+
+    overlay.innerHTML = `
+        <div style="
+            text-align:center;
+            padding:28px 32px;
+            background:#0d0d1f;
+            border-radius:16px;
+            border:2px solid #00ff88;
+            max-width:360px;
+            width:90vw;
+        ">
+            <h2 style="color:#00ff88;margin-bottom:6px;">📱 Telefonu Bağla</h2>
+            <p style="color:#888;font-size:0.82rem;margin-bottom:18px;">
+                Telefonunla QR'ı okut — kamera sensörü olarak kullan
+            </p>
+            <img src="${qrUrl}"
+                 alt="QR Kod"
+                 style="border-radius:8px;border:3px solid #fff;width:220px;height:220px;">
+            <p style="color:#555;font-size:0.68rem;margin-top:10px;word-break:break-all;">${url}</p>
+            <div id="webrtcStatus"
+                 style="margin-top:14px;color:#888;font-size:0.9rem;min-height:22px;">
+                ⏳ Telefon bekleniyor...
+            </div>
+            <div style="margin-top:16px;display:flex;gap:10px;justify-content:center;">
+                <button onclick="cancelWebRTC()"
+                    style="padding:8px 18px;background:transparent;border:1px solid #444;
+                           border-radius:8px;color:#888;cursor:pointer;font-size:0.85rem;">
+                    İptal
+                </button>
+                <button onclick="startWebRTCHost()"
+                    style="padding:8px 18px;background:transparent;border:1px solid #00ff88;
+                           border-radius:8px;color:#00ff88;cursor:pointer;font-size:0.85rem;">
+                    🔄 Yeni QR
+                </button>
+            </div>
+        </div>
+    `;
+    overlay.style.display = 'flex';
+}
+
+function onRemoteCameraConnected() {
+    const overlay = document.getElementById('webrtcOverlay');
+    if (overlay) overlay.style.display = 'none';
+    gameState.usingRemoteCamera = true;
+    loadingEl.style.display     = 'none';
+    startButton.classList.remove('hidden');
+}
+
+function cancelWebRTC() {
+    if (webrtcCleanupTimer) { clearTimeout(webrtcCleanupTimer); webrtcCleanupTimer = null; }
+    if (webrtcRoomRef) { webrtcRoomRef.remove(); webrtcRoomRef = null; }
+    if (webrtcPc)      { webrtcPc.close();       webrtcPc      = null; }
+    webrtcRoomId = null;
+    const overlay = document.getElementById('webrtcOverlay');
+    if (overlay) overlay.style.display = 'none';
+}
+window.cancelWebRTC = cancelWebRTC;
+
+window.addEventListener('beforeunload', () => {
+    if (webrtcRoomRef) webrtcRoomRef.remove();
+    if (webrtcPc)      webrtcPc.close();
+});
+
+function showCameraChoice() {
+    loadingEl.innerHTML = `
+        <div style="text-align:center;padding:10px;">
+            <p style="color:#ff6b00;margin-bottom:16px;">
+                ⚠️ Kamera bulunamadı veya erişim reddedildi
+            </p>
+            <button onclick="startCamera()
+                .then(() => { loadingEl.style.display='none'; startButton.classList.remove('hidden'); })
+                .catch(() => {})"
+                style="margin:6px;padding:11px 22px;background:#333;border:none;
+                       border-radius:8px;color:white;cursor:pointer;font-size:0.95rem;">
+                🔄 Tekrar Dene
+            </button>
+            <br>
+            <button onclick="startWebRTCHost()"
+                style="margin:6px;padding:11px 22px;background:#00ff88;border:none;
+                       border-radius:8px;color:#000;cursor:pointer;font-size:0.95rem;font-weight:bold;">
+                📱 Telefonumu Kullan
+            </button>
+        </div>
+    `;
 }
 
 // Event Listeners

@@ -10,7 +10,7 @@
     <meta name="copyright" content="© 2026 Hakan Çetin - Tüm hakları saklıdır">
     
     <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' https://cdn.jsdelivr.net https://www.gstatic.com wss: https://*.firebaseio.com https://*.googleapis.com https://*.firebaseapp.com https://*.gstatic.com https://faceracer-leaderboard-default-rtdb.firebaseio.com https://faceracer-leaderboard.firebaseapp.com; frame-src https://*.firebaseio.com; font-src 'self' https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://api.qrserver.com; media-src 'self' blob:; connect-src 'self' https://cdn.jsdelivr.net https://www.gstatic.com wss: https://*.firebaseio.com https://*.googleapis.com https://*.firebaseapp.com https://*.gstatic.com https://faceracer-leaderboard-default-rtdb.firebaseio.com https://faceracer-leaderboard.firebaseapp.com; frame-src https://*.firebaseio.com; font-src 'self' https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self';">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(self), microphone=(), geolocation=(), fullscreen=(self)">
@@ -151,6 +151,18 @@
         </div>
 
         <button id="startButton" class="hidden">Oyunu Başlat</button>
+    </div>
+
+    <!-- WebRTC: Telefon sensörü için gizli uzak video -->
+    <video id="remoteVideo" autoplay playsinline
+           style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;">
+    </video>
+
+    <!-- WebRTC: QR / Bağlantı overlay -->
+    <div id="webrtcOverlay"
+         style="display:none;position:fixed;inset:0;
+                background:rgba(0,0,0,0.88);z-index:10000;
+                align-items:center;justify-content:center;">
     </div>
 
     <!-- Three.js -->
