@@ -145,10 +145,16 @@
             }
 
             setStatus('Laptop bekleniyor...');
+            console.log('Telefon: RTCPeerConnection oluşturuluyor...');
             const pc = new RTCPeerConnection(ICE_SERVERS);
-            localStream.getTracks().forEach(track => pc.addTrack(track, localStream));
+            
+            localStream.getTracks().forEach(track => {
+                pc.addTrack(track, localStream);
+                console.log('Telefon: Track eklendi:', track.kind);
+            });
 
             pc.onicecandidate = (e) => {
+                console.log('Telefon: ICE candidate:', e.candidate ? 'var' : 'null');
                 if (e.candidate) {
                     roomRef.child('phoneCandidates').push(e.candidate.toJSON())
                         .catch(err => console.error('ICE yazma hatası:', err));
@@ -157,6 +163,7 @@
 
             pc.onconnectionstatechange = () => {
                 const s = pc.connectionState;
+                console.log('Telefon: Connection state:', s);
                 if (s === 'connected') {
                     spinner.style.display = 'none';
                     setStatus('✅ Bağlandı — Oynayabilirsiniz!', 'success');
@@ -174,9 +181,12 @@
                 }
             };
 
+            console.log('Telefon: Offer dinleniyor...');
             roomRef.child('offer').on('value', async (snap) => {
                 const offer = snap.val();
+                console.log('Telefon: Offer received:', offer ? 'var' : 'yok', 'remoteDescription:', pc.remoteDescription ? 'var' : 'yok');
                 if (!offer || pc.remoteDescription) return;
+                console.log('Telefon: Answer oluşturuluyor...');
                 try {
                     await pc.setRemoteDescription(new RTCSessionDescription(offer));
                     const answer = await pc.createAnswer();
@@ -189,12 +199,14 @@
                     });
                     setStatus('Bağlantı kuruluyor...');
                 } catch (err) {
-                    console.error('Answer hatası:', err);
+                    console.error('Telefon: Answer hatası:', err);
+                    setStatus('Answer hatası: ' + err.message, 'error');
                 }
             });
 
             roomRef.child('laptopCandidates').on('child_added', async (snap) => {
                 const c = snap.val();
+                console.log('Telefon: Laptop ICE candidate alındı:', c ? 'var' : 'yok');
                 if (!c) return;
                 try {
                     await pc.addIceCandidate(new RTCIceCandidate(c));

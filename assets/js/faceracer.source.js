@@ -2334,11 +2334,15 @@ async function startWebRTCHost() {
         return;
     }
 
+    console.log('Laptop: Answer dinleniyor...');
     webrtcRoomRef.child('answer').on('value', async (snap) => {
         const answer = snap.val();
+        console.log('Laptop: Answer received:', answer ? 'var' : 'yok', 'remoteDescription:', webrtcPc.remoteDescription ? 'var' : 'yok');
         if (!answer || webrtcPc.remoteDescription) return;
         try {
+            console.log('Laptop: Remote description set ediliyor...');
             await webrtcPc.setRemoteDescription(new RTCSessionDescription(answer));
+            console.log('Laptop: Remote description başarılı');
         } catch (err) {
             handleWebRTCError('Answer alma', err);
         }
@@ -2346,6 +2350,7 @@ async function startWebRTCHost() {
 
     webrtcRoomRef.child('phoneCandidates').on('child_added', async (snap) => {
         const c = snap.val();
+        console.log('Laptop: Phone ICE candidate alındı:', c ? 'var' : 'yok');
         if (!c) return;
         try {
             await webrtcPc.addIceCandidate(new RTCIceCandidate(c));
