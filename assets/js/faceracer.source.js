@@ -1456,10 +1456,7 @@ function onFaceResults(results) {
         // Yaw: Use nose tip position directly (simplified)
         // PERFECT YAW SETTINGS: nose tip directly, 2.5x sensitivity, center 0.5
         const yawSensitivity = gameState.calibrationData ? gameState.calibrationData.yawSensitivity * 2.5 : 50; // 2.5x sensitivity
-        // Telefon kamerası (selfie) aynalı olduğu için yön ters çevir
-        const yaw = gameState.usingRemoteCamera 
-            ? (noseTip.x - 0.5) * yawSensitivity  // Ters: telefon selfie kamerası aynalı
-            : (0.5 - noseTip.x) * yawSensitivity; // Normal: laptop kamerası
+        const yaw = (0.5 - noseTip.x) * yawSensitivity; // Center is 0.5
         
         // Pitch: Use nose tip relative to upper face center (original method)
         const pitchSensitivity = gameState.calibrationData ? gameState.calibrationData.pitchSensitivity : 25;
@@ -1753,6 +1750,8 @@ function runCalibrationPhase() {
         </div>
         
         <div class="countdown" id="countdown">${currentPhase.duration}</div>
+        
+        <button id="toggleTVMode" onclick="toggleTVMode()" style="margin-top: 15px; padding: 8px 15px; background: rgba(0,0,0,0.7); color: white; border: 1px solid #444; border-radius: 8px; cursor: pointer; font-size: 0.8rem;">📺 TV Modu: KAPALI</button>
     `;
     
     // Add enhanced CSS
