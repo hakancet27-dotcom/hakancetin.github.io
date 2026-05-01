@@ -2300,10 +2300,21 @@ async function startWebRTCHost() {
     console.log('Laptop: Video transceiver eklendi (recvonly)');
 
     webrtcPc.ontrack = (event) => {
+        console.log('Laptop: ontrack event fired', event.streams.length, 'streams');
         const rv = document.getElementById('remoteVideo');
         if (rv && event.streams[0]) {
+            console.log('Laptop: remoteVideo srcObject set ediliyor');
             rv.srcObject = event.streams[0];
-            rv.play().catch(() => {});
+            rv.play().catch((e) => console.log('Laptop: play() hatası:', e));
+            
+            // Video yüklendiğinde detectFace'i başlat
+            rv.onloadeddata = () => {
+                console.log('Laptop: remoteVideo loadeddata event!');
+                if (gameState.usingRemoteCamera) {
+                    console.log('Laptop: detectFace başlatılıyor...');
+                    detectFace();
+                }
+            };
         }
     };
 
