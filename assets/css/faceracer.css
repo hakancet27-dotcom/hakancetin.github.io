@@ -550,15 +550,15 @@ body {
 #toggleCamera, #toggleMusic, #toggleTVMode, #easyModeBtn {
     position: fixed;
     bottom: 20px;
-    padding: 12px 20px;
-    background: rgba(0,0,0,0.8);
-    color: white;
-    border: 1px solid #555;
+    padding: 12px 16px;
+    background: rgba(0,0,0,0.8) !important;
+    color: white !important;
+    border: 1px solid #555 !important;
     border-radius: 8px;
     cursor: pointer;
     z-index: 1000;
-    font-size: 0.9rem;
-    min-width: 100px;
+    font-size: 0.85rem;
+    min-width: 90px;
     text-align: center;
     white-space: nowrap;
 }
@@ -568,18 +568,18 @@ body {
 }
 
 #toggleMusic {
-    left: 130px;
+    left: 120px;
 }
 
 #toggleTVMode {
-    left: 240px;
+    left: 220px;
 }
 
 #easyModeBtn {
-    left: 350px;
+    left: 320px;
     right: auto;
-    background: rgba(0,0,0,0.8);
-    border: 1px solid #555;
+    background: rgba(0,0,0,0.8) !important;
+    border: 1px solid #555 !important;
     font-weight: normal;
 }
 
