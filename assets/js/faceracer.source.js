@@ -117,10 +117,6 @@ let gameState = {
     // New game mechanics
     goldPoints: 0,
     health: 100, // Saglamlik (0=patlama, 100=tam)
-    // Nose circle detection for pause
-    noseHistory: [],           // Son 30 frame'in burun pozisyonları
-    lastCircleTime: 0,         // Son daire tespit zamanı
-    circleDetected: false,     // Daire tespit edildi mi
     isTVMode: false,           // TV Modu optimizasyonları
     frameCount: 0,             // Frame sayacı for detection rate
     turboPoints: 0,
@@ -1448,9 +1444,6 @@ function onFaceResults(results) {
         const noseBridge = landmarks[6];
         const noseTip = landmarks[1];
         
-        // === BURUN UCU İLE DAİRE ÇİZME TESPİTİ (Pause için) ===
-        detectNoseCircle(noseTip.x, noseTip.y);
-        
         // Calculate upper face center (same for both yaw and pitch)
         const upperFaceCenterX = (leftEyebrow.x + rightEyebrow.x + leftEye.x + rightEye.x) / 4;
         const upperFaceCenterY = (forehead.y * 0.7 + foreheadUpper.y * 0.3 + noseBridge.y * 0.3) / 1.3;
@@ -2607,70 +2600,6 @@ function createPauseOverlay() {
     return overlay;
 }
 
-// === BURUN UCU İLE DAİRE ÇİZME TESPİTİ ===
-function detectNoseCircle(noseX, noseY) {
-    const now = Date.now();
-    
-    // 3 saniye cooldown (çift tespiti önle)
-    if (now - gameState.lastCircleTime < 3000) return;
-    
-    // Son pozisyonu kaydet (son 25 frame)
-    gameState.noseHistory.push({ x: noseX, y: noseY, time: now });
-    if (gameState.noseHistory.length > 25) {
-        gameState.noseHistory.shift();
-    }
-    
-    // En az 20 pozisyon gerekli
-    if (gameState.noseHistory.length < 20) return;
-    
-    // Merkez hesapla
-    const centerX = gameState.noseHistory.reduce((sum, p) => sum + p.x, 0) / gameState.noseHistory.length;
-    const centerY = gameState.noseHistory.reduce((sum, p) => sum + p.y, 0) / gameState.noseHistory.length;
-    
-    // Her noktanın merkeze uzaklığı
-    const distances = gameState.noseHistory.map(p => 
-        Math.sqrt(Math.pow(p.x - centerX, 2) + Math.pow(p.y - centerY, 2))
-    );
-    const avgRadius = distances.reduce((a, b) => a + b, 0) / distances.length;
-    
-    // Radius tutarlılığı (çok değişken olmamalı)
-    const radiusVariance = distances.reduce((sum, d) => sum + Math.pow(d - avgRadius, 2), 0) / distances.length;
-    const radiusStd = Math.sqrt(radiusVariance);
-    
-    // Açı değişimi (tam tur atmış mı?)
-    let totalAngle = 0;
-    for (let i = 1; i < gameState.noseHistory.length; i++) {
-        const prev = gameState.noseHistory[i-1];
-        const curr = gameState.noseHistory[i];
-        const angle1 = Math.atan2(prev.y - centerY, prev.x - centerX);
-        const angle2 = Math.atan2(curr.y - centerY, curr.x - centerX);
-        let diff = angle2 - angle1;
-        while (diff > Math.PI) diff -= 2 * Math.PI;
-        while (diff < -Math.PI) diff += 2 * Math.PI;
-        totalAngle += diff;
-    }
-    
-    // Daire kriterleri:
-    // 1. Yarıçap tutarlı (değişkenlik < %40)
-    // 2. En az 270 derece dönüş (3/4 tur)
-    // 3. Yarıçap çok küçük veya büyük değil
-    const radiusConsistent = radiusStd / (avgRadius + 0.001) < 0.4;
-    const enoughRotation = Math.abs(totalAngle) > 4.7; // 270 derece = 4.71 rad
-    const reasonableRadius = avgRadius > 0.03 && avgRadius < 0.15; // 3% ile 15% ekran
-    
-    if (radiusConsistent && enoughRotation && reasonableRadius) {
-        gameState.circleDetected = true;
-        gameState.lastCircleTime = now;
-        gameState.noseHistory = []; // Geçmişi temizle
-        
-        // Oyunu durdur/başlat
-        if (gameState.isPlaying) {
-            pauseGame();
-        } else if (gameState.isCalibrated) {
-            resumeGame();
-        }
-    }
-}
 
 // Event Listeners
 startButton.addEventListener('click', startCalibration);
