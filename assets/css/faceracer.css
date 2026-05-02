@@ -747,12 +747,16 @@ body {
    CALIBRATION ENHANCEMENTS - Circular Screen Support
    ============================================ */
 
-/* Circular Crosshair Container */
+/* Circular Crosshair Container - positioned over calibration video */
 .calibration-circle-container {
-    position: relative;
-    width: 260px;
-    height: 260px;
-    margin: 20px auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: 220px;
+    z-index: 170; /* Above video (160) and overlay (150) */
+    pointer-events: none; /* Let clicks pass through */
 }
 
 /* Outer circle ring */
