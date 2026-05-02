@@ -174,18 +174,9 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database-compat.js"></script>
     
-    <!-- Firebase Configuration -->
+    <!-- Firebase Configuration (loaded from external file for security) -->
+    <script src="config.js"></script>
     <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyAxAezrmpN-RdEr_LIY5ZaHnHWWHEkASZo",
-            authDomain: "faceracer-leaderboard.firebaseapp.com",
-            databaseURL: "https://faceracer-leaderboard-default-rtdb.firebaseio.com",
-            projectId: "faceracer-leaderboard",
-            storageBucket: "faceracer-leaderboard.firebasestorage.app",
-            messagingSenderId: "654208430418",
-            appId: "1:654208430418:web:17adf6d6e15ebbcbc7ca8b",
-            measurementId: "G-7NE3F404HM"
-        };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         

@@ -2,6 +2,9 @@
 # Obfuscated (optional)
 assets/js/faceracer.obfuscated.js
 
+# Firebase Config (API keys - DO NOT COMMIT)
+config.js
+
 # Source Maps (Gizli - Sadece local debug için)
 assets/js/*.map.js
 assets/js/faceracer.dev.js
