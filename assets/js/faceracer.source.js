@@ -1262,7 +1262,7 @@ function toggleTVMode() {
     gameState.isTVMode = !gameState.isTVMode;
     const btn = document.getElementById('toggleTVMode');
     if (btn) {
-        btn.textContent = gameState.isTVMode ? '📺 TV Modu: AÇIK' : '📺 TV Modu: KAPALI';
+        btn.textContent = gameState.isTVMode ? '📺 TV: AÇIK' : '📺 TV: KAPALI';
         btn.style.background = gameState.isTVMode ? 'rgba(0, 255, 136, 0.3)' : 'rgba(0,0,0,0.7)';
         btn.style.borderColor = gameState.isTVMode ? '#00ff88' : '#444';
     }
