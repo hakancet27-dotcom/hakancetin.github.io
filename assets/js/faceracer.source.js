@@ -1654,6 +1654,11 @@ window.toggleEasyMode = toggleEasyMode;
 // Calibration
 function startCalibration() {
     startButton.classList.add('hidden');
+    
+    // Hide start screen TV Mode button (game has in-game button)
+    const tvModeStartBtn = document.getElementById('toggleTVModeStart');
+    if (tvModeStartBtn) tvModeStartBtn.style.display = 'none';
+    
     calibrationOverlay.classList.remove('hidden');
     
     // Initialize audio
