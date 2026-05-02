@@ -966,13 +966,13 @@ body {
 @media (max-width: 400px) {
     /* Ensure video and calibration circle have same size */
     #cameraVideo.calibrating {
-        width: 200px;
-        height: 200px;
+        width: 220px;
+        height: 220px;
     }
 
     .calibration-circle-container {
-        width: 200px;
-        height: 200px;
+        width: 220px;
+        height: 220px;
     }
 
     .calibration-target-zone {
