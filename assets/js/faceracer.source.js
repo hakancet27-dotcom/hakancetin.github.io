@@ -1922,37 +1922,61 @@ function showCalibrationSetupScreen() {
         <p style="font-size: 1.1rem; color: #00ff88; margin-bottom: 10px;">Kalibrasyon Hazırlığı</p>
         <p style="font-size: 0.85rem; color: #ccc; margin-bottom: 20px;">Yüzünüzü dairenin tam ortasına getirin</p>
         
-        <div class="calibration-circle-container">
-            <div class="calibration-ring"></div>
-            <div class="calibration-crosshair"></div>
-            <div class="calibration-target-zone"></div>
-            <div class="face-position-dot"></div>
-            <div class="audio-feedback-icon">🔊</div>
-        </div>
-        
-        <div class="face-quality-panel">
-            <div class="face-quality-item">
-                <span class="face-quality-label">Mesafe:</span>
-                <span class="face-quality-value quality-size">Hesaplanıyor...</span>
-            </div>
-            <div class="face-quality-item">
-                <span class="face-quality-label">Pozisyon:</span>
-                <span class="face-quality-value quality-position">Hesaplanıyor...</span>
-            </div>
-            <div class="face-quality-item">
-                <span class="face-quality-label">Açı:</span>
-                <span class="face-quality-value quality-angle">Hesaplanıyor...</span>
+        <div class="calibration-video-wrapper">
+            <div class="calibration-circle-container">
+                <div class="calibration-ring"></div>
+                <div class="calibration-crosshair"></div>
+                <div class="calibration-target-zone"></div>
+                <div class="face-position-dot"></div>
+                <div class="audio-feedback-icon">🔊</div>
             </div>
         </div>
         
-        <button class="calibration-ready-btn" disabled onclick="startCalibrationCountdown()">
-            Pozisyon Ayarlanıyor...
-        </button>
-        
-        <p style="font-size: 0.75rem; color: #888; margin-top: 15px;">
-            🔊 Sesli geribildirim aktif
-        </p>
+        <div class="calibration-ui-panel">
+            <div class="face-quality-panel">
+                <div class="face-quality-item">
+                    <span class="face-quality-label">Mesafe:</span>
+                    <span class="face-quality-value quality-size">Hesaplanıyor...</span>
+                </div>
+                <div class="face-quality-item">
+                    <span class="face-quality-label">Pozisyon:</span>
+                    <span class="face-quality-value quality-position">Hesaplanıyor...</span>
+                </div>
+                <div class="face-quality-item">
+                    <span class="face-quality-label">Açı:</span>
+                    <span class="face-quality-value quality-angle">Hesaplanıyor...</span>
+                </div>
+            </div>
+            
+            <button class="calibration-ready-btn" disabled onclick="startCalibrationCountdown()">
+                Pozisyon Ayarlanıyor...
+            </button>
+            
+            <p style="font-size: 0.75rem; color: #888; margin-top: 15px;">
+                🔊 Sesli geribildirim aktif
+            </p>
+        </div>
     `;
+    
+    // Add crosshair to document body (separate from content)
+    const crosshairHTML = `
+        <div class="calibration-crosshair-overlay">
+            <div class="calibration-circle-container">
+                <div class="calibration-ring"></div>
+                <div class="calibration-crosshair"></div>
+                <div class="calibration-target-zone"></div>
+                <div class="face-position-dot"></div>
+                <div class="audio-feedback-icon">🔊</div>
+            </div>
+        </div>
+    `;
+    
+    // Remove old crosshair if exists
+    const oldOverlay = document.querySelector('.calibration-crosshair-overlay');
+    if (oldOverlay) oldOverlay.remove();
+    
+    // Insert crosshair overlay
+    document.body.insertAdjacentHTML('beforeend', crosshairHTML);
     
     // Start real-time quality checking
     gameState.isCalibrating = true;
@@ -1989,6 +2013,10 @@ function startCalibrationCountdown() {
         clearInterval(gameState.calibrationCheckInterval);
         gameState.calibrationCheckInterval = null;
     }
+    
+    // Remove crosshair overlay
+    const crosshairOverlay = document.querySelector('.calibration-crosshair-overlay');
+    if (crosshairOverlay) crosshairOverlay.remove();
     
     // Play success sound
     playCalibrationBeep('success');
