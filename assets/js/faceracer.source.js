@@ -2063,15 +2063,6 @@ function endGame() {
     toggleControls.classList.add('hidden');
     easyModeBtn.classList.remove('hidden');  // Show easy mode button
 
-    // Mobil dikey modda oyun sonu ekranında müzik/TV butonlarını gizle (overlay içinde zaten var)
-    const isPortraitMobile = window.innerHeight > window.innerWidth && window.innerWidth <= 768;
-    if (isPortraitMobile) {
-        const musicBtn = document.getElementById('toggleMusic');
-        const tvBtn = document.getElementById('toggleTVMode');
-        if (musicBtn) musicBtn.classList.add('hidden');
-        if (tvBtn) tvBtn.classList.add('hidden');
-    }
-
     const calibrationContent = document.querySelector('.calibration-content');
     const finalScore = gameState.score;
 
@@ -2198,12 +2189,6 @@ function endGame() {
     video.classList.remove('calibrating');  // Remove calibrating class
     createCar();  // Apply car config
     easyModeBtn.classList.add('hidden');  // Hide easy mode button
-    
-    // Mobil dikey modda müzik/TV butonlarını tekrar göster
-    const musicBtn = document.getElementById('toggleMusic');
-    const tvBtn = document.getElementById('toggleTVMode');
-    if (musicBtn) musicBtn.classList.remove('hidden');
-    if (tvBtn) tvBtn.classList.remove('hidden');
     
     gameState.isPlaying = true;
     updateEasyModeButton();

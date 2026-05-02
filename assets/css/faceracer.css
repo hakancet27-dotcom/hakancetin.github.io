@@ -542,30 +542,3 @@ body {
     transform: scale(1.08);
     box-shadow: 0 0 10px rgba(255,255,255,0.2);
 }
-
-/* Mobil Dikey Mod - Müzik ve TV Modu Butonları En Üste */
-@media (max-width: 768px) and (orientation: portrait) {
-    #toggleMusic {
-        position: fixed !important;
-        top: 10px !important;
-        left: 10px !important;
-        bottom: auto !important;
-        padding: 8px 12px !important;
-        font-size: 0.8rem !important;
-        z-index: 1001 !important;
-    }
-
-    #toggleTVMode {
-        position: fixed !important;
-        top: 10px !important;
-        left: 100px !important;
-        bottom: auto !important;
-        padding: 8px 12px !important;
-        font-size: 0.8rem !important;
-        z-index: 1001 !important;
-        max-width: 120px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-}
