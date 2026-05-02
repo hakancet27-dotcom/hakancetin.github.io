@@ -742,3 +742,213 @@ body {
     font-size: 0.8rem;
     color: #888;
 }
+
+/* ============================================
+   CALIBRATION ENHANCEMENTS - Circular Screen Support
+   ============================================ */
+
+/* Circular Crosshair Container */
+.calibration-circle-container {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    margin: 20px auto;
+}
+
+/* Outer circle ring */
+.calibration-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 3px solid #333;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Target center zone */
+.calibration-target-zone {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border: 2px solid #00ff88;
+    border-radius: 50%;
+    background: rgba(0, 255, 136, 0.1);
+    transition: all 0.3s ease;
+}
+
+.calibration-target-zone.perfect {
+    border-color: #00ff88;
+    background: rgba(0, 255, 136, 0.3);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+}
+
+.calibration-target-zone.warning {
+    border-color: #ffaa00;
+    background: rgba(255, 170, 0, 0.2);
+}
+
+.calibration-target-zone.error {
+    border-color: #ff4444;
+    background: rgba(255, 68, 68, 0.2);
+}
+
+/* Face position indicator (dot) */
+.face-position-dot {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: #00ff88;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.1s ease;
+    box-shadow: 0 0 10px #00ff88;
+    z-index: 10;
+}
+
+.face-position-dot.centered {
+    background: #00ff88;
+    box-shadow: 0 0 20px #00ff88;
+}
+
+.face-position-dot.off-center {
+    background: #ffaa00;
+    box-shadow: 0 0 10px #ffaa00;
+}
+
+/* Crosshair lines */
+.calibration-crosshair {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.calibration-crosshair::before,
+.calibration-crosshair::after {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.calibration-crosshair::before {
+    width: 100%;
+    height: 1px;
+    top: 50%;
+    left: 0;
+}
+
+.calibration-crosshair::after {
+    width: 1px;
+    height: 100%;
+    top: 0;
+    left: 50%;
+}
+
+/* Face quality indicators */
+.face-quality-panel {
+    margin-top: 15px;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    border: 1px solid #444;
+}
+
+.face-quality-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 6px 0;
+    font-size: 0.8rem;
+}
+
+.face-quality-label {
+    color: #ccc;
+}
+
+.face-quality-value {
+    font-weight: bold;
+}
+
+.face-quality-value.good {
+    color: #00ff88;
+}
+
+.face-quality-value.warning {
+    color: #ffaa00;
+}
+
+.face-quality-value.error {
+    color: #ff4444;
+}
+
+/* Ready button */
+.calibration-ready-btn {
+    margin-top: 20px;
+    padding: 15px 40px;
+    background: #00ff88;
+    color: #1a1a2e;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: readyPulse 2s infinite;
+}
+
+.calibration-ready-btn:hover {
+    background: #00cc6a;
+    transform: scale(1.05);
+}
+
+.calibration-ready-btn:disabled {
+    background: #666;
+    cursor: not-allowed;
+    animation: none;
+}
+
+@keyframes readyPulse {
+    0%, 100% { box-shadow: 0 0 10px rgba(0, 255, 136, 0.5); }
+    50% { box-shadow: 0 0 25px rgba(0, 255, 136, 0.8); }
+}
+
+/* Audio feedback icon */
+.audio-feedback-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.audio-feedback-icon.active {
+    opacity: 1;
+    animation: soundWave 1s infinite;
+}
+
+@keyframes soundWave {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Responsive adjustments for circular screens */
+@media (max-width: 400px) {
+    .calibration-circle-container {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .calibration-target-zone {
+        width: 50px;
+        height: 50px;
+    }
+}
