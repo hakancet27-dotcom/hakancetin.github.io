@@ -1429,6 +1429,9 @@ function onFaceResults(results) {
     if (faceDetected) {
         const landmarks = results.multiFaceLandmarks[0];
         
+        // Store latest landmarks globally for calibration quality check
+        window.latestFaceLandmarks = landmarks;
+        
         // Use only upper face landmarks to focus on head movement, not body
         const forehead = landmarks[10];
         const foreheadUpper = landmarks[151]; // Upper forehead
@@ -1651,6 +1654,235 @@ function updateEasyModeButton() {
 window.selectDifficulty = selectDifficulty;
 window.toggleEasyMode = toggleEasyMode;
 
+// ============================================
+// CALIBRATION ENHANCEMENTS - Audio & Quality Check
+// ============================================
+
+// Audio Context for beep sounds
+let audioCtx = null;
+let calibrationAudioEnabled = true;
+
+function initCalibrationAudio() {
+    if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+}
+
+// Play calibration beep sound
+function playCalibrationBeep(type = 'tick') {
+    if (!calibrationAudioEnabled || !audioCtx) return;
+    
+    const oscillator = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+    
+    oscillator.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+    
+    switch(type) {
+        case 'tick': // Her saniye için
+            oscillator.frequency.value = 800;
+            gainNode.gain.value = 0.3;
+            oscillator.start();
+            oscillator.stop(audioCtx.currentTime + 0.1);
+            break;
+        case 'success': // Aşama tamamlandı
+            oscillator.frequency.value = 1200;
+            gainNode.gain.value = 0.4;
+            oscillator.start();
+            setTimeout(() => oscillator.frequency.value = 1500, 100);
+            oscillator.stop(audioCtx.currentTime + 0.3);
+            break;
+        case 'error': // Yüz kayboldu
+            oscillator.frequency.value = 400;
+            gainNode.gain.value = 0.3;
+            oscillator.start();
+            oscillator.stop(audioCtx.currentTime + 0.2);
+            break;
+        case 'center': // Merkezde
+            oscillator.frequency.value = 1000;
+            gainNode.gain.value = 0.2;
+            oscillator.start();
+            oscillator.stop(audioCtx.currentTime + 0.05);
+            break;
+    }
+}
+
+// Calculate face size from landmarks
+function calculateFaceSize(landmarks) {
+    const leftEye = landmarks[33];
+    const rightEye = landmarks[263];
+    const forehead = landmarks[10];
+    const chin = landmarks[152];
+    
+    const faceWidth = Math.abs(rightEye.x - leftEye.x);
+    const faceHeight = Math.abs(chin.y - forehead.y);
+    
+    return (faceWidth + faceHeight) / 2;
+}
+
+// Calculate face angle (yaw)
+function calculateFaceAngle(landmarks) {
+    const leftEye = landmarks[33];
+    const rightEye = landmarks[263];
+    const noseTip = landmarks[1];
+    
+    // Simple yaw estimation based on nose position relative to eyes
+    const eyeCenterX = (leftEye.x + rightEye.x) / 2;
+    const eyeDistance = Math.abs(rightEye.x - leftEye.x);
+    const yaw = (noseTip.x - eyeCenterX) / eyeDistance * 45; // approx degrees
+    
+    return yaw;
+}
+
+// Check face quality in real-time
+function checkFaceQuality(landmarks, videoElement) {
+    if (!landmarks || landmarks.length === 0) {
+        return {
+            ok: false,
+            position: 'unknown',
+            messages: ['Yüz bulunamadı'],
+            details: { size: 0, angle: 0, brightness: 0 }
+        };
+    }
+    
+    const messages = [];
+    const details = {};
+    
+    // 1. Face size check
+    const faceSize = calculateFaceSize(landmarks);
+    details.size = faceSize;
+    
+    if (faceSize < 0.12) {
+        messages.push('Kameraya daha yaklaşın');
+    } else if (faceSize > 0.5) {
+        messages.push('Biraz uzaklaşın');
+    }
+    
+    // 2. Face angle check
+    const faceAngle = calculateFaceAngle(landmarks);
+    details.angle = faceAngle;
+    
+    if (Math.abs(faceAngle) > 20) {
+        messages.push('Kafanızı düz tutun');
+    }
+    
+    // 3. Position check (nose relative to center)
+    const noseTip = landmarks[1];
+    const centerX = 0.5;
+    const centerY = 0.5;
+    const offsetX = (noseTip.x - centerX) * 100; // percentage
+    const offsetY = (noseTip.y - centerY) * 100;
+    
+    details.offsetX = offsetX;
+    details.offsetY = offsetY;
+    
+    // Determine position status
+    const isCentered = Math.abs(offsetX) < 8 && Math.abs(offsetY) < 8;
+    const isWarning = Math.abs(offsetX) < 15 && Math.abs(offsetY) < 15;
+    
+    // 4. Simple brightness check using video frame (if available)
+    // This is a basic check - more sophisticated version could analyze canvas
+    details.brightness = 50; // default
+    
+    // Build quality result
+    let position = 'centered';
+    if (!isCentered && isWarning) position = 'warning';
+    else if (!isCentered) position = 'error';
+    
+    const ok = isCentered && faceSize >= 0.12 && faceSize <= 0.5 && Math.abs(faceAngle) <= 20;
+    
+    return {
+        ok,
+        position,
+        messages: messages.length > 0 ? messages : ['Mükemmel!'],
+        details
+    };
+}
+
+// Update circular crosshair UI
+function updateCrosshair(quality, noseX, noseY) {
+    const dot = document.querySelector('.face-position-dot');
+    const targetZone = document.querySelector('.calibration-target-zone');
+    
+    if (!dot || !targetZone) return;
+    
+    // Map normalized coordinates (0-1) to percentage (0-100)
+    // Invert X because video is mirrored
+    const x = (1 - noseX) * 100;
+    const y = noseY * 100;
+    
+    // Update dot position
+    dot.style.left = x + '%';
+    dot.style.top = y + '%';
+    
+    // Update classes based on quality
+    dot.classList.remove('centered', 'off-center');
+    targetZone.classList.remove('perfect', 'warning', 'error');
+    
+    if (quality.position === 'centered') {
+        dot.classList.add('centered');
+        targetZone.classList.add('perfect');
+        playCalibrationBeep('center');
+    } else if (quality.position === 'warning') {
+        dot.classList.add('off-center');
+        targetZone.classList.add('warning');
+    } else {
+        dot.classList.add('off-center');
+        targetZone.classList.add('error');
+    }
+}
+
+// Update quality panel UI
+function updateQualityPanel(quality) {
+    const panel = document.querySelector('.face-quality-panel');
+    if (!panel) return;
+    
+    const sizeEl = panel.querySelector('.quality-size');
+    const positionEl = panel.querySelector('.quality-position');
+    const angleEl = panel.querySelector('.quality-angle');
+    
+    if (sizeEl) {
+        const size = quality.details.size;
+        let sizeClass = 'good';
+        let sizeText = 'İyi';
+        if (size < 0.12) { sizeClass = 'error'; sizeText = 'Çok Uzak'; }
+        else if (size > 0.5) { sizeClass = 'warning'; sizeText = 'Çok Yakın'; }
+        
+        sizeEl.className = `face-quality-value ${sizeClass}`;
+        sizeEl.textContent = sizeText;
+    }
+    
+    if (positionEl) {
+        positionEl.className = `face-quality-value ${quality.position === 'centered' ? 'good' : (quality.position === 'warning' ? 'warning' : 'error')}`;
+        positionEl.textContent = quality.position === 'centered' ? 'Merkez' : (quality.position === 'warning' ? 'Yakın' : 'Uzak');
+    }
+    
+    if (angleEl) {
+        const angle = Math.abs(quality.details.angle);
+        let angleClass = 'good';
+        let angleText = 'Düz';
+        if (angle > 20) { angleClass = 'error'; angleText = 'Eğik'; }
+        else if (angle > 10) { angleClass = 'warning'; angleText = 'Hafif Eğik'; }
+        
+        angleEl.className = `face-quality-value ${angleClass}`;
+        angleEl.textContent = angleText;
+    }
+}
+
+// Enable/disable ready button based on quality
+function updateReadyButton(quality) {
+    const btn = document.querySelector('.calibration-ready-btn');
+    if (!btn) return;
+    
+    if (quality.ok) {
+        btn.disabled = false;
+        btn.textContent = 'BAŞLA 🚀';
+    } else {
+        btn.disabled = true;
+        btn.textContent = 'Pozisyon Ayarlanıyor...';
+    }
+}
+
 // Calibration
 function startCalibration() {
     startButton.classList.add('hidden');
@@ -1661,8 +1893,9 @@ function startCalibration() {
     
     calibrationOverlay.classList.remove('hidden');
     
-    // Initialize audio
+    // Initialize audio systems
     initAudio();
+    initCalibrationAudio();
     
     // Move camera to calibration position
     video.classList.add('calibrating');
@@ -1677,6 +1910,90 @@ function startCalibration() {
         pitchMax: 0
     };
     
+    // Show new calibration UI with circular crosshair
+    showCalibrationSetupScreen();
+}
+
+// New calibration setup screen with quality check
+function showCalibrationSetupScreen() {
+    const calibrationContent = document.querySelector('.calibration-content');
+    calibrationContent.innerHTML = `
+        <h1>🏎️ FaceRacer</h1>
+        <p style="font-size: 1.1rem; color: #00ff88; margin-bottom: 10px;">Kalibrasyon Hazırlığı</p>
+        <p style="font-size: 0.85rem; color: #ccc; margin-bottom: 20px;">Yüzünüzü dairenin tam ortasına getirin</p>
+        
+        <div class="calibration-circle-container">
+            <div class="calibration-ring"></div>
+            <div class="calibration-crosshair"></div>
+            <div class="calibration-target-zone"></div>
+            <div class="face-position-dot"></div>
+            <div class="audio-feedback-icon">🔊</div>
+        </div>
+        
+        <div class="face-quality-panel">
+            <div class="face-quality-item">
+                <span class="face-quality-label">Mesafe:</span>
+                <span class="face-quality-value quality-size">Hesaplanıyor...</span>
+            </div>
+            <div class="face-quality-item">
+                <span class="face-quality-label">Pozisyon:</span>
+                <span class="face-quality-value quality-position">Hesaplanıyor...</span>
+            </div>
+            <div class="face-quality-item">
+                <span class="face-quality-label">Açı:</span>
+                <span class="face-quality-value quality-angle">Hesaplanıyor...</span>
+            </div>
+        </div>
+        
+        <button class="calibration-ready-btn" disabled onclick="startCalibrationCountdown()">
+            Pozisyon Ayarlanıyor...
+        </button>
+        
+        <p style="font-size: 0.75rem; color: #888; margin-top: 15px;">
+            🔊 Sesli geribildirim aktif
+        </p>
+    `;
+    
+    // Start real-time quality checking
+    gameState.isCalibrating = true;
+    gameState.calibrationCheckInterval = setInterval(() => {
+        checkCalibrationQuality();
+    }, 100); // Check every 100ms
+}
+
+// Check face quality during calibration setup
+function checkCalibrationQuality() {
+    // Get latest face landmarks from gameState or global
+    const faceLandmarks = window.latestFaceLandmarks;
+    if (!faceLandmarks) {
+        updateReadyButton({ ok: false, position: 'unknown' });
+        return;
+    }
+    
+    const quality = checkFaceQuality(faceLandmarks, video);
+    const noseTip = faceLandmarks[1];
+    
+    // Update UI
+    updateCrosshair(quality, noseTip.x, noseTip.y);
+    updateQualityPanel(quality);
+    updateReadyButton(quality);
+    
+    // Store quality for countdown start
+    window.currentCalibrationQuality = quality;
+}
+
+// Start countdown when ready
+function startCalibrationCountdown() {
+    // Stop quality checking
+    if (gameState.calibrationCheckInterval) {
+        clearInterval(gameState.calibrationCheckInterval);
+        gameState.calibrationCheckInterval = null;
+    }
+    
+    // Play success sound
+    playCalibrationBeep('success');
+    
+    // Start the actual calibration phases
     runCalibrationPhase();
 }
 
