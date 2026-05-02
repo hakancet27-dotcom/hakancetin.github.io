@@ -1642,12 +1642,11 @@ function toggleEasyMode() {
 // Update easy mode button text
 function updateEasyModeButton() {
     if (gameState.difficulty === 'easy') {
-        easyModeBtn.textContent = '🔴 Normal Moda Geç';
-        easyModeBtn.style.background = '#ff6b6b';
+        easyModeBtn.textContent = '🔴 Normal Mod';
     } else {
-        easyModeBtn.textContent = '🟢 Kolay Moda Geç';
-        easyModeBtn.style.background = '#4ecdc4';
+        easyModeBtn.textContent = '🟢 Kolay Mod';
     }
+    // Styles controlled by CSS with !important
 }
 
 // Make functions globally accessible
