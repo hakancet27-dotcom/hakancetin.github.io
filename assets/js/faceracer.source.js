@@ -1400,13 +1400,11 @@ async function detectFace() {
         : video;
     
     if (!source || !source.srcObject) {
-        updateDebugInfo('Video yok');
         requestAnimationFrame(detectFace);
         return;
     }
     
     if (gameState.usingRemoteCamera && source.readyState < 2) {
-        updateDebugInfo('Video yükleniyor: ' + source.readyState);
         requestAnimationFrame(detectFace);
         return;
     }
@@ -1421,8 +1419,6 @@ async function detectFace() {
             return;
         }
     }
-    
-    updateDebugInfo('MediaPipe çalışıyor');
 
     await faceMesh.send({image: source});
     requestAnimationFrame(detectFace);
@@ -1430,7 +1426,6 @@ async function detectFace() {
 
 function onFaceResults(results) {
     const faceDetected = results.multiFaceLandmarks && results.multiFaceLandmarks.length > 0;
-    updateDebugInfo(faceDetected ? 'Yüz algılanıyor ✓' : 'Yüz yok ✗');
     if (faceDetected) {
         const landmarks = results.multiFaceLandmarks[0];
         
