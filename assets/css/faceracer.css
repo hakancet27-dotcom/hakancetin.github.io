@@ -964,9 +964,15 @@ body {
 
 /* Responsive adjustments for circular screens */
 @media (max-width: 400px) {
+    /* Ensure video and calibration circle have same size */
+    #cameraVideo.calibrating {
+        width: 200px;
+        height: 200px;
+    }
+
     .calibration-circle-container {
-        width: 220px;
-        height: 220px;
+        width: 200px;
+        height: 200px;
     }
 
     .calibration-target-zone {
