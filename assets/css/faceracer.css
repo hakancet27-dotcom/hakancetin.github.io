@@ -223,27 +223,28 @@ body {
     font-weight: bold;
 }
 
-#controls {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    z-index: 100;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 15px;
+#controlsPanel {
+    position: fixed;
+    top: 50px;
+    right: 10px;
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px;
     border-radius: 10px;
-    border: 2px solid #00ff88;
+    border: 1px solid #444;
+    max-width: 300px;
 }
 
-#controls.hidden {
+#controlsPanel.hidden {
     display: none;
 }
 
-#controls h3 {
+#controlsPanel h3 {
     color: #00ff88;
     margin-bottom: 10px;
 }
 
-#controls p {
+#controlsPanel p {
     font-size: 0.9rem;
     margin: 5px 0;
     color: #ccc;
@@ -354,21 +355,22 @@ body {
         height: 180px;
     }
 
-    #controls {
-        bottom: 10px;
-        left: 10px;
-        padding: 8px;
-        font-size: 0.65rem;
-    }
-
-    #controls h3 {
+    #controlsPanel {
+        top: 50px;
+        right: 10px;
+        padding: 15px;
         font-size: 0.8rem;
-        margin-bottom: 5px;
+        max-width: 250px;
     }
 
-    #controls p {
-        font-size: 0.6rem;
-        margin: 2px 0;
+    #controlsPanel h3 {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+    }
+
+    #controlsPanel p {
+        font-size: 0.75rem;
+        margin: 4px 0;
     }
 
     #easyModeBtn {
@@ -419,17 +421,18 @@ body {
         font-size: 11px;
     }
 
-    #controls {
-        padding: 7px;
-        font-size: 0.62rem;
+    #controlsPanel {
+        padding: 12px;
+        font-size: 0.7rem;
+        max-width: 220px;
     }
 
-    #controls h3 {
-        font-size: 0.76rem;
+    #controlsPanel h3 {
+        font-size: 0.85rem;
     }
 
-    #controls p {
-        font-size: 0.57rem;
+    #controlsPanel p {
+        font-size: 0.7rem;
     }
 
     #turboBar {
