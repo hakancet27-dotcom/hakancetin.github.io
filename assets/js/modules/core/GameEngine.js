@@ -488,6 +488,9 @@ class GameEngine {
         // Mesafe güncelleme
         this.state.distance += (this.state.speed * deltaTime) / 3600; // km -> m
 
+        // Yol çizgilerini güncelle
+        this.updateRoadSegments(deltaTime);
+
         // Engelleri güncelle
         this.updateObstacles(deltaTime);
 
@@ -589,6 +592,19 @@ class GameEngine {
         }
 
         eventBus.emit(Events.OBSTACLE_HIT, { type, position: obstacle.position });
+    }
+
+    updateRoadSegments(deltaTime) {
+        const moveSpeed = this.state.speed * deltaTime * 0.1;
+
+        for (let i = this.roadSegments.length - 1; i >= 0; i--) {
+            const line = this.roadSegments[i];
+            line.position.z += moveSpeed;
+
+            if (line.position.z > 20) {
+                line.position.z = -480;
+            }
+        }
     }
 
     updateTrees(deltaTime) {

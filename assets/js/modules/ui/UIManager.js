@@ -208,16 +208,26 @@ class UIManager {
     // Oyun başlangıcı
     onGameStart() {
         this.hideAllOverlays();
+        this.hideOverlay('calibrationOverlay');
+        this.hideOverlay('difficultyOverlay');
+        this.hideOverlay('gameOverOverlay');
         
-        if (this.elements.hud) {
-            this.elements.hud.classList.remove('hidden');
-        }
-        if (this.elements.toggleCamera) {
-            this.elements.toggleCamera.classList.remove('hidden');
-        }
-        if (this.elements.toggleControls) {
-            this.elements.toggleControls.classList.remove('hidden');
-        }
+        // Tüm HUD elementlerini göster
+        const showElements = [
+            'hud', 'toggleCamera', 'toggleControls', 'toggleMusic'
+        ];
+        showElements.forEach(id => {
+            if (this.elements[id]) {
+                this.elements[id].classList.remove('hidden');
+            }
+        });
+
+        // Speedometer ve turbo bar
+        const speedometer = document.getElementById('speedometer');
+        if (speedometer) speedometer.classList.remove('hidden');
+        
+        const turboBarContainer = document.getElementById('turboBarContainer');
+        if (turboBarContainer) turboBarContainer.classList.remove('hidden');
         
         // Teknik değerleri göster
         this.startTechnicalValuesUpdate();
