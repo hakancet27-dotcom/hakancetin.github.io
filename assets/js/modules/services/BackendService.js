@@ -35,6 +35,7 @@ class BackendService {
 
                 this.firebase = firebase;
                 this.database = firebase.database();
+                this.db = this.database; // WebRTC için alias
                 this.connected = true;
 
                 // Logger'a Firebase durumunu bildir
