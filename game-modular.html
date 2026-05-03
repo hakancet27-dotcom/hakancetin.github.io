@@ -4,11 +4,34 @@
     <meta charset="UTF-8">
     <link rel="icon" href="data:,">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FaceRacer - Modüler | Hakan Çetin</title>
-    <meta name="description" content="Yüz takibi ile oynanan yeni nesil kafa kontrol oyunu - Modüler mimari">
+    <title>FaceRacer - Kafa Kontrol Oyunu | Hakan Çetin</title>
+    <meta name="description" content="Yüz takibi ile oynanan yeni nesil kafa kontrol oyunu. Engelli bireyler ve ofis çalışanları için erişilebilir oyun deneyimi.">
     <meta name="author" content="Hakan Çetin">
+    <meta name="copyright" content="© 2026 Hakan Çetin - Tüm hakları saklıdır">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://www.gstatic.com https://*.firebaseio.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://api.qrserver.com; media-src 'self' blob:; connect-src 'self' https://cdn.jsdelivr.net https://www.gstatic.com wss: https://*.firebaseio.com https://*.googleapis.com https://*.firebaseapp.com https://*.gstatic.com; frame-src https://*.firebaseio.com; font-src 'self' https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="camera=(self), microphone=(), geolocation=(), fullscreen=(self)">
     
     <link rel="stylesheet" href="assets/css/faceracer.css">
+    
+    <!-- Security Script -->
+    <script>
+        // Domain Locking
+        const ALLOWED_DOMAINS = ['hakancetin.com.tr', 'hakancetin.github.io', 'localhost', '127.0.0.1'];
+        const currentDomain = window.location.hostname;
+
+        if (!ALLOWED_DOMAINS.includes(currentDomain)) {
+            alert('⚠️ Bu oyun yetkisiz kullanımdır.\nLütfen hakancetin.com.tr adresini kullanın.');
+            window.location.href = 'https://hakancetin.com.tr';
+        }
+
+        // Console Protection
+        console.log('%c⚠️ FaceRacer Korumalıdır!', 'color: red; font-size: 20px; font-weight: bold;');
+        console.log('%c© 2026 Hakan Çetin - Tüm hakları saklıdır.', 'color: #00ff88; font-size: 14px;');
+    </script>
     
     <style>
         :root {
