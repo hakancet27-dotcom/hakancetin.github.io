@@ -197,8 +197,26 @@ class UIManager {
 
     // Kalibrasyon
     onCalibrationComplete() {
+        console.log('🎯 UIManager: Kalibrasyon tamamlandı, zorluk ekranı gösteriliyor...');
+        
         this.hideOverlay('calibrationOverlay');
-        this.showOverlay('difficultyOverlay');
+        
+        // Kalibrasyon overlay'ı kesinlikle gizle
+        const calOverlay = document.getElementById('calibrationOverlay');
+        if (calOverlay) {
+            calOverlay.style.display = 'none';
+            console.log('🎯 Kalibrasyon overlay gizlendi');
+        }
+        
+        // Zorluk overlay'ı göster
+        const diffOverlay = document.getElementById('difficultyOverlay');
+        if (diffOverlay) {
+            diffOverlay.classList.remove('hidden');
+            diffOverlay.style.display = 'flex';
+            console.log('🎯 Zorluk overlay gösterildi');
+        } else {
+            console.error('❌ difficultyOverlay bulunamadı!');
+        }
         
         if (this.elements.video) {
             this.elements.video.classList.remove('calibrating');
