@@ -25,6 +25,7 @@ class UIManager {
         eventBus.on(Events.GAME_OVER, () => this.showGameOver());
         eventBus.on(Events.GAME_START, () => this.onGameStart());
         eventBus.on(Events.CALIBRATION_COMPLETE, () => this.onCalibrationComplete());
+        eventBus.on('calibration:progress', (data) => this.onCalibrationProgress(data));
         
         // Platform olayları
         eventBus.on(Events.PLATFORM_CHANGED, (platform) => this.onPlatformChange(platform));
@@ -195,7 +196,27 @@ class UIManager {
         this.overlays.forEach(id => this.hideOverlay(id));
     }
 
-    // Kalibrasyon
+    // Kalibrasyon ilerleme
+    onCalibrationProgress(data) {
+        // Geri sayım güncelle
+        const countdownEl = document.getElementById('countdown');
+        if (countdownEl) {
+            countdownEl.textContent = data.countdown > 0 ? data.countdown : '✔';
+        }
+
+        // Progress bar güncelle
+        const progressFill = document.getElementById('calibrationProgress');
+        if (progressFill) {
+            progressFill.style.width = `${data.progress * 100}%`;
+        }
+
+        // Video'ya calibrating class ekle
+        if (this.elements.video && !this.elements.video.classList.contains('calibrating')) {
+            this.elements.video.classList.add('calibrating');
+        }
+    }
+
+    // Kalibrasyon tamamlandı
     onCalibrationComplete() {
         console.log('🎯 UIManager: Kalibrasyon tamamlandı, zorluk ekranı gösteriliyor...');
         

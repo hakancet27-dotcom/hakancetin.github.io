@@ -92,6 +92,24 @@
             50% { opacity: 0.7; }
         }
 
+        /* Calibration progress bar */
+        .progress-bar {
+            width: 200px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: #00ff88;
+            border-radius: 4px;
+            transition: width 0.1s ease;
+        }
+
         /* Canvas arkada kalsın */
         #gameCanvas {
             position: relative;

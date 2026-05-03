@@ -147,6 +147,15 @@ class InputLayer {
             this.calibrationSamples.shift();
         }
 
+        // Geri sayım güncellemesi (30fps varsayımı: 90 örnek = 3 saniye)
+        const progress = this.calibrationSamples.length / 90;
+        const countdown = Math.ceil(3 - (progress * 3));
+        eventBus.emit('calibration:progress', { 
+            progress, 
+            countdown: Math.max(0, countdown),
+            samples: this.calibrationSamples.length 
+        });
+
         // Kalibrasyon tamamlandı mı?
         if (this.calibrationSamples.length >= 90 && this.calibrationPhase === 0) {
             this.completeCalibration();
