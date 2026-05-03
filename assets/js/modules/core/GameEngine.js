@@ -41,6 +41,7 @@ class GameEngine {
         // Nesneler
         this.obstacles = [];
         this.trees = [];
+        this.roadSegments = [];
         this.particles = {
             exhaust: [],
             smoke: [],
@@ -102,6 +103,9 @@ class GameEngine {
             directionalLight.castShadow = true;
             this.scene.add(directionalLight);
 
+            // Yol
+            this.createRoad();
+
             // Çevre
             this.createEnvironment();
             
@@ -122,8 +126,47 @@ class GameEngine {
         }
     }
 
+    createRoad() {
+        // Dikey modda yol genişliğini azalt
+        const isPortrait = window.innerHeight > window.innerWidth;
+        const roadWidth = isPortrait ? 14 : 20;
+        const roadGeometry = new THREE.PlaneGeometry(roadWidth, 500);
+        const roadMaterial = new THREE.MeshStandardMaterial({ 
+            color: 0x333333,
+            roughness: 0.8
+        });
+        this.road = new THREE.Mesh(roadGeometry, roadMaterial);
+        this.road.rotation.x = -Math.PI / 2;
+        this.road.position.z = -200;
+        this.road.receiveShadow = true;
+        this.scene.add(this.road);
+
+        // Road lines
+        for (let i = 0; i < 20; i++) {
+            const lineGeometry = new THREE.PlaneGeometry(0.3, 5);
+            const lineMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+            const line = new THREE.Mesh(lineGeometry, lineMaterial);
+            line.rotation.x = -Math.PI / 2;
+            line.position.set(0, 0.01, -i * 25);
+            this.scene.add(line);
+            this.roadSegments.push(line);
+        }
+
+        // Side barriers
+        const barrierGeometry = new THREE.BoxGeometry(1, 2, 500);
+        const barrierMaterial = new THREE.MeshStandardMaterial({ color: 0xff0000 });
+        
+        const leftBarrier = new THREE.Mesh(barrierGeometry, barrierMaterial);
+        leftBarrier.position.set(-roadWidth / 2, 1, -200);
+        this.scene.add(leftBarrier);
+
+        const rightBarrier = new THREE.Mesh(barrierGeometry, barrierMaterial);
+        rightBarrier.position.set(roadWidth / 2, 1, -200);
+        this.scene.add(rightBarrier);
+    }
+
     createEnvironment() {
-        // Zemin
+        // Zemin (çim)
         const groundGeometry = new THREE.PlaneGeometry(200, 500);
         const groundMaterial = new THREE.MeshStandardMaterial({ color: 0x228B22 });
         const ground = new THREE.Mesh(groundGeometry, groundMaterial);
