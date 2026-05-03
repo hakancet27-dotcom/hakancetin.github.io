@@ -59,12 +59,17 @@ class App {
                 throw new Error('GameEngine failed to initialize');
             }
 
-            // 6. Input Layer'i başlat
+            // 6. Input Layer'i başlat (kamera başarısız olsa bile devam et)
             const video = document.getElementById('cameraVideo');
             if (video) {
-                const inputInitialized = await inputLayer.init(video);
-                if (!inputInitialized) {
-                    throw new Error('InputLayer failed to initialize');
+                try {
+                    const inputInitialized = await inputLayer.init(video);
+                    if (!inputInitialized) {
+                        logger.warn('InputLayer initialization failed, continuing without camera');
+                    }
+                } catch (error) {
+                    logger.warn('Camera access denied or failed:', error.message);
+                    logger.info('Game will continue without face tracking');
                 }
             }
 
