@@ -24,7 +24,6 @@ class UIManager {
         eventBus.on(Events.TURBO_DEACTIVATED, () => this.hideTurboActive());
         eventBus.on(Events.GAME_OVER, () => this.showGameOver());
         eventBus.on(Events.GAME_START, () => this.onGameStart());
-        eventBus.on(Events.CALIBRATION_COMPLETE, () => this.onCalibrationComplete());
         eventBus.on('calibration:progress', (data) => this.onCalibrationProgress(data));
         
         // Platform olayları

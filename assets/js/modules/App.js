@@ -267,11 +267,6 @@ class App {
             }
         });
 
-        // Kalibrasyon tamamlandığında zorluk seçimi göster
-        eventBus.on(Events.CALIBRATION_COMPLETE, () => {
-            uiManager.hideLoading();
-        });
-        
         // ===== AUTO-PAUSE: Yüz çerçeveden çıktığında =====
         eventBus.on(Events.FACE_LOST, () => {
             const state = gameEngine.getState();
