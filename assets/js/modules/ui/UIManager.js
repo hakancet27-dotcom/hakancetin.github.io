@@ -93,7 +93,7 @@ class UIManager {
         // Klavye kontrolleri
         document.addEventListener('keydown', (e) => {
             if (e.key === ' ' || e.code === 'Space') {
-                if (!this.elements.calibrationOverlay?.classList.contains('hidden')) {
+                if (this.elements.calibrationOverlay?.classList.contains('visible')) {
                     // Boşluk tuşu kalibrasyon sırasında
                 }
             }
@@ -233,16 +233,16 @@ class UIManager {
         ];
         showElements.forEach(id => {
             if (this.elements[id]) {
-                this.elements[id].classList.remove('hidden');
+                this.elements[id].classList.add('visible');
             }
         });
 
         // Speedometer ve turbo bar
         const speedometer = document.getElementById('speedometer');
-        if (speedometer) speedometer.classList.remove('hidden');
+        if (speedometer) speedometer.classList.add('visible');
         
         const turboBarContainer = document.getElementById('turboBarContainer');
-        if (turboBarContainer) turboBarContainer.classList.remove('hidden');
+        if (turboBarContainer) turboBarContainer.classList.add('visible');
         
         // Teknik değerleri göster
         this.startTechnicalValuesUpdate();
@@ -262,7 +262,7 @@ class UIManager {
     // Kontroller paneli
     toggleControlsPanel() {
         if (this.elements.controlsPanel) {
-            this.elements.controlsPanel.classList.toggle('hidden');
+            this.elements.controlsPanel.classList.toggle('visible');
         }
     }
 
@@ -388,13 +388,13 @@ class UIManager {
             `;
             document.body.appendChild(loading);
         }
-        loading.classList.remove('hidden');
+        loading.classList.add('visible');
     }
 
     hideLoading() {
         const loading = document.getElementById('loading');
         if (loading) {
-            loading.classList.add('hidden');
+            loading.classList.remove('visible');
         }
     }
 }

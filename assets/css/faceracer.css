@@ -1138,7 +1138,7 @@ body {
 
 
 /* ===== GENEL HOVER ===== */
-button:hover {
+button:hover:not(#startButton) {
     transform: scale(1.05);
     transition: transform 0.2s ease;
     opacity: 0.9;
