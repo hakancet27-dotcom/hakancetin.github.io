@@ -169,7 +169,7 @@ class UIManager {
     showOverlay(overlayId) {
         const overlay = document.getElementById(overlayId);
         if (overlay) {
-            overlay.classList.remove('hidden');
+            overlay.classList.add('visible');
             this.overlays.push(overlayId);
         }
     }
@@ -177,7 +177,7 @@ class UIManager {
     hideOverlay(overlayId) {
         const overlay = document.getElementById(overlayId);
         if (overlay) {
-            overlay.classList.add('hidden');
+            overlay.classList.remove('visible');
             const index = this.overlays.indexOf(overlayId);
             if (index > -1) this.overlays.splice(index, 1);
         }
@@ -213,22 +213,8 @@ class UIManager {
         
         this.hideOverlay('calibrationOverlay');
         
-        // Kalibrasyon overlay'ı kesinlikle gizle
-        const calOverlay = document.getElementById('calibrationOverlay');
-        if (calOverlay) {
-            calOverlay.style.display = 'none';
-            console.log('🎯 Kalibrasyon overlay gizlendi');
-        }
-        
         // Zorluk overlay'ı göster
-        const diffOverlay = document.getElementById('difficultyOverlay');
-        if (diffOverlay) {
-            diffOverlay.classList.remove('hidden');
-            diffOverlay.style.display = 'flex';
-            console.log('🎯 Zorluk overlay gösterildi');
-        } else {
-            console.error('❌ difficultyOverlay bulunamadı!');
-        }
+        this.showOverlay('difficultyOverlay');
         
         if (this.elements.video) {
             this.elements.video.classList.remove('calibrating');
@@ -238,9 +224,6 @@ class UIManager {
     // Oyun başlangıcı
     onGameStart() {
         this.hideAllOverlays();
-        this.hideOverlay('calibrationOverlay');
-        this.hideOverlay('difficultyOverlay');
-        this.hideOverlay('gameOverOverlay');
         
         // Tüm HUD elementlerini göster
         const showElements = [

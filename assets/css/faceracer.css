@@ -546,42 +546,7 @@ body {
     box-shadow: 0 0 10px rgba(255,255,255,0.2);
 }
 
-/* Button Styles - Moved from inline */
-#toggleCamera, #toggleMusic, #toggleTVMode, #easyModeBtn {
-    position: fixed;
-    bottom: 20px;
-    padding: 12px 16px;
-    background: rgba(0,0,0,0.8) !important;
-    color: white !important;
-    border: 1px solid #555 !important;
-    border-radius: 8px;
-    cursor: pointer;
-    z-index: 1000;
-    font-size: 0.85rem;
-    min-width: 90px;
-    text-align: center;
-    white-space: nowrap;
-}
-
-#toggleCamera {
-    left: 20px;
-}
-
-#toggleMusic {
-    left: 120px;
-}
-
-#toggleTVMode {
-    left: 220px;
-}
-
-#easyModeBtn {
-    left: 360px;
-    right: auto;
-    background: rgba(0,0,0,0.8) !important;
-    border: 1px solid #555 !important;
-    font-weight: normal;
-}
+/* Button Styles - bottomControls flex ile hizalanır */
 
 #toggleControls {
     position: fixed;
@@ -1100,6 +1065,35 @@ body {
 }
 #webrtcOverlay.active {
     display: flex;
+}
+
+/* ===== GAME OVER OVERLAY ===== */
+#gameOverOverlay {
+    display: none;
+}
+#gameOverOverlay.visible {
+    display: flex;
+}
+
+/* ===== DIFFICULTY OVERLAY ===== */
+#difficultyOverlay {
+    display: none;
+}
+#difficultyOverlay.visible {
+    display: flex;
+}
+
+/* ===== CAMERA ERROR OVERLAY ===== */
+#cameraErrorOverlay {
+    display: none;
+}
+#cameraErrorOverlay.visible {
+    display: flex;
+}
+
+/* ===== START BUTTON HOVER İSTİSNA ===== */
+#startButton:hover {
+    transform: translate(-50%, -50%) scale(1.05) !important;
 }
 
 /* ===== BOTTOM CONTROLS ===== */
