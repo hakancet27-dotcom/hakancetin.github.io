@@ -42,6 +42,8 @@ class GameEngine {
         this.obstacles = [];
         this.trees = [];
         this.roadSegments = [];
+        this.barriers = []; // Yan bariyerler (oyuncu pozisyonunu takip eder)
+        this.roadWidth = 20;
         this.particles = {
             exhaust: [],
             smoke: [],
@@ -59,6 +61,13 @@ class GameEngine {
         this.animationId = null;
         this.lastFrameTime = 0;
         this.frameCount = 0;
+        
+        // FPS izleme
+        this.fpsBuffer = [];
+        this.fpsBufferSize = 60; // Son 60 frame
+        this.lowFpsThreshold = 20;
+        this.lowFpsReported = false;
+        this.lastFpsCheckTime = 0;
 
         this.bindEvents();
     }
@@ -130,6 +139,7 @@ class GameEngine {
         // Dikey modda yol genişliğini azalt
         const isPortrait = window.innerHeight > window.innerWidth;
         const roadWidth = isPortrait ? 14 : 20;
+        this.roadWidth = roadWidth;
         const roadGeometry = new THREE.PlaneGeometry(roadWidth, 500);
         const roadMaterial = new THREE.MeshStandardMaterial({ 
             color: 0x333333,
@@ -152,17 +162,55 @@ class GameEngine {
             this.roadSegments.push(line);
         }
 
-        // Side barriers
-        const barrierGeometry = new THREE.BoxGeometry(1, 2, 500);
-        const barrierMaterial = new THREE.MeshStandardMaterial({ color: 0xff0000 });
+        // Yan bariyer segmentleri - oyuncuyu takip etmesi için segmentlere böl
+        const barrierMaterial = new THREE.MeshStandardMaterial({ 
+            color: 0xff0000,
+            emissive: 0x440000,
+            emissiveIntensity: 0.3
+        });
+        const segmentLength = 25;
+        const segmentCount = 20;
+        const barrierGeometry = new THREE.BoxGeometry(1, 2, segmentLength);
         
-        const leftBarrier = new THREE.Mesh(barrierGeometry, barrierMaterial);
-        leftBarrier.position.set(-roadWidth / 2, 1, -200);
-        this.scene.add(leftBarrier);
-
-        const rightBarrier = new THREE.Mesh(barrierGeometry, barrierMaterial);
-        rightBarrier.position.set(roadWidth / 2, 1, -200);
-        this.scene.add(rightBarrier);
+        for (let i = 0; i < segmentCount; i++) {
+            // Sol bariyer
+            const left = new THREE.Mesh(barrierGeometry, barrierMaterial);
+            left.position.set(-roadWidth / 2, 1, -i * segmentLength);
+            left.userData = { side: 'left', segmentLength };
+            this.scene.add(left);
+            this.barriers.push(left);
+            
+            // Sağ bariyer
+            const right = new THREE.Mesh(barrierGeometry, barrierMaterial);
+            right.position.set(roadWidth / 2, 1, -i * segmentLength);
+            right.userData = { side: 'right', segmentLength };
+            this.scene.add(right);
+            this.barriers.push(right);
+        }
+    }
+    
+    // Bariyerleri oyuncu pozisyonuna göre dinamik takip et
+    updateBarriers(deltaTime) {
+        const moveSpeed = this.state.speed * deltaTime * 0.1;
+        const carX = this.car ? this.car.position.x : 0;
+        const halfWidth = this.roadWidth / 2;
+        
+        for (let i = 0; i < this.barriers.length; i++) {
+            const b = this.barriers[i];
+            // İleri kaydır
+            b.position.z += moveSpeed;
+            
+            // Geçenleri başa al (sonsuz scroll)
+            if (b.position.z > 25) {
+                b.position.z -= b.userData.segmentLength * 20;
+            }
+            
+            // X pozisyonunu oyuncuyu takip edecek şekilde güncelle
+            // Bariyer her zaman yolun kenarında, ama kameraya göre ayarlanır
+            const targetX = b.userData.side === 'left' ? -halfWidth : halfWidth;
+            // Hafif offset ekle: kamera/oyuncu hareketinde bariyer akışkan görünsün
+            b.position.x += (targetX - b.position.x) * 0.1;
+        }
     }
 
     createEnvironment() {
@@ -491,6 +539,9 @@ class GameEngine {
         // Yol çizgilerini güncelle
         this.updateRoadSegments(deltaTime);
 
+        // Bariyerleri güncelle (oyuncuyu takip et)
+        this.updateBarriers(deltaTime);
+
         // Engelleri güncelle
         this.updateObstacles(deltaTime);
 
@@ -651,8 +702,37 @@ class GameEngine {
         this.lastFrameTime = now;
         this.frameCount++;
 
+        // FPS izle
+        this.trackFps(deltaTime);
+
         this.updatePhysics(deltaTime);
         this.renderer.render(this.scene, this.camera);
+    }
+    
+    trackFps(deltaTime) {
+        if (deltaTime <= 0) return;
+        const fps = 1 / deltaTime;
+        this.fpsBuffer.push(fps);
+        if (this.fpsBuffer.length > this.fpsBufferSize) {
+            this.fpsBuffer.shift();
+        }
+        
+        // Her 2 saniyede bir kontrol et
+        const now = performance.now();
+        if (now - this.lastFpsCheckTime < 2000) return;
+        this.lastFpsCheckTime = now;
+        
+        if (this.fpsBuffer.length < 30) return;
+        const avgFps = this.fpsBuffer.reduce((a, b) => a + b, 0) / this.fpsBuffer.length;
+        
+        if (avgFps < this.lowFpsThreshold && !this.lowFpsReported) {
+            this.lowFpsReported = true;
+            logger.warn(`Low FPS detected: ${avgFps.toFixed(1)}`);
+            eventBus.emit(Events.LOW_FPS, { fps: avgFps });
+        } else if (avgFps >= this.lowFpsThreshold + 10 && this.lowFpsReported) {
+            // Hysteresis: 30+ FPS olunca tekrar uyar
+            this.lowFpsReported = false;
+        }
     }
 
     onResize() {

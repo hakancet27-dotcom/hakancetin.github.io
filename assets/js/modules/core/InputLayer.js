@@ -4,6 +4,7 @@
  * GameEngine'den bağımsızdır - sadece olay yayınlar
  */
 import { eventBus, Events } from '../utils/EventBus.js';
+import { platformAdapter } from '../adapters/PlatformAdapter.js';
 import logger from '../utils/Logger.js';
 
 class InputLayer {
@@ -33,7 +34,13 @@ class InputLayer {
         // Audio context for beep sounds
         this.audioCtx = null;
         
+        // Lite mod (FPS düşükse otomatik geçer)
+        this.liteMode = false;
+        
         this.running = false;
+        
+        // FPS düştüğünde lite moda geç
+        eventBus.on(Events.LOW_FPS, (data) => this.switchToLiteMode(data));
     }
 
     async init(videoElement) {
@@ -67,12 +74,8 @@ class InputLayer {
                 }
             });
 
-            this.faceMesh.setOptions({
-                maxNumFaces: 1,
-                refineLandmarks: true,
-                minDetectionConfidence: 0.5,
-                minTrackingConfidence: 0.5
-            });
+            // Platforma göre MediaPipe ayarları
+            this.faceMesh.setOptions(platformAdapter.getMediaPipeOptions(this.liteMode));
 
             this.faceMesh.onResults(this.onFaceResults.bind(this));
             resolve();
@@ -85,18 +88,38 @@ class InputLayer {
             throw new Error('Camera utils not loaded');
         }
 
+        const res = platformAdapter.getCameraResolution();
         this.camera = new Camera(this.videoElement, {
             onFrame: async () => {
                 if (this.running) {
                     await this.faceMesh.send({ image: this.videoElement });
                 }
             },
-            width: 640,
-            height: 480
+            width: res.width,
+            height: res.height
         });
 
         await this.camera.start();
         this.running = true;
+    }
+    
+    // FPS düştüğünde MediaPipe'i hafif moda geçir
+    switchToLiteMode(data) {
+        if (this.liteMode) return; // Zaten lite mod
+        if (!this.faceMesh) return;
+        
+        this.liteMode = true;
+        try {
+            this.faceMesh.setOptions(platformAdapter.getMediaPipeOptions(true));
+            logger.info(`Switched to MediaPipe lite mode (FPS: ${data?.fps?.toFixed(1) || '?'})`);
+            eventBus.emit(Events.MODEL_SWITCHED, { mode: 'lite', fps: data?.fps });
+            eventBus.emit(Events.NOTIFICATION, {
+                message: '⚡ Performans için hafif moda geçildi',
+                duration: 4000
+            });
+        } catch (e) {
+            logger.error('Lite mode switch failed:', e);
+        }
     }
 
     onFaceResults(results) {

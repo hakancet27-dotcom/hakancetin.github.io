@@ -16,6 +16,12 @@ class App {
     constructor() {
         this.initialized = false;
         this.firebaseConfig = null;
+        
+        // Auto-pause yönetimi
+        this.faceLostTimer = null;
+        this.faceLostDelay = 2000; // 2 saniye yüz yoksa pause
+        this.autoPaused = false;
+        this.leaderboardUnsubscribe = null;
     }
 
     async init(firebaseConfig) {
@@ -44,8 +50,24 @@ class App {
                 
                 // Leaderboard'u yükle
                 await backendService.loadLeaderboard(10);
+                
+                // Real-time leaderboard listener (canlı güncelleme)
+                this.leaderboardUnsubscribe = backendService.onLeaderboardUpdate((sorted) => {
+                    backendService.leaderboard = sorted;
+                    eventBus.emit(Events.LEADERBOARD_LOADED, sorted);
+                });
             } catch (error) {
                 logger.warn('Backend not available:', error.message);
+            }
+            
+            // Mobilde kamera kontrol uyarısı
+            if (platformAdapter.isMobile()) {
+                setTimeout(() => {
+                    uiManager.showNotification(
+                        '📱 Kamera kontrolü masaüstüne özgüdür. Mobilde performans değişebilir.',
+                        6000
+                    );
+                }, 1500);
             }
 
             // 5. Game Engine'i başlat
@@ -134,20 +156,28 @@ class App {
             );
         });
 
-        // Oyun sonu → Skor kaydetme
-        eventBus.on(Events.GAME_OVER, () => {
+        // Oyun sonu → Skor kaydetme (tüm geçerli skorlar Firebase'e gider)
+        eventBus.on(Events.GAME_OVER, async () => {
             const score = gameEngine.state.score;
             const bestScore = backendService.getLocalBestScore();
-
-            if (score > bestScore) {
+            
+            if (score <= 0) return;
+            
+            // Yerel best güncellemesi
+            const isNewBest = score > bestScore;
+            if (isNewBest) {
                 backendService.updateLocalBestScore(score);
-                
-                // Firebase'e gönder (bağlıysa)
-                if (backendService.isConnected()) {
-                    backendService.saveScore(score);
-                }
-
                 uiManager.showNotification(`🏆 Yeni rekor: ${score}!`, 5000);
+            }
+            
+            // Firebase'e otomatik gönder (bağlıysa)
+            if (backendService.isConnected()) {
+                const saved = await backendService.saveScore(score);
+                if (saved) {
+                    logger.info('Score auto-saved to Firebase:', score);
+                    // Liderlik tablosunu yenile (real-time listener zaten çalışıyor)
+                    await backendService.loadLeaderboard(10);
+                }
             }
         });
 
@@ -171,6 +201,58 @@ class App {
         // Kalibrasyon tamamlandığında zorluk seçimi göster
         eventBus.on(Events.CALIBRATION_COMPLETE, () => {
             uiManager.hideLoading();
+        });
+        
+        // ===== AUTO-PAUSE: Yüz çerçeveden çıktığında =====
+        eventBus.on(Events.FACE_LOST, () => {
+            if (!gameEngine.state.isPlaying || gameEngine.state.isPaused) return;
+            // Kısa kayıplar için debounce - 2sn bekle
+            if (this.faceLostTimer) return;
+            this.faceLostTimer = setTimeout(() => {
+                if (!gameEngine.state.isPaused) {
+                    this.autoPaused = true;
+                    eventBus.emit(Events.GAME_PAUSE);
+                    uiManager.showNotification('⏸️ Yüz tespit edilemiyor - Oyun duraklatıldı', 3000);
+                    logger.info('Auto-paused: face lost');
+                }
+                this.faceLostTimer = null;
+            }, this.faceLostDelay);
+        });
+        
+        eventBus.on(Events.FACE_DETECTED, () => {
+            // Yüz geri geldi - bekleyen pause'u iptal et
+            if (this.faceLostTimer) {
+                clearTimeout(this.faceLostTimer);
+                this.faceLostTimer = null;
+            }
+            // Auto-paused durumdaysa devam ettir
+            if (this.autoPaused && gameEngine.state.isPaused) {
+                this.autoPaused = false;
+                eventBus.emit(Events.GAME_RESUME);
+                logger.info('Auto-resumed: face detected');
+            }
+        });
+        
+        // Pause overlay görsel göstergesi
+        eventBus.on(Events.GAME_PAUSE, () => {
+            this.showPauseOverlay();
+        });
+        eventBus.on(Events.GAME_RESUME, () => {
+            this.hidePauseOverlay();
+        });
+        
+        // Manuel P tuşu ile pause/resume
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'p' || e.key === 'P' || e.key === 'Escape') {
+                if (!gameEngine.state.isPlaying) return;
+                if (gameEngine.state.isPaused) {
+                    eventBus.emit(Events.GAME_RESUME);
+                    uiManager.showNotification('▶️ Oyun devam ediyor', 1500);
+                } else {
+                    eventBus.emit(Events.GAME_PAUSE);
+                    uiManager.showNotification('⏸️ Duraklatıldı (P ile devam et)', 2000);
+                }
+            }
         });
     }
 
@@ -255,11 +337,31 @@ class App {
         backendService.setPlayerName(name);
     }
 
+    // Pause overlay göster
+    showPauseOverlay() {
+        let overlay = document.getElementById('pauseOverlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.id = 'pauseOverlay';
+            overlay.className = 'game-paused-overlay';
+            document.body.appendChild(overlay);
+        }
+        overlay.style.display = 'flex';
+    }
+    
+    hidePauseOverlay() {
+        const overlay = document.getElementById('pauseOverlay');
+        if (overlay) overlay.style.display = 'none';
+    }
+
     // Cleanup
     destroy() {
         inputLayer.stop();
         if (gameEngine.animationId) {
             cancelAnimationFrame(gameEngine.animationId);
+        }
+        if (this.leaderboardUnsubscribe) {
+            this.leaderboardUnsubscribe();
         }
         this.initialized = false;
     }

@@ -60,6 +60,13 @@ class PlatformAdapter {
 
         this.platform.screenWidth = width;
         this.platform.screenHeight = height;
+        
+        // Body sınıflarını CSS targeting için güncelle
+        if (document.body) {
+            document.body.classList.toggle('is-tv', this.platform.isTV);
+            document.body.classList.toggle('is-mobile', this.platform.isMobile);
+            document.body.classList.toggle('is-desktop', this.platform.isDesktop);
+        }
 
         // Platform değişimi olayını yayınla
         if (oldType !== this.platform.type) {
@@ -252,6 +259,67 @@ class PlatformAdapter {
 
     isDesktop() {
         return this.platform.isDesktop;
+    }
+
+    // ===== PLATFORM-SPECIFIC IZOLE METOTLAR =====
+    
+    // MediaPipe konfigürasyonu (platforma göre)
+    getMediaPipeOptions(liteMode = false) {
+        if (liteMode) {
+            // Düşük FPS için hafif mod
+            return {
+                maxNumFaces: 1,
+                refineLandmarks: false,
+                minDetectionConfidence: 0.7,
+                minTrackingConfidence: 0.7
+            };
+        }
+        switch(this.platform.type) {
+            case 'tv':
+                return {
+                    maxNumFaces: 1,
+                    refineLandmarks: false,
+                    minDetectionConfidence: 0.6,
+                    minTrackingConfidence: 0.6
+                };
+            case 'mobile':
+                return {
+                    maxNumFaces: 1,
+                    refineLandmarks: false,
+                    minDetectionConfidence: 0.5,
+                    minTrackingConfidence: 0.5
+                };
+            default: // desktop
+                return {
+                    maxNumFaces: 1,
+                    refineLandmarks: true,
+                    minDetectionConfidence: 0.5,
+                    minTrackingConfidence: 0.5
+                };
+        }
+    }
+    
+    // Kamera kontrollerini göster mi? (mobilde gizle)
+    shouldShowCameraControls() {
+        return !this.platform.isMobile;
+    }
+    
+    // Yüz takibi destekleniyor mu?
+    supportsFaceTracking() {
+        // Mobilde performans düşük olabilir ama yine de dene
+        return true;
+    }
+    
+    // Kamera çözünürlüğü
+    getCameraResolution() {
+        switch(this.platform.type) {
+            case 'tv':
+                return { width: 640, height: 480 };
+            case 'mobile':
+                return { width: 480, height: 360 };
+            default:
+                return { width: 640, height: 480 };
+        }
     }
 
     // Ekran bilgileri

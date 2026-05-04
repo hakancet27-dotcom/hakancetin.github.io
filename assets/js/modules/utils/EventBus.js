@@ -79,6 +79,10 @@ export const Events = {
     SCORE_SAVED: 'backend:scoreSaved',
     CONNECTION_LOST: 'backend:connectionLost',
     
+    // Performance events
+    LOW_FPS: 'performance:lowFps',
+    MODEL_SWITCHED: 'performance:modelSwitched',
+    
     // UI events
     UI_SHOW: 'ui:show',
     UI_HIDE: 'ui:hide',
