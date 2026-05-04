@@ -203,7 +203,7 @@ class App {
         // Kalibrasyon tamamlandığında
         eventBus.on(Events.CALIBRATION_COMPLETE, () => {
             uiManager.hideCalibration();
-            uiManager.showOverlay('difficultyOverlay');
+            uiManager.showDifficultyScreen();
         });
     }
 
