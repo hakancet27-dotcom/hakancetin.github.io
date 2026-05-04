@@ -1155,12 +1155,20 @@ body {
     padding: 20px;
 }
 
+#startScreen.hidden {
+    display: none !important;
+}
+
 #cameraErrorScreen {
     display: none;
 }
 
 #cameraErrorScreen.visible {
     display: flex;
+}
+
+#cameraErrorScreen.hidden {
+    display: none !important;
 }
 
 .start-content h1 {

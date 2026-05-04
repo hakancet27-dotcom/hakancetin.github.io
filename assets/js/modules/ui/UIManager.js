@@ -67,7 +67,6 @@ class UIManager {
             toggleCamera: document.getElementById('toggleCamera'),
             toggleMusic: document.getElementById('toggleMusic'),
             toggleTVMode: document.getElementById('toggleTVMode'),
-            connectPhoneBtn: document.getElementById('connectPhoneBtn'),
             toggleControls: document.getElementById('toggleControls'),
             
             // Panels
@@ -88,15 +87,6 @@ class UIManager {
                 this.toggleControlsPanel();
             });
         }
-
-        // Klavye kontrolleri
-        document.addEventListener('keydown', (e) => {
-            if (e.key === ' ' || e.code === 'Space') {
-                if (this.elements.calibrationOverlay?.classList.contains('visible')) {
-                    // Boşluk tuşu kalibrasyon sırasında
-                }
-            }
-        });
     }
 
     // HUD Güncellemeleri
@@ -259,7 +249,7 @@ class UIManager {
         
         // Tüm HUD elementlerini göster
         const showElements = [
-            'hud', 'toggleCamera', 'toggleControls', 'toggleMusic', 'connectPhoneBtn'
+            'hud', 'toggleCamera', 'toggleControls', 'toggleMusic'
         ];
         showElements.forEach(id => {
             if (this.elements[id]) {

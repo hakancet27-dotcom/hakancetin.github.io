@@ -228,15 +228,15 @@
                 <!-- Araba Seçimi -->
                 <div class="car-selection" style="margin: 20px 0;">
                     <p>Araba Seçin:</p>
-                    <button class="car-select-btn car-selected" data-car="standard" onclick="window.app.selectCar('standard')">
+                    <button class="car-select-btn car-selected" data-car="standard">
                         🚗 Standart
                         <span class="car-lock-text"></span>
                     </button>
-                    <button class="car-select-btn" data-car="fast" onclick="window.app.selectCar('fast')">
+                    <button class="car-select-btn" data-car="fast">
                         🏎️ Hızlı
                         <span class="car-lock-text">🔒 1000 skor gerekli</span>
                     </button>
-                    <button class="car-select-btn" data-car="super" onclick="window.app.selectCar('super')">
+                    <button class="car-select-btn" data-car="super">
                         🏁 Süper
                         <span class="car-lock-text">🔒 2000 skor gerekli</span>
                     </button>
@@ -244,17 +244,17 @@
 
                 <div class="color-picker" style="margin: 15px 0;">
                     <p>Renk:</p>
-                    <button onclick="window.app.setCarColor(0x00ff88)" style="background: #00ff88; width: 30px; height: 30px; border-radius: 50%;"></button>
-                    <button onclick="window.app.setCarColor(0x4488ff)" style="background: #4488ff; width: 30px; height: 30px; border-radius: 50%;"></button>
-                    <button onclick="window.app.setCarColor(0xff2244)" style="background: #ff2244; width: 30px; height: 30px; border-radius: 50%;"></button>
-                    <button onclick="window.app.setCarColor(0xffaa00)" style="background: #ffaa00; width: 30px; height: 30px; border-radius: 50%;"></button>
+                    <button data-color="16711935" style="background: #00ff88; width: 30px; height: 30px; border-radius: 50%;"></button>
+                    <button data-color="4483199" style="background: #4488ff; width: 30px; height: 30px; border-radius: 50%;"></button>
+                    <button data-color="16720452" style="background: #ff2244; width: 30px; height: 30px; border-radius: 50%;"></button>
+                    <button data-color="16756736" style="background: #ffaa00; width: 30px; height: 30px; border-radius: 50%;"></button>
                 </div>
 
                 <p style="margin: 20px 0;">Oyun modunu seçin:</p>
-                <button onclick="window.app.selectDifficulty('normal')">
+                <button id="difficultyNormal">
                     🚀 BAŞLA — Normal (%20.7 kırmızı engel)
                 </button>
-                <button onclick="window.app.selectDifficulty('easy')">
+                <button id="difficultyEasy">
                     🚀 BAŞLA — Kolay (%16.6 kırmızı engel)
                 </button>
 
@@ -284,8 +284,8 @@
                 <input type="text" id="playerNameInput" placeholder="İsminiz" maxlength="20" 
                        style="padding: 10px; margin: 10px; border-radius: 5px; border: none; text-align: center;">
 
-                <button onclick="window.app.restart()">🔄 Yeniden Başla</button>
-                <button onclick="window.location.href='index.html'">🏠 Ana Sayfa</button>
+                <button id="restartBtn">🔄 Yeniden Başla</button>
+                <button id="homeBtn">🏠 Ana Sayfa</button>
             </div>
         </div>
 
@@ -324,10 +324,10 @@
 
         <!-- Kontrol Butonları -->
         <div id="bottomControls">
-            <button id="toggleCamera" onclick="window.app.toggleCameraPreset()">📷 Kamera</button>
-            <button id="toggleMusic" onclick="window.app.toggleMusic()">🎵 Müzik</button>
-            <button id="toggleTVMode" onclick="window.app.toggleTVMode()">📺 TV: KAPALI</button>
-            <button id="connectPhoneBtn" onclick="window.app.connectPhone()">📱 Telefon Bağla</button>
+            <button id="toggleCamera">📷 Kamera</button>
+            <button id="toggleMusic">🎵 Müzik</button>
+            <button id="toggleTVMode">📺 TV: KAPALI</button>
+            <button id="connectPhoneBtn">📱 Telefon Bağla</button>
         </div>
         <button id="toggleControls">❓ Kontroller</button>
 
@@ -399,11 +399,6 @@
                 console.error('❌ Başlatma hatası:', error);
                 alert('Oyun başlatılamadı: ' + error.message);
             }
-        });
-
-        // Kontroller paneli toggle
-        document.getElementById('toggleControls')?.addEventListener('click', () => {
-            document.getElementById('controlsPanel')?.classList.toggle('hidden');
         });
 
         // Müzik ses kontrolü

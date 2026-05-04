@@ -81,13 +81,7 @@ class App {
                 throw new Error('GameEngine failed to initialize');
             }
 
-            // 6. Input Layer'i hazırla (kamera BAŞLA'ya basınca açılacak)
-            const video = document.getElementById('cameraVideo');
-            if (video) {
-                inputLayer.videoElement = video;
-            }
-
-            // 7. BAŞLA butonu akışı
+            // 6. BAŞLA butonu akışı
             this.setupStartFlow();
 
             // 8. Ek koordinasyon event'lerini bağla
@@ -150,7 +144,7 @@ class App {
         const startBtn = document.getElementById('startButton');
         if (startBtn) {
             startBtn.addEventListener('click', async () => {
-                document.getElementById('startScreen').style.display = 'none';
+                document.getElementById('startScreen').classList.add('hidden');
                 uiManager.showLoading('Kamera başlatılıyor...');
                 try {
                     const video = document.getElementById('cameraVideo');
@@ -319,6 +313,30 @@ class App {
                 }
             }
         });
+        
+        // Oyun overlay butonları
+        document.getElementById('restartBtn')?.addEventListener('click', () => this.restart());
+        document.getElementById('homeBtn')?.addEventListener('click', () => window.location.href = 'index.html');
+        
+        // Araba seçimi
+        document.querySelectorAll('.car-select-btn').forEach(btn => {
+            btn.addEventListener('click', () => this.selectCar(btn.dataset.car));
+        });
+        
+        // Renk seçimi
+        document.querySelectorAll('[data-color]').forEach(btn => {
+            btn.addEventListener('click', () => this.setCarColor(parseInt(btn.dataset.color)));
+        });
+        
+        // Zorluk
+        document.getElementById('difficultyNormal')?.addEventListener('click', () => this.selectDifficulty('normal'));
+        document.getElementById('difficultyEasy')?.addEventListener('click', () => this.selectDifficulty('easy'));
+        
+        // Alt kontrol butonları
+        document.getElementById('toggleCamera')?.addEventListener('click', () => this.toggleCameraPreset());
+        document.getElementById('toggleMusic')?.addEventListener('click', () => this.toggleMusic());
+        document.getElementById('toggleTVMode')?.addEventListener('click', () => this.toggleTVMode());
+        document.getElementById('connectPhoneBtn')?.addEventListener('click', () => this.connectPhone());
     }
 
     // Zorluk seçimi
