@@ -18,11 +18,6 @@ class AudioManager {
         this.bgGainNode = null;
         this.bgOscillators = [];
 
-        // Explicit this binding for event handlers
-        this.playObstacleSound = this.playObstacleSound.bind(this);
-        this.playGoldSound = this.playGoldSound.bind(this);
-        this.playTurboSound = this.playTurboSound.bind(this);
-
         this.bindEvents();
     }
 
