@@ -319,10 +319,12 @@
         <div id="webrtcOverlay" class="hidden" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 300;"></div>
 
         <!-- Kontrol Butonları -->
-        <button id="toggleCamera" class="hidden" onclick="window.app.toggleCameraPreset()">📷 Kamera</button>
-        <button id="toggleMusic" class="hidden" onclick="window.app.toggleMusic()">🎵 Müzik</button>
-        <button id="toggleTVMode" onclick="window.app.toggleTVMode()">📺 TV: KAPALI</button>
-        <button id="connectPhoneBtn" onclick="window.app.connectPhone()">📱 Telefon Bağla</button>
+        <div id="bottomControls">
+            <button id="toggleCamera" class="hidden" onclick="window.app.toggleCameraPreset()">📷 Kamera</button>
+            <button id="toggleMusic" class="hidden" onclick="window.app.toggleMusic()">🎵 Müzik</button>
+            <button id="toggleTVMode" onclick="window.app.toggleTVMode()">📺 TV: KAPALI</button>
+            <button id="connectPhoneBtn" onclick="window.app.connectPhone()">📱 Telefon Bağla</button>
+        </div>
         <button id="toggleControls" class="hidden">❓ Kontroller</button>
 
         <!-- Kontroller Paneli -->

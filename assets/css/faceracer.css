@@ -1093,3 +1093,99 @@ body {
     font-weight: bold;
     text-shadow: 0 0 20px rgba(0,255,136,0.8);
 }
+
+/* ===== WEBRTC OVERLAY ===== */
+#webrtcOverlay {
+    display: none;
+}
+#webrtcOverlay.active {
+    display: flex;
+}
+
+/* ===== BOTTOM CONTROLS ===== */
+#bottomControls {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#toggleCamera, #toggleMusic, #toggleTVMode, #easyModeBtn, #connectPhoneBtn {
+    position: static;
+    bottom: auto;
+    left: auto;
+}
+
+/* ===== GAME OVER SCREEN ===== */
+#gameOverScreen {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 500;
+}
+#gameOverScreen .score-display {
+    font-size: 3rem;
+    color: #00ff88;
+    font-weight: bold;
+    margin: 20px 0;
+}
+#gameOverScreen .leaderboard-list {
+    max-height: 300px;
+    overflow-y: auto;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* ===== CAMERA ERROR OVERLAY ===== */
+#cameraErrorOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    text-align: center;
+    padding: 20px;
+}
+#cameraErrorOverlay button {
+    margin: 10px;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    min-height: 56px;
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* ===== DIFFICULTY OVERLAY ===== */
+#difficultyOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 400;
+}
+
+/* ===== GENEL HOVER ===== */
+button:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+    opacity: 0.9;
+}
