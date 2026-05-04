@@ -169,6 +169,7 @@ class UIManager {
     showOverlay(overlayId) {
         const overlay = document.getElementById(overlayId);
         if (overlay) {
+            overlay.classList.remove('hidden');
             overlay.classList.add('visible');
             this.overlays.push(overlayId);
         }
@@ -178,6 +179,7 @@ class UIManager {
         const overlay = document.getElementById(overlayId);
         if (overlay) {
             overlay.classList.remove('visible');
+            overlay.classList.add('hidden');
             const index = this.overlays.indexOf(overlayId);
             if (index > -1) this.overlays.splice(index, 1);
         }
@@ -255,10 +257,6 @@ class UIManager {
         if (finalScoreEl && this.elements.score) {
             finalScoreEl.textContent = this.elements.score.textContent;
         }
-        
-        // newRecord'u gizle (App.js GAME_OVER handler'ında isNewBest kontrolü var)
-        const newRecordEl = document.getElementById('newRecord');
-        if (newRecordEl) newRecordEl.classList.add('hidden');
     }
 
     // Kontroller paneli

@@ -122,23 +122,6 @@ class App {
     }
 
     bindCoordinationEvents() {
-        // Input → Game Engine koordinasyonu
-        eventBus.on(Events.TURBO_ACTIVATED, () => {
-            // Oyun durumunu güncelle
-            gameEngine.state.nitroActive = true;
-        });
-
-        eventBus.on(Events.TURBO_DEACTIVATED, () => {
-            gameEngine.state.nitroActive = false;
-        });
-
-        // Skor değişiminde UI güncelleme
-        eventBus.on(Events.SCORE_CHANGED, (score) => {
-            // Turbo puanlarını da göster
-            const turboPoints = gameEngine.state.turboPoints;
-            uiManager.updateTurbo(turboPoints, gameEngine.state.turboThreshold);
-        });
-
         // Oyun başlayınca müzik çal
         eventBus.on(Events.GAME_START, () => {
             audioManager.startBackground();
@@ -198,11 +181,12 @@ class App {
         
         // ===== AUTO-PAUSE: Yüz çerçeveden çıktığında =====
         eventBus.on(Events.FACE_LOST, () => {
-            if (!gameEngine.state.isPlaying || gameEngine.state.isPaused) return;
+            const state = gameEngine.getState();
+            if (!state.isPlaying || state.isPaused) return;
             // Kısa kayıplar için debounce - 2sn bekle
             if (this.faceLostTimer) return;
             this.faceLostTimer = setTimeout(() => {
-                if (!gameEngine.state.isPaused) {
+                if (!gameEngine.getState().isPaused) {
                     this.autoPaused = true;
                     eventBus.emit(Events.GAME_PAUSE);
                     uiManager.showNotification('⏸️ Yüz tespit edilemiyor - Oyun duraklatıldı', 3000);
@@ -219,7 +203,7 @@ class App {
                 this.faceLostTimer = null;
             }
             // Auto-paused durumdaysa devam ettir
-            if (this.autoPaused && gameEngine.state.isPaused) {
+            if (this.autoPaused && gameEngine.getState().isPaused) {
                 this.autoPaused = false;
                 eventBus.emit(Events.GAME_RESUME);
                 logger.info('Auto-resumed: face detected');
