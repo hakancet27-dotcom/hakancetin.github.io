@@ -303,6 +303,52 @@ class InputLayer {
     start() {
         this.running = true;
     }
+
+    // ===== FALLBACK KONTROLLER (kamera olmadan) =====
+    setupFallbackControls() {
+        logger.info('Fallback klavye/mouse kontrolleri aktif');
+        this.keys = { ArrowLeft: false, ArrowRight: false, ArrowUp: false, ArrowDown: false };
+
+        // Klavye
+        this.keyDownHandler = (e) => {
+            if (this.keys.hasOwnProperty(e.key)) {
+                this.keys[e.key] = true;
+                this.emitFallbackInput();
+            }
+        };
+        this.keyUpHandler = (e) => {
+            if (this.keys.hasOwnProperty(e.key)) {
+                this.keys[e.key] = false;
+                this.emitFallbackInput();
+            }
+        };
+        document.addEventListener('keydown', this.keyDownHandler);
+        document.addEventListener('keyup', this.keyUpHandler);
+
+        // Mouse - ekran merkezine gore -1..+1
+        this.mouseHandler = (e) => {
+            if (!this.running) return;
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            const yaw = (e.clientX - centerX) / centerX;
+            const pitch = (e.clientY - centerY) / centerY;
+            eventBus.emit(Events.YAW_CHANGED, Math.max(-1, Math.min(1, yaw)));
+            eventBus.emit(Events.PITCH_CHANGED, Math.max(-1, Math.min(1, pitch)));
+        };
+        document.addEventListener('mousemove', this.mouseHandler);
+    }
+
+    emitFallbackInput() {
+        let yaw = 0;
+        let pitch = 0;
+        if (this.keys.ArrowLeft) yaw -= 1;
+        if (this.keys.ArrowRight) yaw += 1;
+        if (this.keys.ArrowUp) pitch -= 1;   // Yukari = hizli (pitch -)
+        if (this.keys.ArrowDown) pitch += 1; // Asagi = yavas (pitch +)
+
+        eventBus.emit(Events.YAW_CHANGED, yaw);
+        eventBus.emit(Events.PITCH_CHANGED, pitch);
+    }
 }
 
 // Singleton instance

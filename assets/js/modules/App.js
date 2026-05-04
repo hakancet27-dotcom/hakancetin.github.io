@@ -83,16 +83,25 @@ class App {
 
             // 6. Input Layer'i başlat (kamera başarısız olsa bile devam et)
             const video = document.getElementById('cameraVideo');
+            let cameraFailed = false;
             if (video) {
                 try {
                     const inputInitialized = await inputLayer.init(video);
                     if (!inputInitialized) {
                         logger.warn('InputLayer initialization failed, continuing without camera');
+                        cameraFailed = true;
                     }
                 } catch (error) {
                     logger.warn('Camera access denied or failed:', error.message);
                     logger.info('Game will continue without face tracking');
+                    cameraFailed = true;
                 }
+            }
+            
+            // Kamera yoksa fallback kontrolleri aktive et
+            if (cameraFailed) {
+                inputLayer.setupFallbackControls();
+                uiManager.showNotification('⌨️ Kamera bulunamadı — Ok tuşları ve mouse ile oynayabilirsiniz', 6000);
             }
 
             // 7. Ek koordinasyon event'lerini bağla
