@@ -325,6 +325,16 @@ class App {
         return platformAdapter.toggleTVMode();
     }
 
+    // Telefon bağla (WebRTC)
+    connectPhone() {
+        if (!backendService.isConnected()) {
+            uiManager.showNotification('❌ Firebase bağlantısı yok — telefon bağlanamaz', 4000);
+            return;
+        }
+        eventBus.emit(Events.WEBRTC_START_HOST, { firebaseDb: backendService.db });
+        uiManager.showNotification('📱 QR kod oluşturuluyor...', 2000);
+    }
+
     // Müzik kontrolü
     toggleMusic() {
         const isMuted = audioManager.toggleMute();

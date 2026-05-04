@@ -83,6 +83,14 @@ export const Events = {
     LOW_FPS: 'performance:lowFps',
     MODEL_SWITCHED: 'performance:modelSwitched',
     
+    // WebRTC events
+    WEBRTC_START_HOST: 'webrtc:startHost',
+    WEBRTC_STOP: 'webrtc:stop',
+    WEBRTC_CONNECTED: 'webrtc:connected',
+    WEBRTC_DISCONNECTED: 'webrtc:disconnected',
+    WEBRTC_TIMEOUT: 'webrtc:timeout',
+    WEBRTC_VIDEO_READY: 'webrtc:videoReady',
+    
     // UI events
     UI_SHOW: 'ui:show',
     UI_HIDE: 'ui:hide',
