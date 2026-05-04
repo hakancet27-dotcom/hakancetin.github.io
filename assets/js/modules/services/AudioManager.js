@@ -14,6 +14,9 @@ class AudioManager {
         this.isMuted = false;
         this.volume = 0.5;
         this.initialized = false;
+        this.bgMusicLoop = null;
+        this.bgGainNode = null;
+        this.bgOscillators = [];
 
         this.bindEvents();
     }
@@ -200,6 +203,82 @@ class AudioManager {
         if (this.backgroundMusic) {
             this.backgroundMusic.pause();
         }
+        this.stopProceduralBackground();
+    }
+
+    // Procedural synth background music (dosya gerektirmez)
+    startProceduralBackground() {
+        if (!this.audioContext || this.isMuted) return;
+        this.resume();
+        this.stopProceduralBackground();
+
+        const now = this.audioContext.currentTime;
+        const bpm = 100;
+        const beat = 60 / bpm / 2; // 8th note
+
+        // D minor ambient arpeggio
+        const pattern = [
+            { n: 146.83, d: beat },      // D3
+            { n: 174.61, d: beat },      // F3
+            { n: 220.00, d: beat },      // A3
+            { n: 293.66, d: beat * 2 },  // D4 (uzun)
+            { n: 174.61, d: beat },      // F3
+            { n: 196.00, d: beat },      // G3
+            { n: 220.00, d: beat },      // A3
+            { n: 261.63, d: beat * 2 },  // C4 (uzun)
+        ];
+
+        let offset = 0;
+        pattern.forEach(({ n, d }) => {
+            const osc = this.audioContext.createOscillator();
+            const gain = this.audioContext.createGain();
+
+            osc.type = 'sine';
+            osc.frequency.value = n;
+
+            const t0 = now + offset;
+            gain.gain.setValueAtTime(0, t0);
+            gain.gain.linearRampToValueAtTime(0.04 * this.volume, t0 + 0.05);
+            gain.gain.exponentialRampToValueAtTime(0.001, t0 + d - 0.05);
+
+            osc.connect(gain);
+            gain.connect(this.audioContext.destination);
+
+            osc.start(t0);
+            osc.stop(t0 + d);
+
+            this.bgOscillators.push({ osc, gain });
+            offset += d;
+        });
+
+        const loopDuration = offset * 1000;
+        this.bgMusicLoop = setInterval(() => {
+            if (!this.isMuted && this.bgMusicLoop) {
+                this.startProceduralBackground();
+            }
+        }, loopDuration);
+    }
+
+    stopProceduralBackground() {
+        if (this.bgMusicLoop) {
+            clearInterval(this.bgMusicLoop);
+            this.bgMusicLoop = null;
+        }
+        this.bgOscillators.forEach(({ osc }) => {
+            try { osc.stop(); } catch (e) {}
+        });
+        this.bgOscillators = [];
+    }
+
+    // Oyun başlayınca çağır
+    startBackground() {
+        this.startProceduralBackground();
+    }
+
+    // Oyun bitince çağır
+    stopBackground() {
+        this.stopProceduralBackground();
+        this.pauseBackgroundMusic();
     }
 
     // Kontroller
@@ -208,6 +287,9 @@ class AudioManager {
         if (this.backgroundMusic) {
             this.backgroundMusic.volume = this.volume;
         }
+        if (this.bgGainNode) {
+            this.bgGainNode.gain.value = 0.04 * this.volume;
+        }
         localStorage.setItem('faceracer_volume', this.volume.toString());
     }
 
@@ -215,6 +297,12 @@ class AudioManager {
         this.isMuted = !this.isMuted;
         if (this.backgroundMusic) {
             this.backgroundMusic.muted = this.isMuted;
+        }
+        // Procedural synth: mute = stop, unmute = restart if loop active
+        if (this.isMuted) {
+            this.stopProceduralBackground();
+        } else if (this.bgMusicLoop) {
+            this.startProceduralBackground();
         }
         localStorage.setItem('faceracer_muted', this.isMuted.toString());
         return this.isMuted;

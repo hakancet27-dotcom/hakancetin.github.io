@@ -156,7 +156,12 @@ class App {
             );
         });
 
-        // Oyun sonu → Skor kaydetme (tüm geçerli skorlar Firebase'e gider)
+        // Oyun başlayınca müzik çal
+        eventBus.on(Events.GAME_START, () => {
+            audioManager.startBackground();
+        });
+
+        // Oyun sonu → Skor kaydetme (tüm geçerli skorlar Firebase'e gider) + müzik durdur
         eventBus.on(Events.GAME_OVER, async () => {
             const score = gameEngine.state.score;
             const bestScore = backendService.getLocalBestScore();
@@ -179,6 +184,9 @@ class App {
                     await backendService.loadLeaderboard(10);
                 }
             }
+            
+            // Müzik durdur
+            audioManager.stopBackground();
         });
 
         // TV modu değişiklikleri
