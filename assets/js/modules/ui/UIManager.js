@@ -272,6 +272,10 @@ class UIManager {
         if (finalScoreEl && this.elements.score) {
             finalScoreEl.textContent = this.elements.score.textContent;
         }
+        
+        // newRecord'u gizle (App.js GAME_OVER handler'ında isNewBest kontrolü var)
+        const newRecordEl = document.getElementById('newRecord');
+        if (newRecordEl) newRecordEl.classList.add('hidden');
     }
 
     // Kontroller paneli

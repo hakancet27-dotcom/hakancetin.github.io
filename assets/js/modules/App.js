@@ -139,32 +139,6 @@ class App {
             uiManager.updateTurbo(turboPoints, gameEngine.state.turboThreshold);
         });
 
-        // Engelle çarpışma → Skor/Hasar güncelleme
-        eventBus.on(Events.OBSTACLE_HIT, (data) => {
-            switch(data.type) {
-                case 'turbo':
-                    gameEngine.state.turboPoints = Math.min(
-                        gameEngine.state.turboPoints + 10, 
-                        gameEngine.state.turboThreshold
-                    );
-                    gameEngine.state.health = Math.max(0, gameEngine.state.health - 5);
-                    break;
-                case 'gold':
-                    gameEngine.state.goldPoints += 10;
-                    break;
-                case 'damage':
-                    gameEngine.state.health = Math.min(100, gameEngine.state.health + 10);
-                    gameEngine.state.speed *= 0.7;
-                    break;
-            }
-
-            // UI güncelle
-            uiManager.updateTurbo(
-                gameEngine.state.turboPoints, 
-                gameEngine.state.turboThreshold
-            );
-        });
-
         // Oyun başlayınca müzik çal
         eventBus.on(Events.GAME_START, () => {
             audioManager.startBackground();
@@ -182,6 +156,8 @@ class App {
             if (isNewBest) {
                 backendService.updateLocalBestScore(score);
                 uiManager.showNotification(`🏆 Yeni rekor: ${score}!`, 5000);
+                const newRecordEl = document.getElementById('newRecord');
+                if (newRecordEl) newRecordEl.classList.remove('hidden');
             }
             
             // Firebase'e otomatik gönder (bağlıysa)
@@ -291,6 +267,7 @@ class App {
             gameEngine.setCar(carType);
             return true;
         }
+        uiManager.showNotification(`🔒 Bu araba ${unlockScores[carType]} skor ile açılır`, 3000);
         return false;
     }
 
@@ -347,7 +324,6 @@ class App {
 
     // Oyunu yeniden başlat
     restart() {
-        eventBus.emit(Events.GAME_OVER);
         const gameOverOverlay = document.getElementById('gameOverOverlay');
         if (gameOverOverlay) gameOverOverlay.style.display = 'none';
         uiManager.hideOverlay('gameOverOverlay');
