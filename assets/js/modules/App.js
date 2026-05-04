@@ -355,8 +355,8 @@ class App {
     }
 
     // Cleanup
-    destroy() {
-        inputLayer.stop();
+    async destroy() {
+        await inputLayer.stop();
         if (gameEngine.animationId) {
             cancelAnimationFrame(gameEngine.animationId);
         }

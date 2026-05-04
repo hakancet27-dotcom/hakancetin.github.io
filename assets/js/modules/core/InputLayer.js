@@ -83,6 +83,10 @@ class InputLayer {
     }
 
     async startCamera() {
+        // Önce mevcut stream'i temizle
+        await this.stop();
+        await new Promise(resolve => setTimeout(resolve, 500));
+
         const Camera = window.Camera;
         if (!Camera) {
             throw new Error('Camera utils not loaded');
@@ -283,10 +287,16 @@ class InputLayer {
         this.calibrationPhase = 0;
     }
 
-    stop() {
+    async stop() {
         this.running = false;
         if (this.camera) {
-            this.camera.stop();
+            await this.camera.stop();
+            this.camera = null;
+        }
+        // Video element stream'ini de temizle
+        if (this.videoElement && this.videoElement.srcObject) {
+            this.videoElement.srcObject.getTracks().forEach(track => track.stop());
+            this.videoElement.srcObject = null;
         }
     }
 
