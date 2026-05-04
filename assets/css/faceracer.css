@@ -166,9 +166,6 @@ body {
     z-index: 150;
 }
 
-#calibrationOverlay.hidden {
-    display: none;
-}
 
 .calibration-content {
     text-align: center;
@@ -204,9 +201,6 @@ body {
     border: 2px solid #00ff88;
 }
 
-#hud.hidden {
-    display: none;
-}
 
 #hud h2 {
     margin-bottom: 10px;
@@ -235,9 +229,6 @@ body {
     max-width: 300px;
 }
 
-#controlsPanel.hidden {
-    display: none;
-}
 
 #controlsPanel h3 {
     color: #00ff88;
@@ -272,9 +263,6 @@ body {
     transform: translate(-50%, -50%) scale(1.05);
 }
 
-#startButton.hidden {
-    display: none;
-}
 
 .nitro-active {
     animation: nitroPulse 0.5s infinite;
@@ -662,6 +650,9 @@ body {
     z-index: 10000;
     align-items: center;
     justify-content: center;
+}
+#webrtcOverlay.active {
+    display: flex;
 }
 
 /* Difficulty Buttons */
@@ -1059,17 +1050,18 @@ body {
     text-shadow: 0 0 20px rgba(0,255,136,0.8);
 }
 
-/* ===== WEBRTC OVERLAY ===== */
-#webrtcOverlay {
-    display: none;
-}
-#webrtcOverlay.active {
-    display: flex;
-}
 
 /* ===== GAME OVER OVERLAY ===== */
 #gameOverOverlay {
     display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 500;
 }
 #gameOverOverlay.visible {
     display: flex;
@@ -1078,6 +1070,13 @@ body {
 /* ===== DIFFICULTY OVERLAY ===== */
 #difficultyOverlay {
     display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 400;
 }
 #difficultyOverlay.visible {
     display: flex;
@@ -1086,9 +1085,30 @@ body {
 /* ===== CAMERA ERROR OVERLAY ===== */
 #cameraErrorOverlay {
     display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    text-align: center;
+    padding: 20px;
 }
 #cameraErrorOverlay.visible {
     display: flex;
+}
+#cameraErrorOverlay button {
+    margin: 10px;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    min-height: 56px;
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 /* ===== START BUTTON HOVER İSTİSNA ===== */
@@ -1108,74 +1128,14 @@ body {
     flex-wrap: wrap;
     justify-content: center;
 }
-#toggleCamera, #toggleMusic, #toggleTVMode, #easyModeBtn, #connectPhoneBtn {
+#toggleCamera, #toggleMusic, #toggleTVMode, #connectPhoneBtn {
     position: static;
     bottom: auto;
     left: auto;
 }
 
-/* ===== GAME OVER SCREEN ===== */
-#gameOverScreen {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.85);
-    backdrop-filter: blur(10px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 500;
-}
-#gameOverScreen .score-display {
-    font-size: 3rem;
-    color: #00ff88;
-    font-weight: bold;
-    margin: 20px 0;
-}
-#gameOverScreen .leaderboard-list {
-    max-height: 300px;
-    overflow-y: auto;
-    width: 100%;
-    max-width: 400px;
-}
 
-/* ===== CAMERA ERROR OVERLAY ===== */
-#cameraErrorOverlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.95);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    text-align: center;
-    padding: 20px;
-}
-#cameraErrorOverlay button {
-    margin: 10px;
-    padding: 15px 30px;
-    font-size: 1.1rem;
-    min-height: 56px;
-    width: 100%;
-    max-width: 300px;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-}
 
-/* ===== DIFFICULTY OVERLAY ===== */
-#difficultyOverlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.9);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 400;
-}
 
 /* ===== GENEL HOVER ===== */
 button:hover {
