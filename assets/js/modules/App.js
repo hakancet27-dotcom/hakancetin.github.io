@@ -155,7 +155,7 @@ class App {
                 backendService.updateLocalBestScore(score);
                 uiManager.showNotification(`🏆 Yeni rekor: ${score}!`, 5000);
                 const newRecordEl = document.getElementById('newRecord');
-                if (newRecordEl) newRecordEl.classList.remove('hidden');
+                if (newRecordEl) newRecordEl.classList.add('visible');
             }
             
             // Firebase'e otomatik gönder (bağlıysa)
@@ -170,6 +170,9 @@ class App {
             
             // Müzik durdur
             audioManager.stopBackground();
+            
+            // Game over ekranını göster
+            uiManager.showGameOver(score, isNewBest, backendService.leaderboard);
         });
 
         // TV modu değişiklikleri

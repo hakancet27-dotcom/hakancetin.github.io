@@ -588,7 +588,7 @@ body {
 /* Turbo Bar Container */
 #turboBarContainer {
     position: fixed;
-    bottom: 60px;
+    bottom: 90px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -648,7 +648,7 @@ body {
     align-items: center;
     justify-content: center;
 }
-#webrtcOverlay.active {
+#webrtcOverlay.visible {
     display: flex;
 }
 

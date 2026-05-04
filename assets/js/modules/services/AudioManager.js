@@ -26,6 +26,8 @@ class AudioManager {
         eventBus.on(Events.TURBO_ACTIVATED, () => this.playTurboSound());
         eventBus.on(Events.OBSTACLE_HIT, (data) => this.playObstacleSound(data.type));
         eventBus.on(Events.GAME_OVER, () => this.playGameOverSound());
+        eventBus.on(Events.GAME_PAUSE, () => this.pauseBackground());
+        eventBus.on(Events.GAME_RESUME, () => this.resumeBackground());
     }
 
     init() {
@@ -290,6 +292,17 @@ class AudioManager {
     stopBackground() {
         this.stopProceduralBackground();
         this.pauseBackgroundMusic();
+    }
+
+    // Oyun duraklatılınca çağır
+    pauseBackground() {
+        this.stopProceduralBackground();
+        this.pauseBackgroundMusic();
+    }
+
+    // Oyun devam edince çağır
+    resumeBackground() {
+        this.startBackground();
     }
 
     // Kontroller

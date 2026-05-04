@@ -249,13 +249,35 @@ class UIManager {
     }
 
     // Oyun sonu
-    showGameOver() {
+    showGameOver(score, isRecord, leaderboard) {
         this.showOverlay('gameOverOverlay');
         
         // Final skoru göster
         const finalScoreEl = document.getElementById('finalScore');
-        if (finalScoreEl && this.elements.score) {
-            finalScoreEl.textContent = this.elements.score.textContent;
+        if (finalScoreEl) {
+            finalScoreEl.textContent = score || (this.elements.score?.textContent || '0');
+        }
+        
+        // Yeni rekor bildirimi
+        const newRecordEl = document.getElementById('newRecord');
+        if (newRecordEl) {
+            if (isRecord) {
+                newRecordEl.classList.add('visible');
+            } else {
+                newRecordEl.classList.remove('visible');
+            }
+        }
+        
+        // Liderlik tablosunu doldur
+        const leaderboardList = document.getElementById('leaderboardList');
+        if (leaderboardList && leaderboard) {
+            leaderboardList.innerHTML = leaderboard.map((entry, index) => `
+                <div class="leaderboard-item ${index < 3 ? 'top-' + (index + 1) : ''}">
+                    <span class="rank">${index + 1}</span>
+                    <span class="name">${this.escapeHtml(entry.name || 'Anonim')}</span>
+                    <span class="score">${entry.score}</span>
+                </div>
+            `).join('');
         }
     }
 
