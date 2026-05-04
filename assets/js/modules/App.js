@@ -95,6 +95,21 @@ class App {
                     logger.warn('Camera access denied or failed:', error.message);
                     logger.info('Game will continue without face tracking');
                     cameraFailed = true;
+                    const cameraErrorOverlay = document.getElementById('cameraErrorOverlay');
+                    if (cameraErrorOverlay) {
+                        cameraErrorOverlay.classList.add('visible');
+                        let continueBtn = document.getElementById('cameraErrorContinueBtn');
+                        if (!continueBtn) {
+                            continueBtn = document.createElement('button');
+                            continueBtn.id = 'cameraErrorContinueBtn';
+                            continueBtn.textContent = 'Kamera Olmadan Devam Et';
+                            continueBtn.onclick = () => {
+                                cameraErrorOverlay.classList.remove('visible');
+                                inputLayer.setupFallbackControls();
+                            };
+                            cameraErrorOverlay.appendChild(continueBtn);
+                        }
+                    }
                 }
             }
             
@@ -332,15 +347,16 @@ class App {
         if (!overlay) {
             overlay = document.createElement('div');
             overlay.id = 'pauseOverlay';
-            overlay.className = 'game-paused-overlay';
+            overlay.className = 'game-paused-overlay visible';
             document.body.appendChild(overlay);
+        } else {
+            overlay.classList.add('visible');
         }
-        overlay.style.display = 'flex';
     }
     
     hidePauseOverlay() {
         const overlay = document.getElementById('pauseOverlay');
-        if (overlay) overlay.style.display = 'none';
+        if (overlay) overlay.classList.remove('visible');
     }
 
     // Cleanup

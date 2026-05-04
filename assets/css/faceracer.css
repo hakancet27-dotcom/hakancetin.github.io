@@ -10,9 +10,6 @@
     box-sizing: border-box;
 }
 
-.hidden {
-    display: none !important;
-}
 
 /* Turbo Bar */
 .turbo-bar-container {
@@ -1136,6 +1133,22 @@ body {
 
 
 
+
+/* ===== CONTROLS PANEL ===== */
+#controlsPanel {
+    display: none;
+}
+#controlsPanel.visible {
+    display: block;
+}
+
+/* ===== NEW RECORD ===== */
+#newRecord {
+    display: none;
+}
+#newRecord.visible {
+    display: block;
+}
 
 /* ===== GENEL HOVER ===== */
 button:hover:not(#startButton) {

@@ -137,21 +137,6 @@
             z-index: 200;
         }
 
-        /* Game Over */
-        #gameOverOverlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 200;
-        }
-
         .car-select-btn {
             transition: all 0.3s ease;
         }
@@ -271,7 +256,7 @@
                 <h1>💥 Oyun Bitti!</h1>
                 <p style="font-size: 2em; margin: 20px 0;">Skor: <span id="finalScore">0</span></p>
                 
-                <div id="newRecord" class="hidden" style="color: #00ff88; font-size: 1.2em;">
+                <div id="newRecord" style="color: #00ff88; font-size: 1.2em;">
                     🏆 Yeni Rekor!
                 </div>
 
@@ -315,6 +300,9 @@
         <!-- WebRTC Remote Video -->
         <video id="remoteVideo" autoplay playsinline style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; z-index:150;"></video>
 
+        <!-- Camera Error Overlay -->
+        <div id="cameraErrorOverlay"></div>
+
         <!-- WebRTC Overlay -->
         <div id="webrtcOverlay"></div>
 
@@ -328,7 +316,7 @@
         <button id="toggleControls">❓ Kontroller</button>
 
         <!-- Kontroller Paneli -->
-        <div id="controlsPanel" class="hidden">
+        <div id="controlsPanel">
             <h3>🎯 Kontroller</h3>
             <p>↔️ Kafanızı sağa/sola çevirin: Dönüş</p>
             <p>↕️ Kafanızı yukarı/aşağı eğin: Hız</p>

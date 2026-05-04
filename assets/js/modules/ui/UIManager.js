@@ -388,13 +388,13 @@ class UIManager {
             `;
             document.body.appendChild(loading);
         }
-        loading.classList.add('visible');
+        loading.style.display = 'flex';
     }
 
     hideLoading() {
         const loading = document.getElementById('loading');
         if (loading) {
-            loading.classList.remove('visible');
+            loading.style.display = 'none';
         }
     }
 }
