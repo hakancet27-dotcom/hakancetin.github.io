@@ -15,7 +15,7 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(self), microphone=(), geolocation=(), fullscreen=(self)">
     
-    <link rel="stylesheet" href="assets/css/faceracer.css">
+    <link rel="stylesheet" href="assets/css/faceracer.css?v=2">
     
     <!-- Security Script -->
     <script>
@@ -378,10 +378,10 @@
 
     <!-- Modular App -->
     <script type="module">
-        import { app } from './assets/js/modules/App.js';
-        import { uiManager } from './assets/js/modules/ui/UIManager.js';
-        import { backendService } from './assets/js/modules/services/BackendService.js';
-        import { eventBus, Events } from './assets/js/modules/utils/EventBus.js';
+        import { app } from './assets/js/modules/App.js?v=2';
+        import { uiManager } from './assets/js/modules/ui/UIManager.js?v=2';
+        import { backendService } from './assets/js/modules/services/BackendService.js?v=2';
+        import { eventBus, Events } from './assets/js/modules/utils/EventBus.js?v=2';
 
         // Global erişim için
         window.app = app;
