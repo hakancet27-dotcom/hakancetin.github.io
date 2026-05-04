@@ -81,45 +81,16 @@ class App {
                 throw new Error('GameEngine failed to initialize');
             }
 
-            // 6. Input Layer'i başlat (kamera başarısız olsa bile devam et)
+            // 6. Input Layer'i hazırla (kamera BAŞLA'ya basınca açılacak)
             const video = document.getElementById('cameraVideo');
-            let cameraFailed = false;
             if (video) {
-                try {
-                    const inputInitialized = await inputLayer.init(video);
-                    if (!inputInitialized) {
-                        logger.warn('InputLayer initialization failed, continuing without camera');
-                        cameraFailed = true;
-                    }
-                } catch (error) {
-                    logger.warn('Camera access denied or failed:', error.message);
-                    logger.info('Game will continue without face tracking');
-                    cameraFailed = true;
-                    const cameraErrorOverlay = document.getElementById('cameraErrorOverlay');
-                    if (cameraErrorOverlay) {
-                        cameraErrorOverlay.classList.add('visible');
-                        let continueBtn = document.getElementById('cameraErrorContinueBtn');
-                        if (!continueBtn) {
-                            continueBtn = document.createElement('button');
-                            continueBtn.id = 'cameraErrorContinueBtn';
-                            continueBtn.textContent = 'Kamera Olmadan Devam Et';
-                            continueBtn.onclick = () => {
-                                cameraErrorOverlay.classList.remove('visible');
-                                inputLayer.setupFallbackControls();
-                            };
-                            cameraErrorOverlay.appendChild(continueBtn);
-                        }
-                    }
-                }
-            }
-            
-            // Kamera yoksa fallback kontrolleri aktive et
-            if (cameraFailed) {
-                inputLayer.setupFallbackControls();
-                uiManager.showNotification('⌨️ Kamera bulunamadı — Ok tuşları ve mouse ile oynayabilirsiniz', 6000);
+                inputLayer.videoElement = video;
             }
 
-            // 7. Ek koordinasyon event'lerini bağla
+            // 7. BAŞLA butonu akışı
+            this.setupStartFlow();
+
+            // 8. Ek koordinasyon event'lerini bağla
             this.bindCoordinationEvents();
 
             this.initialized = true;
@@ -134,6 +105,110 @@ class App {
             uiManager.showNotification('❌ Başlatma hatası: ' + error.message, 5000);
             throw error;
         }
+    }
+
+    // BAŞLA butonu ve kamera hata akışı
+    setupStartFlow() {
+        // Kalibrasyon yöneticisi
+        this.calibration = {
+            phase: 0,
+            centerTimer: null,
+            faceDetected: false,
+            lastYaw: 0,
+            lastPitch: 0,
+            start() { this.phase = 1; uiManager.showCalibration(1); },
+            onFaceDetected: () => {
+                if (this.calibration.phase === 1) {
+                    this.calibration.phase = 2;
+                    uiManager.showCalibration(2);
+                }
+            },
+            onFaceData: (yaw, pitch) => {
+                this.calibration.lastYaw = yaw;
+                this.calibration.lastPitch = pitch;
+                if (this.calibration.phase !== 2) return;
+                if (Math.abs(yaw) < 0.15 && Math.abs(pitch) < 0.15) {
+                    if (!this.calibration.centerTimer) {
+                        this.calibration.centerTimer = setTimeout(() => {
+                            this.calibration.phase = 3;
+                            uiManager.showCalibration(3);
+                            setTimeout(() => eventBus.emit(Events.CALIBRATION_COMPLETE), 3000);
+                        }, 2000);
+                    }
+                } else {
+                    clearTimeout(this.calibration.centerTimer);
+                    this.calibration.centerTimer = null;
+                }
+            }
+        };
+        
+        eventBus.on(Events.FACE_DETECTED, () => this.calibration.onFaceDetected());
+        eventBus.on(Events.YAW_CHANGED, (v) => this.calibration.onFaceData(v, this.calibration.lastPitch));
+        eventBus.on(Events.PITCH_CHANGED, (v) => this.calibration.onFaceData(this.calibration.lastYaw, v));
+        
+        // BAŞLA butonu
+        const startBtn = document.getElementById('startButton');
+        if (startBtn) {
+            startBtn.addEventListener('click', async () => {
+                document.getElementById('startScreen').style.display = 'none';
+                uiManager.showLoading('Kamera başlatılıyor...');
+                try {
+                    const video = document.getElementById('cameraVideo');
+                    const inputInitialized = await inputLayer.init(video);
+                    uiManager.hideLoading();
+                    if (inputInitialized) {
+                        video.style.display = 'block';
+                        this.calibration.start();
+                    } else {
+                        throw new Error('Kamera başlatılamadı');
+                    }
+                } catch (e) {
+                    uiManager.hideLoading();
+                    const errorScreen = document.getElementById('cameraErrorScreen');
+                    if (errorScreen) errorScreen.classList.add('visible');
+                }
+            });
+        }
+        
+        // Telefon bağla
+        const phoneBtn = document.getElementById('startWithPhone');
+        if (phoneBtn) {
+            phoneBtn.addEventListener('click', () => {
+                eventBus.emit(Events.WEBRTC_START_HOST, { firebaseDb: backendService.db });
+                const qrContainer = document.getElementById('qrContainer');
+                if (qrContainer) qrContainer.classList.add('visible');
+            });
+        }
+        
+        // Klavye ile devam
+        const keyboardBtn = document.getElementById('startWithKeyboard');
+        if (keyboardBtn) {
+            keyboardBtn.addEventListener('click', () => {
+                const errorScreen = document.getElementById('cameraErrorScreen');
+                if (errorScreen) errorScreen.classList.remove('visible');
+                inputLayer.setupFallbackControls();
+                uiManager.showNotification('⌨️ Ok tuşları aktif', 2000);
+                uiManager.showOverlay('difficultyOverlay');
+            });
+        }
+        
+        // WebRTC bağlandığında
+        eventBus.on(Events.WEBRTC_VIDEO_READY, () => {
+            const errorScreen = document.getElementById('cameraErrorScreen');
+            if (errorScreen) errorScreen.classList.remove('visible');
+            const status = document.getElementById('connectionStatus');
+            if (status) {
+                status.textContent = '✅ Bağlandı!';
+                status.classList.add('connected');
+            }
+            setTimeout(() => this.calibration.start(), 1000);
+        });
+        
+        // Kalibrasyon tamamlandığında
+        eventBus.on(Events.CALIBRATION_COMPLETE, () => {
+            uiManager.hideCalibration();
+            uiManager.showOverlay('difficultyOverlay');
+        });
     }
 
     bindCoordinationEvents() {

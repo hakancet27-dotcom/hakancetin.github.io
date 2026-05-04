@@ -1142,6 +1142,173 @@ body {
     display: block;
 }
 
+/* ===== START SCREEN ===== */
+#startScreen, #cameraErrorScreen {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 600;
+    text-align: center;
+    padding: 20px;
+}
+
+#cameraErrorScreen {
+    display: none;
+}
+
+#cameraErrorScreen.visible {
+    display: flex;
+}
+
+.start-content h1 {
+    font-size: 3.5rem;
+    color: #00ff88;
+    text-shadow: 0 0 30px rgba(0, 255, 136, 0.6);
+    margin-bottom: 15px;
+}
+
+.start-subtitle {
+    color: #ccc;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+}
+
+#startButton {
+    padding: 20px 70px;
+    font-size: 2rem;
+    background: #00ff88;
+    color: #1a1a2e;
+    border: none;
+    border-radius: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 40px rgba(0, 255, 136, 0.5);
+    animation: readyPulse 2s infinite;
+}
+
+#startButton:hover {
+    transform: scale(1.08) !important;
+}
+
+@keyframes readyPulse {
+    0%, 100% { box-shadow: 0 0 40px rgba(0, 255, 136, 0.5); }
+    50% { box-shadow: 0 0 60px rgba(0, 255, 136, 0.8); }
+}
+
+.error-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+#cameraErrorScreen h2 {
+    color: #ff4444;
+    margin-bottom: 10px;
+}
+
+#cameraErrorScreen p {
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+.error-options {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.error-options button {
+    padding: 15px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    min-width: 180px;
+    transition: transform 0.2s;
+}
+
+#startWithPhone {
+    background: #00ff88;
+    color: #1a1a2e;
+}
+
+#startWithKeyboard {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid #555 !important;
+}
+
+.error-options button:hover {
+    transform: scale(1.05) !important;
+}
+
+#qrContainer {
+    margin-top: 25px;
+    display: none;
+}
+
+#qrContainer.visible {
+    display: block;
+}
+
+#qrCode {
+    width: 160px;
+    height: 160px;
+    background: white;
+    margin: 10px auto;
+    border-radius: 8px;
+}
+
+#connectionStatus {
+    color: #ffaa00;
+    font-size: 0.9rem;
+    margin-top: 8px;
+}
+
+#connectionStatus.connected {
+    color: #00ff88;
+}
+
+/* Calibration Phases */
+.calibration-phases {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.phase-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #444;
+    transition: all 0.3s ease;
+}
+
+.phase-dot.active {
+    background: #00ff88;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.8);
+}
+
+@media (max-width: 480px) {
+    #startButton {
+        font-size: 1.4rem;
+        padding: 16px 40px;
+    }
+    .error-options {
+        flex-direction: column;
+        align-items: center;
+    }
+    .error-options button {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
 /* ===== NEW RECORD ===== */
 #newRecord {
     display: none;

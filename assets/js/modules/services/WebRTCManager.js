@@ -187,6 +187,13 @@ class WebRTCManager {
 
     // QR kod overlay'i göster
     showQROverlay(qrUrl, apiQRUrl) {
+        // Yeni kamera hata ekranındaki qrCode elementini doldur
+        const qrCodeEl = document.getElementById('qrCode');
+        if (qrCodeEl) {
+            qrCodeEl.innerHTML = `<img src="${apiQRUrl}" alt="QR Kod" style="width:160px;height:160px;border-radius:8px;">`;
+        }
+        
+        // Eski webrtcOverlay'e de yedek göster
         const webrtcOverlay = document.getElementById('webrtcOverlay');
         if (webrtcOverlay) {
             webrtcOverlay.innerHTML = `
@@ -202,8 +209,7 @@ class WebRTCManager {
                     </div>
                 </div>
             `;
-            webrtcOverlay.classList.remove('hidden');
-            webrtcOverlay.style.display = 'flex';
+            webrtcOverlay.classList.add('visible');
 
             // Buton click listener'ları
             webrtcOverlay.addEventListener('click', (e) => {

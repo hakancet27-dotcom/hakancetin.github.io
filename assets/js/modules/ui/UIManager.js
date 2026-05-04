@@ -189,6 +189,37 @@ class UIManager {
         this.overlays.forEach(id => this.hideOverlay(id));
     }
 
+    // 3 aşamalı kalibrasyon ekranı
+    showCalibration(phase) {
+        const overlay = document.getElementById('calibrationOverlay');
+        const title = document.getElementById('calibrationTitle');
+        const desc = document.getElementById('calibrationDesc');
+        
+        if (overlay) overlay.classList.add('visible');
+        
+        // Phase dots güncelle
+        for (let i = 1; i <= 3; i++) {
+            const dot = document.getElementById(`phaseDot${i}`);
+            if (dot) dot.classList.toggle('active', i <= phase);
+        }
+        
+        if (phase === 1) {
+            if (title) title.textContent = '📷 Yüzünüzü Kameraya Gösterin';
+            if (desc) desc.textContent = 'Kamera sizi görüyor mu kontrol ediliyor...';
+        } else if (phase === 2) {
+            if (title) title.textContent = '🎯 Yüzünüzü Ortaya Getirin';
+            if (desc) desc.textContent = 'Alnınız tam ortada olsun, dik durun';
+        } else if (phase === 3) {
+            if (title) title.textContent = '✅ Harika! Hazırsınız';
+            if (desc) desc.textContent = 'Kalibrasyon tamamlandı';
+        }
+    }
+    
+    hideCalibration() {
+        const overlay = document.getElementById('calibrationOverlay');
+        if (overlay) overlay.classList.remove('visible');
+    }
+
     // Kalibrasyon ilerleme
     onCalibrationProgress(data) {
         // Geri sayım güncelle

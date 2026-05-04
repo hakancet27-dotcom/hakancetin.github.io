@@ -171,17 +171,48 @@
     </style>
 </head>
 <body>
+    <!-- Açılış Ekranı -->
+    <div id="startScreen">
+        <div class="start-content">
+            <h1>🎮 FaceRacer</h1>
+            <p class="start-subtitle">Yüzünle kontrol et, hızını sen belirle</p>
+            <button id="startButton">🚀 BAŞLA</button>
+        </div>
+    </div>
+
+    <!-- Kamera Hata Ekranı -->
+    <div id="cameraErrorScreen">
+        <div class="start-content">
+            <div class="error-icon">📷</div>
+            <h2>Kamera Bulunamadı</h2>
+            <p>Kameranıza erişilemiyor. Nasıl devam etmek istersiniz?</p>
+            <div class="error-options">
+                <button id="startWithPhone">📱 Telefon Bağla</button>
+                <button id="startWithKeyboard">⌨️ Klavye ile Devam Et</button>
+            </div>
+            <div id="qrContainer">
+                <p class="qr-hint">Telefonunuzla QR kodu okutun</p>
+                <div id="qrCode"></div>
+                <p id="connectionStatus">Bağlantı bekleniyor...</p>
+            </div>
+        </div>
+    </div>
+
     <div id="gameContainer">
         <canvas id="gameCanvas"></canvas>
         
-        <video id="cameraVideo" autoplay playsinline></video>
+        <video id="cameraVideo" autoplay playsinline style="display:none"></video>
         
         <!-- Kalibrasyon Overlay -->
         <div id="calibrationOverlay">
             <div class="calibration-content">
-                <h1>🎮 FaceRacer</h1>
-                <p>Yüzünüzü tam ortaya getirin</p>
-                <p class="calibration-hint">Dik durun, alnınız çerçevenin tam ortasında olsun</p>
+                <h1 id="calibrationTitle">📷 Yüzünüzü Kameraya Gösterin</h1>
+                <p id="calibrationDesc">Kamera sizi görüyor mu kontrol ediliyor...</p>
+                <div class="calibration-phases">
+                    <span class="phase-dot active" id="phaseDot1"></span>
+                    <span class="phase-dot" id="phaseDot2"></span>
+                    <span class="phase-dot" id="phaseDot3"></span>
+                </div>
                 <div class="countdown" id="countdown">3</div>
                 <div class="progress-bar">
                     <div class="progress-fill" id="calibrationProgress"></div>
