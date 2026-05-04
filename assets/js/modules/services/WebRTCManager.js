@@ -202,7 +202,19 @@ class WebRTCManager {
                     </div>
                 </div>
             `;
+            webrtcOverlay.classList.remove('hidden');
             webrtcOverlay.style.display = 'flex';
+
+            // Buton click listener'ları
+            webrtcOverlay.addEventListener('click', (e) => {
+                const action = e.target?.dataset?.action;
+                if (action === 'cancelWebRTC') {
+                    this.stop();
+                } else if (action === 'restartWebRTC') {
+                    this.stop();
+                    eventBus.emit(Events.WEBRTC_START_HOST, { firebaseDb: window.backendService?.db });
+                }
+            });
         }
     }
 
@@ -249,7 +261,10 @@ class WebRTCManager {
 
         // Overlay'i gizle
         const overlay = document.getElementById('webrtcOverlay');
-        if (overlay) overlay.style.display = 'none';
+        if (overlay) {
+            overlay.style.display = 'none';
+            overlay.classList.add('hidden');
+        }
 
         logger.info('WebRTC bağlantısı temizlendi');
         eventBus.emit(Events.WEBRTC_DISCONNECTED);

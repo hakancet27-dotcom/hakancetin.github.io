@@ -311,6 +311,7 @@ class InputLayer {
 
         // Klavye
         this.keyDownHandler = (e) => {
+            if (e.repeat) return;
             if (this.keys.hasOwnProperty(e.key)) {
                 this.keys[e.key] = true;
                 this.emitFallbackInput();

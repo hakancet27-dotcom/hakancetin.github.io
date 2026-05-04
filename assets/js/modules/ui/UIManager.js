@@ -92,9 +92,6 @@ class UIManager {
 
         // Klavye kontrolleri
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                this.togglePause();
-            }
             if (e.key === ' ' || e.code === 'Space') {
                 if (!this.elements.calibrationOverlay?.classList.contains('hidden')) {
                     // Boşluk tuşu kalibrasyon sırasında
@@ -247,7 +244,7 @@ class UIManager {
         
         // Tüm HUD elementlerini göster
         const showElements = [
-            'hud', 'toggleCamera', 'toggleControls', 'toggleMusic'
+            'hud', 'toggleCamera', 'toggleControls', 'toggleMusic', 'connectPhoneBtn'
         ];
         showElements.forEach(id => {
             if (this.elements[id]) {
@@ -361,9 +358,11 @@ class UIManager {
         }, duration);
     }
 
-    // Teknik değerleri güncelle
+    // Teknik değerleri güncelle (tek sefer kaydet, memory leak engelle)
     startTechnicalValuesUpdate() {
         if (!this.elements.controlRawYaw || !this.elements.controlRawPitch) return;
+        if (this._technicalListenersActive) return;
+        this._technicalListenersActive = true;
 
         eventBus.on(Events.YAW_CHANGED, (yaw) => {
             if (this.elements.controlRawYaw) {

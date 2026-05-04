@@ -348,6 +348,8 @@ class App {
     // Oyunu yeniden başlat
     restart() {
         eventBus.emit(Events.GAME_OVER);
+        const gameOverOverlay = document.getElementById('gameOverOverlay');
+        if (gameOverOverlay) gameOverOverlay.style.display = 'none';
         uiManager.hideOverlay('gameOverOverlay');
         uiManager.showOverlay('difficultyOverlay');
     }

@@ -35,7 +35,8 @@ class GameEngine {
             carPosition: 0,
             difficulty: 'normal',
             selectedCar: 'standard',
-            selectedCarColor: null
+            selectedCarColor: null,
+            cameraPreset: 0
         };
 
         // Nesneler

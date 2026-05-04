@@ -272,7 +272,18 @@ class AudioManager {
 
     // Oyun başlayınca çağır
     startBackground() {
-        this.startProceduralBackground();
+        if (this.audioContext && this.audioContext.state === 'suspended') {
+            // Kullanıcı etkileşimi gerekebilir - ilk tıklamada resume
+            const resumeOnClick = () => {
+                this.resume();
+                this.startProceduralBackground();
+                document.removeEventListener('click', resumeOnClick);
+            };
+            document.addEventListener('click', resumeOnClick);
+            logger.info('AudioContext suspended - waiting for user interaction');
+        } else {
+            this.startProceduralBackground();
+        }
     }
 
     // Oyun bitince çağır
