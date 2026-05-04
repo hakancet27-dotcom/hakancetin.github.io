@@ -125,9 +125,6 @@ class GameEngine {
             // Resize handler
             window.addEventListener('resize', () => this.onResize());
 
-            // Başlat
-            this.animate();
-
             logger.info('GameEngine initialized');
             return true;
         } catch (error) {
@@ -497,6 +494,11 @@ class GameEngine {
         // Engelleri temizle
         this.obstacles.forEach(obs => this.scene.remove(obs));
         this.obstacles = [];
+
+        // Animasyon döngüsünü başlat (eğer zaten çalışmıyorsa)
+        if (!this.animationId) {
+            this.animate();
+        }
 
         logger.info('Game started');
         eventBus.emit(Events.SCORE_CHANGED, this.state.score);

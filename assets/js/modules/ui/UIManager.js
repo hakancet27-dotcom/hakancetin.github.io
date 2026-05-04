@@ -243,28 +243,33 @@ class UIManager {
         }
     }
 
+    // HUD göster/gizle
+    showHUD() {
+        const hudElements = ['hud', 'toggleCamera', 'toggleControls', 'toggleMusic'];
+        hudElements.forEach(id => {
+            if (this.elements[id]) this.elements[id].classList.add('visible');
+        });
+        const speedometer = document.getElementById('speedometer');
+        if (speedometer) speedometer.classList.add('visible');
+        const turboBarContainer = document.getElementById('turboBarContainer');
+        if (turboBarContainer) turboBarContainer.classList.add('visible');
+    }
+
+    hideHUD() {
+        const hudElements = ['hud', 'toggleCamera', 'toggleControls', 'toggleMusic'];
+        hudElements.forEach(id => {
+            if (this.elements[id]) this.elements[id].classList.remove('visible');
+        });
+        const speedometer = document.getElementById('speedometer');
+        if (speedometer) speedometer.classList.remove('visible');
+        const turboBarContainer = document.getElementById('turboBarContainer');
+        if (turboBarContainer) turboBarContainer.classList.remove('visible');
+    }
+
     // Oyun başlangıcı
     onGameStart() {
         this.hideAllOverlays();
-        
-        // Tüm HUD elementlerini göster
-        const showElements = [
-            'hud', 'toggleCamera', 'toggleControls', 'toggleMusic'
-        ];
-        showElements.forEach(id => {
-            if (this.elements[id]) {
-                this.elements[id].classList.add('visible');
-            }
-        });
-
-        // Speedometer ve turbo bar
-        const speedometer = document.getElementById('speedometer');
-        if (speedometer) speedometer.classList.add('visible');
-        
-        const turboBarContainer = document.getElementById('turboBarContainer');
-        if (turboBarContainer) turboBarContainer.classList.add('visible');
-        
-        // Teknik değerleri göster
+        this.showHUD();
         this.startTechnicalValuesUpdate();
     }
 

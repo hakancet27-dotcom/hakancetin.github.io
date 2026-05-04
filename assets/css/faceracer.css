@@ -121,6 +121,11 @@ body {
     z-index: 100;
     transform: scaleX(-1);
     transition: all 0.5s ease;
+    display: none;
+}
+
+#cameraVideo.visible {
+    display: block;
 }
 
 #cameraVideo.calibrating {
@@ -1047,6 +1052,21 @@ body {
     text-shadow: 0 0 20px rgba(0,255,136,0.8);
 }
 
+
+/* ===== CALIBRATION OVERLAY ===== */
+#calibrationOverlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 150;
+}
+#calibrationOverlay.visible {
+    display: flex;
+}
 
 /* ===== GAME OVER OVERLAY ===== */
 #gameOverOverlay {

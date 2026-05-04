@@ -151,13 +151,14 @@ class App {
                     const inputInitialized = await inputLayer.init(video);
                     uiManager.hideLoading();
                     if (inputInitialized) {
-                        video.style.display = 'block';
+                        video.classList.add('visible');
                         this.calibration.start();
                     } else {
                         throw new Error('Kamera başlatılamadı');
                     }
                 } catch (e) {
                     uiManager.hideLoading();
+                    document.getElementById('startScreen').classList.remove('hidden');
                     const errorScreen = document.getElementById('cameraErrorScreen');
                     if (errorScreen) errorScreen.classList.add('visible');
                 }
