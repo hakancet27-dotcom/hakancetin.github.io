@@ -189,9 +189,11 @@ class WebRTCManager {
     showQROverlay(qrUrl, apiQRUrl) {
         // Yeni kamera hata ekranındaki qrCode elementini doldur
         const qrCodeEl = document.getElementById('qrCode');
-        if (qrCodeEl) {
-            qrCodeEl.innerHTML = `<img src="${apiQRUrl}" alt="QR Kod" style="width:160px;height:160px;border-radius:8px;">`;
+        if (!qrCodeEl) {
+            logger.error('qrCode elementi bulunamadı');
+            return;
         }
+        qrCodeEl.innerHTML = `<img src="${apiQRUrl}" alt="QR Kod" style="width:160px;height:160px;border-radius:8px;">`;
         
         // Eski webrtcOverlay'e de yedek göster
         const webrtcOverlay = document.getElementById('webrtcOverlay');
