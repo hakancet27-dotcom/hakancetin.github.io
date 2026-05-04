@@ -65,10 +65,10 @@ class UIManager {
             gameOverOverlay: document.getElementById('gameOverOverlay'),
             
             // Buttons
-            startButton: document.getElementById('startButton'),
             toggleCamera: document.getElementById('toggleCamera'),
             toggleMusic: document.getElementById('toggleMusic'),
             toggleTVMode: document.getElementById('toggleTVMode'),
+            connectPhoneBtn: document.getElementById('connectPhoneBtn'),
             toggleControls: document.getElementById('toggleControls'),
             
             // Panels
@@ -87,12 +87,6 @@ class UIManager {
         if (this.elements.toggleControls) {
             this.elements.toggleControls.addEventListener('click', () => {
                 this.toggleControlsPanel();
-            });
-        }
-
-        if (this.elements.startButton) {
-            this.elements.startButton.addEventListener('click', () => {
-                eventBus.emit(Events.GAME_START);
             });
         }
 
