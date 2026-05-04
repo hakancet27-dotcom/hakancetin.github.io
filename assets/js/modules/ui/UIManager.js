@@ -229,14 +229,21 @@ class UIManager {
         }
     }
 
+    // Zorluk ekranı göster/gizle
+    showDifficultyScreen() {
+        this.showOverlay('difficultyOverlay');
+    }
+
+    hideDifficultyScreen() {
+        this.hideOverlay('difficultyOverlay');
+    }
+
     // Kalibrasyon tamamlandı
     onCalibrationComplete() {
         console.log('🎯 UIManager: Kalibrasyon tamamlandı, zorluk ekranı gösteriliyor...');
         
         this.hideOverlay('calibrationOverlay');
-        
-        // Zorluk overlay'ı göster
-        this.showOverlay('difficultyOverlay');
+        this.showDifficultyScreen();
         
         if (this.elements.video) {
             this.elements.video.classList.remove('calibrating');

@@ -24,7 +24,8 @@ class AudioManager {
     bindEvents() {
         eventBus.on('audio:play', (data) => this.playEffect(data.type));
         eventBus.on(Events.TURBO_ACTIVATED, () => this.playTurboSound());
-        eventBus.on(Events.OBSTACLE_HIT, (data) => this.playObstacleSound(data.type));
+        eventBus.on(Events.OBSTACLE_HIT, (data) => this.playObstacleSound(data?.type));
+        eventBus.on(Events.GOLD_COLLECTED, () => this.playGoldSound());
         eventBus.on(Events.GAME_OVER, () => this.playGameOverSound());
         eventBus.on(Events.GAME_PAUSE, () => this.pauseBackground());
         eventBus.on(Events.GAME_RESUME, () => this.resumeBackground());
@@ -124,6 +125,10 @@ class AudioManager {
         osc2.start();
         osc1.stop(this.audioContext.currentTime + 0.15);
         osc2.stop(this.audioContext.currentTime + 0.15);
+    }
+
+    playObstacleSound(type) {
+        this.playDamageSound();
     }
 
     playDamageSound() {

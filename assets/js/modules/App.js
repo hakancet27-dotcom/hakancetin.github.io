@@ -152,6 +152,7 @@ class App {
                     uiManager.hideLoading();
                     if (inputInitialized) {
                         video.classList.add('visible');
+                        uiManager.showCalibration(1);
                         this.calibration.start();
                     } else {
                         throw new Error('Kamera başlatılamadı');
@@ -370,22 +371,9 @@ class App {
 
     // Kamera preset değiştirme
     toggleCameraPreset() {
-        const presets = [
-            { pos: [0, 8, 12], lookAt: [0, 0, 0] },
-            { pos: [0, 12, 18], lookAt: [0, 0, 0] },
-            { pos: [0, 5, 8], lookAt: [0, 0, 0] },
-            { pos: [-8, 5, 0], lookAt: [0, 0, 0] } // Yan açı
-        ];
-
-        gameEngine.state.cameraPreset = (gameEngine.state.cameraPreset + 1) % presets.length;
-        const preset = presets[gameEngine.state.cameraPreset];
-
-        if (gameEngine.camera) {
-            gameEngine.camera.position.set(...preset.pos);
-            gameEngine.camera.lookAt(...preset.lookAt);
-        }
-
-        return gameEngine.state.cameraPreset;
+        const name = gameEngine.toggleCameraPreset();
+        uiManager.showNotification(`📷 ${name}`, 1000);
+        return name;
     }
 
     // TV modu geçiş

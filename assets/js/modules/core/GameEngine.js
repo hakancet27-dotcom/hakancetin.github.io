@@ -759,6 +759,19 @@ class GameEngine {
     setDifficulty(difficulty) {
         this.state.difficulty = difficulty;
     }
+
+    toggleCameraPreset() {
+        const presets = [
+            { name: 'Yakın', pos: [0, 3, 8], look: [0, 0, -5] },
+            { name: 'Orta', pos: [0, 5, 12], look: [0, 0, -10] },
+            { name: 'Uzak', pos: [0, 8, 18], look: [0, 0, -15] }
+        ];
+        this.state.cameraPreset = ((this.state.cameraPreset || 0) + 1) % presets.length;
+        const preset = presets[this.state.cameraPreset];
+        this.camera.position.set(...preset.pos);
+        this.camera.lookAt(...preset.look);
+        return preset.name;
+    }
 }
 
 // Singleton instance
