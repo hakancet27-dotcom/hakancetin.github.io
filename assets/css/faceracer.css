@@ -1181,6 +1181,7 @@ body {
 
 #cameraErrorScreen {
     display: none;
+    z-index: 700;
 }
 
 #cameraErrorScreen.visible {

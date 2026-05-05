@@ -159,7 +159,7 @@ class App {
                     }
                 } catch (e) {
                     uiManager.hideLoading();
-                    document.getElementById('startScreen').classList.remove('hidden');
+                    document.getElementById('startScreen').classList.add('hidden');
                     const errorScreen = document.getElementById('cameraErrorScreen');
                     if (errorScreen) errorScreen.classList.add('visible');
                 }
