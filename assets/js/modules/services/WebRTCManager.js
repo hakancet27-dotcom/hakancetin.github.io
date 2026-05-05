@@ -65,6 +65,19 @@ class WebRTCManager {
         logger.info('Room ID:', this.roomId);
 
         try {
+            // Firebase kuralları testi
+            logger.info('Firebase kuralları test ediliyor...');
+            try {
+                const testRef = firebaseDb.ref('webrtc_rooms/_test');
+                await testRef.set({ test: true, timestamp: Date.now() });
+                await testRef.remove();
+                logger.info('✅ Firebase kuralları OK - yazma izni var');
+            } catch (testError) {
+                logger.error('❌ Firebase kuralları hatası:', testError.message);
+                alert('⚠️ Firebase Realtime Database kuralları ayarlanmamış!\n\nHata: ' + testError.message + '\n\nFirebase Console → Realtime Database → Rules → "webrtc_rooms" için ".read": true, ".write": true yapın.');
+                return { success: false, error: 'Firebase rules: ' + testError.message };
+            }
+
             // Firebase referansı oluştur
             this.roomRef = firebaseDb.ref('webrtc_rooms/' + this.roomId);
             
