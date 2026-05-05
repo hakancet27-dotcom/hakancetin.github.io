@@ -20,11 +20,12 @@ class BackendService {
     }
 
     init(firebaseConfig) {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             try {
                 if (typeof firebase === 'undefined') {
-                    logger.warn('Firebase not loaded');
-                    reject(new Error('Firebase not available'));
+                    logger.warn('Firebase SDK yuklenmemis, oyun offline devam ediyor');
+                    this.connected = false;
+                    resolve(false);
                     return;
                 }
 
@@ -47,16 +48,12 @@ class BackendService {
                 // Kullanıcı adını localStorage'dan al
                 this.playerName = localStorage.getItem('faceracer_name') || '';
 
-                // Leaderboard ve usage_stats'i hata olursa sessizce gec
-                try { this.logUsage(); } catch(e) {}
-                try { this.loadLeaderboard(10); } catch(e) {}
-
                 logger.info('BackendService initialized');
                 resolve(true);
             } catch (error) {
-                logger.error('BackendService initialization failed:', error);
+                logger.warn('BackendService baslatilamadi, oyun offline devam ediyor:', error.message);
                 this.connected = false;
-                reject(error);
+                resolve(false);
             }
         });
     }
