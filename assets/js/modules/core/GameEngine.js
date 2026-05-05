@@ -78,8 +78,6 @@ class GameEngine {
         eventBus.on(Events.YAW_CHANGED, (yaw) => this.handleYaw(yaw));
         eventBus.on(Events.PITCH_CHANGED, (pitch) => this.handlePitch(pitch));
         eventBus.on(Events.BLINK_DETECTED, () => this.handleBlink());
-        eventBus.on(Events.CALIBRATION_COMPLETE, () => this.onCalibrationComplete());
-        
         // Oyun kontrol olayları
         eventBus.on(Events.GAME_START, (data) => this.start(data));
         eventBus.on(Events.GAME_PAUSE, () => this.pause());
