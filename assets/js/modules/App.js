@@ -8,6 +8,7 @@ import { gameEngine } from './core/GameEngine.js';
 import { platformAdapter } from './adapters/PlatformAdapter.js';
 import { backendService } from './services/BackendService.js';
 import { audioManager } from './services/AudioManager.js';
+import { webRTCManager } from './services/WebRTCManager.js';
 import { uiManager } from './ui/UIManager.js';
 import { eventBus, Events } from './utils/EventBus.js';
 import logger from './utils/Logger.js';
@@ -166,26 +167,11 @@ class App {
             });
         }
         
-        // Telefon bağla
+        // Telefon bağla (WebRTCManager QR kodu olusturur)
         const phoneBtn = document.getElementById('startWithPhone');
         if (phoneBtn) {
             phoneBtn.addEventListener('click', () => {
-                const qrContainer = document.getElementById('qrContainer');
-                if (qrContainer) qrContainer.classList.add('visible');
-                
-                // QR kod oluştur
-                const roomId = Math.random().toString(36).substring(2, 10).toUpperCase();
-                const joinUrl = `https://hakancetin.com.tr/game.html?room=${roomId}`;
-                const qrCodeDiv = document.getElementById('qrCode');
-                if (qrCodeDiv) {
-                    qrCodeDiv.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(joinUrl)}" alt="QR Kod" style="width:160px;height:160px;">`;
-                }
-                const status = document.getElementById('connectionStatus');
-                if (status) {
-                    status.textContent = `Oda: ${roomId} - Bağlantı bekleniyor...`;
-                }
-                
-                eventBus.emit(Events.WEBRTC_START_HOST, { firebaseDb: backendService.db, roomId });
+                eventBus.emit(Events.WEBRTC_START_HOST, { firebaseDb: backendService.db });
             });
         }
         
@@ -202,7 +188,7 @@ class App {
         }
         
         // WebRTC bağlandığında
-        eventBus.on(Events.WEBRTC_VIDEO_READY, () => {
+        eventBus.on(Events.WEBRTC_VIDEO_READY, (data) => {
             const errorScreen = document.getElementById('cameraErrorScreen');
             if (errorScreen) errorScreen.classList.remove('visible');
             const status = document.getElementById('connectionStatus');
@@ -210,6 +196,15 @@ class App {
                 status.textContent = '✅ Bağlandı!';
                 status.classList.add('connected');
             }
+            
+            // Remote stream'i cameraVideo'ya yönlendir (face detection icin)
+            const cameraVideo = document.getElementById('cameraVideo');
+            if (cameraVideo && data && data.stream) {
+                cameraVideo.srcObject = data.stream;
+                cameraVideo.classList.add('visible');
+                cameraVideo.classList.add('calibrating');
+            }
+            
             setTimeout(() => this.calibration.start(), 1000);
         });
         
