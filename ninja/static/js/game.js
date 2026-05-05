@@ -1637,9 +1637,9 @@ const hands = new Hands({locateFile: (file) => {
 
 hands.setOptions({
     maxNumHands: 1,
-    modelComplexity: 1,
-    minDetectionConfidence: 0.7,
-    minTrackingConfidence: 0.6
+    modelComplexity: 0,  // Daha hızlı model
+    minDetectionConfidence: 0.5,  // Düşük güvenlik eşiği
+    minTrackingConfidence: 0.5  // Düşük güvenlik eşiği
 });
 
 hands.onResults(onResults);
@@ -1786,8 +1786,8 @@ function startCamera() {
         onFrame: async () => {
             await hands.send({image: video});
         },
-        width: 1280,
-        height: 720
+        width: 640,  // Düşük çözünürlük - daha hızlı
+        height: 480
     });
 
     camera.start().then(() => {
