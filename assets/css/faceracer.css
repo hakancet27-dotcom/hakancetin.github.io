@@ -1078,7 +1078,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    z-index: 500;
+    z-index: 600;
 }
 #gameOverOverlay.visible {
     display: flex;
@@ -1093,7 +1093,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    z-index: 400;
+    z-index: 500;
 }
 #difficultyOverlay.visible {
     display: flex;
@@ -1170,7 +1170,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 600;
+    z-index: 300;
     text-align: center;
     padding: 20px;
 }
@@ -1205,6 +1205,7 @@ body {
 }
 
 #startButton {
+    position: relative;
     padding: 20px 70px;
     font-size: 2rem;
     background: #00ff88;
