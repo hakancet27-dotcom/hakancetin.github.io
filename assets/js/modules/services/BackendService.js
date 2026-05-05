@@ -47,6 +47,10 @@ class BackendService {
                 // Kullanıcı adını localStorage'dan al
                 this.playerName = localStorage.getItem('faceracer_name') || '';
 
+                // Leaderboard ve usage_stats'i hata olursa sessizce gec
+                try { this.logUsage(); } catch(e) {}
+                try { this.loadLeaderboard(10); } catch(e) {}
+
                 logger.info('BackendService initialized');
                 resolve(true);
             } catch (error) {
