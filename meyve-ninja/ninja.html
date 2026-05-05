@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meyve Ninja - Hakan Çetin</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="game-container">
+        <canvas id="gameCanvas"></canvas>
+        <div class="ui">
+            <div class="score">Puan: <span id="score">0</span></div>
+            <div class="timer">Süre: <span id="timer">0s</span></div>
+            <div class="lives" id="lives"></div>
+        </div>
+        <div class="start-screen" id="startScreen">
+            <h1>🍎 Meyve Ninja 🍊</h1>
+            <p>Kamerayı açın ve meyveleri kesin!</p>
+            <button id="startBtn">Başla</button>
+        </div>
+        <div class="game-over" id="gameOverScreen">
+            <h1>Oyun Bitti!</h1>
+            <p>Puan: <span id="finalScore">0</span></p>
+            <button id="restartBtn">Tekrar Oyna</button>
+        </div>
+        <div class="combo-display" id="combo-display"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+    <script src="static/js/game.js"></script>
+</body>
+</html>
