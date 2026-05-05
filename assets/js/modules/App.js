@@ -200,11 +200,6 @@ class App {
             setTimeout(() => this.calibration.start(), 1000);
         });
         
-        // Kalibrasyon tamamlandığında
-        eventBus.on(Events.CALIBRATION_COMPLETE, () => {
-            uiManager.hideCalibration();
-            uiManager.showDifficultyScreen();
-        });
     }
 
     bindCoordinationEvents() {

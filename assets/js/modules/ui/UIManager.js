@@ -25,6 +25,7 @@ class UIManager {
         eventBus.on(Events.GAME_OVER, () => this.showGameOver());
         eventBus.on(Events.GAME_START, () => this.onGameStart());
         eventBus.on('calibration:progress', (data) => this.onCalibrationProgress(data));
+        eventBus.on(Events.CALIBRATION_COMPLETE, () => this.onCalibrationComplete());
         
         // Platform olayları
         eventBus.on(Events.PLATFORM_CHANGED, (platform) => this.onPlatformChange(platform));
