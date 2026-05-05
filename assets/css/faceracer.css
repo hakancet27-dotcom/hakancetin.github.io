@@ -401,6 +401,10 @@ body {
 
     #toggleTVModeStart {
         transform: translatex(-74.33330000000001px) translatey(85px);
+        font-size: 16px;
+        line-height: 8px;
+        letter-spacing: 3.1px;
+        word-spacing: -5px;
     }
 
     #countdown {
