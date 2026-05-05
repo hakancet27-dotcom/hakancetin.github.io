@@ -418,6 +418,21 @@ body {
     #startButton {
         transform: translatex(-121px) translatey(-117px) !important;
     }
+
+    /* Division */
+    #loading div {
+        transform: translatex(0px) translatey(0px);
+    }
+
+    /* Button */
+    #loading div button {
+        font-size: 30px !important;
+    }
+
+    /* Paragraph */
+    #loading div p {
+        font-size: 23px;
+    }
 }
 
 /* Portrait Mode Optimizasyon - Dikey ekran için */
