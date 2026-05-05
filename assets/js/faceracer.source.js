@@ -73,23 +73,6 @@ async function checkIntegrity() {
 
 checkIntegrity();
 
-// Usage Monitoring (Firebase)
-function logUsage() {
-    if (typeof firebase !== 'undefined' && firebase.database) {
-        const usageRef = firebase.database().ref('security/usage');
-        usageRef.push({
-            domain: window.location.hostname,
-            timestamp: Date.now(),
-            userAgent: navigator.userAgent.substring(0, 100)
-        }).catch(() => {
-            // Silently fail if Firebase not available
-        });
-    }
-}
-
-// Log usage on game start
-window.addEventListener('load', logUsage);
-
 // ==================== END SECURITY SYSTEMS ====================
 
 let gameState = {
@@ -2303,14 +2286,13 @@ function submitScore(score) {
         console.log('Score submitted successfully');
         loadLeaderboard('easy');
         loadLeaderboard('normal');
-    }).catch((error) => {
-        console.error('Error submitting score:', error);
+    }).catch(() => {
+        // Silently fail if Firebase write not permitted
     });
 }
 
 function loadLeaderboard(difficulty = 'normal') {
     if (!firebase || !firebase.database()) {
-        console.error('Firebase not initialized');
         return;
     }
     
@@ -2658,7 +2640,8 @@ function generateSecureRoomId() {
 }
 
 function handleWebRTCError(context, err) {
-    console.error(`WebRTC [${context}]:`, err);
+    // Silently ignore Firebase permission errors
+    if (err && err.message && err.message.includes('permission_denied')) return;
     const el = document.getElementById('webrtcStatus');
     if (el) {
         el.textContent = `❌ Hata: ${context} — Sayfayı yenileyin`;
@@ -2682,10 +2665,7 @@ async function startWebRTCHost() {
     
     try {
         webrtcRoomRef = firebase.database().ref('webrtc_rooms/' + webrtcRoomId);
-        console.log('Firebase ref oluşturuldu');
     } catch (e) {
-        console.error('Firebase hatası:', e);
-        alert('Firebase bağlantı hatası: ' + e.message);
         return;
     }
     
