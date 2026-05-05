@@ -4,12 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meyve Ninja - El ile Kes!</title>
+    <meta name="copyright" content="© 2026 Hakan Çetin - Tüm hakları saklıdır">
     <link rel="stylesheet" href="static/css/style.css">
     <!-- MediaPipe Hands -->
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+
+    <!-- Security Script -->
+    <script>
+        // Domain Locking
+        const ALLOWED_DOMAINS = ['hakancetin.com.tr', 'hakancetin.github.io', 'localhost', '127.0.0.1'];
+        const currentDomain = window.location.hostname;
+
+        if (!ALLOWED_DOMAINS.includes(currentDomain)) {
+            alert('⚠️ Bu oyun yetkisiz kullanımdır.\nLütfen hakancetin.com.tr adresini kullanın.');
+            window.location.href = 'https://hakancetin.com.tr';
+        }
+
+        // Anti-Debugging (F12)
+        let devtools = { open: false };
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        setInterval(() => {
+            if (isMobile) return; // Skip on mobile
+            const threshold = 250;
+            if (window.outerWidth - window.innerWidth > threshold ||
+                window.outerHeight - window.innerHeight > threshold) {
+                if (!devtools.open) {
+                    devtools.open = true;
+                    alert('⚠️ Developer tools kullanımı yasaktır!');
+                    window.location.href = 'https://hakancetin.com.tr';
+                }
+            } else {
+                devtools.open = false;
+            }
+        }, 3000); // 3 saniyede bir kontrol (performans için)
+
+        // Console Protection
+        console.log('%c⚠️ Meyve Ninja Korumalıdır!', 'color: red; font-size: 20px; font-weight: bold;');
+        console.log('%c© 2026 Hakan Çetin - Tüm hakları saklıdır.', 'color: #00ff88; font-size: 14px;');
+    </script>
 </head>
 <body>
     <div id="game-container">
