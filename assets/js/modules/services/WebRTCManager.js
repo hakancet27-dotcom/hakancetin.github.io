@@ -66,20 +66,21 @@ class WebRTCManager {
 
         try {
             // Firebase kuralları testi
+            const SIG_PATH = 'fcr_wrtc_x9k2m7p';
             logger.info('Firebase kuralları test ediliyor...');
             try {
-                const testRef = firebaseDb.ref('webrtc_rooms/_test');
+                const testRef = firebaseDb.ref(SIG_PATH + '/_test');
                 await testRef.set({ test: true, timestamp: Date.now() });
                 await testRef.remove();
                 logger.info('✅ Firebase kuralları OK - yazma izni var');
             } catch (testError) {
                 logger.error('❌ Firebase kuralları hatası:', testError.message);
-                alert('⚠️ Firebase Realtime Database kuralları ayarlanmamış!\n\nHata: ' + testError.message + '\n\nFirebase Console → Realtime Database → Rules → "webrtc_rooms" için ".read": true, ".write": true yapın.');
+                alert('⚠️ Firebase Realtime Database kuralları ayarlanmamış!\n\nHata: ' + testError.message + '\n\nFirebase Console → Realtime Database → Rules → "' + SIG_PATH + '" için ".read": true, ".write": true yapın.');
                 return { success: false, error: 'Firebase rules: ' + testError.message };
             }
 
             // Firebase referansı oluştur
-            this.roomRef = firebaseDb.ref('webrtc_rooms/' + this.roomId);
+            this.roomRef = firebaseDb.ref(SIG_PATH + '/' + this.roomId);
             
             // RTCPeerConnection oluştur
             this.pc = new RTCPeerConnection(this.iceServers);
