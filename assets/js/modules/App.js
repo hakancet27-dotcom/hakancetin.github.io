@@ -170,9 +170,22 @@ class App {
         const phoneBtn = document.getElementById('startWithPhone');
         if (phoneBtn) {
             phoneBtn.addEventListener('click', () => {
-                eventBus.emit(Events.WEBRTC_START_HOST, { firebaseDb: backendService.db });
                 const qrContainer = document.getElementById('qrContainer');
                 if (qrContainer) qrContainer.classList.add('visible');
+                
+                // QR kod oluştur
+                const roomId = Math.random().toString(36).substring(2, 10).toUpperCase();
+                const joinUrl = `https://hakancetin.com.tr/game.html?room=${roomId}`;
+                const qrCodeDiv = document.getElementById('qrCode');
+                if (qrCodeDiv) {
+                    qrCodeDiv.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(joinUrl)}" alt="QR Kod" style="width:160px;height:160px;">`;
+                }
+                const status = document.getElementById('connectionStatus');
+                if (status) {
+                    status.textContent = `Oda: ${roomId} - Bağlantı bekleniyor...`;
+                }
+                
+                eventBus.emit(Events.WEBRTC_START_HOST, { firebaseDb: backendService.db, roomId });
             });
         }
         
