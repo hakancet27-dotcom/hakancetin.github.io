@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ses Efektleri Önizleme</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #1a1a2e;
+            color: #fff;
+        }
+        h1 {
+            text-align: center;
+            color: #00ff88;
+        }
+        .sound-card {
+            background: #16213e;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border: 2px solid #0f3460;
+        }
+        .sound-card.green { border-color: #00ff88; }
+        .sound-card.yellow { border-color: #ffd700; }
+        .sound-card.red { border-color: #ff4444; }
+        
+        button {
+            background: #0f3460;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        button:hover {
+            background: #1a1a2e;
+        }
+        .green button { background: #00ff88; color: #000; }
+        .yellow button { background: #ffd700; color: #000; }
+        .red button { background: #ff4444; color: #fff; }
+        
+        .description {
+            margin-top: 10px;
+            color: #888;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎵 Ses Efektleri Önizleme</h1>
+    
+    <div class="sound-card green">
+        <h2>🟢 Yeşil (Turbo)</h2>
+        <button onclick="playGreen()">Dinle</button>
+        <div class="description">Yüksek frekanslı, parlak ses</div>
+    </div>
+    
+    <div class="sound-card yellow">
+        <h2>🟡 Sarı (Altın)</h2>
+        <button onclick="playYellow()">Dinle</button>
+        <div class="description">Para/coin sesi</div>
+    </div>
+    
+    <div class="sound-card red">
+        <h2>🔴 Kırmızı (Arıza)</h2>
+        <button onclick="playRed()">Dinle</button>
+        <div class="description">Düşük frekanslı, gürültülü ses</div>
+    </div>
+    
+    <div class="sound-card">
+        <h2>💥 Patlama</h2>
+        <button onclick="playExplosion()">Dinle</button>
+        <div class="description">Araba patlama sesi</div>
+    </div>
+
+    <script>
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        
+        function playGreen() {
+            // Turbo/Power-up sesi - çift tonlu yükselen ses
+            const oscillator1 = audioContext.createOscillator();
+            const oscillator2 = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator1.type = 'sine';
+            oscillator1.frequency.setValueAtTime(523, audioContext.currentTime); // C5
+            oscillator1.frequency.exponentialRampToValueAtTime(1047, audioContext.currentTime + 0.1); // C6
+            
+            oscillator2.type = 'sine';
+            oscillator2.frequency.setValueAtTime(659, audioContext.currentTime); // E5
+            oscillator2.frequency.exponentialRampToValueAtTime(1319, audioContext.currentTime + 0.1); // E6
+            
+            gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.2);
+            
+            oscillator1.connect(gainNode);
+            oscillator2.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator1.start();
+            oscillator2.start();
+            oscillator1.stop(audioContext.currentTime + 0.2);
+            oscillator2.stop(audioContext.currentTime + 0.2);
+        }
+        
+        function playYellow() {
+            // Coin/Altın sesi - çınlayan metal ses
+            const oscillator1 = audioContext.createOscillator();
+            const oscillator2 = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator1.type = 'sine';
+            oscillator1.frequency.setValueAtTime(1568, audioContext.currentTime); // G6
+            oscillator1.frequency.exponentialRampToValueAtTime(3136, audioContext.currentTime + 0.05);
+            
+            oscillator2.type = 'sine';
+            oscillator2.frequency.setValueAtTime(2093, audioContext.currentTime); // C7
+            oscillator2.frequency.exponentialRampToValueAtTime(4186, audioContext.currentTime + 0.05);
+            
+            gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.15);
+            
+            oscillator1.connect(gainNode);
+            oscillator2.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator1.start();
+            oscillator2.start();
+            oscillator1.stop(audioContext.currentTime + 0.15);
+            oscillator2.stop(audioContext.currentTime + 0.15);
+        }
+        
+        function playRed() {
+            // Çarpma/Arıza sesi - metal gürültü
+            const bufferSize = audioContext.sampleRate * 0.3;
+            const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+            const data = buffer.getChannelData(0);
+            
+            for (let i = 0; i < bufferSize; i++) {
+                data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / bufferSize, 3);
+            }
+            
+            const source = audioContext.createBufferSource();
+            const gainNode = audioContext.createGain();
+            const filter = audioContext.createBiquadFilter();
+            
+            source.buffer = buffer;
+            filter.type = 'bandpass';
+            filter.frequency.setValueAtTime(2000, audioContext.currentTime);
+            filter.frequency.exponentialRampToValueAtTime(500, audioContext.currentTime + 0.3);
+            filter.Q.value = 1;
+            
+            gainNode.gain.setValueAtTime(0.4, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+            
+            source.connect(filter);
+            filter.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            source.start();
+        }
+        
+        function playExplosion() {
+            // Patlama sesi - derin bas + gürültü
+            const bufferSize = audioContext.sampleRate * 0.8;
+            const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+            const data = buffer.getChannelData(0);
+            
+            for (let i = 0; i < bufferSize; i++) {
+                const envelope = Math.pow(1 - i / bufferSize, 2);
+                data[i] = (Math.random() * 2 - 1) * envelope;
+            }
+            
+            const source = audioContext.createBufferSource();
+            const gainNode = audioContext.createGain();
+            const filter = audioContext.createBiquadFilter();
+            
+            source.buffer = buffer;
+            filter.type = 'lowpass';
+            filter.frequency.setValueAtTime(2000, audioContext.currentTime);
+            filter.frequency.exponentialRampToValueAtTime(50, audioContext.currentTime + 0.8);
+            
+            gainNode.gain.setValueAtTime(0.6, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.8);
+            
+            source.connect(filter);
+            filter.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            source.start();
+        }
+    </script>
+</body>
+</html>

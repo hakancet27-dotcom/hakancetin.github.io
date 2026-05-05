@@ -8,24 +8,19 @@
     <meta name="description" content="Yüz takibi ile oynanan yeni nesil kafa kontrol oyunu. Engelli bireyler ve ofis çalışanları için erişilebilir oyun deneyimi.">
     <meta name="author" content="Hakan Çetin">
     <meta name="copyright" content="© 2026 Hakan Çetin - Tüm hakları saklıdır">
-
-    <!-- Cache Control -->
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-
+    
     <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://www.gstatic.com https://*.firebaseio.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://api.qrserver.com; media-src 'self' blob:; connect-src 'self' https://cdn.jsdelivr.net https://www.gstatic.com wss: https://*.firebaseio.com https://*.googleapis.com https://*.firebaseapp.com https://*.gstatic.com; frame-src https://*.firebaseio.com; font-src 'self' https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://www.gstatic.com https://*.firebaseio.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://api.qrserver.com; media-src 'self' blob:; connect-src 'self' https://cdn.jsdelivr.net https://www.gstatic.com wss: https://*.firebaseio.com https://*.googleapis.com https://*.firebaseapp.com https://*.gstatic.com https://faceracer-leaderboard-default-rtdb.firebaseio.com https://faceracer-leaderboard.firebaseapp.com; frame-src https://*.firebaseio.com; font-src 'self' https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self';">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(self), microphone=(), geolocation=(), fullscreen=(self)">
     
-    <link rel="stylesheet" href="assets/css/faceracer-v2.css">
+    <link rel="stylesheet" href="assets/css/faceracer.css">
     
     <!-- Security Script -->
     <script>
         // Domain Locking
-        const ALLOWED_DOMAINS = ['hakancetin.com.tr', 'hakancetin.github.io', 'localhost', '127.0.0.1'];
+        const ALLOWED_DOMAINS = ['hakancetin.com.tr', 'hakancetin.github.io', 'localhost'];
         const currentDomain = window.location.hostname;
 
         if (!ALLOWED_DOMAINS.includes(currentDomain)) {
@@ -33,387 +28,172 @@
             window.location.href = 'https://hakancetin.com.tr';
         }
 
+        // Anti-Debugging
+        let devtools = { open: false };
+        setInterval(() => {
+            const threshold = 160;
+            if (window.outerWidth - window.innerWidth > threshold || 
+                window.outerHeight - window.innerHeight > threshold) {
+                if (!devtools.open) {
+                    devtools.open = true;
+                    alert('⚠️ Developer tools kullanımı yasaktır!');
+                    window.location.href = 'https://hakancetin.com.tr';
+                }
+            } else {
+                devtools.open = false;
+            }
+        }, 1000);
+
         // Console Protection
         console.log('%c⚠️ FaceRacer Korumalıdır!', 'color: red; font-size: 20px; font-weight: bold;');
         console.log('%c© 2026 Hakan Çetin - Tüm hakları saklıdır.', 'color: #00ff88; font-size: 14px;');
     </script>
-    
-    <style>
-        :root {
-            --ui-scale: 1;
-            --primary-color: #00ff88;
-            --danger-color: #ff0044;
-            --warning-color: #ffaa00;
-            --bg-dark: #1a1a1a;
-        }
-
-        /* TV Mode Styles */
-        body.tv-mode {
-            --ui-scale: 1.5;
-        }
-
-        body.tv-mode #hud {
-            font-size: calc(1.2rem * var(--ui-scale));
-        }
-
-        body.tv-mode button {
-            font-size: calc(1rem * var(--ui-scale));
-            padding: calc(15px * var(--ui-scale)) calc(30px * var(--ui-scale));
-        }
-
-        /* Animations */
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        @keyframes slideOut {
-            from { transform: translateX(0); opacity: 1; }
-            to { transform: translateX(100%); opacity: 0; }
-        }
-
-        @keyframes score-update {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); color: var(--primary-color); }
-            100% { transform: scale(1); }
-        }
-
-        .score-update {
-            animation: score-update 0.3s ease;
-        }
-
-        /* Turbo bar animation */
-        .turbo-bar {
-            transition: all 0.3s ease;
-        }
-
-        .turbo-bar.turbo-active {
-            box-shadow: 0 0 20px #ff6600;
-            animation: pulse 0.5s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        /* Calibration progress bar */
-        .progress-bar {
-            width: 200px;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 4px;
-            margin: 20px auto;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            width: 0%;
-            background: #00ff88;
-            border-radius: 4px;
-            transition: width 0.1s ease;
-        }
-
-        /* Canvas arkada kalsın */
-        #gameCanvas {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Calibration overlay */
-        #calibrationOverlay {
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 200;
-        }
-
-        .car-select-btn {
-            transition: all 0.3s ease;
-        }
-
-        .car-select-btn:hover:not(.car-locked) {
-            transform: scale(1.05);
-        }
-
-        .car-locked {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
-
-        .car-selected {
-            border: 3px solid var(--primary-color) !important;
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
-        }
-
-        /* Leaderboard */
-        .leaderboard-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px;
-            margin: 5px 0;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-        }
-
-        .leaderboard-item.top-1 { background: linear-gradient(90deg, rgba(255,215,0,0.3), rgba(255,215,0,0.1)); }
-        .leaderboard-item.top-2 { background: linear-gradient(90deg, rgba(192,192,192,0.3), rgba(192,192,192,0.1)); }
-        .leaderboard-item.top-3 { background: linear-gradient(90deg, rgba(205,127,50,0.3), rgba(205,127,50,0.1)); }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            #hud {
-                font-size: 0.9rem;
-                left: 10px;
-                top: 10px;
-            }
-            
-            #speedometer {
-                right: 10px;
-                bottom: 100px;
-                transform: scale(0.8);
-            }
-        }
-    </style>
 </head>
 <body>
-    <!-- Açılış Ekranı -->
-    <div id="startScreen">
-        <div class="start-content">
-            <h1>🎮 FaceRacer</h1>
-            <p class="start-subtitle">Yüzünle kontrol et, hızını sen belirle</p>
-            <button id="startButton">🚀 BAŞLA</button>
-        </div>
-    </div>
-
-    <!-- Kamera Hata Ekranı -->
-    <div id="cameraErrorScreen">
-        <div class="start-content">
-            <div class="error-icon">📷</div>
-            <h2>Kamera Bulunamadı</h2>
-            <p>Kameranıza erişilemiyor. Nasıl devam etmek istersiniz?</p>
-            <div class="error-options">
-                <button id="startWithPhone">📱 Telefon Bağla</button>
-                <button id="startWithKeyboard">⌨️ Klavye ile Devam Et</button>
-            </div>
-            <div id="qrContainer">
-                <p class="qr-hint">Telefonunuzla QR kodu okutun</p>
-                <div id="qrCode"></div>
-                <p id="connectionStatus">Bağlantı bekleniyor...</p>
-            </div>
-        </div>
-    </div>
-
     <div id="gameContainer">
         <canvas id="gameCanvas"></canvas>
         
-        <video id="cameraVideo" autoplay playsinline style="display:none"></video>
-        <video id="remoteVideo" autoplay playsinline style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; z-index:150;"></video>
+        <video id="cameraVideo" autoplay playsinline></video>
         
-        <!-- Kalibrasyon Overlay -->
         <div id="calibrationOverlay">
             <div class="calibration-content">
-                <h1 id="calibrationTitle">📷 Yüzünüzü Kameraya Gösterin</h1>
-                <p id="calibrationDesc">Kamera sizi görüyor mu kontrol ediliyor...</p>
-                <div class="calibration-phases">
-                    <span class="phase-dot active" id="phaseDot1"></span>
-                    <span class="phase-dot" id="phaseDot2"></span>
-                    <span class="phase-dot" id="phaseDot3"></span>
-                </div>
+                <h1> FaceRacer</h1>
+                <p>Yüzünüzü tam ortaya getirin</p>
+                <p class="calibration-hint">Dik durun, alnınız çerçevenin tam ortasında olsun</p>
                 <div class="countdown" id="countdown">3</div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="calibrationProgress"></div>
-                </div>
             </div>
         </div>
 
-        <!-- Zorluk Seçimi Overlay -->
-        <div id="difficultyOverlay">
+
+        
+        <div id="difficultyOverlay" class="hidden">
             <div class="calibration-content">
                 <h1>🎮 Zorluk Seçin</h1>
-                
-                <!-- Araba Seçimi -->
-                <div class="car-selection" style="margin: 20px 0;">
-                    <p>Araba Seçin:</p>
-                    <button class="car-select-btn car-selected" data-car="standard">
-                        🚗 Standart
-                        <span class="car-lock-text"></span>
-                    </button>
-                    <button class="car-select-btn" data-car="fast">
-                        🏎️ Hızlı
-                        <span class="car-lock-text">🔒 1000 skor gerekli</span>
-                    </button>
-                    <button class="car-select-btn" data-car="super">
-                        🏁 Süper
-                        <span class="car-lock-text">🔒 2000 skor gerekli</span>
-                    </button>
-                </div>
-
-                <div class="color-picker" style="margin: 15px 0;">
-                    <p>Renk:</p>
-                    <button data-color="16711935" style="background: #00ff88; width: 30px; height: 30px; border-radius: 50%;"></button>
-                    <button data-color="4483199" style="background: #4488ff; width: 30px; height: 30px; border-radius: 50%;"></button>
-                    <button data-color="16720452" style="background: #ff2244; width: 30px; height: 30px; border-radius: 50%;"></button>
-                    <button data-color="16756736" style="background: #ffaa00; width: 30px; height: 30px; border-radius: 50%;"></button>
-                </div>
-
                 <p style="margin: 20px 0;">Oyun modunu seçin:</p>
-                <button id="difficultyNormal">
-                    🚀 BAŞLA — Normal (%20.7 kırmızı engel)
+                <button onclick="selectDifficulty('normal')">
+                    🔴 Normal
                 </button>
-                <button id="difficultyEasy">
-                    🚀 BAŞLA — Kolay (%16.6 kırmızı engel)
+                <button onclick="selectDifficulty('easy')">
+                    🟢 Kolay
                 </button>
-
-                <p class="difficulty-info" style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">
-                    🟢 Yeşil: Turbo puanı (+10)<br>
-                    🟡 Sarı: Altın puanı (+10)<br>
-                    🔴 Kırmızı: Hasar (+10%)
+                <p class="difficulty-info">
+                    Normal: %20.7 kırmızı engel<br>
+                    Kolay: %16.6 kırmızı engel (%20 daha az)
                 </p>
             </div>
         </div>
 
-        <!-- Oyun Bitti Overlay -->
-        <div id="gameOverOverlay">
-            <div class="calibration-content">
-                <h1>💥 Oyun Bitti!</h1>
-                <p style="font-size: 2em; margin: 20px 0;">Skor: <span id="finalScore">0</span></p>
-                
-                <div id="newRecord" style="color: #00ff88; font-size: 1.2em;">
-                    🏆 Yeni Rekor!
-                </div>
+        <button id="easyModeBtn" class="hidden" onclick="toggleEasyMode()">
+            🟢 Kolay Moda Geç
+        </button>
 
-                <div class="leaderboard" style="margin: 20px 0; max-height: 200px; overflow-y: auto;">
-                    <h3>🏆 Liderlik Tablosu</h3>
-                    <div id="leaderboardList"></div>
-                </div>
-
-                <input type="text" id="playerNameInput" placeholder="İsminiz" maxlength="20" 
-                       style="padding: 10px; margin: 10px; border-radius: 5px; border: none; text-align: center;">
-
-                <button id="restartBtn">🔄 Yeniden Başla</button>
-                <button id="homeBtn">🏠 Ana Sayfa</button>
-            </div>
+        <div id="loading">
+            <div class="spinner"></div>
+            <p>Yükleniyor...</p>
         </div>
 
-        <!-- HUD -->
-        <div id="hud">
-            <h2>🎮 Oyun Bilgileri</h2>
+        <audio id="backgroundMusic" loop preload="auto">
+            <source src="assets/music/background.mp3" type="audio/mpeg">
+        </audio>
+
+        <div id="hud" class="hidden">
+            <h2> Oyun Bilgileri</h2>
             <div class="hud-item">🏆 Skor: <span class="hud-value" id="score">0</span></div>
-            <div class="hud-item">❤️ Sağlamlık: <span class="hud-value" id="damageLevel">100</span>%</div>
+            <div class="hud-item">❤️ Sağlamlık: <span class="hud-value" id="damageLevel">100</span></div>
             <div class="hud-item">⚡ Turbo: <span class="hud-value" id="turboPoints">0</span>/<span id="turboThreshold">100</span></div>
             <div class="hud-item">📏 Mesafe: <span class="hud-value" id="distance">0</span>m</div>
-            <div class="hud-item">🎯 FPS: <span class="hud-value" id="fps">60</span></div>
+            <div class="hud-item">🎯 FPS: <span class="hud-value" id="fps">0</span></div>
         </div>
 
-        <!-- Hız Göstergesi -->
-        <div id="speedometer">
+        <div id="speedometer" class="hidden">
             <div class="speed-value speed-low" id="speedMain">0</div>
             <div class="speed-unit">KM/H</div>
         </div>
-
-        <!-- Turbo Bar -->
-        <div id="turboBarContainer">
+        <div id="turboBarContainer" class="hidden">
             <div class="turbo-bar" id="turboBar">
                 <div class="turbo-fill" id="turboFill"></div>
             </div>
-            <span class="turbo-icon">🔥</span>
+            <span class="turbo-icon" id="turboIcon">🔥</span>
+            <span class="turbo-icon-secondary" id="turboIconSecondary">🔥</span>
         </div>
 
-        <!-- WebRTC Remote Video -->
-        <video id="remoteVideo" autoplay playsinline style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; z-index:150;"></video>
+        <button id="toggleCamera" class="hidden" onclick="toggleCameraPreset()">📷 Yakın</button>
 
-        <!-- Camera Error Overlay -->
-        <div id="cameraErrorOverlay"></div>
+        <button id="toggleMusic" class="hidden" onclick="toggleMusic()">🎵 Müzik</button>
 
-        <!-- WebRTC Overlay -->
-        <div id="webrtcOverlay"></div>
+        <button id="toggleTVMode" class="hidden" onclick="toggleTVMode()">📺 TV: KAPALI</button>
 
-        <!-- Kontrol Butonları -->
-        <div id="bottomControls">
-            <button id="toggleCamera">📷 Kamera</button>
-            <button id="toggleMusic">🎵 Müzik</button>
-            <button id="toggleTVMode">📺 TV: KAPALI</button>
-            <button id="connectPhoneBtn">📱 Telefon Bağla</button>
+        <div id="musicVolumeControl" class="hidden">
+            <label>Ses Seviyesi</label>
+            <input type="range" id="musicVolume" min="0" max="100" value="50">
         </div>
-        <button id="toggleControls">❓ Kontroller</button>
 
-        <!-- Kontroller Paneli -->
-        <div id="controlsPanel">
+        <button id="toggleControls" class="hidden">❓</button>
+
+        <div id="controlsPanel" class="hidden">
             <h3>🎯 Kontroller</h3>
             <p>↔️ Kafanızı sağa/sola çevirin: Dönüş</p>
             <p>↕️ Kafanızı yukarı/aşağı eğin: Hız</p>
-            <p>😉 Göz kırpma: Nitro (100 turbo puanı gerekli)</p>
-            <hr>
+            <p>😉 Göz kırpma: Nitro</p>
+            <hr style="margin: 15px 0; border: none; border-top: 1px solid #444;">
             <h3>🎮 Oyun Mekanikleri</h3>
-            <p>🟢 Yeşil: Turbo +10, Hasar -5%</p>
-            <p>🟡 Sarı: Altın +10</p>
-            <p>🔴 Kırmızı: Hasar +10%</p>
-            <p>💥 Sağlamlık 0 = Oyun biter</p>
-            <hr>
+            <p>🟢 <strong>Yeşil:</strong> Turbo puanı +10, arıza -5%</p>
+            <p>🟡 <strong>Sarı:</strong> Altın puanı +10</p>
+            <p>🔴 <strong>Kırmızı:</strong> Arıza +10%, kaza +1, hız düşer</p>
+            <p>💥 <strong>5 Kaza:</strong> Araba patlar, oyun biter</p>
+            <hr style="margin: 15px 0; border: none; border-top: 1px solid #444;">
+            <h3>📊 Toplam Skor Hesaplaması</h3>
+            <p>Skor = Altın + Turbo + (Mesafe/10) - (Kaza × 50)</p>
+            <hr style="margin: 15px 0; border: none; border-top: 1px solid #444;">
             <h3>🔧 Teknik Değerler</h3>
             <p class="technical-values">
-                Yaw: <span id="controlRawYaw">0.000</span> | 
-                Pitch: <span id="controlRawPitch">0.000</span>
+                Raw Yaw: <span id="controlRawYaw">0</span> | 
+                Raw Pitch: <span id="controlRawPitch">0</span>
             </p>
         </div>
+
+        <button id="startButton" class="hidden">Oyunu Başlat</button>
+        
+        <button id="toggleTVModeStart" onclick="toggleTVMode(); updateTVButton('toggleTVModeStart');">📺 TV: KAPALI</button>
     </div>
+
+    <!-- WebRTC: Telefon sensörü için gizli uzak video -->
+    <video id="remoteVideo" autoplay playsinline></video>
+
+    <!-- WebRTC: QR / Bağlantı overlay -->
+    <div id="webrtcOverlay"></div>
 
     <!-- Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     
-    <!-- MediaPipe -->
+    <!-- Yüz Takibi Teknolojisi -->
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
 
-    <!-- Firebase -->
-    <script>
-        // Firebase config
-        const firebaseConfig = {
-            apiKey: "AIzaSyBeS2x50KuBxFpLr9DCA5gU-EoBrwJpAog",
-            authDomain: "hakan-efbc9.firebaseapp.com",
-            databaseURL: "https://hakan-efbc9-default-rtdb.firebaseio.com",
-            projectId: "hakan-efbc9",
-            storageBucket: "hakan-efbc9.firebasestorage.app",
-            messagingSenderId: "151160694762",
-            appId: "1:151160694762:web:f392fd91185cc7be043493",
-            measurementId: "G-ZVYNHHE9PM"
-        };
-    </script>
+    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database-compat.js"></script>
-
-    <!-- Modular App -->
-    <script type="module">
-        import { app } from './assets/js/modules/App.js?v=2';
-        import { uiManager } from './assets/js/modules/ui/UIManager.js?v=2';
-        import { backendService } from './assets/js/modules/services/BackendService.js?v=2';
-        import { eventBus, Events } from './assets/js/modules/utils/EventBus.js?v=2';
-
-        // Global erişim için
-        window.app = app;
-        window.uiManager = uiManager;
-        window.backendService = backendService;
-        window.eventBus = eventBus;
-        window.Events = Events;
-
-        // Uygulamayı başlat
-        document.addEventListener('DOMContentLoaded', async () => {
-            try {
-                await app.init(firebaseConfig);
-                console.log('✅ FaceRacer modüler başlatıldı');
-            } catch (error) {
-                console.error('❌ Başlatma hatası:', error);
-                alert('Oyun başlatılamadı: ' + error.message);
-            }
-        });
-
-        // Müzik ses kontrolü
-        const volumeSlider = document.getElementById('musicVolume');
-        if (volumeSlider) {
-            volumeSlider.addEventListener('input', (e) => {
-                app.setMusicVolume(e.target.value / 100);
-            });
-        }
+    
+    <!-- Firebase Configuration -->
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyC0HnsO1JfZP7xGpwKEU9xrU97CXzeYsTE",
+            authDomain: "faceracer-leaderboard.firebaseapp.com",
+            databaseURL: "https://faceracer-leaderboard-default-rtdb.firebaseio.com",
+            projectId: "faceracer-leaderboard",
+            storageBucket: "faceracer-leaderboard.firebasestorage.app",
+            messagingSenderId: "654208430418",
+            appId: "1:654208430418:web:714d15eea668e570c7ca8b"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        
+        // Test Firebase initialization
+        console.log('Firebase initialized:', firebase);
+        console.log('Firebase database:', firebase.database());
     </script>
+
+    <!-- FaceRacer Game Script -->
+    <script src="assets/js/faceracer.source.js"></script>
 </body>
 </html>

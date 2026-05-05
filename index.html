@@ -2,417 +2,775 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="data:,">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FaceRacer - Kafa Kontrol Oyunu | Hakan Çetin</title>
-    <meta name="description" content="Yüz takibi ile oynanan yeni nesil kafa kontrol oyunu. Engelli bireyler ve ofis çalışanları için erişilebilir oyun deneyimi.">
+    <title>FaceRacer - Yüz Kontrollü Yarış Oyunu | Hakan Çetin</title>
+    <meta name="description" content="FaceRacer - Yüz kontrollü 3D yarış oyunu. Gelişmiş yüz takibi teknolojisi ile kafa hareketleriyle oynanan yenilikçi oyun.">
+    <meta name="keywords" content="FaceRacer, yüz kontrollü oyun, 3D yarış oyunu, yapay zeka oyun, Hakan Çetin">
     <meta name="author" content="Hakan Çetin">
-    <meta name="copyright" content="© 2026 Hakan Çetin - Tüm hakları saklıdır">
-
-    <!-- Cache Control -->
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-
-    <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://www.gstatic.com https://*.firebaseio.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: blob: https://api.qrserver.com; media-src 'self' blob:; connect-src 'self' https://cdn.jsdelivr.net https://www.gstatic.com wss: https://*.firebaseio.com https://*.googleapis.com https://*.firebaseapp.com https://*.gstatic.com; frame-src https://*.firebaseio.com; font-src 'self' https://cdnjs.cloudflare.com; object-src 'none'; base-uri 'self';">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="camera=(self), microphone=(), geolocation=(), fullscreen=(self)">
+    <meta name="robots" content="index, follow">
     
-    <link rel="stylesheet" href="assets/css/faceracer-v2.css">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hakancetin.com.tr/">
+    <meta property="og:title" content="FaceRacer - Yüz Kontrollü Yarış Oyunu">
+    <meta property="og:description" content="Yüz kontrollü 3D yarış oyunu. Kafa hareketleriyle oynanan yenilikçi oyun deneyimi.">
+    <meta property="og:image" content="https://hakancetin.com.tr/assets/images/faceracer-preview.jpg">
     
-    <!-- Security Script -->
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hakancetin.com.tr/">
+    <meta property="twitter:title" content="FaceRacer - Yüz Kontrollü Yarış Oyunu">
+    <meta property="twitter:description" content="Yüz kontrollü 3D yarış oyunu. Kafa hareketleriyle oynanan yenilikçi oyun deneyimi.">
+    <meta property="twitter:image" content="https://hakancetin.com.tr/assets/images/faceracer-preview.jpg">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CE7WH86RBS"></script>
     <script>
-        // Domain Locking
-        const ALLOWED_DOMAINS = ['hakancetin.com.tr', 'hakancetin.github.io', 'localhost', '127.0.0.1'];
-        const currentDomain = window.location.hostname;
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-        if (!ALLOWED_DOMAINS.includes(currentDomain)) {
-            alert('⚠️ Bu oyun yetkisiz kullanımdır.\nLütfen hakancetin.com.tr adresini kullanın.');
-            window.location.href = 'https://hakancetin.com.tr';
-        }
-
-        // Console Protection
-        console.log('%c⚠️ FaceRacer Korumalıdır!', 'color: red; font-size: 20px; font-weight: bold;');
-        console.log('%c© 2026 Hakan Çetin - Tüm hakları saklıdır.', 'color: #00ff88; font-size: 14px;');
+      gtag('config', 'G-CE7WH86RBS');
     </script>
-    
-    <style>
-        :root {
-            --ui-scale: 1;
-            --primary-color: #00ff88;
-            --danger-color: #ff0044;
-            --warning-color: #ffaa00;
-            --bg-dark: #1a1a1a;
-        }
-
-        /* TV Mode Styles */
-        body.tv-mode {
-            --ui-scale: 1.5;
-        }
-
-        body.tv-mode #hud {
-            font-size: calc(1.2rem * var(--ui-scale));
-        }
-
-        body.tv-mode button {
-            font-size: calc(1rem * var(--ui-scale));
-            padding: calc(15px * var(--ui-scale)) calc(30px * var(--ui-scale));
-        }
-
-        /* Animations */
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        @keyframes slideOut {
-            from { transform: translateX(0); opacity: 1; }
-            to { transform: translateX(100%); opacity: 0; }
-        }
-
-        @keyframes score-update {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); color: var(--primary-color); }
-            100% { transform: scale(1); }
-        }
-
-        .score-update {
-            animation: score-update 0.3s ease;
-        }
-
-        /* Turbo bar animation */
-        .turbo-bar {
-            transition: all 0.3s ease;
-        }
-
-        .turbo-bar.turbo-active {
-            box-shadow: 0 0 20px #ff6600;
-            animation: pulse 0.5s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        /* Calibration progress bar */
-        .progress-bar {
-            width: 200px;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 4px;
-            margin: 20px auto;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            width: 0%;
-            background: #00ff88;
-            border-radius: 4px;
-            transition: width 0.1s ease;
-        }
-
-        /* Canvas arkada kalsın */
-        #gameCanvas {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Calibration overlay */
-        #calibrationOverlay {
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 200;
-        }
-
-        .car-select-btn {
-            transition: all 0.3s ease;
-        }
-
-        .car-select-btn:hover:not(.car-locked) {
-            transform: scale(1.05);
-        }
-
-        .car-locked {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
-
-        .car-selected {
-            border: 3px solid var(--primary-color) !important;
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
-        }
-
-        /* Leaderboard */
-        .leaderboard-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px;
-            margin: 5px 0;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-        }
-
-        .leaderboard-item.top-1 { background: linear-gradient(90deg, rgba(255,215,0,0.3), rgba(255,215,0,0.1)); }
-        .leaderboard-item.top-2 { background: linear-gradient(90deg, rgba(192,192,192,0.3), rgba(192,192,192,0.1)); }
-        .leaderboard-item.top-3 { background: linear-gradient(90deg, rgba(205,127,50,0.3), rgba(205,127,50,0.1)); }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            #hud {
-                font-size: 0.9rem;
-                left: 10px;
-                top: 10px;
-            }
-            
-            #speedometer {
-                right: 10px;
-                bottom: 100px;
-                transform: scale(0.8);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
 </head>
 <body>
-    <!-- Açılış Ekranı -->
-    <div id="startScreen">
-        <div class="start-content">
-            <h1>🎮 FaceRacer</h1>
-            <p class="start-subtitle">Yüzünle kontrol et, hızını sen belirle</p>
-            <button id="startButton">🚀 BAŞLA</button>
-        </div>
-    </div>
-
-    <!-- Kamera Hata Ekranı -->
-    <div id="cameraErrorScreen">
-        <div class="start-content">
-            <div class="error-icon">📷</div>
-            <h2>Kamera Bulunamadı</h2>
-            <p>Kameranıza erişilemiyor. Nasıl devam etmek istersiniz?</p>
-            <div class="error-options">
-                <button id="startWithPhone">📱 Telefon Bağla</button>
-                <button id="startWithKeyboard">⌨️ Klavye ile Devam Et</button>
-            </div>
-            <div id="qrContainer">
-                <p class="qr-hint">Telefonunuzla QR kodu okutun</p>
-                <div id="qrCode"></div>
-                <p id="connectionStatus">Bağlantı bekleniyor...</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="gameContainer">
-        <canvas id="gameCanvas"></canvas>
-        
-        <video id="cameraVideo" autoplay playsinline style="display:none"></video>
-        
-        <!-- Kalibrasyon Overlay -->
-        <div id="calibrationOverlay">
-            <div class="calibration-content">
-                <h1 id="calibrationTitle">📷 Yüzünüzü Kameraya Gösterin</h1>
-                <p id="calibrationDesc">Kamera sizi görüyor mu kontrol ediliyor...</p>
-                <div class="calibration-phases">
-                    <span class="phase-dot active" id="phaseDot1"></span>
-                    <span class="phase-dot" id="phaseDot2"></span>
-                    <span class="phase-dot" id="phaseDot3"></span>
-                </div>
-                <div class="countdown" id="countdown">3</div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="calibrationProgress"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Zorluk Seçimi Overlay -->
-        <div id="difficultyOverlay">
-            <div class="calibration-content">
-                <h1>🎮 Zorluk Seçin</h1>
-                
-                <!-- Araba Seçimi -->
-                <div class="car-selection" style="margin: 20px 0;">
-                    <p>Araba Seçin:</p>
-                    <button class="car-select-btn car-selected" data-car="standard">
-                        🚗 Standart
-                        <span class="car-lock-text"></span>
-                    </button>
-                    <button class="car-select-btn" data-car="fast">
-                        🏎️ Hızlı
-                        <span class="car-lock-text">🔒 1000 skor gerekli</span>
-                    </button>
-                    <button class="car-select-btn" data-car="super">
-                        🏁 Süper
-                        <span class="car-lock-text">🔒 2000 skor gerekli</span>
-                    </button>
-                </div>
-
-                <div class="color-picker" style="margin: 15px 0;">
-                    <p>Renk:</p>
-                    <button data-color="16711935" style="background: #00ff88; width: 30px; height: 30px; border-radius: 50%;"></button>
-                    <button data-color="4483199" style="background: #4488ff; width: 30px; height: 30px; border-radius: 50%;"></button>
-                    <button data-color="16720452" style="background: #ff2244; width: 30px; height: 30px; border-radius: 50%;"></button>
-                    <button data-color="16756736" style="background: #ffaa00; width: 30px; height: 30px; border-radius: 50%;"></button>
-                </div>
-
-                <p style="margin: 20px 0;">Oyun modunu seçin:</p>
-                <button id="difficultyNormal">
-                    🚀 BAŞLA — Normal (%20.7 kırmızı engel)
-                </button>
-                <button id="difficultyEasy">
-                    🚀 BAŞLA — Kolay (%16.6 kırmızı engel)
-                </button>
-
-                <p class="difficulty-info" style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">
-                    🟢 Yeşil: Turbo puanı (+10)<br>
-                    🟡 Sarı: Altın puanı (+10)<br>
-                    🔴 Kırmızı: Hasar (+10%)
-                </p>
-            </div>
-        </div>
-
-        <!-- Oyun Bitti Overlay -->
-        <div id="gameOverOverlay">
-            <div class="calibration-content">
-                <h1>💥 Oyun Bitti!</h1>
-                <p style="font-size: 2em; margin: 20px 0;">Skor: <span id="finalScore">0</span></p>
-                
-                <div id="newRecord" style="color: #00ff88; font-size: 1.2em;">
-                    🏆 Yeni Rekor!
-                </div>
-
-                <div class="leaderboard" style="margin: 20px 0; max-height: 200px; overflow-y: auto;">
-                    <h3>🏆 Liderlik Tablosu</h3>
-                    <div id="leaderboardList"></div>
-                </div>
-
-                <input type="text" id="playerNameInput" placeholder="İsminiz" maxlength="20" 
-                       style="padding: 10px; margin: 10px; border-radius: 5px; border: none; text-align: center;">
-
-                <button id="restartBtn">🔄 Yeniden Başla</button>
-                <button id="homeBtn">🏠 Ana Sayfa</button>
-            </div>
-        </div>
-
-        <!-- HUD -->
-        <div id="hud">
-            <h2>🎮 Oyun Bilgileri</h2>
-            <div class="hud-item">🏆 Skor: <span class="hud-value" id="score">0</span></div>
-            <div class="hud-item">❤️ Sağlamlık: <span class="hud-value" id="damageLevel">100</span>%</div>
-            <div class="hud-item">⚡ Turbo: <span class="hud-value" id="turboPoints">0</span>/<span id="turboThreshold">100</span></div>
-            <div class="hud-item">📏 Mesafe: <span class="hud-value" id="distance">0</span>m</div>
-            <div class="hud-item">🎯 FPS: <span class="hud-value" id="fps">60</span></div>
-        </div>
-
-        <!-- Hız Göstergesi -->
-        <div id="speedometer">
-            <div class="speed-value speed-low" id="speedMain">0</div>
-            <div class="speed-unit">KM/H</div>
-        </div>
-
-        <!-- Turbo Bar -->
-        <div id="turboBarContainer">
-            <div class="turbo-bar" id="turboBar">
-                <div class="turbo-fill" id="turboFill"></div>
-            </div>
-            <span class="turbo-icon">🔥</span>
-        </div>
-
-        <!-- WebRTC Remote Video -->
-        <video id="remoteVideo" autoplay playsinline style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; z-index:150;"></video>
-
-        <!-- Camera Error Overlay -->
-        <div id="cameraErrorOverlay"></div>
-
-        <!-- WebRTC Overlay -->
-        <div id="webrtcOverlay"></div>
-
-        <!-- Kontrol Butonları -->
-        <div id="bottomControls">
-            <button id="toggleCamera">📷 Kamera</button>
-            <button id="toggleMusic">🎵 Müzik</button>
-            <button id="toggleTVMode">📺 TV: KAPALI</button>
-            <button id="connectPhoneBtn">📱 Telefon Bağla</button>
-        </div>
-        <button id="toggleControls">❓ Kontroller</button>
-
-        <!-- Kontroller Paneli -->
-        <div id="controlsPanel">
-            <h3>🎯 Kontroller</h3>
-            <p>↔️ Kafanızı sağa/sola çevirin: Dönüş</p>
-            <p>↕️ Kafanızı yukarı/aşağı eğin: Hız</p>
-            <p>😉 Göz kırpma: Nitro (100 turbo puanı gerekli)</p>
-            <hr>
-            <h3>🎮 Oyun Mekanikleri</h3>
-            <p>🟢 Yeşil: Turbo +10, Hasar -5%</p>
-            <p>🟡 Sarı: Altın +10</p>
-            <p>🔴 Kırmızı: Hasar +10%</p>
-            <p>💥 Sağlamlık 0 = Oyun biter</p>
-            <hr>
-            <h3>🔧 Teknik Değerler</h3>
-            <p class="technical-values">
-                Yaw: <span id="controlRawYaw">0.000</span> | 
-                Pitch: <span id="controlRawPitch">0.000</span>
-            </p>
-        </div>
-    </div>
-
-    <!-- Three.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <header>
+        <nav>
+            <h1>Hakancetin.com</h1>
+            <button class="hamburger-menu" id="hamburgerMenu" aria-label="Menüyü aç">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul id="navMenu">
+                <li><a href="game.html">🏎️ FaceRacer</a></li>
+                <li><a href="#hero">Ana Sayfa</a></li>
+                <li><a href="#hakkimda">Hakkımda</a></li>
+                <li><a href="#yetenekler">Yetenekler</a></li>
+                <li><a href="#kod-demolari">Kod Demoları</a></li>
+                <li><a href="#projeler">Projeler</a></li>
+                <li><a href="#iletisim">İletişim</a></li>
+            </ul>
+            <button class="dark-mode-toggle" id="darkModeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
     
-    <!-- MediaPipe -->
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>🏎️ FaceRacer</h1>
+                    <h2>Yüz Kontrollü 3D Yarış Oyunu</h2>
+                    <p>Gelişmiş yüz takibi teknolojisi ile kafa hareketleriyle oynanan yenilikçi oyun deneyimi. Kafanızı sağa/sola çevirin, hız kazanın ve yarışın!</p>
+                    <div class="hero-buttons">
+                        <a href="game.html" class="btn btn-primary">🎮 Oyunu Oyna</a>
+                        <a href="#faceracer-info" class="btn btn-secondary">📖 Daha Fazla Bilgi</a>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/hakancet27-dotcom" target="_blank" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/hakan-cet-3b4979404/" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="mailto:info@hakancetin.com" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="assets/images/profile.jpg" alt="Hakan Çetin" class="profile-photo">
+                </div>
+            </div>
+        </section>
 
-    <!-- Firebase -->
-    <script>
-        // Firebase config
-        const firebaseConfig = {
-            apiKey: "AIzaSyBeS2x50KuBxFpLr9DCA5gU-EoBrwJpAog",
-            authDomain: "hakan-efbc9.firebaseapp.com",
-            databaseURL: "https://hakan-efbc9-default-rtdb.firebaseio.com",
-            projectId: "hakan-efbc9",
-            storageBucket: "hakan-efbc9.firebasestorage.app",
-            messagingSenderId: "151160694762",
-            appId: "1:151160694762:web:f392fd91185cc7be043493",
-            measurementId: "G-ZVYNHHE9PM"
-        };
-    </script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database-compat.js"></script>
+        <!-- FaceRacer Info Section -->
+        <section id="faceracer-info">
+            <h2><i class="fas fa-gamepad"></i> FaceRacer Hakkında</h2>
+            <div class="about-content">
+                <p>FaceRacer, gelişmiş yüz takibi teknolojisi kullanılarak geliştirilmiş yenilikçi bir 3D yarış oyunudur. Kamera aracılığıyla yüzünüzü takip ederek, kafa hareketleriyle arabanızı kontrol edebilirsiniz. Klavye veya mouse kullanmadan, sadece yüz hareketleriyle oynanan bu oyun, yapay zeka ve oyun geliştirme teknolojilerinin mükemmel bir örneğidir.</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <h3>🎯</h3>
+                        <p>Yüz Takibi</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>🏎️</h3>
+                        <p>3D Yarış</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>🤖</h3>
+                        <p>Yapay Zeka</p>
+                    </div>
+                </div>
+                <div class="faceracer-features">
+                    <h3>Özellikler</h3>
+                    <ul>
+                        <li>🔄 Kafa sağa/sola → Dönüş kontrolü</li>
+                        <li>⬆️⬇️ Kafa yukarı/aşağı → Hız kontrolü</li>
+                        <li>😉 Göz kırpma → Nitro turbo</li>
+                        <li>🏆 Leaderboard sistemi</li>
+                        <li>🎨 Farklı araba seçenekleri</li>
+                        <li>📱 Mobil uyumlu</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-    <!-- Modular App -->
-    <script type="module">
-        import { app } from './assets/js/modules/App.js?v=2';
-        import { uiManager } from './assets/js/modules/ui/UIManager.js?v=2';
-        import { backendService } from './assets/js/modules/services/BackendService.js?v=2';
-        import { eventBus, Events } from './assets/js/modules/utils/EventBus.js?v=2';
+        <!-- Hakkımda Section -->
+        <section id="hakkimda">
+            <h2><i class="fas fa-user-circle"></i> Hakkımda</h2>
+            <div class="about-content">
+                <p>Python ile web scraping, veri işleme ve otomasyon projeleri geliştiriyorum. Teknolojiye olan tutkumla sürekli yeni şeyler öğreniyor ve pratik projelerle bilgilerimi geliştiriyorum. GitHub üzerinde açık kaynak projeler paylaşarak topluluğa katkıda bulunmayı hedefliyorum.</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <h3>10+</h3>
+                        <p>Proje</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Python</h3>
+                        <p>Uzmanlık</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Web Scraping</h3>
+                        <p>Özel İlgi</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        // Global erişim için
-        window.app = app;
-        window.uiManager = uiManager;
-        window.backendService = backendService;
-        window.eventBus = eventBus;
-        window.Events = Events;
+        <!-- Yetenekler Section -->
+        <section id="yetenekler">
+            <h2><i class="fas fa-code"></i> Teknik Yetenekler</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programlama Dilleri</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Python Kütüphaneleri</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">BeautifulSoup</span>
+                        <span class="skill-tag">Selenium</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">Requests</span>
+                        <span class="skill-tag">Flask</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Araçlar & Platformlar</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">Docker</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        // Uygulamayı başlat
-        document.addEventListener('DOMContentLoaded', async () => {
-            try {
-                await app.init(firebaseConfig);
-                console.log('✅ FaceRacer modüler başlatıldı');
-            } catch (error) {
-                console.error('❌ Başlatma hatası:', error);
-                alert('Oyun başlatılamadı: ' + error.message);
-            }
-        });
+        <!-- Kod Demoları Section -->
+        <section id="kod-demolari">
+            <h2><i class="fas fa-code"></i> Python Kod Demoları</h2>
+            <p class="section-description">Uzmanlık alanımdaki yeteneklerimi gösteren etkileyici kod örnekleri</p>
+            
+            <div class="code-demos-grid">
+                <!-- Demo 1: Advanced Web Scraping -->
+                <div class="code-demo">
+                    <div class="demo-header" onclick="toggleCode(this)">
+                        <div class="demo-icon">
+                            <i class="fas fa-spider"></i>
+                        </div>
+                        <div class="demo-info">
+                            <h3>İleri Düzey Web Scraping</h3>
+                            <p>Anti-bot sistemlerini aşan, rate-limiting ve proxy rotasyonu kullanan profesyonel scraper</p>
+                        </div>
+                        <div class="toggle-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="code-block collapsed">
+                        <pre><code class="language-python">import asyncio
+import aiohttp
+from bs4 import BeautifulSoup
+from fake_useragent import UserAgent
+import random
 
-        // Müzik ses kontrolü
-        const volumeSlider = document.getElementById('musicVolume');
-        if (volumeSlider) {
-            volumeSlider.addEventListener('input', (e) => {
-                app.setMusicVolume(e.target.value / 100);
-            });
+class AdvancedScraper:
+    def __init__(self):
+        self.ua = UserAgent()
+        self.proxies = [
+            'http://proxy1.com:8080',
+            'http://proxy2.com:8080',
+            'http://proxy3.com:8080'
+        ]
+        self.rate_limit = 2  # requests per second
+        
+    async def fetch_page(self, session, url):
+        headers = {'User-Agent': self.ua.random}
+        proxy = random.choice(self.proxies)
+        
+        async with session.get(url, headers=headers, 
+                               proxy=proxy, timeout=30) as response:
+            if response.status == 200:
+                return await response.text()
+            return None
+    
+    async def scrape_multiple(self, urls):
+        async with aiohttp.ClientSession() as session:
+            tasks = []
+            for url in urls:
+                task = self.fetch_page(session, url)
+                tasks.append(task)
+                await asyncio.sleep(1 / self.rate_limit)
+            
+            results = await asyncio.gather(*tasks)
+            return [r for r in results if r]
+
+# Kullanım
+scraper = AdvancedScraper()
+urls = ['https://example1.com', 'https://example2.com']
+data = asyncio.run(scraper.scrape_multiple(urls))</code></pre>
+                    </div>
+                    <div class="demo-features">
+                        <span class="feature-tag"><i class="fas fa-bolt"></i> Async/Await</span>
+                        <span class="feature-tag"><i class="fas fa-shield-alt"></i> Anti-Bot</span>
+                        <span class="feature-tag"><i class="fas fa-exchange-alt"></i> Proxy Rotasyon</span>
+                    </div>
+                </div>
+
+                <!-- Demo 2: Data Processing Pipeline -->
+                <div class="code-demo">
+                    <div class="demo-header" onclick="toggleCode(this)">
+                        <div class="demo-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="demo-info">
+                            <h3>Veri İşleme Pipeline</h3>
+                            <p>Büyük veri setlerini otomatik temizleyen, dönüştüren ve analiz eden pipeline</p>
+                        </div>
+                        <div class="toggle-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="code-block collapsed">
+                        <pre><code class="language-python">import pandas as pd
+import numpy as np
+from typing import List, Dict
+import re
+
+class DataPipeline:
+    def __init__(self):
+        self.cleaners = [
+            self.remove_duplicates,
+            self.handle_missing_values,
+            self.normalize_text,
+            self.detect_outliers
+        ]
+    
+    def remove_duplicates(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Tekrarlayan kayıtları kaldır"""
+        return df.drop_duplicates()
+    
+    def handle_missing_values(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Eksik değerleri doldur"""
+        numeric_cols = df.select_dtypes(include=[np.number]).columns
+        df[numeric_cols] = df[numeric_cols].fillna(df[numeric_cols].median())
+        return df
+    
+    def normalize_text(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Metinleri normalize et"""
+        text_cols = df.select_dtypes(include=['object']).columns
+        for col in text_cols:
+            df[col] = df[col].str.lower().str.strip()
+            df[col] = df[col].apply(lambda x: re.sub(r'[^\w\s]', '', str(x)))
+        return df
+    
+    def detect_outliers(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Aykırı değerleri tespit et"""
+        numeric_cols = df.select_dtypes(include=[np.number]).columns
+        for col in numeric_cols:
+            Q1 = df[col].quantile(0.25)
+            Q3 = df[col].quantile(0.75)
+            IQR = Q3 - Q1
+            df = df[~((df[col] < (Q1 - 1.5 * IQR)) | 
+                     (df[col] > (Q3 + 1.5 * IQR)))]
+        return df
+    
+    def process(self, raw_data: List[Dict]) -> pd.DataFrame:
+        """Veriyi pipeline'dan geçir"""
+        df = pd.DataFrame(raw_data)
+        
+        for cleaner in self.cleaners:
+            df = cleaner(df)
+            print(f"✓ {cleaner.__name__} tamamlandı")
+        
+        return df
+
+# Kullanım
+pipeline = DataPipeline()
+raw_data = [{'name': '  Test  ', 'value': 100}, 
+            {'name': 'test', 'value': 105}]
+clean_data = pipeline.process(raw_data)</code></pre>
+                    </div>
+                    <div class="demo-features">
+                        <span class="feature-tag"><i class="fas fa-database"></i> Pandas</span>
+                        <span class="feature-tag"><i class="fas fa-broom"></i> Auto-Clean</span>
+                        <span class="feature-tag"><i class="fas fa-chart-bar"></i> Analysis</span>
+                    </div>
+                </div>
+
+                <!-- Demo 3: Intelligent Agent -->
+                <div class="code-demo">
+                    <div class="demo-header" onclick="toggleCode(this)">
+                        <div class="demo-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="demo-info">
+                            <h3>Akıllı Veri Agent</h3>
+                            <p>Kendiliğinden öğrenen ve strateji geliştiren otonom veri toplama agent</p>
+                        </div>
+                        <div class="toggle-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="code-block collapsed">
+                        <pre><code class="language-python">import json
+from datetime import datetime
+from typing import Dict, List
+import random
+
+class DataAgent:
+    def __init__(self, name: str):
+        self.name = name
+        self.memory = {}
+        self.success_rate = 0.0
+        self.strategies = {
+            'aggressive': 0.3,
+            'balanced': 0.5,
+            'conservative': 0.2
         }
-    </script>
+        self.learning_rate = 0.1
+    
+    def learn(self, success: bool, strategy: str):
+        """Başarıya göre öğren"""
+        if success:
+            self.strategies[strategy] += self.learning_rate
+            self.success_rate = min(1.0, self.success_rate + 0.05)
+        else:
+            self.strategies[strategy] -= self.learning_rate
+            self.success_rate = max(0.0, self.success_rate - 0.02)
+        
+        # Normalize stratejiler
+        total = sum(self.strategies.values())
+        for key in self.strategies:
+            self.strategies[key] /= total
+    
+    def select_strategy(self) -> str:
+        """En iyi stratejiyi seç"""
+        return random.choices(
+            list(self.strategies.keys()),
+            weights=list(self.strategies.values())
+        )[0]
+    
+    def execute_task(self, task: Dict) -> Dict:
+        """Görevi çalıştır"""
+        strategy = self.select_strategy()
+        
+        # Simüle edilmiş görev
+        success_chance = {
+            'aggressive': 0.4,
+            'balanced': 0.7,
+            'conservative': 0.9
+        }[strategy]
+        
+        success = random.random() < success_chance
+        self.learn(success, strategy)
+        
+        return {
+            'agent': self.name,
+            'strategy': strategy,
+            'success': success,
+            'success_rate': self.success_rate,
+            'timestamp': datetime.now().isoformat()
+        }
+    
+    def save_memory(self):
+        """Hafızayı kaydet"""
+        with open(f'{self.name}_memory.json', 'w') as f:
+            json.dump({
+                'strategies': self.strategies,
+                'success_rate': self.success_rate
+            }, f)
+
+# Kullanım
+agent = DataAgent("AlphaBot")
+for _ in range(10):
+    result = agent.execute_task({'type': 'scrape'})
+    print(f"Strategy: {result['strategy']}, Success: {result['success']}")
+agent.save_memory()</code></pre>
+                    </div>
+                    <div class="demo-features">
+                        <span class="feature-tag"><i class="fas fa-brain"></i> Machine Learning</span>
+                        <span class="feature-tag"><i class="fas fa-sync"></i> Self-Improving</span>
+                        <span class="feature-tag"><i class="fas fa-chess"></i> Strategy</span>
+                    </div>
+                </div>
+
+                <!-- Demo 4: Snake Game -->
+                <div class="code-demo">
+                    <div class="demo-header" onclick="toggleCode(this)">
+                        <div class="demo-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div class="demo-info">
+                            <h3>Snake Oyunu</h3>
+                            <p>Pygame ile geliştirilmiş klasik yılan oyunu - OOP, event handling ve oyun döngüsü</p>
+                        </div>
+                        <div class="toggle-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="code-block collapsed">
+                        <pre><code class="language-python">import pygame
+import random
+import sys
+
+class SnakeGame:
+    def __init__(self):
+        pygame.init()
+        self.width = 800
+        self.height = 600
+        self.screen = pygame.display.set_mode((self.width, self.height))
+        pygame.display.set_caption("Python Snake Game")
+        self.clock = pygame.time.Clock()
+        
+        # Renkler
+        self.BLACK = (0, 0, 0)
+        self.WHITE = (255, 255, 255)
+        self.GREEN = (0, 255, 0)
+        self.RED = (255, 0, 0)
+        self.BLUE = (0, 0, 255)
+        
+        # Oyun ayarları
+        self.block_size = 20
+        self.snake_speed = 15
+        
+        # Yılan başlangıç
+        self.snake = []
+        self.snake_length = 1
+        self.x1 = self.width // 2
+        self.y1 = self.height // 2
+        self.x1_change = 0
+        self.y1_change = 0
+        
+        # Yem
+        self.food_x = round(random.randrange(0, self.width - self.block_size) / self.block_size) * self.block_size
+        self.food_y = round(random.randrange(0, self.height - self.block_size) / self.block_size) * self.block_size
+        
+        # Skor
+        self.score = 0
+        
+    def handle_events(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT and self.x1_change == 0:
+                    self.x1_change = -self.block_size
+                    self.y1_change = 0
+                elif event.key == pygame.K_RIGHT and self.x1_change == 0:
+                    self.x1_change = self.block_size
+                    self.y1_change = 0
+                elif event.key == pygame.K_UP and self.y1_change == 0:
+                    self.y1_change = -self.block_size
+                    self.x1_change = 0
+                elif event.key == pygame.K_DOWN and self.y1_change == 0:
+                    self.y1_change = self.block_size
+                    self.x1_change = 0
+        return True
+    
+    def update(self):
+        self.x1 += self.x1_change
+        self.y1 += self.y1_change
+        
+        # Yılanın yeni başını ekle
+        self.snake.append([self.x1, self.y1])
+        
+        # Yılanı istenen uzunlukta tut
+        if len(self.snake) > self.snake_length:
+            del self.snake[0]
+        
+        # Yem yeme kontrolü
+        if self.x1 == self.food_x and self.y1 == self.food_y:
+            self.food_x = round(random.randrange(0, self.width - self.block_size) / self.block_size) * self.block_size
+            self.food_y = round(random.randrange(0, self.height - self.block_size) / self.block_size) * self.block_size
+            self.snake_length += 1
+            self.score += 10
+        
+        # Duvar çarpışması
+        if self.x1 >= self.width or self.x1 < 0 or self.y1 >= self.height or self.y1 < 0:
+            return False
+        
+        # Kendine çarpışma
+        for segment in self.snake[:-1]:
+            if segment == [self.x1, self.y1]:
+                return False
+        
+        return True
+    
+    def draw(self):
+        self.screen.fill(self.BLACK)
+        
+        # Yılanı çiz
+        for segment in self.snake:
+            pygame.draw.rect(self.screen, self.GREEN, [segment[0], segment[1], self.block_size, self.block_size])
+        
+        # Yemi çiz
+        pygame.draw.rect(self.screen, self.RED, [self.food_x, self.food_y, self.block_size, self.block_size])
+        
+        # Skoru göster
+        font = pygame.font.SysFont('Arial', 30)
+        score_text = font.render(f'Skor: {self.score}', True, self.WHITE)
+        self.screen.blit(score_text, [10, 10])
+        
+        pygame.display.update()
+    
+    def run(self):
+        running = True
+        while running:
+            running = self.handle_events()
+            if not running:
+                break
+            
+            running = self.update()
+            if not running:
+                break
+            
+            self.draw()
+            self.clock.tick(self.snake_speed)
+        
+        # Game Over ekranı
+        font = pygame.font.SysFont('Arial', 50)
+        game_over_text = font.render('Oyun Bitti!', True, self.RED)
+        final_score_text = font.render(f'Final Skor: {self.score}', True, self.WHITE)
+        
+        self.screen.blit(game_over_text, [self.width // 2 - 150, self.height // 2 - 50])
+        self.screen.blit(final_score_text, [self.width // 2 - 150, self.height // 2 + 10])
+        pygame.display.update()
+        
+        pygame.time.wait(3000)
+        pygame.quit()
+        sys.exit()
+
+# Oyunu başlat
+if __name__ == "__main__":
+    game = SnakeGame()
+    game.run()</code></pre>
+                    </div>
+                    <div class="demo-features">
+                        <span class="feature-tag"><i class="fas fa-gamepad"></i> Pygame</span>
+                        <span class="feature-tag"><i class="fas fa-cube"></i> OOP</span>
+                        <span class="feature-tag"><i class="fas fa-bolt"></i> Event Loop</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Projeler Section -->
+        <section id="projeler">
+            <h2><i class="fas fa-project-diagram"></i> Projelerim</h2>
+            <div class="project-grid">
+                <div class="project">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Web Scraping" class="project-image">
+                    <div class="project-icon">
+                        <i class="fas fa-spider"></i>
+                    </div>
+                    <h3>Web Scraping Agent</h3>
+                    <p>Çoklu web sitesinden veri çekme ve işleme otomasyonu. Agent tabanlı yapı ile esnek veri toplama.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/hakancet27-dotcom" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>BeautifulSoup</span>
+                        <span>Selenium</span>
+                    </div>
+                </div>
+                <div class="project">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Fiyat Takip" class="project-image">
+                    <div class="project-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Fiyat Takip Botu</h3>
+                    <p>Sahibinden ve benzeri platformlardan ürün fiyatlarını takip eden ve değişimleri raporlayan sistem.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/hakancet27-dotcom" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>Pandas</span>
+                        <span>API</span>
+                    </div>
+                </div>
+                <div class="project">
+                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop" alt="Medya İndirici" class="project-image">
+                    <div class="project-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>Medya İndirici</h3>
+                    <p>Çeşitli platformlardan video ve medya içerikleri indirme aracı. Batch işleme desteği.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/hakancet27-dotcom" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>yt-dlp</span>
+                        <span>FFmpeg</span>
+                    </div>
+                </div>
+                <div class="project">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="URL Extractor" class="project-image">
+                    <div class="project-icon">
+                        <i class="fas fa-file-csv"></i>
+                    </div>
+                    <h3>Bulk URL Extractor</h3>
+                    <p>Büyük metin dosyalarından URL'leri çıkaran ve kategorize eden otomasyon aracı.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/hakancet27-dotcom" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>Regex</span>
+                        <span>Pandas</span>
+                    </div>
+                </div>
+                <div class="project">
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop" alt="Splitwise" class="project-image">
+                    <div class="project-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Splitwise Entegrasyonu</h3>
+                    <p>Splitwise API ile masrafları takip eden ve raporlayan kişisel finans aracı.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/hakancet27-dotcom" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>REST API</span>
+                        <span>JSON</span>
+                    </div>
+                </div>
+                <div class="project">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop" alt="WebSift" class="project-image">
+                    <div class="project-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>WebSift</h3>
+                    <p>Web içeriklerini analiz eden ve filtreleyen akıllı içerik işleme aracı.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/hakancet27-dotcom" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>NLP</span>
+                        <span>ML</span>
+                    </div>
+                </div>
+                <div class="project">
+                    <img src="assets/images/faceracer-banner.svg" alt="FaceRacer" class="project-image">
+                    <div class="project-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>FaceRacer</h3>
+                    <p>Yüz takibi ve kafa hareketleriyle oynanan 3D araba yarışı oyunu. Engelli bireyler için erişilebilir oyun deneyimi.</p>
+                    <div class="project-links">
+                        <a href="game.html" target="_blank"><i class="fas fa-play"></i> Oyna</a>
+                    </div>
+                    <div class="project-tech">
+                        <span>Three.js</span>
+                        <span>MediaPipe</span>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- İletişim Section -->
+        <section id="iletisim">
+            <h2><i class="fas fa-envelope"></i> İletişim</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>info@hakancetin.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-globe"></i>
+                        <div>
+                            <h3>Web Sitesi</h3>
+                            <p>https://hakancetin.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <div>
+                            <h3>GitHub</h3>
+                            <p>github.com/hakancet27-dotcom</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Adınız" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Emailiniz" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" rows="5" placeholder="Mesajınız" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Gönder</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Hakan Çetin. Tüm hakları saklıdır.</p>
+            <div class="footer-social">
+                <a href="https://github.com/hakancet27-dotcom" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/hakan-cet-3b4979404/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+            <div class="footer-links">
+                <a href="privacy.html">Gizlilik Politikası</a>
+                <a href="terms.html">Kullanım Şartları</a>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="assets/js/script.js"></script>
+<script src="https://pl29294923.profitablecpmratenetwork.com/5b/cf/3a/5bcf3afd585384873102d233f245e224.js"></script>
 </body>
 </html>
