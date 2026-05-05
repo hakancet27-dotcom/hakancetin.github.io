@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meyve Ninja - El ile Kes!</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <!-- MediaPipe Hands -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="game-canvas"></canvas>
+        <video id="input-video" style="display:none;"></video>
+        
+        <!-- UI Overlay -->
+        <div id="ui-overlay">
+            <div id="score">0</div>
+            <div id="lives">
+                <span class="heart">❤️</span>
+                <span class="heart">❤️</span>
+                <span class="heart">❤️</span>
+                <span class="heart">❤️</span>
+                <span class="heart">❤️</span>
+            </div>
+            <div id="timer">0s</div>
+        </div>
+        
+        <!-- Combo Display -->
+        <div id="combo-display"></div>
+
+        <!-- Gesture Progress -->
+        <div id="gesture-progress" class="hidden">
+            <div class="progress-bar">
+                <div class="progress-bar-fill"></div>
+            </div>
+            <p>Yumruk tutun (0.5s)...</p>
+        </div>
+
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen">
+            <h1>🍉 Meyve Ninja</h1>
+            <p>El hareketlerinizle meyveleri kesin!</p>
+            <p>Kameraya izin verin ve işaret parmağınızı kullanın</p>
+            <p style="color: #ffdc3c; margin-top: 20px;">� Yumruk yaparak başlayın</p>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="game-over-screen" class="screen hidden">
+            <h1>OYUN BİTTİ</h1>
+            <p id="final-score">Puan: 0</p>
+            <p style="color: #ffdc3c; margin-top: 20px;">👊 Yumruk yaparak tekrar oynayın</p>
+            <p id="gesture-hint" style="color: #888; font-size: 16px; margin-top: 10px;">Tüm parmaklarınızı bükün</p>
+        </div>
+        
+        <!-- Loading Screen -->
+        <div id="loading-screen" class="screen hidden">
+            <div class="spinner"></div>
+            <p>Kamera başlatılıyor...</p>
+        </div>
+    </div>
+    
+    <script src="static/js/game.js"></script>
+</body>
+</html>
