@@ -35,7 +35,6 @@ class Logger {
 
     reportError(message, error = null) {
         if (!this.firebaseAvailable || typeof firebase === 'undefined') {
-            console.error('Firebase not available for error reporting');
             return;
         }
 
@@ -51,7 +50,7 @@ class Logger {
                 domain: window.location.hostname
             }).catch(() => {});
         } catch (e) {
-            console.error('Failed to report error:', e);
+            // Sessizce gec
         }
     }
 }
