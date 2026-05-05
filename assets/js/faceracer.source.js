@@ -2392,6 +2392,9 @@ function endGame() {
     const calibrationContent = document.querySelector('.calibration-content');
     const finalScore = gameState.score;
 
+    // Add game-over class for CSS targeting
+    calibrationContent.classList.add('game-over-content');
+
     calibrationContent.innerHTML = `
         <h1>&#128163; Araba Patlad&#305;!</h1>
         <div style="margin: 12px 0; padding: 12px; background: rgba(255, 0, 0, 0.1); border-radius: 10px; border: 1px solid #ff0000;">
@@ -2499,6 +2502,12 @@ function endGame() {
     // Hide game over screen and start game directly
     calibrationOverlay.style.display = 'none';
     hud.style.display = 'block';
+
+    // Remove game-over class from calibration content
+    const calibrationContent = document.querySelector('.calibration-content');
+    if (calibrationContent) {
+        calibrationContent.classList.remove('game-over-content');
+    }
     
     // Restore canvas opacity
     const canvas = document.getElementById('gameCanvas');

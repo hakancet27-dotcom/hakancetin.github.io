@@ -1049,10 +1049,14 @@ body {
 /* Game Over Content Container */
 #calibrationOverlay .calibration-content {
     max-width: 95vw;
+    padding: 20px;
+}
+
+/* Game Over specific - Only apply when game-over class is present */
+#calibrationOverlay .calibration-content.game-over-content {
     max-height: 90vh;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 20px;
 }
 
 /* Game Over Grid Layout - Responsive */
