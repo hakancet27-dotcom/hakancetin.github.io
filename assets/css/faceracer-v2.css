@@ -1354,3 +1354,8 @@ button:hover:not(#startButton) {
     transition: transform 0.2s ease;
     opacity: 0.9;
 }
+
+/* ===== DISABLED FEATURES ===== */
+#connectPhoneBtn {
+    display: none !important;
+}

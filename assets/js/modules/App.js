@@ -8,7 +8,6 @@ import { gameEngine } from './core/GameEngine.js';
 import { platformAdapter } from './adapters/PlatformAdapter.js';
 import { backendService } from './services/BackendService.js';
 import { audioManager } from './services/AudioManager.js';
-import { webRTCManager } from './services/WebRTCManager.js';
 import { uiManager } from './ui/UIManager.js';
 import { eventBus, Events } from './utils/EventBus.js';
 import logger from './utils/Logger.js';
@@ -45,18 +44,18 @@ class App {
 
             // 4. Backend bağlantısı (başarısız olursa oyun devam eder)
             try {
-                await backendService.init(firebaseConfig);
-                backendService.logUsage();
-                backendService.enableOfflinePersistence();
-                
-                // Leaderboard'u yükle
-                await backendService.loadLeaderboard(10);
-                
-                // Real-time leaderboard listener (canlı güncelleme)
-                this.leaderboardUnsubscribe = backendService.onLeaderboardUpdate((sorted) => {
-                    backendService.leaderboard = sorted;
-                    eventBus.emit(Events.LEADERBOARD_LOADED, sorted);
-                });
+                const backendOk = await backendService.init(firebaseConfig);
+                if (backendOk) {
+                    try { backendService.logUsage(); } catch(e) {}
+                    try { backendService.enableOfflinePersistence(); } catch(e) {}
+                    try {
+                        await backendService.loadLeaderboard(10);
+                        this.leaderboardUnsubscribe = backendService.onLeaderboardUpdate((sorted) => {
+                            backendService.leaderboard = sorted;
+                            eventBus.emit(Events.LEADERBOARD_LOADED, sorted);
+                        });
+                    } catch(e) {}
+                }
             } catch (error) {
                 logger.warn('Backend not available:', error.message);
             }
@@ -341,7 +340,6 @@ class App {
         document.getElementById('toggleCamera')?.addEventListener('click', () => this.toggleCameraPreset());
         document.getElementById('toggleMusic')?.addEventListener('click', () => this.toggleMusic());
         document.getElementById('toggleTVMode')?.addEventListener('click', () => this.toggleTVMode());
-        document.getElementById('connectPhoneBtn')?.addEventListener('click', () => this.connectPhone());
     }
 
     // Zorluk seçimi
