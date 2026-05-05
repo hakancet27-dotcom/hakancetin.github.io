@@ -1010,9 +1010,138 @@ body {
         width: 220px;
         height: 220px;
     }
-    
+
     .calibration-target-zone {
         width: 50px;
         height: 50px;
+    }
+}
+
+/* Game Over Restart Button */
+.game-over-restart-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.game-over-restart-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 30px rgba(0, 255, 136, 0.6);
+}
+
+.game-over-restart-btn:active {
+    transform: scale(0.98);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 4px 20px rgba(0, 255, 136, 0.4);
+    }
+    50% {
+        box-shadow: 0 4px 40px rgba(0, 255, 136, 0.8);
+    }
+}
+
+/* Game Over Screen Enhancements */
+#calibrationOverlay h1 {
+    text-shadow: 0 0 20px rgba(255, 68, 68, 0.5);
+}
+
+/* Game Over Content Container */
+#calibrationOverlay .calibration-content {
+    max-width: 95vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px;
+}
+
+/* Game Over Grid Layout - Responsive */
+#calibrationOverlay .calibration-content > div[style*="grid"] {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+@media (min-width: 768px) {
+    #calibrationOverlay .calibration-content > div[style*="grid"] {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 12px;
+    }
+}
+
+/* Game Over Button - Prevent overflow */
+.game-over-restart-btn {
+    max-width: 100%;
+    white-space: nowrap;
+}
+
+/* Game Over Car Selection - Responsive */
+#calibrationOverlay .calibration-content > div[style*="margin-bottom: 12px"] {
+    max-width: 100%;
+}
+
+#calibrationOverlay .calibration-content button.car-select-btn {
+    flex: 1;
+    min-width: 80px;
+    max-width: 120px;
+}
+
+/* Game Over Leaderboard - Responsive */
+#calibrationOverlay .calibration-content #easyLeaderboard,
+#calibrationOverlay .calibration-content #normalLeaderboard,
+#calibrationOverlay .calibration-content #scoreSubmission {
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+/* Mobile Game Over Adjustments */
+@media (max-width: 768px) {
+    #calibrationOverlay .calibration-content {
+        padding: 15px;
+        font-size: 0.85rem;
+    }
+
+    #calibrationOverlay .calibration-content h1 {
+        font-size: 1.5rem;
+    }
+
+    #calibrationOverlay .calibration-content p {
+        font-size: 0.8rem;
+    }
+
+    .game-over-restart-btn {
+        padding: 12px 30px;
+        font-size: 1.1rem;
+    }
+
+    #calibrationOverlay .calibration-content button.car-select-btn {
+        padding: 8px 12px;
+        min-width: 70px;
+    }
+
+    #calibrationOverlay .calibration-content input[type="text"] {
+        font-size: 0.8rem;
+        padding: 8px;
+    }
+}
+
+/* Portrait Mode Game Over */
+@media (max-width: 480px) and (orientation: portrait) {
+    #calibrationOverlay .calibration-content {
+        max-height: 85vh;
+        padding: 12px;
+    }
+
+    #calibrationOverlay .calibration-content h1 {
+        font-size: 1.3rem;
+    }
+
+    .game-over-restart-btn {
+        padding: 10px 24px;
+        font-size: 1rem;
+    }
+
+    #calibrationOverlay .calibration-content > div[style*="margin: 12px 0"] {
+        margin: 8px 0 !important;
     }
 }

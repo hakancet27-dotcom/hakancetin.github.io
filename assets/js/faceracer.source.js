@@ -2435,7 +2435,7 @@ function endGame() {
             </div>
         </div>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 12px 0;">
+        <div style="display: grid; gap: 12px; margin: 12px 0;">
             <div id="easyLeaderboard" style="padding: 10px; background: rgba(0,0,0,0.5); border-radius: 10px; border: 1px solid #4ecdc4;">
                 <h3 style="color: #4ecdc4; margin-bottom: 8px; font-size: 0.9rem;">&#127942; Kolay Mod</h3>
                 <div id="easyLeaderboardList" style="max-height: 120px; overflow-y: auto;">
@@ -2458,7 +2458,7 @@ function endGame() {
             </div>
         </div>
 
-        <button onclick="restartGame()" style="margin-top: 0px; padding: 10px 20px; background: #00ff88; border: none; border-radius: 10px; cursor: pointer; font-size: 1.02rem; font-weight: bold;">
+        <button onclick="restartGame()" class="game-over-restart-btn" style="margin-top: 16px; padding: 16px 40px; background: linear-gradient(135deg, #00ff88, #00cc6a); border: 3px solid #00ff88; border-radius: 12px; cursor: pointer; font-size: 1.4rem; font-weight: bold; color: #1a1a2e; box-shadow: 0 4px 20px rgba(0, 255, 136, 0.4); transition: all 0.3s ease; animation: pulse 2s infinite;">
             &#128257; Tekrar Oyna
         </button>
     `;
