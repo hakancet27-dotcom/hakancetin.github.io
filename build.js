@@ -28,8 +28,19 @@ try {
       execSync('npm install', { stdio: 'inherit', cwd: taktakSrc });
     }
     execSync('npm run build', { stdio: 'inherit', cwd: taktakSrc });
-    // Copy dist -> taktak/
+    // Inject Firebase SDK into dist/index.html
     const distHtml = path.join(taktakSrc, 'dist', 'index.html');
+    let distContent = fs.readFileSync(distHtml, 'utf8');
+    const firebaseSDK = [
+      '  <!-- Firebase SDK -->',
+      '  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>',
+      '  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database-compat.js"></script>',
+      '  <script src="../config.js"></script>',
+      '  <script>if(typeof firebaseConfig !== \'undefined\' && !firebase.apps.length) firebase.initializeApp(firebaseConfig);</script>'
+    ].join('\n');
+    distContent = distContent.replace('<body>', '<body>\n' + firebaseSDK);
+    fs.writeFileSync(distHtml, distContent, 'utf8');
+    // Copy dist -> taktak/
     const distImages = path.join(taktakSrc, 'dist', 'images');
     fs.copyFileSync(distHtml, path.join(ROOT, 'taktak', 'index.html'));
     if (fs.existsSync(distImages)) {
