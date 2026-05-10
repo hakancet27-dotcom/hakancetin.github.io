@@ -1,4 +1,8 @@
 
+# Temp scripts
+fix_*.js
+patch_*.js
+
 # Source files (private - do not push)
 assets/js/faceracer.source.js
 ninja/static/js/game.source.js
