@@ -39,6 +39,9 @@ try {
       '  <script>if(typeof firebaseConfig !== \'undefined\' && !firebase.apps.length) firebase.initializeApp(firebaseConfig);</script>'
     ].join('\n');
     distContent = distContent.replace('<body>', '<body>\n' + firebaseSDK);
+    // Inject CSP meta tag into <head>
+    const cspTag = '<meta http-equiv="Content-Security-Policy" content="default-src \'self\'; script-src \'self\' \'unsafe-inline\' \'unsafe-eval\' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://www.gstatic.com https://*.firebaseio.com; style-src \'self\' \'unsafe-inline\'; img-src \'self\' data: blob:; media-src \'self\' blob:; connect-src \'self\' https://cdn.jsdelivr.net https://www.gstatic.com wss: https://*.firebaseio.com https://*.googleapis.com https://*.firebaseapp.com https://*.gstatic.com https://*.google-analytics.com https://analytics.google.com https://www.google.com; font-src \'self\'; object-src \'none\'; base-uri \'self\';">';
+    distContent = distContent.replace('</head>', cspTag + '\n  </head>');
     fs.writeFileSync(distHtml, distContent, 'utf8');
     // Copy dist -> taktak/
     const distImages = path.join(taktakSrc, 'dist', 'images');
