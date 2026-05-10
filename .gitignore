@@ -1,4 +1,10 @@
 
+# Source files (private - do not push)
+assets/js/faceracer.source.js
+ninja/static/js/game.source.js
+taktak-src/
+_kaynak_yedek/
+
 # Obfuscated (optional)
 assets/js/faceracer.obfuscated.js
 

@@ -162,8 +162,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    overflow-y: auto;
+    overflow-x: hidden;
     z-index: 150;
+    padding: 16px 8px;
+    box-sizing: border-box;
 }
 
 #calibrationOverlay.hidden {
@@ -1041,6 +1045,18 @@ body {
     }
 }
 
+/* Game Over mode: scroll from top instead of centering */
+#calibrationOverlay.game-over-mode {
+    justify-content: flex-start;
+}
+
+/* Normal calibration: keep centered */
+#calibrationOverlay:not(.game-over-mode) {
+    justify-content: center;
+    overflow-y: hidden;
+    padding: 0;
+}
+
 /* Game Over Screen Enhancements */
 #calibrationOverlay h1 {
     text-shadow: 0 0 20px rgba(255, 68, 68, 0.5);
@@ -1049,13 +1065,15 @@ body {
 /* Game Over Content Container */
 #calibrationOverlay .calibration-content {
     max-width: 95vw;
+    width: 100%;
     padding: 20px;
+    box-sizing: border-box;
 }
 
 /* Game Over specific - Only apply when game-over class is present */
 #calibrationOverlay .calibration-content.game-over-content {
-    max-height: 90vh;
-    overflow-y: auto;
+    max-height: none;
+    overflow-y: visible;
     overflow-x: hidden;
 }
 

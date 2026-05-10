@@ -186,6 +186,8 @@
         <button id="startButton" class="hidden">Oyunu Başlat</button>
         
         <button id="toggleTVModeStart" onclick="toggleTVMode(); updateTVButton('toggleTVModeStart');">📺 TV: KAPALI</button>
+        
+        <button id="langToggle" onclick="setLang(currentLang === 'tr' ? 'en' : 'tr')" style="position:fixed;top:10px;right:10px;z-index:10000;padding:8px 14px;background:rgba(255,255,255,0.1);border:1px solid #555;border-radius:8px;color:#fff;cursor:pointer;font-size:0.9rem;">🌐 EN</button>
     </div>
 
     <!-- WebRTC: Telefon sensörü için gizli uzak video -->

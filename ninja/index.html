@@ -114,18 +114,22 @@
 
         <!-- Start Screen -->
         <div id="start-screen" class="screen">
-            <h1>🍉 Meyve Ninja</h1>
-            <p>El hareketlerinizle meyveleri kesin!</p>
-            <p>Kameraya izin verin ve işaret parmağınızı kullanın</p>
-            <p style="color: #ffdc3c; margin-top: 20px;">� Yumruk yaparak başlayın</p>
+            <h1 data-i18n="title">🍉 Meyve Ninja</h1>
+            <p data-i18n="subtitle">El hareketlerinizle meyveleri kesin!</p>
+            <p data-i18n="cameraHint">Kameraya izin verin ve işaret parmağınızı kullanın</p>
+            <p style="color: #ffdc3c; margin-top: 20px;" data-i18n="fistStart">👊 Yumruk yaparak başlayın</p>
+            <p style="color: #aaa; font-size: 0.8rem; margin-top: 4px;"><span data-i18n="orKey">veya</span> <kbd style="background:#333;padding:2px 7px;border-radius:4px;border:1px solid #555;">Space</kbd> / <kbd style="background:#333;padding:2px 7px;border-radius:4px;border:1px solid #555;">Enter</kbd></p>
+            <button onclick="document.getElementById('gesture-progress').classList.add('hidden');initAudio();oyunBaslat()" data-i18n-btn="startBtn" style="margin-top:16px;padding:12px 32px;background:linear-gradient(135deg,#00ff88,#4ecdc4);border:none;border-radius:10px;color:#000;font-size:1rem;font-weight:bold;cursor:pointer;">▶ Başla</button>
         </div>
 
         <!-- Game Over Screen -->
         <div id="game-over-screen" class="screen hidden">
-            <h1>OYUN BİTTİ</h1>
+            <h1 data-i18n="gameOver">OYUN BİTTİ</h1>
             <p id="final-score">Puan: 0</p>
-            <p style="color: #ffdc3c; margin-top: 20px;">👊 Yumruk yaparak tekrar oynayın</p>
-            <p id="gesture-hint" style="color: #888; font-size: 16px; margin-top: 10px;">Tüm parmaklarınızı bükün</p>
+            <p style="color: #ffdc3c; margin-top: 20px;" data-i18n="fistReplay">👊 Yumruk yaparak tekrar oynayın</p>
+            <p id="gesture-hint" style="color: #888; font-size: 16px; margin-top: 10px;" data-i18n="fistHint">Tüm parmaklarınızı bükün</p>
+            <p style="color: #aaa; font-size: 0.8rem; margin-top: 4px;"><span data-i18n="orKey">veya</span> <kbd style="background:#333;padding:2px 7px;border-radius:4px;border:1px solid #555;">Space</kbd> / <kbd style="background:#333;padding:2px 7px;border-radius:4px;border:1px solid #555;">Enter</kbd></p>
+            <button onclick="document.getElementById('game-over-screen').classList.add('hidden');document.getElementById('gesture-progress').classList.add('hidden');initAudio();oyunBaslat()" data-i18n-btn="replayBtn" style="margin-top:12px;padding:12px 32px;background:linear-gradient(135deg,#ff6b6b,#ff2244);border:none;border-radius:10px;color:#fff;font-size:1rem;font-weight:bold;cursor:pointer;">🔁 Tekrar Oyna</button>
         </div>
         
         <!-- Loading Screen -->
@@ -135,6 +139,7 @@
         </div>
     </div>
     
+    <button id="langToggle" onclick="setLang(currentLang === 'tr' ? 'en' : 'tr')" style="position:fixed;top:10px;right:10px;z-index:10000;padding:8px 14px;background:rgba(255,255,255,0.1);border:1px solid #555;border-radius:8px;color:#fff;cursor:pointer;font-size:0.9rem;">🌐 EN</button>
     <script src="static/js/game.min.js"></script>
 </body>
 </html>
