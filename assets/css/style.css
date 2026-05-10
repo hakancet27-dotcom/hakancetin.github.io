@@ -719,6 +719,13 @@ footer {
 
     .hero-buttons {
         justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+
+    .btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
     }
 
     .social-links {
