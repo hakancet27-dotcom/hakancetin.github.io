@@ -1167,3 +1167,103 @@ body {
         margin: 8px 0 !important;
     }
 }
+
+/* ============================================
+   TOUCH CONTROLS - Mobil Dokunmatik Kontroller
+   ============================================ */
+
+#touchControls {
+    position: fixed;
+    bottom: 60px;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    z-index: 2000;
+    padding: 5px 20px;
+    box-sizing: border-box;
+    backdrop-filter: blur(10px);
+}
+
+#touchControls.hidden {
+    display: none;
+}
+
+.touch-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    transition: all 0.15s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.touch-btn:active {
+    background: rgba(0, 255, 136, 0.4);
+    border-color: #00ff88;
+    transform: scale(0.95);
+    box-shadow: 0 2px 10px rgba(0, 255, 136, 0.4);
+}
+
+.touch-btn.touch-nitro {
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+    background: rgba(255, 102, 0, 0.2);
+    border-color: rgba(255, 102, 0, 0.5);
+}
+
+.touch-btn.touch-nitro:active {
+    background: rgba(255, 102, 0, 0.5);
+    border-color: #ff6600;
+    box-shadow: 0 2px 15px rgba(255, 102, 0, 0.6);
+}
+
+/* Touch Mode - Turbo bar'ı en üste taşı */
+body.touch-mode #turboBarContainer {
+    bottom: auto;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Sadece mobilde touch kontrolleri görünür */
+@media (min-width: 769px) {
+    #touchControls {
+        display: none !important;
+    }
+}
+
+/* Mobilde touch kontrolleri optimize */
+@media (max-width: 768px) {
+    #touchControls {
+        height: 120px;
+        padding: 10px 15px;
+    }
+
+    .touch-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.8rem;
+    }
+
+    .touch-btn.touch-nitro {
+        width: 80px;
+        height: 80px;
+        font-size: 2.2rem;
+    }
+}
