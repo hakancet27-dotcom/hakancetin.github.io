@@ -4287,9 +4287,10 @@ void main() {
       }
       window.taktakLoadLeaderboard = taktakLoadLeaderboard;
 
-      // Monitor score changes and detect game over
-      let lastScore = 0;
-      let scoreStableTime = 0;
+      // Monitor score changes - Taktak specific game over detection
+      let gameStartTime = Date.now();
+      let lastHitTime = Date.now();
+      let maxInactiveTime = 10000; // 10 seconds without hits = game over
       
       setInterval(() => {
         const bodyText = document.body.textContent;
@@ -4298,20 +4299,19 @@ void main() {
           const newScore = Math.max(...matches.map(Number));
           if (newScore > taktakScore) {
             taktakScore = newScore;
+            lastHitTime = Date.now(); // Reset inactive timer on score increase
             const scoreEl = document.getElementById('taktak-final-score');
             if (scoreEl) scoreEl.textContent = 'Skor: ' + taktakScore;
           }
-          
-          // Check if score is stable (game over)
-          if (newScore === lastScore && newScore > 0) {
-            scoreStableTime++;
-            if (scoreStableTime >= 5) { // 5 seconds stable
-              showTaktakGameOver();
-            }
-          } else {
-            scoreStableTime = 0;
-          }
-          lastScore = newScore;
+        }
+        
+        // Check for game over: 10 seconds no activity OR 60 seconds total time
+        const currentTime = Date.now();
+        const inactiveTime = currentTime - lastHitTime;
+        const totalTime = currentTime - gameStartTime;
+        
+        if ((inactiveTime > maxInactiveTime && taktakScore > 0) || totalTime > 60000) {
+          showTaktakGameOver();
         }
       }, 1000);
       
