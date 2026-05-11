@@ -4239,17 +4239,17 @@ void main() {
         taktakLoadLeaderboard();
       });
     </script>
-    <div id="taktak-leaderboard-panel" style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);background:rgba(10,10,30,0.95);padding:20px 30px;border-radius:15px 15px 0 0;border:2px solid #00ff88;border-bottom:none;text-align:center;max-width:420px;width:90%;font-family:Arial,sans-serif;z-index:10000;display:none;max-height:55vh;overflow-y:auto;">
-      <p style="color:#00ff88;margin:0 0 5px 0;font-size:1.1rem;font-weight:bold;">Skor: <span id="taktak-score-display">0</span> <span style="color:#fc4;font-size:0.85rem;margin-left:8px;">Dalga: <span id="taktak-wave-display">1</span></span></p>
-      <div style="display:flex;gap:8px;margin:10px 0;justify-content:center;">
-        <input id="taktakPlayerName" type="text" placeholder="Adınız" maxlength="20" style="flex:1;padding:8px;background:#0a0a0a;border:1px solid #444;border-radius:6px;color:#fff;font-size:14px;">
-        <button onclick="taktakSubmitScore()" style="padding:8px 16px;background:#00ff88;border:none;border-radius:6px;color:#000;font-weight:bold;cursor:pointer;font-size:13px;">Kaydet</button>
+    <div id="taktak-leaderboard-panel" style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);background:rgba(10,10,30,0.97);padding:10px 20px 12px;border-radius:12px 12px 0 0;border:2px solid #00ff88;border-bottom:none;text-align:center;max-width:360px;width:85%;font-family:Arial,sans-serif;z-index:10000;display:none;max-height:35vh;overflow-y:auto;font-size:12px;">
+      <div style="display:flex;gap:6px;margin:0 0 8px 0;justify-content:center;align-items:center;">
+        <input id="taktakPlayerName" type="text" placeholder="Adınız" maxlength="20" style="flex:1;padding:6px 8px;background:#0a0a0a;border:1px solid #444;border-radius:5px;color:#fff;font-size:12px;">
+        <button onclick="taktakSubmitScore()" style="padding:6px 12px;background:#00ff88;border:none;border-radius:5px;color:#000;font-weight:bold;cursor:pointer;font-size:12px;white-space:nowrap;">Kaydet</button>
       </div>
-      <div style="background:#0a0a0a;padding:10px;border-radius:8px;margin:10px 0;">
-        <div style="color:#00ff88;font-weight:bold;margin-bottom:6px;font-size:0.9rem;">Top Skorlar</div>
-        <div id="taktak-leaderboard-list"><p style="color:#888;font-size:0.85rem;">Yükleniyor...</p></div>
+      <div style="background:#0a0a0a;padding:8px;border-radius:6px;margin-bottom:8px;">
+        <div style="color:#00ff88;font-weight:bold;margin-bottom:4px;font-size:11px;">Top Skorlar</div>
+        <div id="taktak-leaderboard-list" style="max-height:14vh;overflow-y:auto;"><p style="color:#888;font-size:11px;">Yükleniyor...</p></div>
       </div>
-      <button onclick="location.reload()" style="padding:8px 20px;background:#333;border:none;border-radius:6px;color:#fff;cursor:pointer;font-size:13px;">Tekrar Oyna</button>
+      <button onclick="location.reload()" style="padding:5px 16px;background:#333;border:none;border-radius:5px;color:#fff;cursor:pointer;font-size:11px;">Tekrar Oyna</button>
+      <span id="taktak-score-display" style="display:none;">0</span><span id="taktak-wave-display" style="display:none;">1</span>
     </div>
     </body>
 </html>
