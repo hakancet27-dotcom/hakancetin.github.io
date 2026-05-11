@@ -4287,11 +4287,7 @@ void main() {
       }
       window.taktakLoadLeaderboard = taktakLoadLeaderboard;
 
-      // Monitor score changes - Taktak specific game over detection
-      let gameStartTime = Date.now();
-      let lastHitTime = Date.now();
-      let maxInactiveTime = 10000; // 10 seconds without hits = game over
-      
+      // Simple score tracking for Taktak
       setInterval(() => {
         const bodyText = document.body.textContent;
         const matches = bodyText.match(/(\d{1,6})/g);
@@ -4299,51 +4295,72 @@ void main() {
           const newScore = Math.max(...matches.map(Number));
           if (newScore > taktakScore) {
             taktakScore = newScore;
-            lastHitTime = Date.now(); // Reset inactive timer on score increase
-            const scoreEl = document.getElementById('taktak-final-score');
-            if (scoreEl) scoreEl.textContent = 'Skor: ' + taktakScore;
+            window.taktakFinalScore = taktakScore; // For manual game over calls
           }
         }
-        
-        // Check for game over: 10 seconds no activity OR 60 seconds total time
-        const currentTime = Date.now();
-        const inactiveTime = currentTime - lastHitTime;
-        const totalTime = currentTime - gameStartTime;
-        
-        if ((inactiveTime > maxInactiveTime && taktakScore > 0) || totalTime > 60000) {
-          showTaktakGameOver();
-        }
       }, 1000);
-      
-      function showTaktakGameOver() {
-        const gameOverScreen = document.getElementById('taktak-game-over-screen');
-        if (gameOverScreen) {
-          gameOverScreen.style.display = 'block';
-        }
-      }
-      window.showTaktakGameOver = showTaktakGameOver;
       
       // Initialize leaderboard
       setTimeout(taktakLoadLeaderboard, 2000);
     </script>
     
-    <!-- Game Over Screen -->
-    <div id="taktak-game-over-screen" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.95);padding:30px;border-radius:15px;border:2px solid #00ff88;z-index:10000;min-width:400px;text-align:center;display:none;">
-        <h2 style="color:#fff;margin:0 0 20px 0;">🏆 OYUN BİTTİ!</h2>
-        <p id="taktak-final-score" style="color:#00ff88;margin:0 0 20px 0;font-size:1.2rem;">Skor: 0</p>
-        
-        <div style="margin-bottom:20px;">
-            <input id="taktakPlayerName" type="text" placeholder="Adınız" maxlength="20" style="padding:10px;background:#0a0a0a;border:1px solid #444;border-radius:6px;color:#fff;margin-right:10px;">
-            <button onclick="taktakSubmitScore()" style="padding:10px 20px;background:#00ff88;border:none;border-radius:6px;color:#000;font-weight:bold;cursor:pointer;">Kaydet</button>
+    <!-- Leaderboard HTML to inject into existing game over screen -->
+    <div id="taktak-leaderboard-inject" style="display:none;">
+        <div style="margin:20px 0;">
+            <input id="taktakPlayerName" type="text" placeholder="Adınız" maxlength="20" style="padding:8px;background:#0a0a0a;border:1px solid #444;border-radius:6px;color:#fff;margin-right:10px;">
+            <button onclick="taktakSubmitScore()" style="padding:8px 16px;background:#00ff88;border:none;border-radius:6px;color:#000;font-weight:bold;cursor:pointer;">Kaydet</button>
         </div>
         
-        <div style="background:#0a0a0a;padding:15px;border-radius:8px;margin-bottom:20px;">
+        <div style="background:#0a0a0a;padding:15px;border-radius:8px;margin:20px 0;">
             <h3 style="color:#00ff88;margin:0 0 10px 0;">🏆 Top Skorlar</h3>
             <div id="taktak-leaderboard-list"><p style="color:#888;">Yükleniyor...</p></div>
         </div>
-        
-        <button onclick="location.reload()" style="padding:10px 20px;background:#333;border:none;border-radius:6px;color:#fff;cursor:pointer;">Tekrar Oyna</button>
     </div>
+    
+    <script>
+      // Auto-inject leaderboard into any game over screen that appears
+      function injectLeaderboard() {
+        const gameOverElements = document.querySelectorAll('div, section, main');
+        for (let el of gameOverElements) {
+          const text = el.textContent.toLowerCase();
+          if ((text.includes('game over') || text.includes('oyun bitti') || text.includes('bitti')) && 
+              el.style.display !== 'none' && 
+              !el.querySelector('#taktak-leaderboard-inject')) {
+            
+            // Inject leaderboard
+            const leaderboardHtml = document.getElementById('taktak-leaderboard-inject').innerHTML;
+            el.insertAdjacentHTML('beforeend', leaderboardHtml);
+            
+            // Update score display
+            const scoreEl = el.querySelector('[id*="score"], [class*="score"]');
+            if (scoreEl && window.taktakFinalScore) {
+              scoreEl.textContent = 'Skor: ' + window.taktakFinalScore;
+            }
+            
+            // Load leaderboard
+            taktakLoadLeaderboard();
+            break;
+          }
+        }
+      }
+      
+      // Check for game over screen every 2 seconds
+      setInterval(injectLeaderboard, 2000);
+      
+      // Manual trigger for testing
+      window.showTaktakLeaderboard = () => {
+        const leaderboardHtml = document.getElementById('taktak-leaderboard-inject').innerHTML;
+        document.body.insertAdjacentHTML('beforeend', `
+          <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.95);padding:30px;border-radius:15px;border:2px solid #00ff88;z-index:10000;min-width:400px;text-align:center;">
+            <h2 style="color:#fff;margin:0 0 20px 0;">🏆 OYUN BİTTİ!</h2>
+            <p style="color:#00ff88;margin:0 0 20px 0;font-size:1.2rem;">Skor: ${window.taktakFinalScore || 0}</p>
+            ${leaderboardHtml}
+            <button onclick="this.parentElement.remove()" style="padding:10px 20px;background:#333;border:none;border-radius:6px;color:#fff;cursor:pointer;">Kapat</button>
+          </div>
+        `);
+        taktakLoadLeaderboard();
+      };
+    </script>
     </body>
 </html>
 
