@@ -4287,15 +4287,34 @@ void main() {
       }
       window.taktakLoadLeaderboard = taktakLoadLeaderboard;
 
-      // Simple score tracking for Taktak
+      // Enhanced score and game over tracking for Taktak
+      let gameEnded = false;
+      
       setInterval(() => {
+        if (gameEnded) return;
+        
         const bodyText = document.body.textContent;
         const matches = bodyText.match(/(\d{1,6})/g);
         if (matches) {
           const newScore = Math.max(...matches.map(Number));
           if (newScore > taktakScore) {
             taktakScore = newScore;
-            window.taktakFinalScore = taktakScore; // For manual game over calls
+            window.taktakFinalScore = taktakScore;
+          }
+        }
+        
+        // Check for game over indicators in Taktak
+        const gameOverTexts = ['game over', 'oyun bitti', 'bitti', 'gameover', 'mağlubiyet', 'kaybettin'];
+        const hasGameOverText = gameOverTexts.some(text => bodyText.toLowerCase().includes(text));
+        
+        // Also check for specific Taktak game over patterns
+        const hasGameOverPattern = bodyText.includes('0') && bodyText.includes('can') || 
+                                  bodyText.includes('health') && bodyText.includes('0');
+        
+        if (hasGameOverText || hasGameOverPattern) {
+          if (!gameEnded && taktakScore > 0) {
+            gameEnded = true;
+            showTaktakLeaderboard();
           }
         }
       }, 1000);
