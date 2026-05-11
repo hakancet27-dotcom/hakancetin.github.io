@@ -4246,34 +4246,49 @@ void main() {
       // Game over detection and leaderboard system
       let taktakFinalScore = 0;
       let gameActive = true;
+      let lastScore = 0;
+      let scoreStableCount = 0;
       
-      // Monitor for game over
+      // Monitor for game over based on score stability
       function checkGameOver() {
         if (!gameActive) return;
         
-        // Check for game over indicators
-        const bodyText = document.body.textContent.toLowerCase();
-        const gameOverTriggers = [
-          'game over', 'oyun bitti', 'gameover', 'game-over',
-          'you died', 'öldün', 'defeat', 'mağlubiyet', 'kaybettin'
-        ];
-        
-        const isGameOver = gameOverTriggers.some(trigger => bodyText.includes(trigger));
-        
         // Try to detect score from page
+        const bodyText = document.body.textContent;
         const scoreMatches = bodyText.match(/(\d{1,6})/g);
+        let currentScore = 0;
+        
         if (scoreMatches) {
-          taktakFinalScore = Math.max(...scoreMatches.map(Number));
+          currentScore = Math.max(...scoreMatches.map(Number));
         }
         
-        if (isGameOver && taktakFinalScore > 0) {
-          gameActive = false;
-          showTaktakLeaderboard();
+        // If score changed, reset counter
+        if (currentScore !== lastScore) {
+          lastScore = currentScore;
+          scoreStableCount = 0;
+        } else if (currentScore > 0) {
+          // Score is stable, might be game over
+          scoreStableCount++;
+          
+          // If score stable for 5 seconds, show leaderboard
+          if (scoreStableCount >= 5) {
+            taktakFinalScore = currentScore;
+            gameActive = false;
+            showTaktakLeaderboard();
+          }
         }
       }
       
-      // Check every 2 seconds
-      setInterval(checkGameOver, 2000);
+      // Check every 1 second
+      setInterval(checkGameOver, 1000);
+      
+      // Also check for page unload (game closed)
+      window.addEventListener('beforeunload', () => {
+        if (gameActive && lastScore > 0) {
+          taktakFinalScore = lastScore;
+          showTaktakLeaderboard();
+        }
+      });
       
       function showTaktakLeaderboard() {
         const existingForm = document.getElementById('taktak-leaderboard-form');
