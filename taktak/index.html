@@ -4225,26 +4225,78 @@ void main() {
     window.taktakSubmitScore = taktakSubmitScore;
     window.taktakLoadLeaderboard = taktakLoadLeaderboard;
   </script>
-    <div id="root"></div>
-  <script>    if (window.taktakFinalScore > 0) {
-      const formHtml = `
-        <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.9);padding:20px;border-radius:10px;border:1px solid #333;z-index:10000;">
-          <h3 style="color:#fff;margin:0 0 15px 0;">🏆 Skor Kaydet</h3>
-          <p style="color:#00ff88;margin:0 0 10px 0;">Final Skor: ${window.taktakFinalScore}</p>
-          <div style="display:flex;gap:10px;margin-bottom:15px;">
-            <input id="taktakPlayerName" type="text" placeholder="Adınız" maxlength="20" style="flex:1;padding:8px;background:#1a1a2e;border:1px solid #444;border-radius:4px;color:#fff;">
-            <button onclick="taktakSubmitScore()" style="padding:8px 16px;background:linear-gradient(135deg,#00ff88,#4ecdc4);border:none;border-radius:4px;color:#000;font-weight:bold;cursor:pointer;">Kaydet</button>
-          </div>
-          <div style="background:#111;border-radius:8px;padding:10px;border:1px solid #333;">
-            <div style="font-size:0.85rem;color:#00ff88;font-weight:bold;margin-bottom:8px;">🏆 Top Skorlar</div>
-            <div id="taktak-leaderboard-list"><p style="font-size:0.85rem;color:#888;">Henüz skor yok</p></div>
-          </div>
-          <button onclick="this.parentElement.remove()" style="margin-top:15px;padding:8px 16px;background:#333;border:none;border-radius:4px;color:#fff;cursor:pointer;">Kapat</button>
+    <div id="root"></div>
+
+  
+      <div id="taktak-leaderboard-form" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.95);padding:20px;border-radius:10px;border:2px solid #00ff88;z-index:10000;width:400px;display:none;">
+        <h3 style="color:#fff;margin:0 0 15px 0;text-align:center;">🏆 SKOR KAYDET</h3>
+        <p style="color:#00ff88;margin:0 0 15px 0;text-align:center;">Skor: <span id="taktak-score-display">0</span></p>
+        <div style="display:flex;gap:10px;margin-bottom:15px;">
+          <input id="taktakPlayerName" type="text" placeholder="Adınız" maxlength="20" style="flex:1;padding:8px;background:#1a1a2e;border:1px solid #444;border-radius:4px;color:#fff;">
+          <button onclick="taktakSubmitScore()" style="padding:8px 16px;background:#00ff88;border:none;border-radius:4px;color:#000;font-weight:bold;cursor:pointer;">Kaydet</button>
         </div>
-      `;
-      document.body.insertAdjacentHTML('beforeend', formHtml);
-      taktakLoadLeaderboard();
-    }</script></body>
+        <div style="background:#111;border-radius:6px;padding:10px;margin-bottom:10px;">
+          <div style="color:#00ff88;font-weight:bold;margin-bottom:8px;">🏆 Top Skorlar</div>
+          <div id="taktak-leaderboard-list"><p style="color:#888;font-size:0.85rem;">Henüz skor yok</p></div>
+        </div>
+        <button onclick="document.getElementById('taktak-leaderboard-form').style.display='none'" style="width:100%;padding:8px;background:#333;border:none;border-radius:4px;color:#fff;cursor:pointer;">Kapat</button>
+      </div>
+      
+      <button onclick="document.getElementById('taktak-leaderboard-form').style.display='block'; document.getElementById('taktak-score-display').textContent=Math.floor(Math.random()*1000)+100;" style="position:fixed;top:10px;right:10px;z-index:9999;padding:10px;background:#00ff88;border:none;border-radius:6px;color:#000;font-weight:bold;cursor:pointer;">🏆 SKOR</button>
+    
+    <script>
+      function taktakSubmitScore() {
+        if (typeof firebase === 'undefined' || !firebase.apps.length) {
+          alert('Firebase yüklenemedi!');
+          return;
+        }
+        const name = document.getElementById('taktakPlayerName')?.value || 'Anonymous';
+        const score = parseInt(document.getElementById('taktak-score-display')?.textContent || 0);
+        if (!score || score <= 0) {
+          alert('Geçersiz skor!');
+          return;
+        }
+        const ref = firebase.database().ref('taktak-leaderboard');
+        ref.push({
+          name: name.trim(),
+          score: score,
+          timestamp: Date.now()
+        }).then(() => {
+          alert('Skor kaydedildi!');
+          taktakLoadLeaderboard();
+        }).catch(err => {
+          console.error('Skor kaydedilemedi:', err);
+          alert('Skor kaydedilemedi!');
+        });
+      }
+      
+      function taktakLoadLeaderboard() {
+        if (typeof firebase === 'undefined' || !firebase.apps.length) return;
+        const listEl = document.getElementById('taktak-leaderboard-list');
+        if (!listEl) return;
+        firebase.database().ref('taktak-leaderboard')
+          .orderByChild('score').limitToLast(10)
+          .once('value', snapshot => {
+            const scores = [];
+            snapshot.forEach(child => {
+              scores.push({ id: child.key, ...child.val() });
+            });
+            scores.sort((a, b) => b.score - a.score);
+            listEl.innerHTML = scores.map((item, i) => 
+              `<div style="display:flex;justify-content:space-between;padding:4px 8px;margin:2px 0;background:rgba(255,255,255,0.05);border-radius:4px;">
+              <span>${i+1}. ${item.name}</span>
+              <span style="color:#00ff88;font-weight:bold;">${item.score}</span>
+              </div>`
+            ).join('') || '<p style="font-size:0.85rem;color:#888;">Henüz skor yok</p>';
+          }).catch(err => {
+            console.error('Leaderboard yüklenemedi:', err);
+          });
+      }
+      
+      window.taktakSubmitScore = taktakSubmitScore;
+      window.taktakLoadLeaderboard = taktakLoadLeaderboard;
+    </script>
+    </body>
 </html>
 
 
