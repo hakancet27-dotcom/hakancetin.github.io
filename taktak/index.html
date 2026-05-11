@@ -4243,132 +4243,107 @@ void main() {
       </div>
       
       <script>
-      // Simple game over detection
-      let gameEnded = false;
+      // Taktak Leaderboard Functions - FaceRacer style
+      let taktakScore = 0;
       
-      // Add game over screen to the game
-      function addGameOverScreen() {
-        const gameOverDiv = document.createElement('div');
-        gameOverDiv.id = 'taktak-game-over';
-        gameOverDiv.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:10000;display:none;justify-content:center;align-items:center;';
-        gameOverDiv.innerHTML = `
-          <div style="background:#1a1a2e;padding:30px;border-radius:15px;border:2px solid #00ff88;text-align:center;max-width:400px;">
-            <h2 style="color:#fff;margin:0 0 20px 0;">🏆 OYUN BİTTİ!</h2>
-            <p style="color:#00ff88;margin:0 0 20px 0;font-size:1.2rem;">Skor: <span id="final-score">0</span></p>
-            
-            <div style="margin-bottom:20px;">
-              <input id="player-name" type="text" placeholder="Adınız" maxlength="20" style="padding:10px;background:#0a0a0a;border:1px solid #444;border-radius:6px;color:#fff;margin-right:10px;">
-              <button onclick="saveScore()" style="padding:10px 20px;background:#00ff88;border:none;border-radius:6px;color:#000;font-weight:bold;cursor:pointer;">Kaydet</button>
-            </div>
-            
-            <div style="background:#0a0a0a;padding:15px;border-radius:8px;margin-bottom:20px;">
-              <h3 style="color:#00ff88;margin:0 0 10px 0;">🏆 Top Skorlar</h3>
-              <div id="leaderboard-list"><p style="color:#888;">Yükleniyor...</p></div>
-            </div>
-            
-            <button onclick="restartGame()" style="padding:10px 20px;background:#333;border:none;border-radius:6px;color:#fff;cursor:pointer;margin-right:10px;">Tekrar Oyna</button>
-            <button onclick="closeGameOver()" style="padding:10px 20px;background:#666;border:none;border-radius:6px;color:#fff;cursor:pointer;">Kapat</button>
-          </div>
-        `;
-        document.body.appendChild(gameOverDiv);
-      }
-      
-      function showGameOver(score) {
-        if (gameEnded) return;
-        gameEnded = true;
-        document.getElementById('final-score').textContent = score;
-        document.getElementById('taktak-game-over').style.display = 'flex';
-        loadLeaderboard();
-      }
-      
-      function saveScore() {
-        if (typeof firebase === 'undefined' || !firebase.apps.length) {
-          alert('Firebase yüklenemedi!');
-          return;
-        }
-        const name = document.getElementById('player-name').value || 'Anonymous';
-        const score = parseInt(document.getElementById('final-score').textContent);
-        
-        const ref = firebase.database().ref('taktak-leaderboard');
-        ref.push({
-          name: name.trim(),
-          score: score,
-          timestamp: Date.now()
-        }).then(() => {
-          alert('Skor kaydedildi!');
-          loadLeaderboard();
-        }).catch(err => {
-          console.error('Hata:', err);
-          alert('Skor kaydedilemedi!');
-        });
-      }
-      
-      function loadLeaderboard() {
+      function taktakSubmitScore() {
         if (typeof firebase === 'undefined' || !firebase.apps.length) return;
-        const listEl = document.getElementById('leaderboard-list');
+        const nameInput = document.getElementById('taktakPlayerName');
+        const name = (nameInput ? nameInput.value.trim() : '') || 'Anonim';
+        const ref = firebase.database().ref('taktak-leaderboard');
+        ref.push({ score: taktakScore, playerName: name, timestamp: Date.now() })
+            .then(() => {
+                if (nameInput) nameInput.value = '';
+                taktakLoadLeaderboard();
+                alert('Skor kaydedildi!');
+            })
+            .catch(err => console.error("Taktak save error:", err));
+      }
+      window.taktakSubmitScore = taktakSubmitScore;
+
+      function taktakLoadLeaderboard() {
+        if (typeof firebase === 'undefined' || !firebase.apps.length) return;
+        const listEl = document.getElementById('taktak-leaderboard-list');
         if (!listEl) return;
-        
         firebase.database().ref('taktak-leaderboard')
-          .orderByChild('score').limitToLast(10)
-          .once('value', snapshot => {
-            const scores = [];
-            snapshot.forEach(child => {
-              scores.push({ id: child.key, ...child.val() });
+            .orderByChild('score').limitToLast(10).once('value', (snap) => {
+                const scores = [];
+                snap.forEach(c => scores.push(c.val()));
+                scores.reverse();
+                if (scores.length === 0) {
+                    listEl.innerHTML = `<p style="font-size:0.85rem;color:#888;">Henüz skor yok</p>`;
+                    return;
+                }
+                listEl.innerHTML = scores.map((s, i) =>
+                    `<div style="padding:6px 4px;border-bottom:1px solid #333;display:flex;justify-content:space-between;align-items:center;">
+                        <span style="color:#888;font-size:0.8rem;">#${i + 1}</span>
+                        <div style="text-align:right;">
+                            <span style="color:#00ff88;font-weight:bold;font-size:0.9rem;">${s.score}</span>
+                            <span style="color:#888;font-size:0.75rem;margin-left:6px;">${s.playerName || 'Anonim'}</span>
+                        </div>
+                    </div>`
+                ).join('');
             });
-            scores.sort((a, b) => b.score - a.score);
-            listEl.innerHTML = scores.map((item, i) => 
-              `<div style="display:flex;justify-content:space-between;padding:5px;margin:2px 0;background:rgba(255,255,255,0.05);border-radius:4px;">
-                <span>${i+1}. ${item.name}</span>
-                <span style="color:#00ff88;font-weight:bold;">${item.score}</span>
-              </div>`
-            ).join('') || '<p style="color:#888;">Henüz skor yok</p>';
-          }).catch(err => {
-            console.error('Leaderboard yüklenemedi:', err);
-          });
       }
+      window.taktakLoadLeaderboard = taktakLoadLeaderboard;
+
+      // Monitor score changes and detect game over
+      let lastScore = 0;
+      let scoreStableTime = 0;
       
-      function restartGame() {
-        location.reload();
-      }
-      
-      function closeGameOver() {
-        document.getElementById('taktak-game-over').style.display = 'none';
-      }
-      
-      // Initialize
-      setTimeout(() => {
-        addGameOverScreen();
-        
-        // Simple game over detection - show after 30 seconds or when ESC pressed
-        let score = 0;
-        const scoreInterval = setInterval(() => {
-          const bodyText = document.body.textContent;
-          const matches = bodyText.match(/(\d{1,6})/g);
-          if (matches) {
-            score = Math.max(...matches.map(Number));
+      setInterval(() => {
+        const bodyText = document.body.textContent;
+        const matches = bodyText.match(/(\d{1,6})/g);
+        if (matches) {
+          const newScore = Math.max(...matches.map(Number));
+          if (newScore > taktakScore) {
+            taktakScore = newScore;
+            const scoreEl = document.getElementById('taktak-final-score');
+            if (scoreEl) scoreEl.textContent = 'Skor: ' + taktakScore;
           }
-        }, 1000);
-        
-        // Show game over after 30 seconds for testing
-        setTimeout(() => {
-          clearInterval(scoreInterval);
-          showGameOver(score || Math.floor(Math.random() * 1000) + 100);
-        }, 30000);
-        
-        // ESC key to show game over
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape') {
-            clearInterval(scoreInterval);
-            showGameOver(score || Math.floor(Math.random() * 1000) + 100);
+          
+          // Check if score is stable (game over)
+          if (newScore === lastScore && newScore > 0) {
+            scoreStableTime++;
+            if (scoreStableTime >= 5) { // 5 seconds stable
+              showTaktakGameOver();
+            }
+          } else {
+            scoreStableTime = 0;
           }
-        });
-        
-        // Global functions
-        window.showGameOver = showGameOver;
-        window.saveScore = saveScore;
-        window.loadLeaderboard = loadLeaderboard;
-      }, 2000);
+          lastScore = newScore;
+        }
+      }, 1000);
+      
+      function showTaktakGameOver() {
+        const gameOverScreen = document.getElementById('taktak-game-over-screen');
+        if (gameOverScreen) {
+          gameOverScreen.style.display = 'block';
+        }
+      }
+      window.showTaktakGameOver = showTaktakGameOver;
+      
+      // Initialize leaderboard
+      setTimeout(taktakLoadLeaderboard, 2000);
     </script>
+    
+    <!-- Game Over Screen -->
+    <div id="taktak-game-over-screen" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.95);padding:30px;border-radius:15px;border:2px solid #00ff88;z-index:10000;min-width:400px;text-align:center;display:none;">
+        <h2 style="color:#fff;margin:0 0 20px 0;">🏆 OYUN BİTTİ!</h2>
+        <p id="taktak-final-score" style="color:#00ff88;margin:0 0 20px 0;font-size:1.2rem;">Skor: 0</p>
+        
+        <div style="margin-bottom:20px;">
+            <input id="taktakPlayerName" type="text" placeholder="Adınız" maxlength="20" style="padding:10px;background:#0a0a0a;border:1px solid #444;border-radius:6px;color:#fff;margin-right:10px;">
+            <button onclick="taktakSubmitScore()" style="padding:10px 20px;background:#00ff88;border:none;border-radius:6px;color:#000;font-weight:bold;cursor:pointer;">Kaydet</button>
+        </div>
+        
+        <div style="background:#0a0a0a;padding:15px;border-radius:8px;margin-bottom:20px;">
+            <h3 style="color:#00ff88;margin:0 0 10px 0;">🏆 Top Skorlar</h3>
+            <div id="taktak-leaderboard-list"><p style="color:#888;">Yükleniyor...</p></div>
+        </div>
+        
+        <button onclick="location.reload()" style="padding:10px 20px;background:#333;border:none;border-radius:6px;color:#fff;cursor:pointer;">Tekrar Oyna</button>
+    </div>
     </body>
 </html>
 
