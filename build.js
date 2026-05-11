@@ -94,31 +94,43 @@ try {
     }
     fs.writeFileSync(distHtml, distContent, 'utf8');
     
-    // Inject simple leaderboard form
+    // Inject leaderboard that listens for taktakGameOver event from GameScene
     const finalDistContent = fs.readFileSync(distHtml, 'utf8');
     
-    // Simple leaderboard injection
-    const simpleLeaderboard = `
-      <div id="taktak-leaderboard-form" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.95);padding:20px;border-radius:10px;border:2px solid #00ff88;z-index:10000;width:400px;display:none;">
-        <h3 style="color:#fff;margin:0 0 15px 0;text-align:center;">🏆 SKOR KAYDET</h3>
-        <p style="color:#00ff88;margin:0 0 15px 0;text-align:center;">Skor: <span id="taktak-score-display">0</span></p>
-        <div style="display:flex;gap:10px;margin-bottom:15px;">
-          <input id="taktakPlayerName" type="text" placeholder="Adınız" maxlength="20" style="flex:1;padding:8px;background:#1a1a2e;border:1px solid #444;border-radius:4px;color:#fff;">
-          <button onclick="taktakSubmitScore()" style="padding:8px 16px;background:#00ff88;border:none;border-radius:4px;color:#000;font-weight:bold;cursor:pointer;">Kaydet</button>
+    const leaderboardScript = `
+    <script>
+      // Listen for game over event from GameScene
+      window.addEventListener('taktakGameOver', function(e) {
+        var kills = e.detail.kills || 0;
+        var wave = e.detail.wave || 1;
+        window.taktakFinalScore = kills;
+        document.getElementById('taktak-score-display').textContent = kills;
+        document.getElementById('taktak-wave-display').textContent = wave;
+        document.getElementById('taktak-leaderboard-overlay').style.display = 'flex';
+        taktakLoadLeaderboard();
+      });
+    </script>
+    <div id="taktak-leaderboard-overlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);display:none;justify-content:center;align-items:center;z-index:10000;">
+      <div style="background:#1a1a2e;padding:30px;border-radius:15px;border:2px solid #00ff88;text-align:center;max-width:420px;width:90%;font-family:Arial,sans-serif;">
+        <h2 style="color:#fff;margin:0 0 10px 0;">OYUN BİTTİ!</h2>
+        <p style="color:#00ff88;margin:0 0 5px 0;font-size:1.3rem;font-weight:bold;">Skor: <span id="taktak-score-display">0</span></p>
+        <p style="color:#fc4;margin:0 0 20px 0;font-size:0.9rem;">Dalga: <span id="taktak-wave-display">1</span></p>
+        <div style="display:flex;gap:10px;margin-bottom:15px;justify-content:center;">
+          <input id="taktakPlayerName" type="text" placeholder="Adınız" maxlength="20" style="flex:1;padding:10px;background:#0a0a0a;border:1px solid #444;border-radius:6px;color:#fff;font-size:14px;">
+          <button onclick="taktakSubmitScore()" style="padding:10px 20px;background:#00ff88;border:none;border-radius:6px;color:#000;font-weight:bold;cursor:pointer;font-size:14px;">Kaydet</button>
         </div>
-        <div style="background:#111;border-radius:6px;padding:10px;margin-bottom:10px;">
-          <div style="color:#00ff88;font-weight:bold;margin-bottom:8px;">🏆 Top Skorlar</div>
-          <div id="taktak-leaderboard-list"><p style="color:#888;font-size:0.85rem;">Henüz skor yok</p></div>
+        <div style="background:#0a0a0a;padding:12px;border-radius:8px;margin-bottom:15px;">
+          <div style="color:#00ff88;font-weight:bold;margin-bottom:8px;">Top Skorlar</div>
+          <div id="taktak-leaderboard-list"><p style="color:#888;font-size:0.85rem;">Yükleniyor...</p></div>
         </div>
-        <button onclick="document.getElementById('taktak-leaderboard-form').style.display='none'" style="width:100%;padding:8px;background:#333;border:none;border-radius:4px;color:#fff;cursor:pointer;">Kapat</button>
+        <button onclick="location.reload()" style="padding:10px 25px;background:#333;border:none;border-radius:6px;color:#fff;cursor:pointer;font-size:14px;">Tekrar Oyna</button>
       </div>
-      
-      <button onclick="document.getElementById('taktak-leaderboard-form').style.display='block'; document.getElementById('taktak-score-display').textContent=Math.floor(Math.random()*1000)+100;" style="position:fixed;top:10px;right:10px;z-index:9999;padding:10px;background:#00ff88;border:none;border-radius:6px;color:#000;font-weight:bold;cursor:pointer;">🏆 SKOR</button>
+    </div>
     `;
     
     const updatedContent = finalDistContent.replace(
       '</body>',
-      simpleLeaderboard + '</body>'
+      leaderboardScript + '</body>'
     );
     fs.writeFileSync(distHtml, updatedContent, 'utf8');
     
