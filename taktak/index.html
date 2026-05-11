@@ -4287,100 +4287,293 @@ void main() {
       }
       window.taktakLoadLeaderboard = taktakLoadLeaderboard;
 
-      // Enhanced score and game over tracking for Taktak
-      let gameEnded = false;
+      // Professional Taktak Game Over Detection System
+      class TaktakLeaderboardManager {
+        constructor() {
+          this.score = 0;
+          this.gameEnded = false;
+          this.observer = null;
+          this.checkInterval = null;
+          this.init();
+        }
+        
+        init() {
+          this.setupScoreTracking();
+          this.setupMutationObserver();
+          this.setupPeriodicCheck();
+        }
+        
+        setupScoreTracking() {
+          // Track score changes efficiently
+          this.checkInterval = setInterval(() => {
+            if (this.gameEnded) return;
+            
+            const scoreElements = document.querySelectorAll('[class*="score"], [id*="score"], .points, .points-value');
+            scoreElements.forEach(el => {
+              const text = el.textContent;
+              const match = text.match(/(\d+)/);
+              if (match) {
+                const newScore = parseInt(match[1]);
+                if (newScore > this.score) {
+                  this.score = newScore;
+                  window.taktakFinalScore = this.score;
+                }
+              }
+            });
+          }, 500);
+        }
+        
+        setupMutationObserver() {
+          // Observe DOM changes for game over screen
+          this.observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+              mutation.addedNodes.forEach((node) => {
+                if (node.nodeType === Node.ELEMENT_NODE) {
+                  this.checkForGameOver(node);
+                }
+              });
+            });
+          });
+          
+          this.observer.observe(document.body, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['class', 'style']
+          });
+        }
+        
+        setupPeriodicCheck() {
+          // Fallback periodic check
+          setInterval(() => {
+            if (!this.gameEnded) {
+              this.checkForGameOver(document.body);
+            }
+          }, 2000);
+        }
+        
+        checkForGameOver(node) {
+          if (this.gameEnded) return;
+          
+          // Check for game over indicators
+          const gameOverSelectors = [
+            '[class*="game-over"]',
+            '[class*="gameover"]',
+            '[class*="game_end"]',
+            '[id*="game-over"]',
+            '[id*="gameover"]',
+            '[class*="defeat"]',
+            '[class*="lose"]',
+            '[class*="failed"]'
+          ];
+          
+          let gameOverElement = null;
+          
+          // Check the node itself
+          for (const selector of gameOverSelectors) {
+            const element = node.matches?.(selector) ? node : node.querySelector?.(selector);
+            if (element && this.isElementVisible(element)) {
+              gameOverElement = element;
+              break;
+            }
+          }
+          
+          // Check text content as fallback
+          if (!gameOverElement && node.textContent) {
+            const text = node.textContent.toLowerCase();
+            const gameOverTexts = ['game over', 'oyun bitti', 'bitti', 'gameover', 'mağlubiyet', 'kaybettin', 'defeat', 'you lose'];
+            if (gameOverTexts.some(text => text.includes(text)) && this.score > 0) {
+              gameOverElement = node;
+            }
+          }
+          
+          if (gameOverElement) {
+            this.handleGameOver(gameOverElement);
+          }
+        }
+        
+        isElementVisible(element) {
+          const style = window.getComputedStyle(element);
+          return style.display !== 'none' && 
+                 style.visibility !== 'hidden' && 
+                 style.opacity !== '0' &&
+                 element.offsetWidth > 0 && 
+                 element.offsetHeight > 0;
+        }
+        
+        handleGameOver(gameOverElement) {
+          if (this.gameEnded) return;
+          
+          this.gameEnded = true;
+          console.log('Taktak game over detected, showing leaderboard');
+          
+          // Clean up observers
+          if (this.observer) this.observer.disconnect();
+          if (this.checkInterval) clearInterval(this.checkInterval);
+          
+          // Show leaderboard
+          this.showLeaderboard(gameOverElement);
+        }
+        
+        showLeaderboard(gameOverElement) {
+          // Create leaderboard container
+          const leaderboardContainer = document.createElement('div');
+          leaderboardContainer.style.cssText = `
+            background: rgba(0, 0, 0, 0.95);
+            border: 2px solid #00ff88;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+          `;
+          
+          leaderboardContainer.innerHTML = `
+            <h3 style="color: #00ff88; margin: 0 0 15px 0;">🏆 Top Skorlar</h3>
+            <div style="margin-bottom: 20px;">
+              <input 
+                type="text" 
+                id="taktakPlayerName" 
+                placeholder="Adınız" 
+                maxlength="20"
+                style="
+                  padding: 10px;
+                  background: #0a0a0a;
+                  border: 1px solid #444;
+                  border-radius: 6px;
+                  color: #fff;
+                  margin-right: 10px;
+                  font-size: 14px;
+                "
+              />
+              <button 
+                onclick="taktakLeaderboard.submitScore()"
+                style="
+                  padding: 10px 20px;
+                  background: #00ff88;
+                  border: none;
+                  border-radius: 6px;
+                  color: #000;
+                  font-weight: bold;
+                  cursor: pointer;
+                  font-size: 14px;
+                "
+              >
+                Kaydet
+              </button>
+            </div>
+            <div 
+              id="taktak-leaderboard-list"
+              style="
+                background: #0a0a0a;
+                padding: 15px;
+                border-radius: 8px;
+                max-height: 300px;
+                overflow-y: auto;
+              "
+            >
+              <p style="color: #888; margin: 0;">Yükleniyor...</p>
+            </div>
+          `;
+          
+          // Insert into game over screen
+          gameOverElement.appendChild(leaderboardContainer);
+          
+          // Load leaderboard data
+          this.loadLeaderboard();
+        }
+        
+        loadLeaderboard() {
+          if (typeof firebase === 'undefined' || !firebase.apps.length) {
+            console.warn('Firebase not available');
+            return;
+          }
+          
+          const listEl = document.getElementById('taktak-leaderboard-list');
+          if (!listEl) return;
+          
+          firebase.database().ref('taktak-leaderboard')
+            .orderByChild('score')
+            .limitToLast(10)
+            .once('value', (snapshot) => {
+              const scores = [];
+              snapshot.forEach((child) => {
+                scores.push({ id: child.key, ...child.val() });
+              });
+              
+              scores.sort((a, b) => b.score - a.score);
+              
+              if (scores.length === 0) {
+                listEl.innerHTML = '<p style="color: #888; margin: 0;">Henüz skor yok</p>';
+                return;
+              }
+              
+              listEl.innerHTML = scores.map((item, i) => `
+                <div style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  padding: 8px 0;
+                  border-bottom: 1px solid #333;
+                ">
+                  <span style="color: #888; font-size: 0.9rem;">#${i + 1}</span>
+                  <div style="text-align: right;">
+                    <span style="color: #00ff88; font-weight: bold; font-size: 1rem;">${item.score}</span>
+                    <span style="color: #888; font-size: 0.8rem; margin-left: 8px;">${item.playerName || 'Anonim'}</span>
+                  </div>
+                </div>
+              `).join('');
+            })
+            .catch((error) => {
+              console.error('Leaderboard loading error:', error);
+              listEl.innerHTML = '<p style="color: #ff6b6b; margin: 0;">Yüklenemedi</p>';
+            });
+        }
+        
+        submitScore() {
+          if (typeof firebase === 'undefined' || !firebase.apps.length) {
+            alert('Firebase bağlantısı hatası!');
+            return;
+          }
+          
+          const nameInput = document.getElementById('taktakPlayerName');
+          const name = (nameInput ? nameInput.value.trim() : '') || 'Anonim';
+          
+          if (!this.score || this.score <= 0) {
+            alert('Geçersiz skor!');
+            return;
+          }
+          
+          const ref = firebase.database().ref('taktak-leaderboard');
+          ref.push({
+            playerName: name,
+            score: this.score,
+            timestamp: Date.now()
+          })
+          .then(() => {
+            if (nameInput) nameInput.value = '';
+            alert('Skor kaydedildi!');
+            this.loadLeaderboard();
+          })
+          .catch((error) => {
+            console.error('Score submission error:', error);
+            alert('Skor kaydedilemedi!');
+          });
+        }
+      }
       
-      setInterval(() => {
-        if (gameEnded) return;
-        
-        const bodyText = document.body.textContent;
-        const matches = bodyText.match(/(\d{1,6})/g);
-        if (matches) {
-          const newScore = Math.max(...matches.map(Number));
-          if (newScore > taktakScore) {
-            taktakScore = newScore;
-            window.taktakFinalScore = taktakScore;
-          }
-        }
-        
-        // Check for game over indicators in Taktak
-        const gameOverTexts = ['game over', 'oyun bitti', 'bitti', 'gameover', 'mağlubiyet', 'kaybettin'];
-        const hasGameOverText = gameOverTexts.some(text => bodyText.toLowerCase().includes(text));
-        
-        // Also check for specific Taktak game over patterns
-        const hasGameOverPattern = bodyText.includes('0') && bodyText.includes('can') || 
-                                  bodyText.includes('health') && bodyText.includes('0');
-        
-        if (hasGameOverText || hasGameOverPattern) {
-          if (!gameEnded && taktakScore > 0) {
-            gameEnded = true;
-            showTaktakLeaderboard();
-          }
-        }
-      }, 1000);
+      // Initialize the leaderboard manager
+      const taktakLeaderboard = new TaktakLeaderboardManager();
+      
+      // Global functions for button clicks
+      window.taktakSubmitScore = () => taktakLeaderboard.submitScore();
+      window.taktakLoadLeaderboard = () => taktakLeaderboard.loadLeaderboard();
       
       // Initialize leaderboard
       setTimeout(taktakLoadLeaderboard, 2000);
     </script>
     
-    <!-- Leaderboard HTML to inject into existing game over screen -->
-    <div id="taktak-leaderboard-inject" style="display:none;">
-        <div style="margin:20px 0;">
-            <input id="taktakPlayerName" type="text" placeholder="Adınız" maxlength="20" style="padding:8px;background:#0a0a0a;border:1px solid #444;border-radius:6px;color:#fff;margin-right:10px;">
-            <button onclick="taktakSubmitScore()" style="padding:8px 16px;background:#00ff88;border:none;border-radius:6px;color:#000;font-weight:bold;cursor:pointer;">Kaydet</button>
-        </div>
-        
-        <div style="background:#0a0a0a;padding:15px;border-radius:8px;margin:20px 0;">
-            <h3 style="color:#00ff88;margin:0 0 10px 0;">🏆 Top Skorlar</h3>
-            <div id="taktak-leaderboard-list"><p style="color:#888;">Yükleniyor...</p></div>
-        </div>
-    </div>
-    
-    <script>
-      // Auto-inject leaderboard into any game over screen that appears
-      function injectLeaderboard() {
-        const gameOverElements = document.querySelectorAll('div, section, main');
-        for (let el of gameOverElements) {
-          const text = el.textContent.toLowerCase();
-          if ((text.includes('game over') || text.includes('oyun bitti') || text.includes('bitti')) && 
-              el.style.display !== 'none' && 
-              !el.querySelector('#taktak-leaderboard-inject')) {
-            
-            // Inject leaderboard
-            const leaderboardHtml = document.getElementById('taktak-leaderboard-inject').innerHTML;
-            el.insertAdjacentHTML('beforeend', leaderboardHtml);
-            
-            // Update score display
-            const scoreEl = el.querySelector('[id*="score"], [class*="score"]');
-            if (scoreEl && window.taktakFinalScore) {
-              scoreEl.textContent = 'Skor: ' + window.taktakFinalScore;
-            }
-            
-            // Load leaderboard
-            taktakLoadLeaderboard();
-            break;
-          }
-        }
-      }
-      
-      // Check for game over screen every 2 seconds
-      setInterval(injectLeaderboard, 2000);
-      
-      // Manual trigger for testing
-      window.showTaktakLeaderboard = () => {
-        const leaderboardHtml = document.getElementById('taktak-leaderboard-inject').innerHTML;
-        document.body.insertAdjacentHTML('beforeend', `
-          <div style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.95);padding:30px;border-radius:15px;border:2px solid #00ff88;z-index:10000;min-width:400px;text-align:center;">
-            <h2 style="color:#fff;margin:0 0 20px 0;">🏆 OYUN BİTTİ!</h2>
-            <p style="color:#00ff88;margin:0 0 20px 0;font-size:1.2rem;">Skor: ${window.taktakFinalScore || 0}</p>
-            ${leaderboardHtml}
-            <button onclick="this.parentElement.remove()" style="padding:10px 20px;background:#333;border:none;border-radius:6px;color:#fff;cursor:pointer;">Kapat</button>
-          </div>
-        `);
-        taktakLoadLeaderboard();
-      };
-    </script>
-    </body>
+        </body>
 </html>
 
 
