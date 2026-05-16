@@ -42,4 +42,14 @@
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
+    <!-- ✅ YENİ: Haberler ana sayfası -->
+    <url>
+        <loc>https://hakancetin.com.tr/haber.html</loc>
+        <lastmod>2026-05-16</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <!-- Haber makaleleri buraya otomatik eklenecek -->
+    <!-- SITEMAP_ARTICLES_START -->
+    <!-- SITEMAP_ARTICLES_END -->
 </urlset>
