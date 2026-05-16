@@ -287,6 +287,25 @@
     }
     .youtube-widget a:hover { background: #fff0f0; }
 
+    /* ✅ PAGINATION BUTONU */
+    .load-more-btn {
+      display: block;
+      margin: 20px auto 0;
+      padding: 12px 30px;
+      background: white;
+      color: var(--red);
+      border: 2px solid var(--red);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .load-more-btn:hover {
+      background: var(--red);
+      color: white;
+    }
+
     footer {
       background: var(--dark);
       color: #aaa;
@@ -494,6 +513,7 @@
   </footer>
 
   <script>
+    // Saat güncelle
     function updateTime() {
       const now  = new Date();
       const time = now.toLocaleString('tr-TR', {
@@ -505,6 +525,7 @@
     updateTime();
     setInterval(updateTime, 60000);
 
+    // Haber sayılarını sidebar'a yaz
     function countCards() {
       document.getElementById('count-turkey').textContent =
         document.querySelectorAll('#grid-turkey .news-card').length;
@@ -514,6 +535,48 @@
         document.querySelectorAll('#grid-germany .news-card').length;
     }
     countCards();
+
+    // ✅ PAGINATION — Her ülke için 20'şer haber göster
+    function initPagination(gridId, pageSize = 20) {
+      const grid = document.getElementById(gridId);
+      if (!grid) return;
+
+      const cards = Array.from(grid.querySelectorAll('.news-card'));
+      if (cards.length === 0) return;
+
+      let shown = pageSize;
+
+      // İlk 20'den sonrasını gizle
+      cards.forEach((card, i) => {
+        if (i >= pageSize) card.style.display = 'none';
+      });
+
+      // 20'den fazla haber varsa "Daha Fazla Göster" butonu ekle
+      if (cards.length > pageSize) {
+        const btn     = document.createElement('button');
+        btn.className = 'load-more-btn';
+        btn.textContent = `Daha Fazla Göster (${cards.length - shown} haber daha)`;
+        grid.parentElement.appendChild(btn);
+
+        btn.addEventListener('click', () => {
+          const nextShown = Math.min(shown + pageSize, cards.length);
+          for (let i = shown; i < nextShown; i++) {
+            cards[i].style.display = 'flex';
+          }
+          shown = nextShown;
+
+          if (shown >= cards.length) {
+            btn.style.display = 'none';
+          } else {
+            btn.textContent = `Daha Fazla Göster (${cards.length - shown} haber daha)`;
+          }
+        });
+      }
+    }
+
+    initPagination('grid-turkey');
+    initPagination('grid-usa');
+    initPagination('grid-germany');
   </script>
 
 </body>
