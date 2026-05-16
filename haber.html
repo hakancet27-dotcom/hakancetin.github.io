@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Son dakika haberleri - hakancetin.com.tr">
+  <title>Haberler | hakancetin.com.tr</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f4f4f4;
+      color: #222;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: #c0392b;
+      color: white;
+      padding: 15px 0;
+      border-bottom: 4px solid #922b21;
+    }
+    header .inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header h1 { font-size: 1.8rem; letter-spacing: 1px; }
+    header h1 span { font-size: 0.9rem; font-weight: normal; opacity: 0.85; }
+    header nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+    header nav a:hover { opacity: 1; text-decoration: underline; }
+
+    /* ── BREAKING BAR ── */
+    .breaking {
+      background: #222;
+      color: #f1c40f;
+      padding: 8px 20px;
+      font-size: 0.85rem;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── ANA İÇERİK ── */
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 30px;
+    }
+
+    /* ── HABER KARTLARI ── */
+    .news-grid { display: flex; flex-direction: column; gap: 20px; }
+
+    .news-card {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+      border-left: 4px solid #c0392b;
+      transition: transform 0.15s;
+    }
+    .news-card:hover { transform: translateY(-2px); }
+
+    .news-card .meta {
+      font-size: 0.78rem;
+      color: #888;
+      margin-bottom: 8px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .news-card .meta .flag { font-size: 1.1rem; }
+    .news-card .meta .country {
+      background: #f0f0f0;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 0.75rem;
+    }
+
+    .news-card h2 {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    .news-card h2 a {
+      color: #1a1a1a;
+      text-decoration: none;
+    }
+    .news-card h2 a:hover { color: #c0392b; }
+
+    .news-card .read-more {
+      display: inline-block;
+      margin-top: 10px;
+      color: #c0392b;
+      font-size: 0.85rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .news-card .read-more:hover { text-decoration: underline; }
+
+    /* ── SIDEBAR ── */
+    .sidebar {}
+
+    .sidebar-box {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+      margin-bottom: 20px;
+    }
+    .sidebar-box h3 {
+      font-size: 1rem;
+      border-bottom: 2px solid #c0392b;
+      padding-bottom: 8px;
+      margin-bottom: 15px;
+      color: #c0392b;
+    }
+    .sidebar-box ul { list-style: none; }
+    .sidebar-box ul li {
+      padding: 8px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 0.9rem;
+    }
+    .sidebar-box ul li:last-child { border-bottom: none; }
+    .sidebar-box ul li a { color: #333; text-decoration: none; }
+    .sidebar-box ul li a:hover { color: #c0392b; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #222;
+      color: #aaa;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.85rem;
+      margin-top: 40px;
+    }
+    footer a { color: #c0392b; text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .container { grid-template-columns: 1fr; }
+      header .inner { flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="inner">
+      <h1>📰 HABERler <span>hakancetin.com.tr</span></h1>
+      <nav>
+        <a href="index.html">Ana Sayfa</a>
+        <a href="haber.html">Haberler</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="breaking">
+    🔴 SON DAKİKA — Haberler yapay zeka tarafından derlenmektedir
+  </div>
+
+  <div class="container">
+
+    <!-- Sol: Haber Listesi -->
+    <main class="news-grid">
+      <!-- ARTICLES_START -->
+      <!-- ARTICLES_END -->
+    </main>
+
+    <!-- Sağ: Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-box">
+        <h3>🌍 Ülkeler</h3>
+        <ul>
+          <li>🇹🇷 Türkiye</li>
+          <li>🇺🇸 Amerika</li>
+          <li>🇩🇪 Almanya</li>
+        </ul>
+      </div>
+      <div class="sidebar-box">
+        <h3>📺 YouTube</h3>
+        <ul>
+          <li><a href="https://youtube.com" target="_blank">Kanalımızı Takip Edin</a></li>
+        </ul>
+      </div>
+    </aside>
+
+  </div>
+
+  <footer>
+    <p>© 2025 <a href="index.html">hakancetin.com.tr</a> — Yapay Zeka Destekli Haber</p>
+  </footer>
+
+</body>
+</html>
