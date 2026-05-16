@@ -3,255 +3,518 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Son dakika haberleri - hakancetin.com.tr">
+  <meta name="description" content="Dünyadan ve Türkiye'den son dakika haberleri">
   <title>Haberler | hakancetin.com.tr</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #f4f4f4;
-      color: #222;
+    :root {
+      --red:    #c0392b;
+      --dark:   #1a1a2e;
+      --gray:   #f5f6fa;
+      --border: #e0e0e0;
+      --text:   #2d3436;
+      --muted:  #636e72;
     }
 
-    /* ── HEADER ── */
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--gray);
+      color: var(--text);
+    }
+
+    .top-bar {
+      background: var(--dark);
+      color: #aaa;
+      font-size: 0.75rem;
+      padding: 6px 0;
+    }
+    .top-bar .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .top-bar a { color: #aaa; text-decoration: none; margin-left: 15px; }
+    .top-bar a:hover { color: white; }
+
     header {
-      background: #c0392b;
-      color: white;
+      background: white;
+      border-bottom: 3px solid var(--red);
       padding: 15px 0;
-      border-bottom: 4px solid #922b21;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
     }
     header .inner {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-    header h1 { font-size: 1.8rem; letter-spacing: 1px; }
-    header h1 span { font-size: 0.9rem; font-weight: normal; opacity: 0.85; }
-    header nav a {
-      color: white;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       text-decoration: none;
-      margin-left: 20px;
-      font-size: 0.95rem;
-      opacity: 0.9;
     }
-    header nav a:hover { opacity: 1; text-decoration: underline; }
+    .logo-icon {
+      background: var(--red);
+      color: white;
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+    .logo-text { line-height: 1.2; }
+    .logo-text strong {
+      display: block;
+      font-size: 1.2rem;
+      color: var(--dark);
+    }
+    .logo-text span {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
 
-    /* ── BREAKING BAR ── */
+    nav { display: flex; gap: 5px; }
+    nav a {
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    nav a:hover { background: var(--gray); color: var(--red); }
+    nav a.active { background: var(--red); color: white; }
+
     .breaking {
-      background: #222;
-      color: #f1c40f;
-      padding: 8px 20px;
-      font-size: 0.85rem;
-      text-align: center;
-      letter-spacing: 0.5px;
+      background: var(--red);
+      color: white;
+      padding: 10px 0;
     }
+    .breaking .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .breaking-label {
+      background: white;
+      color: var(--red);
+      font-weight: bold;
+      font-size: 0.75rem;
+      padding: 3px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+      letter-spacing: 1px;
+    }
+    .breaking-text { font-size: 0.9rem; opacity: 0.95; }
 
-    /* ── ANA İÇERİK ── */
     .container {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 30px auto;
       padding: 0 20px;
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 30px;
     }
 
-    /* ── HABER KARTLARI ── */
-    .news-grid { display: flex; flex-direction: column; gap: 20px; }
+    .country-section { margin-bottom: 50px; }
+
+    .country-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+    }
+    .country-flag { font-size: 2rem; }
+    .country-name { font-size: 1.3rem; font-weight: 700; color: var(--dark); }
+    .country-subtitle { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+    .country-divider {
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(to right, var(--red), transparent);
+      margin-left: 10px;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .news-grid .news-card:first-child { grid-column: span 2; }
 
     .news-card {
       background: white;
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
-      border-left: 4px solid #c0392b;
-      transition: transform 0.15s;
-    }
-    .news-card:hover { transform: translateY(-2px); }
-
-    .news-card .meta {
-      font-size: 0.78rem;
-      color: #888;
-      margin-bottom: 8px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: all 0.25s;
       display: flex;
-      gap: 10px;
-      align-items: center;
+      flex-direction: column;
     }
-    .news-card .meta .flag { font-size: 1.1rem; }
-    .news-card .meta .country {
-      background: #f0f0f0;
+    .news-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+
+    .card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .card-category {
+      background: #fff0f0;
+      color: var(--red);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .card-date { font-size: 0.78rem; color: var(--muted); }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.45;
+      margin-bottom: 12px;
+      flex: 1;
+    }
+    .news-card:first-child .card-title { font-size: 1.25rem; }
+    .card-title a { color: var(--text); text-decoration: none; }
+    .card-title a:hover { color: var(--red); }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 15px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .read-more {
+      color: var(--red);
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .read-more:hover { text-decoration: underline; }
+
+    .page-layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 30px;
+    }
+
+    .sidebar-widget {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .widget-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--red);
+    }
+    .country-filter { list-style: none; }
+    .country-filter li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .country-filter li:last-child { border-bottom: none; }
+    .country-filter li:hover { color: var(--red); }
+    .country-filter li .flag { font-size: 1.2rem; }
+    .country-filter li .count {
+      margin-left: auto;
+      background: var(--gray);
       padding: 2px 8px;
       border-radius: 10px;
       font-size: 0.75rem;
+      color: var(--muted);
     }
 
-    .news-card h2 {
-      font-size: 1.15rem;
-      margin-bottom: 10px;
-      line-height: 1.4;
-    }
-    .news-card h2 a {
-      color: #1a1a1a;
-      text-decoration: none;
-    }
-    .news-card h2 a:hover { color: #c0392b; }
-
-    .news-card .read-more {
-      display: inline-block;
-      margin-top: 10px;
-      color: #c0392b;
-      font-size: 0.85rem;
-      font-weight: bold;
-      text-decoration: none;
-    }
-    .news-card .read-more:hover { text-decoration: underline; }
-
-    /* ── SIDEBAR ── */
-    .sidebar {}
-
-    .sidebar-box {
-      background: white;
-      border-radius: 8px;
+    .youtube-widget {
+      background: linear-gradient(135deg, #ff0000, #cc0000);
+      color: white;
+      border-radius: 10px;
       padding: 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+      text-align: center;
       margin-bottom: 20px;
     }
-    .sidebar-box h3 {
-      font-size: 1rem;
-      border-bottom: 2px solid #c0392b;
-      padding-bottom: 8px;
-      margin-bottom: 15px;
-      color: #c0392b;
-    }
-    .sidebar-box ul { list-style: none; }
-    .sidebar-box ul li {
-      padding: 8px 0;
-      border-bottom: 1px solid #f0f0f0;
-      font-size: 0.9rem;
-    }
-    .sidebar-box ul li:last-child { border-bottom: none; }
-    .sidebar-box ul li a { color: #333; text-decoration: none; }
-    .sidebar-box ul li a:hover { color: #c0392b; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: #222;
-      color: #aaa;
-      text-align: center;
-      padding: 20px;
+    .youtube-widget .yt-icon { font-size: 2.5rem; margin-bottom: 10px; }
+    .youtube-widget h3 { font-size: 1rem; margin-bottom: 8px; }
+    .youtube-widget p { font-size: 0.82rem; opacity: 0.9; margin-bottom: 15px; }
+    .youtube-widget a {
+      background: white;
+      color: #cc0000;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-weight: 700;
       font-size: 0.85rem;
-      margin-top: 40px;
+      text-decoration: none;
+      display: inline-block;
     }
-    footer a { color: #c0392b; text-decoration: none; }
+    .youtube-widget a:hover { background: #fff0f0; }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      .container { grid-template-columns: 1fr; }
-      header .inner { flex-direction: column; gap: 10px; }
+    footer {
+      background: var(--dark);
+      color: #aaa;
+      padding: 40px 0 20px;
+      margin-top: 60px;
+    }
+    footer .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    footer .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+    footer h4 { color: white; margin-bottom: 12px; font-size: 0.95rem; }
+    footer p, footer a {
+      font-size: 0.85rem;
+      color: #aaa;
+      text-decoration: none;
+      line-height: 2;
+      display: block;
+    }
+    footer a:hover { color: white; }
+    footer .footer-bottom {
+      border-top: 1px solid #333;
+      padding-top: 20px;
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    footer .footer-bottom a { display: inline; color: var(--red); }
+
+    @media (max-width: 900px) {
+      .page-layout { grid-template-columns: 1fr; }
+      .news-grid { grid-template-columns: 1fr; }
+      .news-grid .news-card:first-child { grid-column: span 1; }
+      header .inner { flex-direction: column; gap: 12px; }
+      footer .footer-grid { grid-template-columns: 1fr; gap: 20px; }
+    }
+    @media (max-width: 600px) {
+      .top-bar .inner { flex-direction: column; gap: 5px; text-align: center; }
     }
   </style>
 </head>
 <body>
 
+  <div class="top-bar">
+    <div class="inner">
+      <span id="current-time">⏰ Yükleniyor...</span>
+      <div>
+        <a href="index.html">Ana Sayfa</a>
+        <a href="#">Hakkında</a>
+        <a href="#iletisim">İletişim</a>
+      </div>
+    </div>
+  </div>
+
   <header>
     <div class="inner">
-      <h1>📰 HABERler <span>hakancetin.com.tr</span></h1>
+      <a href="index.html" class="logo">
+        <div class="logo-icon">H</div>
+        <div class="logo-text">
+          <strong>hakancetin.com.tr</strong>
+          <span>Güncel Haber Platformu</span>
+        </div>
+      </a>
       <nav>
         <a href="index.html">Ana Sayfa</a>
-        <a href="haber.html">Haberler</a>
+        <a href="haber.html" class="active">📰 Haberler</a>
       </nav>
     </div>
   </header>
 
   <div class="breaking">
-    🔴 SON DAKİKA — Haberler yapay zeka tarafından derlenmektedir
+    <div class="inner">
+      <span class="breaking-label">🔴 CANLI</span>
+      <span class="breaking-text">
+        Türkiye, Amerika ve Almanya'dan derlenen güncel haberler — Her 8 saatte bir güncellenir
+      </span>
+    </div>
   </div>
 
   <div class="container">
+    <div class="page-layout">
 
-    <!-- Sol: Haber Listesi -->
-    <main class="news-grid">
-      <!-- ARTICLES_START -->
+      <main>
 
-      <div class="news-card">
-        <div class="meta">
-          <span class="flag">🇩🇪</span>
-          <span class="country">Germany</span>
-          <span>16.05.2026</span>
+        <div class="country-section" id="turkiye">
+          <div class="country-header">
+            <span class="country-flag">🇹🇷</span>
+            <div>
+              <div class="country-name">Türkiye</div>
+              <div class="country-subtitle">Son dakika Türkiye haberleri</div>
+            </div>
+            <div class="country-divider"></div>
+          </div>
+          <div class="news-grid" id="grid-turkey">
+            <!-- TURKEY_START -->
+            <!-- TURKEY_END -->
+          </div>
         </div>
-        <h2><a href="articles/krieg-in-der-ukraine-zahl-der-toten-in-kiew-steigt-auf-24.html">Krieg in der Ukraine: Zahl der Toten in Kiew steigt auf 24</a></h2>
-        <a class="read-more" href="articles/krieg-in-der-ukraine-zahl-der-toten-in-kiew-steigt-auf-24.html">Devamını Oku →</a>
-      </div>
 
-      <div class="news-card">
-        <div class="meta">
-          <span class="flag">🇺🇸</span>
-          <span class="country">USA</span>
-          <span>16.05.2026</span>
+        <div class="country-section" id="amerika">
+          <div class="country-header">
+            <span class="country-flag">🇺🇸</span>
+            <div>
+              <div class="country-name">Amerika</div>
+              <div class="country-subtitle">Son dakika Amerika haberleri</div>
+            </div>
+            <div class="country-divider"></div>
+          </div>
+          <div class="news-grid" id="grid-usa">
+            <!-- USA_START -->
+            <!-- USA_END -->
+          </div>
         </div>
-        <h2><a href="articles/hantavirus-outbreak-on-cruise-ship.html">Hantavirus Outbreak on Cruise Ship Exposes Passengers to Deadly Disease</a></h2>
-        <a class="read-more" href="articles/hantavirus-outbreak-on-cruise-ship.html">Devamını Oku →</a>
-      </div>
 
-      <div class="news-card">
-        <div class="meta">
-          <span class="flag">🇹🇷</span>
-          <span class="country">Turkey</span>
-          <span>16.05.2026</span>
+        <div class="country-section" id="almanya">
+          <div class="country-header">
+            <span class="country-flag">🇩🇪</span>
+            <div>
+              <div class="country-name">Almanya</div>
+              <div class="country-subtitle">Son dakika Almanya haberleri</div>
+            </div>
+            <div class="country-divider"></div>
+          </div>
+          <div class="news-grid" id="grid-germany">
+            <!-- GERMANY_START -->
+            <!-- GERMANY_END -->
+          </div>
         </div>
-        <h2><a href="articles/c_n-lideri-__-j_nping-tukidides-tuza__ndan-bahsetti.html">Çin Lideri Şi Jinping, 'Tukidides Tuzağı'ndan Bahsetti</a></h2>
-        <a class="read-more" href="articles/c_n-lideri-__-j_nping-tukidides-tuza__ndan-bahsetti.html">Devamını Oku →</a>
-      </div>
 
-      <div class="news-card">
-        <div class="meta">
-          <span class="flag">🇹🇷</span>
-          <span class="country">Turkey</span>
-          <span>16.05.2026</span>
+      </main>
+
+      <aside class="sidebar">
+
+        <div class="youtube-widget">
+          <div class="yt-icon">▶️</div>
+          <h3>YouTube Kanalımız</h3>
+          <p>Video haberler için kanalımıza abone olun</p>
+          <a href="https://www.youtube.com/@NartanesiHaber" target="_blank">Abone Ol</a>
         </div>
-        <h2><a href="articles/ak-parti-ic-tuzuk-calismasi-rafina-kaldirildi.html">AK Parti’nin içtüzük çalışması rafa kaldırıldı</a></h2>
-        <a class="read-more" href="articles/ak-parti-ic-tuzuk-calismasi-rafina-kaldirildi.html">Devamını Oku →</a>
-      </div>
 
-      <div class="news-card">
-        <div class="meta">
-          <span class="flag">🇹🇷</span>
-          <span class="country">Turkey</span>
-          <span>16.05.2026</span>
+        <div class="sidebar-widget">
+          <div class="widget-title">🌍 Ülkeye Göre Git</div>
+          <ul class="country-filter">
+            <li onclick="location.href='#turkiye'">
+              <span class="flag">🇹🇷</span>
+              Türkiye
+              <span class="count" id="count-turkey">0</span>
+            </li>
+            <li onclick="location.href='#amerika'">
+              <span class="flag">🇺🇸</span>
+              Amerika
+              <span class="count" id="count-usa">0</span>
+            </li>
+            <li onclick="location.href='#almanya'">
+              <span class="flag">🇩🇪</span>
+              Almanya
+              <span class="count" id="count-germany">0</span>
+            </li>
+          </ul>
         </div>
-        <h2><a href="articles/2026-dunya-kupasi-turkiye-maclari.html">2026 Dünya Kupası'nda Türkiye'nin maçları belli oldu</a></h2>
-        <a class="read-more" href="articles/2026-dunya-kupasi-turkiye-maclari.html">Devamını Oku →</a>
-      </div>
-      <!-- ARTICLES_END -->
-    </main>
 
-    <!-- Sağ: Sidebar -->
-    <aside class="sidebar">
-      <div class="sidebar-box">
-        <h3>🌍 Ülkeler</h3>
-        <ul>
-          <li>🇹🇷 Türkiye</li>
-          <li>🇺🇸 Amerika</li>
-          <li>🇩🇪 Almanya</li>
-        </ul>
-      </div>
-      <div class="sidebar-box">
-        <h3>📺 YouTube</h3>
-        <ul>
-          <li><a href="https://youtube.com" target="_blank">Kanalımızı Takip Edin</a></li>
-        </ul>
-      </div>
-    </aside>
+        <div class="sidebar-widget">
+          <div class="widget-title">🕐 Bilgi</div>
+          <p style="font-size:0.85rem; color:#636e72; line-height:1.7;">
+            Türkiye, Amerika ve Almanya'dan derlenen haberler her 8 saatte bir güncellenir.<br><br>
+            <strong style="color:#2d3436;">hakancetin.com.tr</strong>
+          </p>
+        </div>
 
+      </aside>
+    </div>
   </div>
 
   <footer>
-    <p>© 2025 <a href="index.html">hakancetin.com.tr</a> — Yapay Zeka Destekli Haber</p>
+    <div class="inner">
+      <div class="footer-grid">
+        <div>
+          <h4>📰 hakancetin.com.tr</h4>
+          <p>Türkiye, Amerika ve Almanya'dan derlenen güncel haberler.</p>
+        </div>
+        <div>
+          <h4>Bağlantılar</h4>
+          <a href="index.html">Ana Sayfa</a>
+          <a href="haber.html">Haberler</a>
+          <a href="https://www.youtube.com/@NartanesiHaber" target="_blank">YouTube</a>
+        </div>
+        <div>
+          <h4>Ülkeler</h4>
+          <a href="#turkiye">🇹🇷 Türkiye</a>
+          <a href="#amerika">🇺🇸 Amerika</a>
+          <a href="#almanya">🇩🇪 Almanya</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 <a href="index.html">hakancetin.com.tr</a> — Tüm hakları saklıdır.</span>
+        <span>hakancetin.com.tr</span>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    function updateTime() {
+      const now  = new Date();
+      const time = now.toLocaleString('tr-TR', {
+        weekday: 'long', day: '2-digit', month: 'long',
+        year: 'numeric', hour: '2-digit', minute: '2-digit'
+      });
+      document.getElementById('current-time').textContent = '⏰ ' + time;
+    }
+    updateTime();
+    setInterval(updateTime, 60000);
+
+    function countCards() {
+      document.getElementById('count-turkey').textContent =
+        document.querySelectorAll('#grid-turkey .news-card').length;
+      document.getElementById('count-usa').textContent =
+        document.querySelectorAll('#grid-usa .news-card').length;
+      document.getElementById('count-germany').textContent =
+        document.querySelectorAll('#grid-germany .news-card').length;
+    }
+    countCards();
+  </script>
 
 </body>
 </html>
