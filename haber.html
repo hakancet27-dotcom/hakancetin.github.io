@@ -351,6 +351,33 @@
     @media (max-width: 600px) {
       .top-bar .inner { flex-direction: column; gap: 5px; text-align: center; }
     }
+        /* ── KART GÖRSELİ ── */
+      .card-image {
+        width: 100%;
+        height: 180px;
+        overflow: hidden;
+    }
+      .news-card:first-child .card-image {
+        height: 220px;
+    }
+      .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s;
+    }
+      .news-card:hover .card-image img {
+        transform: scale(1.05);
+    }
+      .card-image-placeholder {
+        background: linear-gradient(135deg, #c0392b, #1a1a2e);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+      .card-image-placeholder span {
+        font-size: 3rem;
+    }
   </style>
 </head>
 <body>
