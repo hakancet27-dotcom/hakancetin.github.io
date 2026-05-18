@@ -52,46 +52,50 @@
     <!-- Haber makaleleri buraya otomatik eklenecek -->
     <!-- SITEMAP_ARTICLES_START -->
     <url>
+        <loc>https://hakancetin.com.tr/articles/dax-konzerne-gewinne-umsatzflaute-ey_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1672953966838-e47cbfb4933f?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxEQVh8ZW58MHwwfHx8MTc3OTExMDYyNnww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/trump-warns-iran-clock-ticking-middle-east-tensions_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1550531996-ff3dcede9477?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxUcnVtcHxlbnwwfDB8fHwxNzc5MTEwNTU1fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/nextera-energy-acquires-dominion_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/milliarden-zivilschutz-deutschland-krisenfaelle-feldbetten-spezialfahrzeuge-notv_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1618259278412-2819cbdea4dc?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxHZXJtYW55fGVufDB8MHx8fDE3NzkxMTA2MDJ8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/italya-basbakani-meloni-ab-enerji-butce-esnekligi_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/iran-siyasi-idamlar-artiyor_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
         <loc>https://hakancetin.com.tr/articles/panini-fussball-wm-2026-ueberleben-sticker-kultmarke_20260518.html</loc>
         <lastmod>2026-05-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image><image:loc>https://images.unsplash.com/photo-1621852004158-f3bc188ace2d?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxQYW5pbml8ZW58MHwwfHx8MTc3OTEwNDMwNHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
-    </url>
-    <url>
-        <loc>https://hakancetin.com.tr/articles/cumhurbaskani-erdogandan-sehit-polisler-icin-bassagligi-mesaji_20260518.html</loc>
-        <lastmod>2026-05-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <image:image><image:loc>https://images.unsplash.com/photo-1639596757506-b72126eadbb2?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxDdW1odXJiYSVDNSU5RmthbiVDNCVCMSUyMEVyZG8lQzQlOUZhbnxlbnwwfDB8fHwxNzc5MTA0MTQwfDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
-    </url>
-    <url>
-        <loc>https://hakancetin.com.tr/articles/klingbeil-iran-krieg-weltwirtschaft-bedroht_20260518.html</loc>
-        <lastmod>2026-05-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <image:image><image:loc>https://images.unsplash.com/photo-1693139062697-f5f8663217fa?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxJcmFuLUtyaWVnfGVufDB8MHx8fDE3NzkxMDQyNzh8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
-    </url>
-    <url>
-        <loc>https://hakancetin.com.tr/articles/blocked-strait-hormuz-syria-economic-opportunities_20260518.html</loc>
-        <lastmod>2026-05-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <image:image><image:loc>https://images.unsplash.com/photo-1500252185289-40ca85eb23a7?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxXYXJ8ZW58MHwwfHx8MTc3OTEwNDIyMnww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
-    </url>
-    <url>
-        <loc>https://hakancetin.com.tr/articles/mit-emniyet-ortak-operasyon-14-supheli-yakalandi-interpol_20260518.html</loc>
-        <lastmod>2026-05-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <image:image><image:loc>https://images.unsplash.com/photo-1771530072228-56adc093083f?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxNJUM0JUIwVHxlbnwwfDB8fHwxNzc5MDE2OTY3fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
-    </url>
-    <url>
-        <loc>https://hakancetin.com.tr/articles/the-fighting-never-ends-post-hostilities-challenges_20260518.html</loc>
-        <lastmod>2026-05-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <image:image><image:loc>https://images.unsplash.com/photo-1500252185289-40ca85eb23a7?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxXYXJ8ZW58MHwwfHx8MTc3OTEwNDIyMnww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
     </url>
     <url>
         <loc>https://hakancetin.com.tr/articles/tote-ukrainische-angriffe-region-moskau-drohnen-opfer_20260518.html</loc>
@@ -108,11 +112,32 @@
         <image:image><image:loc>https://images.unsplash.com/photo-1546412414-8035e1776c9a?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxNaWRkbGUlMjBFYXN0fGVufDB8MHx8fDE3NzkxMDE0NDl8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
     </url>
     <url>
+        <loc>https://hakancetin.com.tr/articles/cumhurbaskani-erdogandan-sehit-polisler-icin-bassagligi-mesaji_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1639596757506-b72126eadbb2?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxDdW1odXJiYSVDNSU5RmthbiVDNCVCMSUyMEVyZG8lQzQlOUZhbnxlbnwwfDB8fHwxNzc5MTA0MTQwfDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/klingbeil-iran-krieg-weltwirtschaft-bedroht_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1693139062697-f5f8663217fa?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxJcmFuLUtyaWVnfGVufDB8MHx8fDE3NzkxMDQyNzh8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
         <loc>https://hakancetin.com.tr/articles/turkiye-almanya-stratejik-diyalog_20260518.html</loc>
         <lastmod>2026-05-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image><image:loc>https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxUJUMzJUJDcmtpeWV8ZW58MHwwfHx8MTc3OTEwMjE2N3ww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/blocked-strait-hormuz-syria-economic-opportunities_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1500252185289-40ca85eb23a7?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxXYXJ8ZW58MHwwfHx8MTc3OTEwNDIyMnww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
     </url>
     <url>
         <loc>https://hakancetin.com.tr/articles/infineon-halbleiterfabrik-dresden-fertigstellung_20260518.html</loc>
@@ -121,11 +146,25 @@
         <priority>0.7</priority>
     </url>
     <url>
+        <loc>https://hakancetin.com.tr/articles/mit-emniyet-ortak-operasyon-14-supheli-yakalandi-interpol_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1771530072228-56adc093083f?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxNJUM0JUIwVHxlbnwwfDB8fHwxNzc5MDE2OTY3fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
         <loc>https://hakancetin.com.tr/articles/post-cessation-of-hostilities_20260518.html</loc>
         <lastmod>2026-05-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image><image:loc>https://images.unsplash.com/photo-1575867094974-9e16b6f55360?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxDZWFzZWZpcmV8ZW58MHwwfHx8MTc3OTEwMjIzN3ww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/the-fighting-never-ends-post-hostilities-challenges_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1500252185289-40ca85eb23a7?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxXYXJ8ZW58MHwwfHx8MTc3OTEwNDIyMnww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
     </url>
     <url>
         <loc>https://hakancetin.com.tr/articles/cumhurbaskani-erdogan-terorsuz-bolge-vizyonu.html</loc>
