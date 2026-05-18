@@ -54,6 +54,47 @@
     <!-- Haber makaleleri buraya otomatik eklenecek -->
     <!-- SITEMAP_ARTICLES_START -->
     <url>
+        <loc>https://hakancetin.com.tr/articles/ebola-outbreak-global-health-emergency_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1624448713098-baface803acf?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFYm9sYXxlbnwwfDB8fHwxNzc5MTAxNDU2fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/supreme-court-avoids-voting-rights-act-case_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1676181739859-08330dea8999?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxTdXByZW1lJTIwQ291cnR8ZW58MHwwfHx8MTc3OTEzNzk1OHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/bundestag-cdu-abgeordneter-wilhelm-gebhard-diätenerhohung_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/mersin-seri-cinayetler_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1591334461334-f7ef6079e9ee?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxNZXJzaW58ZW58MHwwfHx8MTc3OTEzNzk0MHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/elon-musk-klage-gegen-openai_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1617704548623-340376564e68?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFbG9uJTIwTXVza3xlbnwwfDB8fHwxNzc5MTM3OTc4fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/bakan-fidan-iran-abd-muzakereleri_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1656227912576-5c27da673332?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxCYWthbiUyMEZpZGFufGVufDB8MHx8fDE3NzkxMzc5NDh8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
         <loc>https://hakancetin.com.tr/articles/us-sondergesandter-landry-groenland_20260518.html</loc>
         <lastmod>2026-05-18</lastmod>
         <changefreq>monthly</changefreq>
@@ -66,34 +107,6 @@
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image><image:loc>https://images.unsplash.com/photo-1631270315847-f418bde47ca6?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxBQkR8ZW58MHwwfHx8MTc3ODk5MDQ1NXww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
-    </url>
-    <url>
-        <loc>https://hakancetin.com.tr/articles/polis-memurlari-sehit-oldu_20260518.html</loc>
-        <lastmod>2026-05-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <image:image><image:loc>https://images.unsplash.com/photo-1635668422380-8b4f751c6274?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxwb2xpc3xlbnwwfDB8fHwxNzc5MTI3NjM3fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
-    </url>
-    <url>
-        <loc>https://hakancetin.com.tr/articles/trump-drops-irs-lawsuit_20260518.html</loc>
-        <lastmod>2026-05-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <image:image><image:loc>https://images.unsplash.com/photo-1550531996-ff3dcede9477?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxUcnVtcHxlbnwwfDB8fHwxNzc4OTg5MjkyfDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
-    </url>
-    <url>
-        <loc>https://hakancetin.com.tr/articles/blocked-strait-of-hormuz-leads-to-new-opportunities-for-syria_20260518.html</loc>
-        <lastmod>2026-05-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <image:image><image:loc>https://images.unsplash.com/photo-1659781044995-1c68c81dcc67?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxTeXJpYXxlbnwwfDB8fHwxNzc5MTI3NjUzfDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
-    </url>
-    <url>
-        <loc>https://hakancetin.com.tr/articles/milliarden-fuer-zivilschutz_20260518.html</loc>
-        <lastmod>2026-05-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <image:image><image:loc>https://images.unsplash.com/photo-1586717937993-4bfb1856c62e?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxaaXZpbHNjaHV0enxlbnwwfDB8fHwxNzc5MTI3NjY0fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
     </url>
     <url>
         <loc>https://hakancetin.com.tr/articles/dax-konzerne-gewinne-umsatzflaute-ey_20260518.html</loc>
@@ -123,6 +136,13 @@
         <image:image><image:loc>https://images.unsplash.com/photo-1618259278412-2819cbdea4dc?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxHZXJtYW55fGVufDB8MHx8fDE3NzkxMTA2MDJ8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
     </url>
     <url>
+        <loc>https://hakancetin.com.tr/articles/polis-memurlari-sehit-oldu_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1635668422380-8b4f751c6274?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxwb2xpc3xlbnwwfDB8fHwxNzc5MTI3NjM3fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
         <loc>https://hakancetin.com.tr/articles/panini-fussball-wm-2026-ueberleben-sticker-kultmarke_20260518.html</loc>
         <lastmod>2026-05-18</lastmod>
         <changefreq>monthly</changefreq>
@@ -135,6 +155,13 @@
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image><image:loc>https://images.unsplash.com/photo-1639341267320-2d062b250c0d?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxVa3JhaW5lfGVufDB8MHx8fDE3NzkwMzIxNzZ8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/trump-drops-irs-lawsuit_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1550531996-ff3dcede9477?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxUcnVtcHxlbnwwfDB8fHwxNzc4OTg5MjkyfDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
     </url>
     <url>
         <loc>https://hakancetin.com.tr/articles/syria-economic-opportunities-middle-east-war-blocked-strait_20260518.html</loc>
@@ -190,6 +217,13 @@
         <priority>0.7</priority>
     </url>
     <url>
+        <loc>https://hakancetin.com.tr/articles/blocked-strait-of-hormuz-leads-to-new-opportunities-for-syria_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1659781044995-1c68c81dcc67?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxTeXJpYXxlbnwwfDB8fHwxNzc5MTI3NjUzfDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
         <loc>https://hakancetin.com.tr/articles/mit-emniyet-ortak-operasyon-14-supheli-yakalandi-interpol_20260518.html</loc>
         <lastmod>2026-05-18</lastmod>
         <changefreq>monthly</changefreq>
@@ -202,6 +236,13 @@
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image><image:loc>https://images.unsplash.com/photo-1575867094974-9e16b6f55360?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxDZWFzZWZpcmV8ZW58MHwwfHx8MTc3OTEwMjIzN3ww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/milliarden-fuer-zivilschutz_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1586717937993-4bfb1856c62e?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxaaXZpbHNjaHV0enxlbnwwfDB8fHwxNzc5MTI3NjY0fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
     </url>
     <url>
         <loc>https://hakancetin.com.tr/articles/the-fighting-never-ends-post-hostilities-challenges_20260518.html</loc>
