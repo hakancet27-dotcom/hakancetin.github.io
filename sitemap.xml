@@ -54,45 +54,52 @@
     <!-- Haber makaleleri buraya otomatik eklenecek -->
     <!-- SITEMAP_ARTICLES_START -->
     <url>
-        <loc>https://hakancetin.com.tr/articles/ebola-outbreak-global-health-emergency_20260518.html</loc>
-        <lastmod>2026-05-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <image:image><image:loc>https://images.unsplash.com/photo-1624448713098-baface803acf?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFYm9sYXxlbnwwfDB8fHwxNzc5MTAxNDU2fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
-    </url>
-    <url>
-        <loc>https://hakancetin.com.tr/articles/supreme-court-avoids-voting-rights-act-case_20260518.html</loc>
-        <lastmod>2026-05-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <image:image><image:loc>https://images.unsplash.com/photo-1676181739859-08330dea8999?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxTdXByZW1lJTIwQ291cnR8ZW58MHwwfHx8MTc3OTEzNzk1OHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
-    </url>
-    <url>
-        <loc>https://hakancetin.com.tr/articles/bundestag-cdu-abgeordneter-wilhelm-gebhard-diätenerhohung_20260518.html</loc>
-        <lastmod>2026-05-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://hakancetin.com.tr/articles/mersin-seri-cinayetler_20260518.html</loc>
-        <lastmod>2026-05-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <image:image><image:loc>https://images.unsplash.com/photo-1591334461334-f7ef6079e9ee?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxNZXJzaW58ZW58MHwwfHx8MTc3OTEzNzk0MHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
-    </url>
-    <url>
-        <loc>https://hakancetin.com.tr/articles/elon-musk-klage-gegen-openai_20260518.html</loc>
+        <loc>https://hakancetin.com.tr/articles/elon-musk-loses-150-billion-suit-against-openai_20260518.html</loc>
         <lastmod>2026-05-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image><image:loc>https://images.unsplash.com/photo-1617704548623-340376564e68?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFbG9uJTIwTXVza3xlbnwwfDB8fHwxNzc5MTM3OTc4fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
     </url>
     <url>
-        <loc>https://hakancetin.com.tr/articles/bakan-fidan-iran-abd-muzakereleri_20260518.html</loc>
+        <loc>https://hakancetin.com.tr/articles/kuresel-sumud-filosu-ndan-arizalanan-tekneye-yardim_20260518.html</loc>
         <lastmod>2026-05-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-        <image:image><image:loc>https://images.unsplash.com/photo-1656227912576-5c27da673332?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxCYWthbiUyMEZpZGFufGVufDB8MHx8fDE3NzkxMzc5NDh8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/iran-krieg-teheran-schickt-neuen-vorschlag-an-die-usa_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1613930648631-7191115e83d4?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxJcmFufGVufDB8MHx8fDE3NzkwNTA2MjB8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/cankiri-kamyonet-kazasi_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1758225709268-fc275fc45ebb?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxrYW15b25ldHxlbnwwfDB8fHwxNzc5MTQzOTQzfDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/klingbeil-iran-krieg-weltwirtschaft_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1613930648631-7191115e83d4?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxJcmFufGVufDB8MHx8fDE3NzkwNTA2MjB8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/us-restricts-travelers-from-africa-due-to-ebola-outbreak_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1624448713098-baface803acf?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFYm9sYXxlbnwwfDB8fHwxNzc5MTAxNDU2fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/ebola-outbreak-global-health-emergency_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1624448713098-baface803acf?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFYm9sYXxlbnwwfDB8fHwxNzc5MTAxNDU2fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
     </url>
     <url>
         <loc>https://hakancetin.com.tr/articles/us-sondergesandter-landry-groenland_20260518.html</loc>
@@ -134,6 +141,13 @@
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image><image:loc>https://images.unsplash.com/photo-1618259278412-2819cbdea4dc?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxHZXJtYW55fGVufDB8MHx8fDE3NzkxMTA2MDJ8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/supreme-court-avoids-voting-rights-act-case_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1676181739859-08330dea8999?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxTdXByZW1lJTIwQ291cnR8ZW58MHwwfHx8MTc3OTEzNzk1OHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
     </url>
     <url>
         <loc>https://hakancetin.com.tr/articles/polis-memurlari-sehit-oldu_20260518.html</loc>
@@ -183,6 +197,19 @@
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image><image:loc>https://images.unsplash.com/photo-1693139062697-f5f8663217fa?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxJcmFuLUtyaWVnfGVufDB8MHx8fDE3NzkxMDQyNzh8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/bundestag-cdu-abgeordneter-wilhelm-gebhard-diätenerhohung_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/mersin-seri-cinayetler_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1591334461334-f7ef6079e9ee?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxNZXJzaW58ZW58MHwwfHx8MTc3OTEzNzk0MHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
     </url>
     <url>
         <loc>https://hakancetin.com.tr/articles/turkiye-almanya-stratejik-diyalog_20260518.html</loc>
@@ -250,6 +277,20 @@
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image><image:loc>https://images.unsplash.com/photo-1500252185289-40ca85eb23a7?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxXYXJ8ZW58MHwwfHx8MTc3OTEwNDIyMnww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/elon-musk-klage-gegen-openai_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1617704548623-340376564e68?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFbG9uJTIwTXVza3xlbnwwfDB8fHwxNzc5MTM3OTc4fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/bakan-fidan-iran-abd-muzakereleri_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1656227912576-5c27da673332?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxCYWthbiUyMEZpZGFufGVufDB8MHx8fDE3NzkxMzc5NDh8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
     </url>
     <url>
         <loc>https://hakancetin.com.tr/articles/cumhurbaskani-erdogan-terorsuz-bolge-vizyonu.html</loc>
