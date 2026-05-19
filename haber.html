@@ -3,69 +3,112 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Dünyadan ve Türkiye'den son dakika haberleri">
-  <title>Haberler | hakancetin.com.tr</title>
+  <title>Son Dakika Haberleri | hakancetin.com.tr</title>
+  <meta name="description" content="Gündem, siyaset, ekonomi, dünya, spor, magazin, teknoloji ve sağlık başlıklarında Türkiye, Amerika ve Almanya'dan güncel haberler.">
+  <link rel="canonical" href="https://hakancetin.com.tr/haber.html">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Son Dakika Haberleri | hakancetin.com.tr">
+  <meta property="og:description" content="Gündem, siyaset, ekonomi, dünya, spor, magazin, teknoloji ve sağlık başlıklarında Türkiye, Amerika ve Almanya'dan güncel haberler.">
+  <meta property="og:url" content="https://hakancetin.com.tr/haber.html">
+  <meta property="og:site_name" content="hakancetin.com.tr">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- HABER_SCHEMA_START -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Son Dakika Haberleri | hakancetin.com.tr","url":"https://hakancetin.com.tr/haber.html","description":"Gündem, siyaset, ekonomi, dünya, spor, magazin, teknoloji ve sağlık başlıklarında Türkiye, Amerika ve Almanya'dan güncel haberler.","about":[{"@type":"Thing","name":"Gündem"},{"@type":"Thing","name":"Siyaset"},{"@type":"Thing","name":"Ekonomi"},{"@type":"Thing","name":"Dünya"},{"@type":"Thing","name":"Spor"},{"@type":"Thing","name":"Magazin"},{"@type":"Thing","name":"Teknoloji"},{"@type":"Thing","name":"Sağlık"}],"isPartOf":{"@type":"WebSite","name":"hakancetin.com.tr","url":"https://hakancetin.com.tr"}}</script>
+  <!-- HABER_SCHEMA_END -->
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CE7WH86RBS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-CE7WH86RBS');
-  
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CE7WH86RBS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CE7WH86RBS');
+  </script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --red:    #c0392b;
-      --dark:   #1a1a2e;
-      --gray:   #f5f6fa;
-      --border: #e0e0e0;
-      --text:   #2d3436;
-      --muted:  #636e72;
+      --red: #c0392b;
+      --red-dark: #922b21;
+      --dark: #171727;
+      --surface: #ffffff;
+      --page: #f4f6f8;
+      --border: #e1e5ea;
+      --text: #24292f;
+      --muted: #667085;
+      --shadow: 0 2px 10px rgba(15, 23, 42, 0.07);
+      --shadow-strong: 0 10px 26px rgba(15, 23, 42, 0.13);
     }
 
     body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: var(--gray);
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: var(--page);
       color: var(--text);
+      line-height: 1.55;
     }
+
+    a { color: inherit; }
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 8px;
+      background: var(--dark);
+      color: white;
+      padding: 8px 12px;
+      z-index: 999;
+    }
+    .skip-link:focus { left: 8px; }
 
     .top-bar {
       background: var(--dark);
-      color: #aaa;
+      color: #c8c8d4;
       font-size: 0.75rem;
       padding: 6px 0;
     }
-    .top-bar .inner {
+    .top-bar .inner,
+    header .inner,
+    .breaking .inner,
+    .container,
+    footer .inner {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
+    }
+    .top-bar .inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 16px;
     }
-    .top-bar a { color: #aaa; text-decoration: none; margin-left: 15px; }
+    .top-links {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .top-bar a {
+      color: #c8c8d4;
+      text-decoration: none;
+    }
     .top-bar a:hover { color: white; }
 
     header {
-      background: white;
+      background: var(--surface);
       border-bottom: 3px solid var(--red);
-      padding: 15px 0;
-      position: sticky;
-      top: 0;
+      padding: 14px 0;
+      box-shadow: var(--shadow);
       z-index: 100;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    @media (min-width: 901px) {
+      header {
+        position: sticky;
+        top: 0;
+      }
     }
     header .inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      display: flex;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
       align-items: center;
-      justify-content: space-between;
+      gap: 20px;
     }
     .logo {
       display: flex;
@@ -82,66 +125,415 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.3rem;
-      font-weight: bold;
+      font-size: 1.25rem;
+      font-weight: 800;
     }
-    .logo-text { line-height: 1.2; }
     .logo-text strong {
       display: block;
       font-size: 1.2rem;
       color: var(--dark);
+      letter-spacing: 0;
     }
     .logo-text span {
+      display: block;
       font-size: 0.75rem;
       color: var(--muted);
     }
-
-    nav { display: flex; gap: 5px; }
+    .market-strip {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 4px 0;
+    }
+    .market-strip::-webkit-scrollbar { display: none; }
+    .market-label {
+      flex: 0 0 auto;
+      background: var(--dark);
+      color: white;
+      border-radius: 6px;
+      padding: 7px 10px;
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.3px;
+      box-shadow: 0 5px 14px rgba(23, 23, 39, 0.18);
+    }
+    .market-item {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: white;
+      padding: 7px 11px;
+      line-height: 1;
+      box-shadow: 0 3px 10px rgba(15, 23, 42, 0.06);
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    }
+    .market-name {
+      color: var(--muted);
+      font-size: 0.7rem;
+      font-weight: 900;
+    }
+    .market-value {
+      color: var(--dark);
+      font-size: 0.98rem;
+      font-weight: 900;
+      min-width: 42px;
+      text-align: right;
+      letter-spacing: 0;
+    }
+    .market-change {
+      font-size: 0.74rem;
+      font-weight: 900;
+      min-width: 46px;
+      padding: 2px 5px;
+      border-radius: 999px;
+      text-align: center;
+    }
+    .market-item.up {
+      border-color: rgba(18, 128, 92, 0.42);
+      background: #ecfdf3;
+      box-shadow: 0 5px 16px rgba(18, 128, 92, 0.13);
+    }
+    .market-item.down {
+      border-color: rgba(180, 35, 24, 0.42);
+      background: #fff1f0;
+      box-shadow: 0 5px 16px rgba(180, 35, 24, 0.12);
+    }
+    .market-item.up .market-value,
+    .market-change.up { color: #087443; }
+    .market-item.down .market-value,
+    .market-change.down { color: #b42318; }
+    .market-change.up { background: rgba(18, 128, 92, 0.1); }
+    .market-change.down { background: rgba(180, 35, 24, 0.1); }
+    .market-item.neutral .market-change {
+      color: var(--muted);
+      background: #eef2f7;
+    }
+    .market-status {
+      flex: 0 0 auto;
+      color: var(--muted);
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+    nav {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
     nav a {
-      padding: 8px 16px;
+      padding: 8px 14px;
       border-radius: 6px;
       text-decoration: none;
       color: var(--text);
       font-size: 0.9rem;
-      font-weight: 500;
-      transition: all 0.2s;
+      font-weight: 600;
     }
-    nav a:hover { background: var(--gray); color: var(--red); }
+    nav a:hover { background: var(--page); color: var(--red); }
     nav a.active { background: var(--red); color: white; }
 
     .breaking {
       background: var(--red);
       color: white;
-      padding: 10px 0;
+      padding: 0;
+      border-top: 1px solid rgba(255,255,255,0.18);
+      box-shadow: inset 0 -1px 0 rgba(0,0,0,0.18);
     }
     .breaking .inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 18px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      min-height: 48px;
     }
+    .breaking .inner::-webkit-scrollbar { display: none; }
     .breaking-label {
-      background: white;
-      color: var(--red);
-      font-weight: bold;
-      font-size: 0.75rem;
-      padding: 3px 10px;
-      border-radius: 4px;
+      color: rgba(255,255,255,0.72);
+      font-weight: 900;
+      font-size: 0.68rem;
+      padding: 0;
       white-space: nowrap;
-      letter-spacing: 1px;
+      letter-spacing: 0.9px;
+      text-transform: uppercase;
     }
-    .breaking-text { font-size: 0.9rem; opacity: 0.95; }
-
-    .container {
-      max-width: 1200px;
-      margin: 30px auto;
-      padding: 0 20px;
+    .topic-list {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      min-width: 0;
+    }
+    .topic-link {
+      position: relative;
+      flex: 0 0 auto;
+      color: white;
+      text-decoration: none;
+      font-size: 0.86rem;
+      font-weight: 900;
+      line-height: 48px;
+      padding: 0 13px;
+      opacity: 0.88;
+      transition: opacity 0.2s, color 0.2s;
+    }
+    .topic-link + .topic-link::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 15px;
+      width: 1px;
+      height: 18px;
+      background: rgba(255,255,255,0.22);
+    }
+    .topic-link::after {
+      content: "";
+      position: absolute;
+      left: 13px;
+      right: 13px;
+      bottom: 0;
+      height: 3px;
+      background: transparent;
+    }
+    .topic-link:hover,
+    .topic-link.is-active {
+      color: white;
+      opacity: 1;
+    }
+    .topic-link:hover::after,
+    .topic-link.is-active::after {
+      background: white;
+    }
+    .topic-link.primary,
+    .topic-link.primary.is-active {
+      color: white;
+      opacity: 1;
+    }
+    .topic-link.primary::after {
+      color: white;
+      background: white;
     }
 
-    .country-section { margin-bottom: 50px; }
+    .container { margin: 30px auto; }
+    .page-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 280px;
+      gap: 30px;
+      align-items: start;
+    }
+    .page-heading {
+      font-size: 1.9rem;
+      color: var(--dark);
+      letter-spacing: 0;
+      margin-bottom: 6px;
+    }
+    .page-intro {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+    }
+    .empty-state {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--muted);
+      padding: 18px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+    }
 
+    .turkey-showcase {
+      margin-bottom: 42px;
+      scroll-margin-top: 90px;
+    }
+    .showcase-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 16px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 12px;
+    }
+    .showcase-kicker {
+      color: var(--red);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.4px;
+      margin-bottom: 3px;
+    }
+    .showcase-title {
+      color: var(--dark);
+      font-size: 1.9rem;
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+    .showcase-note {
+      color: var(--muted);
+      font-size: 0.86rem;
+      text-align: right;
+      max-width: 250px;
+    }
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(280px, 0.85fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+    .headline-slider {
+      position: relative;
+      min-height: 438px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--dark);
+      box-shadow: var(--shadow-strong);
+    }
+    .headline-slide {
+      position: absolute;
+      inset: 0;
+      display: block;
+      color: white;
+      text-decoration: none;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+    .headline-slide.is-active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .headline-card {
+      position: relative;
+      color: white;
+      overflow: hidden;
+      background: var(--dark);
+      min-width: 0;
+    }
+    .headline-image,
+    .headline-placeholder {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .headline-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+    .headline-card:hover .headline-image img { transform: scale(1.04); }
+    .headline-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.26);
+      font-size: 5rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #151827, #8f231a);
+    }
+    .headline-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.86), rgba(0,0,0,0.35) 48%, rgba(0,0,0,0.06));
+      z-index: 1;
+    }
+    .headline-content {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      z-index: 2;
+    }
+    .headline-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .headline-tag,
+    .headline-topic {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 0.72rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .headline-tag { background: var(--red); color: white; }
+    .headline-topic { background: rgba(255,255,255,0.92); color: var(--red); }
+    .headline-title {
+      font-size: 2rem;
+      line-height: 1.16;
+      letter-spacing: 0;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+    .headline-date {
+      display: inline-block;
+      color: rgba(255,255,255,0.82);
+      font-size: 0.82rem;
+      margin-top: 10px;
+    }
+    .slider-controls {
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      z-index: 4;
+      display: flex;
+      gap: 8px;
+    }
+    .slider-btn {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(255,255,255,0.42);
+      border-radius: 999px;
+      background: rgba(0,0,0,0.42);
+      color: white;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .slider-btn:hover { background: var(--red); }
+    .side-headlines {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .side-headline {
+      min-height: 100px;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      text-decoration: none;
+    }
+    .side-headline .headline-content {
+      left: 14px;
+      right: 14px;
+      bottom: 12px;
+    }
+    .side-headline .headline-title {
+      font-size: 1rem;
+      line-height: 1.24;
+    }
+    .side-headline .headline-meta {
+      margin-bottom: 7px;
+    }
+    .side-headline .headline-tag,
+    .side-headline .headline-topic {
+      font-size: 0.66rem;
+      padding: 3px 7px;
+    }
+
+    .country-section { margin-bottom: 52px; scroll-margin-top: 90px; }
     .country-header {
       display: flex;
       align-items: center;
@@ -150,9 +542,18 @@
       padding-bottom: 12px;
       border-bottom: 2px solid var(--border);
     }
-    .country-flag { font-size: 2rem; }
-    .country-name { font-size: 1.3rem; font-weight: 700; color: var(--dark); }
-    .country-subtitle { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+    .country-flag { font-size: 2rem; line-height: 1; }
+    .country-title {
+      font-size: 1.32rem;
+      font-weight: 800;
+      color: var(--dark);
+      letter-spacing: 0;
+    }
+    .country-subtitle {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
     .country-divider {
       flex: 1;
       height: 2px;
@@ -162,142 +563,194 @@
 
     .news-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
     }
     .news-grid .news-card:first-child { grid-column: span 2; }
-
     .news-card {
-      background: white;
-      border-radius: 10px;
+      background: var(--surface);
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      transition: all 0.25s;
+      box-shadow: var(--shadow);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
       display: flex;
       flex-direction: column;
+      min-width: 0;
     }
     .news-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+      box-shadow: var(--shadow-strong);
     }
-
-    .card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
-
+    .card-image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #dfe3e8;
+    }
+    .news-card:first-child .card-image { aspect-ratio: 2.1 / 1; }
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .news-card:hover .card-image img { transform: scale(1.04); }
+    .card-image-placeholder {
+      background:
+        linear-gradient(135deg, rgba(192,57,43,0.92), rgba(23,23,39,0.95)),
+        radial-gradient(circle at 20% 10%, rgba(255,255,255,0.15), transparent 30%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-image-placeholder span {
+      color: rgba(255,255,255,0.82);
+      font-size: 2.5rem;
+      font-weight: 800;
+    }
+    .card-body {
+      padding: 18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
     .card-meta {
       display: flex;
       align-items: center;
       gap: 8px;
       margin-bottom: 10px;
+      flex-wrap: wrap;
     }
     .card-category {
       background: #fff0f0;
       color: var(--red);
       font-size: 0.7rem;
-      font-weight: 700;
+      font-weight: 800;
       padding: 3px 10px;
       border-radius: 20px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      text-transform: none;
     }
-    .card-date { font-size: 0.78rem; color: var(--muted); }
-
+    .card-topic {
+      background: #eef2f7;
+      color: #344054;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 20px;
+      letter-spacing: 0.3px;
+    }
+    .card-date {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
     .card-title {
       font-size: 1rem;
-      font-weight: 700;
-      line-height: 1.45;
-      margin-bottom: 12px;
-      flex: 1;
+      font-weight: 800;
+      line-height: 1.42;
+      margin-bottom: 10px;
+      letter-spacing: 0;
     }
     .news-card:first-child .card-title { font-size: 1.25rem; }
-    .card-title a { color: var(--text); text-decoration: none; }
+    .card-title a {
+      color: var(--text);
+      text-decoration: none;
+    }
     .card-title a:hover { color: var(--red); }
-
+    .card-excerpt {
+      color: var(--muted);
+      font-size: 0.86rem;
+      margin-bottom: 12px;
+    }
     .card-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-top: 15px;
+      margin-top: auto;
       padding-top: 12px;
       border-top: 1px solid var(--border);
     }
     .read-more {
       color: var(--red);
       font-size: 0.82rem;
-      font-weight: 600;
+      font-weight: 700;
       text-decoration: none;
     }
     .read-more:hover { text-decoration: underline; }
 
-    .page-layout {
-      display: grid;
-      grid-template-columns: 1fr 280px;
-      gap: 30px;
-    }
-
-    .sidebar-widget {
-      background: white;
-      border-radius: 10px;
-      padding: 20px;
+    .sidebar { position: sticky; top: 96px; }
+    .sidebar-widget,
+    .youtube-widget {
+      border-radius: 8px;
       margin-bottom: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      box-shadow: var(--shadow);
+    }
+    .sidebar-widget {
+      background: var(--surface);
+      padding: 20px;
     }
     .widget-title {
-      font-size: 0.85rem;
-      font-weight: 700;
+      font-size: 0.82rem;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
       color: var(--muted);
       margin-bottom: 15px;
       padding-bottom: 10px;
       border-bottom: 2px solid var(--red);
     }
-    .country-filter { list-style: none; }
-    .country-filter li {
+    .country-filter {
+      list-style: none;
+      display: grid;
+      gap: 2px;
+    }
+    .country-filter a {
       padding: 10px 0;
       border-bottom: 1px solid var(--border);
-      cursor: pointer;
       display: flex;
       align-items: center;
       gap: 10px;
       font-size: 0.9rem;
-      transition: color 0.2s;
+      text-decoration: none;
+      color: var(--text);
     }
-    .country-filter li:last-child { border-bottom: none; }
-    .country-filter li:hover { color: var(--red); }
-    .country-filter li .flag { font-size: 1.2rem; }
-    .country-filter li .count {
+    .country-filter li:last-child a { border-bottom: none; }
+    .country-filter a:hover { color: var(--red); }
+    .country-filter .count {
       margin-left: auto;
-      background: var(--gray);
+      background: var(--page);
       padding: 2px 8px;
       border-radius: 10px;
       font-size: 0.75rem;
       color: var(--muted);
     }
-
     .youtube-widget {
-      background: linear-gradient(135deg, #ff0000, #cc0000);
+      background: linear-gradient(135deg, #d91f1f, #b31313);
       color: white;
-      border-radius: 10px;
       padding: 20px;
       text-align: center;
-      margin-bottom: 20px;
     }
-    .youtube-widget .yt-icon { font-size: 2.5rem; margin-bottom: 10px; }
+    .youtube-widget .yt-icon { font-size: 2.2rem; margin-bottom: 10px; }
     .youtube-widget h3 { font-size: 1rem; margin-bottom: 8px; }
-    .youtube-widget p { font-size: 0.82rem; opacity: 0.9; margin-bottom: 15px; }
+    .youtube-widget p { font-size: 0.82rem; opacity: 0.92; margin-bottom: 15px; }
     .youtube-widget a {
       background: white;
-      color: #cc0000;
+      color: #b31313;
       padding: 8px 20px;
       border-radius: 20px;
-      font-weight: 700;
+      font-weight: 800;
       font-size: 0.85rem;
       text-decoration: none;
       display: inline-block;
     }
-    .youtube-widget a:hover { background: #fff0f0; }
+    .info-text {
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+    .info-text strong { color: var(--text); }
 
-    /* ✅ PAGINATION BUTONU */
     .load-more-btn {
       display: block;
       margin: 20px auto 0;
@@ -307,7 +760,7 @@
       border: 2px solid var(--red);
       border-radius: 8px;
       font-size: 0.9rem;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
       transition: all 0.2s;
     }
@@ -318,1806 +771,277 @@
 
     footer {
       background: var(--dark);
-      color: #aaa;
+      color: #bfc0cc;
       padding: 40px 0 20px;
       margin-top: 60px;
     }
-    footer .inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    footer .footer-grid {
+    .footer-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 40px;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 34px;
       margin-bottom: 30px;
     }
-    footer h4 { color: white; margin-bottom: 12px; font-size: 0.95rem; }
-    footer p, footer a {
+    footer h4 {
+      color: white;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+    footer p,
+    footer a {
       font-size: 0.85rem;
-      color: #aaa;
+      color: #bfc0cc;
       text-decoration: none;
       line-height: 2;
       display: block;
     }
     footer a:hover { color: white; }
-    footer .footer-bottom {
-      border-top: 1px solid #333;
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.12);
       padding-top: 20px;
       font-size: 0.8rem;
       display: flex;
       justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
     }
-    footer .footer-bottom a { display: inline; color: var(--red); }
+    .footer-bottom a {
+      display: inline;
+      color: #ffb0a8;
+    }
 
     @media (max-width: 900px) {
+      .top-bar .inner,
+      header .inner {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+      }
+      .market-strip {
+        width: 100%;
+        justify-content: flex-start;
+        padding-bottom: 2px;
+      }
       .page-layout { grid-template-columns: 1fr; }
+      .showcase-grid { grid-template-columns: 1fr; }
+      .headline-slider { min-height: 380px; }
+      .side-headlines {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: 1fr;
+      }
       .news-grid { grid-template-columns: 1fr; }
       .news-grid .news-card:first-child { grid-column: span 1; }
-      header .inner { flex-direction: column; gap: 12px; }
-      footer .footer-grid { grid-template-columns: 1fr; gap: 20px; }
+      .news-card:first-child .card-image { aspect-ratio: 16 / 9; }
+      .footer-grid { grid-template-columns: 1fr; gap: 22px; }
     }
     @media (max-width: 600px) {
-      .top-bar .inner { flex-direction: column; gap: 5px; text-align: center; }
-    }
-        /* ── KART GÖRSELİ ── */
-      .card-image {
-        width: 100%;
-        height: 180px;
-        overflow: hidden;
-    }
-      .news-card:first-child .card-image {
-        height: 220px;
-    }
-      .card-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.3s;
-    }
-      .news-card:hover .card-image img {
-        transform: scale(1.05);
-    }
-      .card-image-placeholder {
-        background: linear-gradient(135deg, #c0392b, #1a1a2e);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-      .card-image-placeholder span {
-        font-size: 3rem;
+      .container { margin-top: 24px; padding: 0 18px; }
+      .top-links { justify-content: center; flex-wrap: wrap; }
+      .breaking .inner { padding-right: 0; }
+      .topic-list { padding-right: 18px; }
+      .topic-link { font-size: 0.8rem; padding: 0 10px; }
+      .topic-link::after { left: 10px; right: 10px; }
+      .market-item { padding: 6px 9px; }
+      .market-label { padding: 6px 8px; }
+      .page-heading { font-size: 1.65rem; }
+      .showcase-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .showcase-note { text-align: left; max-width: none; }
+      .showcase-title { font-size: 1.55rem; }
+      .headline-slider { min-height: 330px; }
+      .headline-title { font-size: 1.45rem; }
+      .headline-content {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+      }
+      .side-headlines { grid-template-columns: 1fr; }
+      .side-headline { min-height: 118px; }
+      .country-header { align-items: flex-start; }
+      .country-divider { display: none; }
+      .card-body { padding: 17px; }
+      .news-card:first-child .card-title { font-size: 1.1rem; }
     }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">İçeriğe geç</a>
 
   <div class="top-bar">
     <div class="inner">
-      <span id="current-time">⏰ Yükleniyor...</span>
-      <div>
+      <span id="current-time">Yükleniyor...</span>
+      <div class="top-links" aria-label="Üst bağlantılar">
         <a href="index.html">Ana Sayfa</a>
-        <a href="#">Hakkında</a>
-        <a href="#iletisim">İletişim</a>
+        <a href="hakkinda.html">Hakkında</a>
+        <a href="iletisim.html">İletişim</a>
       </div>
     </div>
   </div>
 
   <header>
     <div class="inner">
-      <a href="index.html" class="logo">
+      <a href="index.html" class="logo" aria-label="hakancetin.com.tr ana sayfa">
         <div class="logo-icon">H</div>
         <div class="logo-text">
           <strong>hakancetin.com.tr</strong>
           <span>Güncel Haber Platformu</span>
         </div>
       </a>
-      <nav>
+      <div class="market-strip" aria-label="Canlı piyasa verileri">
+        <span class="market-label">Piyasalar</span>
+        <span class="market-item neutral" id="market-usd-item">
+          <span class="market-name">USD/TRY</span>
+          <strong class="market-value" id="market-usd">--</strong>
+          <span class="market-change" id="market-usd-change">--</span>
+        </span>
+        <span class="market-item neutral" id="market-eur-item">
+          <span class="market-name">EUR/TRY</span>
+          <strong class="market-value" id="market-eur">--</strong>
+          <span class="market-change" id="market-eur-change">--</span>
+        </span>
+        <span class="market-item neutral" id="market-gbp-item">
+          <span class="market-name">GBP/TRY</span>
+          <strong class="market-value" id="market-gbp">--</strong>
+          <span class="market-change" id="market-gbp-change">--</span>
+        </span>
+        <span class="market-item neutral" id="market-btc-item">
+          <span class="market-name">BTC</span>
+          <strong class="market-value" id="market-btc">--</strong>
+          <span class="market-change" id="market-btc-change">--</span>
+        </span>
+        <span class="market-status" id="market-status">Güncelleniyor</span>
+      </div>
+      <nav aria-label="Ana menü">
         <a href="index.html">Ana Sayfa</a>
-        <a href="haber.html" class="active">📰 Haberler</a>
+        <a href="haber.html" class="active" aria-current="page">Haberler</a>
       </nav>
     </div>
   </header>
 
-  <div class="breaking">
+  <nav class="breaking" aria-label="Haber kategorileri">
     <div class="inner">
-      <span class="breaking-label">🔴 CANLI</span>
-      <span class="breaking-text">
-        Türkiye, Amerika ve Almanya'dan derlenen güncel haberler —  Her an her dakika
-      </span>
+      <span class="breaking-label">KATEGORİLER</span>
+      <div class="topic-list">
+        <a class="topic-link primary" href="haber.html" data-topic="son-dakika">Son Dakika</a>
+        <a class="topic-link" href="haber.html?kategori=gundem" data-topic="gundem">Gündem</a>
+        <a class="topic-link" href="haber.html?kategori=siyaset" data-topic="siyaset">Siyaset</a>
+        <a class="topic-link" href="haber.html?kategori=ekonomi" data-topic="ekonomi">Ekonomi</a>
+        <a class="topic-link" href="haber.html?kategori=dunya" data-topic="dunya">Dünya</a>
+        <a class="topic-link" href="haber.html?kategori=spor" data-topic="spor">Spor</a>
+        <a class="topic-link" href="haber.html?kategori=magazin" data-topic="magazin">Magazin</a>
+        <a class="topic-link" href="haber.html?kategori=teknoloji" data-topic="teknoloji">Teknoloji</a>
+        <a class="topic-link" href="haber.html?kategori=saglik" data-topic="saglik">Sağlık</a>
+        <a class="topic-link" href="https://www.youtube.com/@NartanesiHaber" target="_blank" rel="noopener">Video</a>
+      </div>
     </div>
-  </div>
+  </nav>
 
   <div class="container">
     <div class="page-layout">
-
-      <main>
-
-        <div class="country-section" id="turkiye">
-          <div class="country-header">
-            <span class="country-flag">🇹🇷</span>
+      <main id="main-content">
+        <section class="turkey-showcase" id="turkiye" data-news-section aria-labelledby="turkiye-title">
+          <div class="showcase-header">
             <div>
-              <div class="country-name">Türkiye</div>
-              <div class="country-subtitle">Son dakika Türkiye haberleri</div>
+              <div class="showcase-kicker">Türkiye Gündemi</div>
+              <h1 class="showcase-title" id="turkiye-title">Son Dakika Türkiye Haberleri</h1>
+            </div>
+            <p class="showcase-note">Gündem, siyaset, ekonomi ve sıcak gelişmelerden seçilen Türkiye manşetleri.</p>
+          </div>
+          <div class="showcase-grid">
+            <div class="headline-slider" aria-label="Türkiye manşetleri">
+              <!-- TURKEY_HERO_START -->
+              <!-- TURKEY_HERO_END -->
+              <div class="slider-controls" aria-label="Manşet kontrolleri">
+                <button class="slider-btn" type="button" data-slider-prev aria-label="Önceki manşet">‹</button>
+                <button class="slider-btn" type="button" data-slider-next aria-label="Sonraki manşet">›</button>
+              </div>
+            </div>
+            <div class="side-headlines" aria-label="Öne çıkan Türkiye haberleri">
+              <!-- TURKEY_SIDE_START -->
+              <!-- TURKEY_SIDE_END -->
+            </div>
+          </div>
+        </section>
+
+        <p class="empty-state" id="empty-topic" hidden>Bu başlıkta gösterilecek haber bulunamadı.</p>
+
+        <section class="country-section" id="turkiye-akis" data-news-section aria-labelledby="turkiye-akis-title">
+          <div class="country-header">
+            <span class="country-flag" aria-hidden="true">🇹🇷</span>
+            <div>
+              <h2 class="country-title" id="turkiye-akis-title">Türkiye Haber Akışı</h2>
+              <div class="country-subtitle">Manşet dışındaki son Türkiye haberleri</div>
             </div>
             <div class="country-divider"></div>
           </div>
           <div class="news-grid" id="grid-turkey">
             <!-- TURKEY_START -->
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1693838474853-2941885c674a?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxzaWxhaGwlQzQlQjElMjBzYWxkJUM0JUIxciVDNCVCMXxlbnwwfDB8fHwxNzc5MTQ2MjU5fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Mersin&#x27;de Silahlı Saldırı: Altı Kişinin Hayatını Kaybettiği Kanlı Olay" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">TR Turkey</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/mersin-silahli-saldiri_20260518.html">Mersin&#x27;de Silahlı Saldırı: Altı Kişinin Hayatını Kaybettiği Kanlı Olay</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/mersin-silahli-saldiri_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1550531996-ff3dcede9477?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxUcnVtcHxlbnwwfDB8fHwxNzc5MTEwNTU1fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Trump, İran&#x27;a Saldırıyı Erteledi" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">TR Turkey</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/trump-iran-saldiriyi-erteledi-korfez-ulkeleri-talebi_20260518.html">Trump, İran&#x27;a Saldırıyı Erteledi</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/trump-iran-saldiriyi-erteledi-korfez-ulkeleri-talebi_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1631270315847-f418bde47ca6?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxBQkR8ZW58MHwwfHx8MTc3ODk5MDQ1NXww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="ABD ve İsrail&#x27;in İran&#x27;a Saldırıları Yeniden Başlatma İhtimali" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/abd-ve-israil-in-iran-a-saldirilari-yeniden-baslama-ihtimali_20260518.html">ABD ve İsrail&#x27;in İran&#x27;a Saldırıları Yeniden Başlatma İhtimali</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/abd-ve-israil-in-iran-a-saldirilari-yeniden-baslama-ihtimali_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1635668422380-8b4f751c6274?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxwb2xpc3xlbnwwfDB8fHwxNzc5MTI3NjM3fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Polis Memurları Şehit Oldu" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/polis-memurlari-sehit-oldu_20260518.html">Polis Memurları Şehit Oldu</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/polis-memurlari-sehit-oldu_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1639596757506-b72126eadbb2?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxDdW1odXJiYSVDNSU5RmthbiVDNCVCMSUyMEVyZG8lQzQlOUZhbnxlbnwwfDB8fHwxNzc5MTA0MTQwfDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Cumhurbaşkanı Erdoğan&#x27;dan şehit polisler için başsağlığı mesajı" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/cumhurbaskani-erdogandan-sehit-polisler-icin-bassagligi-mesaji_20260518.html">Cumhurbaşkanı Erdoğan&#x27;dan şehit polisler için başsağlığı mesajı</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/cumhurbaskani-erdogandan-sehit-polisler-icin-bassagligi-mesaji_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>TR</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">TR Turkey</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/kuresel-sumud-filosu-ndan-arizalanan-tekneye-yardim_20260518.html">Küresel Sumud Filosu&#x27;ndan Arızalanan Tekneye Yardım</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/kuresel-sumud-filosu-ndan-arizalanan-tekneye-yardim_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1591334461334-f7ef6079e9ee?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxNZXJzaW58ZW58MHwwfHx8MTc3OTEzNzk0MHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Mersin&#x27;de 6 kişiyi öldüren saldırganın seri cinayetlere eski eşini öldürdükten sonra başladığı ortaya çıktı" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/mersin-seri-cinayetler_20260518.html">Mersin&#x27;de 6 kişiyi öldüren saldırganın seri cinayetlere eski eşini öldürdükten sonra başladığı ortaya çıktı</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/mersin-seri-cinayetler_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxUJUMzJUJDcmtpeWV8ZW58MHwwfHx8MTc3OTEwMjE2N3ww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Türkiye ve Almanya, 12 yıl sonra Stratejik Diyalog Mekanizmasını canlandırıyor" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/turkiye-almanya-stratejik-diyalog_20260518.html">Türkiye ve Almanya, 12 yıl sonra Stratejik Diyalog Mekanizmasını canlandırıyor</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/turkiye-almanya-stratejik-diyalog_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇹🇷</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/italya-basbakani-meloni-ab-enerji-butce-esnekligi_20260518.html">İtalya Başbakanı Meloni, AB&#x27;ye enerji konusunda bütçe esnekliği talep etti</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/italya-basbakani-meloni-ab-enerji-butce-esnekligi_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇹🇷</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/iran-siyasi-idamlar-artiyor_20260518.html">İran&#x27;da siyasi idamlar artıyor</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/iran-siyasi-idamlar-artiyor_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1758225709268-fc275fc45ebb?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxrYW15b25ldHxlbnwwfDB8fHwxNzc5MTQzOTQzfDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Çankırı&#x27;da Kamyonetin Park Halindeki Otomobile Çarpması" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">TR Turkey</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/cankiri-kamyonet-kazasi_20260518.html">Çankırı&#x27;da Kamyonetin Park Halindeki Otomobile Çarpması</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/cankiri-kamyonet-kazasi_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1771530072228-56adc093083f?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxNJUM0JUIwVHxlbnwwfDB8fHwxNzc5MDE2OTY3fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="MİT ve Emniyet&#x27;ten ortak operasyon: 14 şüpheli yakalandı" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/mit-emniyet-ortak-operasyon-14-supheli-yakalandi-interpol_20260518.html">MİT ve Emniyet&#x27;ten ortak operasyon: 14 şüpheli yakalandı</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/mit-emniyet-ortak-operasyon-14-supheli-yakalandi-interpol_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1656227912576-5c27da673332?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxCYWthbiUyMEZpZGFufGVufDB8MHx8fDE3NzkxMzc5NDh8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Bakan Fidan, İran ile ABD arasındaki müzakerelere ilişkin telefon görüşmeleri yaptı" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/bakan-fidan-iran-abd-muzakereleri_20260518.html">Bakan Fidan, İran ile ABD arasındaki müzakerelere ilişkin telefon görüşmeleri yaptı</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/bakan-fidan-iran-abd-muzakereleri_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1639596757506-b72126eadbb2?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxDdW1odXJiYSVDNSU5RmthbiVDNCVCMSUyMEVyZG8lQzQlOUZhbnxlbnwwfDB8fHwxNzc4OTgzOTc2fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Cumhurbaşkanı Erdoğan: Terörsüz bölge vizyonumuzu gençlerin güvenli geleceği için hayata geçirmek istiyoruz" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">17.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/cumhurbaskani-erdogan-terorsuz-bolge-vizyonu.html">Cumhurbaşkanı Erdoğan: Terörsüz bölge vizyonumuzu gençlerin güvenli geleceği için hayata geçirmek istiyoruz</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/cumhurbaskani-erdogan-terorsuz-bolge-vizyonu.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇹🇷</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">17.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/israil-in-istanbul-baskonsolosluguna-saldiri_20260517.html">İsrail’in İstanbul Başkonsolosluğu’na Saldırı</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/israil-in-istanbul-baskonsolosluguna-saldiri_20260517.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1622550875204-f34883c5e1cb?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHwlQzMlODdpbnxlbnwwfDB8fHwxNzc4OTgzOTc5fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Çin Kültür Devrimi&#x27;nin 60. yılı" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">17.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/cin-kultur-devrimi-60-yili.html">Çin Kültür Devrimi&#x27;nin 60. yılı</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/cin-kultur-devrimi-60-yili.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇹🇷</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">17.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/baykar-ile-fransiz-savunma-sirketi-arasinda-is-birligi-anlasmasi_20260517.html">Baykar ile Fransız Savunma Şirketi Arasında İş Birliği Anlaşması</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/baykar-ile-fransiz-savunma-sirketi-arasinda-is-birligi-anlasmasi_20260517.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1722113444475-190b4705e178?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxhcmElQzMlQTclMjBiYWslQzQlQjFtJUM0JUIxfGVufDB8MHx8fDE3NzkwMTE2NTh8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Bayram Tatilinde Araç Bakımı Uyarısı" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">17.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/bayram-tatilinde-arac-bakimi-uyarisi_20260517.html">Bayram Tatilinde Araç Bakımı Uyarısı</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/bayram-tatilinde-arac-bakimi-uyarisi_20260517.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇹🇷</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">17.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/iranin-sivrisinek-filosu-hurmuz-bogazinda-abdye-nasil-meydan-okiyo.html">İran&#x27;ın &#x27;sivrisinek filosu&#x27; Hürmüz Boğazı&#x27;nda ABD&#x27;ye nasıl meydan okuyor?</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/iranin-sivrisinek-filosu-hurmuz-bogazinda-abdye-nasil-meydan-okiyo.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇹🇷</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/daltonlar-cetesi-cokertildi.html">Daltonlar çetesi çökertildi</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/daltonlar-cetesi-cokertildi.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇹🇷</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/c_n-lideri-__-j_nping-tukidides-tuza__ndan-bahsetti.html">Çin Lideri Şi Jinping, &#x27;Tukidides Tuzağı&#x27;ndan Bahsetti</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/c_n-lideri-__-j_nping-tukidides-tuza__ndan-bahsetti.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇹🇷</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/halk-ozani-asik-mahzuni-serif-in-turkuleri.html">Halk Ozanı Aşık Mahzuni Şerif&#x27;in Türküleri</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/halk-ozani-asik-mahzuni-serif-in-turkuleri.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1591685625144-9062fafc330a?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxTYW1zdW58ZW58MHwwfHx8MTc3ODk1MTE3Nnww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Samsun’da Sel Felaketi" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/samsun-da-sel-felaketi.html">Samsun’da Sel Felaketi</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/samsun-da-sel-felaketi.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇹🇷</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/ispanyol-yonetmen-isabel-fernandez-in-el-hamra-yi-insa-edenler-belgeseli.html">İspanyol Yönetmen Isabel Fernandez&#x27;in &#x27;El Hamra&#x27;yı İnşa Edenler&#x27; Belgeseli</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/ispanyol-yonetmen-isabel-fernandez-in-el-hamra-yi-insa-edenler-belgeseli.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇹🇷</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/guney-kore-iranin-hurmuz-bogazindan-gecis-ucreti-talep-eme-planina-karsi-cikti.html">Güney Kore, İran’ın Hürmüz Boğazı‘ndan geçiş ücreti talep etme planına karşı çıktı</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/guney-kore-iranin-hurmuz-bogazindan-gecis-ucreti-talep-eme-planina-karsi-cikti.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇹🇷</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/ak-parti-ic-tuzuk-calismasi-rafina-kaldirildi.html">AK Parti’nin içtüzük çalışması rafa kaldırıldı</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/ak-parti-ic-tuzuk-calismasi-rafina-kaldirildi.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1635541398483-01052478544c?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxDdW1odXJiYSVDNSU5RmthbmwlQzQlQjElQzQlOUYlQzQlQjElMjAlQzMlODdvY3VrJTIwT3JrZXN0cmFzJUM0JUIxfGVufDB8MHx8fDE3Nzg5NTExODB8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Cumhurbaşkanlığı Çocuk Orkestrası" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/cumhurbaskanligi-cocuk-orkestrasi.html">Cumhurbaşkanlığı Çocuk Orkestrası</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/cumhurbaskanligi-cocuk-orkestrasi.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇹🇷</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/tbmm-baskanin-turkiye-cumhuriyetinin-en-zor-sorunu-cozmek-icin-irade-ortaya-koydu.html">TBMM Başkanı Kurtulmuş: TBMM, Türkiye Cumhuriyeti&#x27;nin en zor sorununu çözmek için irade ortaya koymuştur</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/tbmm-baskanin-turkiye-cumhuriyetinin-en-zor-sorunu-cozmek-icin-irade-ortaya-koydu.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇹🇷</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/israil-basbakani-netanyahu-new-york-timesa-dava-acacak.html">İsrail Başbakanı Netanyahu, New York Times&#x27;a Dava Açacak</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/israil-basbakani-netanyahu-new-york-timesa-dava-acacak.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇹🇷</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/efes-2026-tatbikati-nde-karaok-egitimi.html">EFES-2026 Tatbikatı&#x27;nda Karaok Eğitimi</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/efes-2026-tatbikati-nde-karaok-egitimi.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇹🇷</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/2026-dunya-kupasi-turkiye-maclari.html">2026 Dünya Kupası&#x27;nda Türkiye&#x27;nin maçları belli oldu</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/2026-dunya-kupasi-turkiye-maclari.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1623227413711-25ee4388dae3?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxCaXRjb2lufGVufDB8MHx8fDE3Nzg5NTExNzh8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Bitcoin Yatırımı" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/bitcoin-yatirimi.html">Bitcoin Yatırımı</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/bitcoin-yatirimi.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇹🇷</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/efes-2026-tatbikati-karaok-egitimi.html">EFES-2026 Tatbikatı&#x27;nda Karaok Eğitimi</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/efes-2026-tatbikati-karaok-egitimi.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇹🇷</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/eurovision-sarki-yarismasi-buyuk-boykotla-karsilika.html">Eurovision Şarkı Yarışması Büyük Boykotla Karşı Karşıya</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/eurovision-sarki-yarismasi-buyuk-boykotla-karsilika.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇹🇷</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇹🇷 Turkey</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/uskudar-belediyesine-operasyon-7-kisi-gozaltina-alindi.html">Üsküdar Belediyesi&#x27;ne Operasyon: 7 Kişi Gözaltına Alındı</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/uskudar-belediyesine-operasyon-7-kisi-gozaltina-alindi.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
             <!-- TURKEY_END -->
           </div>
-        </div>
+        </section>
 
-        <div class="country-section" id="amerika">
+        <section class="country-section" id="amerika" data-news-section aria-labelledby="amerika-title">
           <div class="country-header">
-            <span class="country-flag">🇺🇸</span>
+            <span class="country-flag" aria-hidden="true">🇺🇸</span>
             <div>
-              <div class="country-name">Amerika</div>
+              <h2 class="country-title" id="amerika-title">Amerika Haberleri</h2>
               <div class="country-subtitle">Son dakika Amerika haberleri</div>
             </div>
             <div class="country-divider"></div>
           </div>
           <div class="news-grid" id="grid-usa">
             <!-- USA_START -->
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1617704548623-340376564e68?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFbG9uJTIwTXVza3xlbnwwfDB8fHwxNzc5MTM3OTc4fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Elon Musk&#x27;s $150 Billion Lawsuit Against OpenAI and Sam Altman Dismissed" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">US USA</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/elon-musk-openai-sam-altman-lawsuit-dismissed_20260518.html">Elon Musk&#x27;s $150 Billion Lawsuit Against OpenAI and Sam Altman Dismissed</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/elon-musk-openai-sam-altman-lawsuit-dismissed_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1624448713098-baface803acf?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFYm9sYXxlbnwwfDB8fHwxNzc5MTAxNDU2fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="U.S. Restricts Entry from African Countries Due to Ebola Outbreak" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">US USA</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/us-restricts-entry-ebola-outbreak-africa-who-emergency_20260518.html">U.S. Restricts Entry from African Countries Due to Ebola Outbreak</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/us-restricts-entry-ebola-outbreak-africa-who-emergency_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1624448713098-baface803acf?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFYm9sYXxlbnwwfDB8fHwxNzc5MTAxNDU2fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Ebola Outbreak Declared Global Health Emergency" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇺🇸 USA</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/ebola-outbreak-global-health-emergency_20260518.html">Ebola Outbreak Declared Global Health Emergency</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/ebola-outbreak-global-health-emergency_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1617704548623-340376564e68?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFbG9uJTIwTXVza3xlbnwwfDB8fHwxNzc5MTM3OTc4fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Elon Musk Loses $150 Billion Suit Against OpenAI" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">US USA</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/elon-musk-loses-150-billion-suit-against-openai_20260518.html">Elon Musk Loses $150 Billion Suit Against OpenAI</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/elon-musk-loses-150-billion-suit-against-openai_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1550531996-ff3dcede9477?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxUcnVtcHxlbnwwfDB8fHwxNzc5MTEwNTU1fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Trump Warns Iran the ‘Clock Is Ticking’ as Tensions Surge Again in Middle East" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇺🇸 USA</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/trump-warns-iran-clock-ticking-middle-east-tensions_20260518.html">Trump Warns Iran the ‘Clock Is Ticking’ as Tensions Surge Again in Middle East</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/trump-warns-iran-clock-ticking-middle-east-tensions_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇺🇸</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇺🇸 USA</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/nextera-energy-acquires-dominion_20260518.html">NextEra Energy to Acquire Dominion, Creating a Utility Giant</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/nextera-energy-acquires-dominion_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1676181739859-08330dea8999?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxTdXByZW1lJTIwQ291cnR8ZW58MHwwfHx8MTc3OTEzNzk1OHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Supreme Court Avoids Voting Rights Act Case" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇺🇸 USA</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/supreme-court-avoids-voting-rights-act-case_20260518.html">Supreme Court Avoids Voting Rights Act Case</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/supreme-court-avoids-voting-rights-act-case_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1550531996-ff3dcede9477?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxUcnVtcHxlbnwwfDB8fHwxNzc4OTg5MjkyfDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Trump drops IRS lawsuit, paving the way for a settlement" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇺🇸 USA</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/trump-drops-irs-lawsuit_20260518.html">Trump drops IRS lawsuit, paving the way for a settlement</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/trump-drops-irs-lawsuit_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1546412414-8035e1776c9a?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxNaWRkbGUlMjBFYXN0fGVufDB8MHx8fDE3NzkxMDE0NDl8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Middle East War Creates Economic Opportunities for Syria Amid Blocked Strait" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇺🇸 USA</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/syria-economic-opportunities-middle-east-war-blocked-strait_20260518.html">Middle East War Creates Economic Opportunities for Syria Amid Blocked Strait</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/syria-economic-opportunities-middle-east-war-blocked-strait_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1500252185289-40ca85eb23a7?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxXYXJ8ZW58MHwwfHx8MTc3OTEwNDIyMnww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Blocked Strait of Hormuz Leads to New Opportunities for Syria" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇺🇸 USA</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/blocked-strait-hormuz-syria-economic-opportunities_20260518.html">Blocked Strait of Hormuz Leads to New Opportunities for Syria</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/blocked-strait-hormuz-syria-economic-opportunities_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1659781044995-1c68c81dcc67?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxTeXJpYXxlbnwwfDB8fHwxNzc5MTI3NjUzfDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Blocked Strait of Hormuz Leads to New Opportunities for Syria" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇺🇸 USA</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/blocked-strait-of-hormuz-leads-to-new-opportunities-for-syria_20260518.html">Blocked Strait of Hormuz Leads to New Opportunities for Syria</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/blocked-strait-of-hormuz-leads-to-new-opportunities-for-syria_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1575867094974-9e16b6f55360?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxDZWFzZWZpcmV8ZW58MHwwfHx8MTc3OTEwMjIzN3ww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Analysis of Post-Cessation of Hostilities Between Countries" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇺🇸 USA</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/post-cessation-of-hostilities_20260518.html">Analysis of Post-Cessation of Hostilities Between Countries</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/post-cessation-of-hostilities_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1624448713098-baface803acf?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFYm9sYXxlbnwwfDB8fHwxNzc5MTAxNDU2fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="US Restricts Travelers from Africa Due to Ebola Outbreak" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">US USA</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/us-restricts-travelers-from-africa-due-to-ebola-outbreak_20260518.html">US Restricts Travelers from Africa Due to Ebola Outbreak</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/us-restricts-travelers-from-africa-due-to-ebola-outbreak_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1500252185289-40ca85eb23a7?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxXYXJ8ZW58MHwwfHx8MTc3OTEwNDIyMnww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="The Fighting Never Ends" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇺🇸 USA</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/the-fighting-never-ends-post-hostilities-challenges_20260518.html">The Fighting Never Ends</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/the-fighting-never-ends-post-hostilities-challenges_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1547483029-77784da27709?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxJc3JhZWx8ZW58MHwwfHx8MTc3ODk4OTU5NHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Israel&#x27;s Secret Outposts in Iraq" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇺🇸 USA</span>
-            <span class="card-date">17.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/israel-secret-outposts-in-iraq_20260517.html">Israel&#x27;s Secret Outposts in Iraq</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/israel-secret-outposts-in-iraq_20260517.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1660479644038-cceebdaa6bdf?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxHYXphfGVufDB8MHx8fDE3Nzg5ODQzNTd8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Hamas&#x27;s Top Leader in Gaza Killed in Israeli Strike" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇺🇸 USA</span>
-            <span class="card-date">17.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/hamas-top-leader-killed-in-israeli-strike.html">Hamas&#x27;s Top Leader in Gaza Killed in Israeli Strike</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/hamas-top-leader-killed-in-israeli-strike.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇺🇸</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇺🇸 USA</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/cuba-darkness-us-oil-supply-cut.html">Economy: Cuba Plunges Into Darkness as U.S. Cuts Off Oil Supply</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/cuba-darkness-us-oil-supply-cut.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇺🇸</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇺🇸 USA</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/us-troop-withdrawal-germany.html">US Troop Withdrawal Threat Rattles German Town</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/us-troop-withdrawal-germany.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1508530786855-dfea35260b8d?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxVUyUyME5hdnl8ZW58MHwwfHx8MTc3ODk1MTYwNXww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="US Navy&#x27;s Longest Deployment Since Vietnam Comes to an End" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇺🇸 USA</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/us-navy-longest-deployment-since-vietnam-ends.html">US Navy&#x27;s Longest Deployment Since Vietnam Comes to an End</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/us-navy-longest-deployment-since-vietnam-ends.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇺🇸</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇺🇸 USA</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/tina-peters-sentence-commuted-by-governor-jared-polis.html">Tina Peters&#x27; Sentence Commuted by Governor Jared Polis</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/tina-peters-sentence-commuted-by-governor-jared-polis.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇺🇸</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇺🇸 USA</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/hantavirus-outbreak-on-cruise-ship.html">Hantavirus Outbreak on Cruise Ship Exposes Passengers to Deadly Disease</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/hantavirus-outbreak-on-cruise-ship.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇺🇸</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇺🇸 USA</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/israeli-strike-targeted-top-hamas-leader-in-gaza.html">War: Israeli Strike Targeted Top Hamas Leader in Gaza</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/israeli-strike-targeted-top-hamas-leader-in-gaza.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇺🇸</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇺🇸 USA</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/trump-taiwan-arms-sales-china.html">Trump Turns Taiwan Arms Sales Into Bargaining Chip With China</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/trump-taiwan-arms-sales-china.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇺🇸</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇺🇸 USA</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/us-china-relations-new-era-cooperation.html">US-China Relations: A New Era of Cooperation</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/us-china-relations-new-era-cooperation.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇺🇸</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇺🇸 USA</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/xi-jinping-vision-for-avoiding-conflict-with-us.html">International Relations: Xi Pitches His Vision for Avoiding Conflict With the U.S.</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/xi-jinping-vision-for-avoiding-conflict-with-us.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇺🇸</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇺🇸 USA</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/trump-announces-death-of-top-isis-leader.html">Trump Announces Death of Top ISIS Leader in Joint US-Nigerian Mission</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/trump-announces-death-of-top-isis-leader.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1630280368109-cfd06624996f?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxMb25nJTIwSXNsYW5kJTIwUmFpbCUyMFJvYWR8ZW58MHwwfHx8MTc3ODk1MTYwM3ww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Long Island Rail Road Strike Shuts Down Busiest US Passenger Rail Service" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇺🇸 USA</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/long-island-rail-road-strike.html">Long Island Rail Road Strike Shuts Down Busiest US Passenger Rail Service</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/long-island-rail-road-strike.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
             <!-- USA_END -->
           </div>
-        </div>
+        </section>
 
-        <div class="country-section" id="almanya">
+        <section class="country-section" id="almanya" data-news-section aria-labelledby="almanya-title">
           <div class="country-header">
-            <span class="country-flag">🇩🇪</span>
+            <span class="country-flag" aria-hidden="true">🇩🇪</span>
             <div>
-              <div class="country-name">Almanya</div>
+              <h2 class="country-title" id="almanya-title">Almanya Haberleri</h2>
               <div class="country-subtitle">Son dakika Almanya haberleri</div>
             </div>
             <div class="country-divider"></div>
           </div>
           <div class="news-grid" id="grid-germany">
             <!-- GERMANY_START -->
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1624448713098-baface803acf?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFYm9sYXxlbnwwfDB8fHwxNzc5MTAxNDU2fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Virus in DR Kongo und Uganda: Wie gefährlich ist der Ebola-Ausbruch?" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">DE Germany</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/ebola-ausbruch-dr-kongo-uganda-gefahr_20260518.html">Virus in DR Kongo und Uganda: Wie gefährlich ist der Ebola-Ausbruch?</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/ebola-ausbruch-dr-kongo-uganda-gefahr_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>DE</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">DE Germany</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/westjordanland-israel-e1-siedlung-palastina-staat_20260518.html">Westjordanland: Israel beginnt mit Umsetzung von Siedlungsprojekt E1 – Aussichten auf palästinensischen Staat schwinden</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/westjordanland-israel-e1-siedlung-palastina-staat_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1537267013710-d7b37fa331b3?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxHciVDMyVCNm5sYW5kfGVufDB8MHx8fDE3NzkxMjc2ODR8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="US-Sondergesandter Landry zu Gesprächen in Grönland eingetroffen" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/us-sondergesandter-landry-groenland_20260518.html">US-Sondergesandter Landry zu Gesprächen in Grönland eingetroffen</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/us-sondergesandter-landry-groenland_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1672953966838-e47cbfb4933f?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxEQVh8ZW58MHwwfHx8MTc3OTExMDYyNnww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="DAX-Konzerne trotzen Konjunkturschwäche: Gewinne steigen trotz stagnierender Umsätze" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/dax-konzerne-gewinne-umsatzflaute-ey_20260518.html">DAX-Konzerne trotzen Konjunkturschwäche: Gewinne steigen trotz stagnierender Umsätze</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/dax-konzerne-gewinne-umsatzflaute-ey_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1618259278412-2819cbdea4dc?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxHZXJtYW55fGVufDB8MHx8fDE3NzkxMTA2MDJ8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Milliarden für Zivilschutz: Deutschland rüstet sich für Krisenfälle mit Feldbetten, Spezialfahrzeugen und Notvorräten" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/milliarden-zivilschutz-deutschland-krisenfaelle-feldbetten-spezialfahrzeuge-notv_20260518.html">Milliarden für Zivilschutz: Deutschland rüstet sich für Krisenfälle mit Feldbetten, Spezialfahrzeugen und Notvorräten</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/milliarden-zivilschutz-deutschland-krisenfaelle-feldbetten-spezialfahrzeuge-notv_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1621852004158-f3bc188ace2d?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxQYW5pbml8ZW58MHwwfHx8MTc3OTEwNDMwNHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Panini vor Fußball-WM 2026: Wie die Sticker-Kultmarke ums Überleben kämpft" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/panini-fussball-wm-2026-ueberleben-sticker-kultmarke_20260518.html">Panini vor Fußball-WM 2026: Wie die Sticker-Kultmarke ums Überleben kämpft</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/panini-fussball-wm-2026-ueberleben-sticker-kultmarke_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1639341267320-2d062b250c0d?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxVa3JhaW5lfGVufDB8MHx8fDE3NzkwMzIxNzZ8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Tote bei ukrainischen Angriffen auf Region Moskau" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/tote-ukrainische-angriffe-region-moskau-drohnen-opfer_20260518.html">Tote bei ukrainischen Angriffen auf Region Moskau</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/tote-ukrainische-angriffe-region-moskau-drohnen-opfer_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1693139062697-f5f8663217fa?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxJcmFuLUtyaWVnfGVufDB8MHx8fDE3NzkxMDQyNzh8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Klingbeil sieht Weltwirtschaft durch Iran-Krieg bedroht" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/klingbeil-iran-krieg-weltwirtschaft-bedroht_20260518.html">Klingbeil sieht Weltwirtschaft durch Iran-Krieg bedroht</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/klingbeil-iran-krieg-weltwirtschaft-bedroht_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇩🇪</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/bundestag-cdu-abgeordneter-wilhelm-gebhard-diätenerhohung_20260518.html">Bundestag: CDU-Abgeordneter Wilhelm Gebhard über Diätenerhöhung</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/bundestag-cdu-abgeordneter-wilhelm-gebhard-diätenerhohung_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1613930648631-7191115e83d4?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxJcmFufGVufDB8MHx8fDE3NzkwNTA2MjB8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Iran-Krieg: Teheran schickt neuen Vorschlag an die USA" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">DE Germany</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/iran-krieg-teheran-schickt-neuen-vorschlag-an-die-usa_20260518.html">Iran-Krieg: Teheran schickt neuen Vorschlag an die USA</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/iran-krieg-teheran-schickt-neuen-vorschlag-an-die-usa_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇩🇪</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/infineon-halbleiterfabrik-dresden-fertigstellung_20260518.html">Infineon-Halbleiterfabrik in Dresden fast fertiggestellt</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/infineon-halbleiterfabrik-dresden-fertigstellung_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1613930648631-7191115e83d4?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxJcmFufGVufDB8MHx8fDE3NzkwNTA2MjB8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Klingbeil sieht Weltwirtschaft durch Iran-Krieg bedroht" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">DE Germany</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/klingbeil-iran-krieg-weltwirtschaft_20260518.html">Klingbeil sieht Weltwirtschaft durch Iran-Krieg bedroht</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/klingbeil-iran-krieg-weltwirtschaft_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1586717937993-4bfb1856c62e?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxaaXZpbHNjaHV0enxlbnwwfDB8fHwxNzc5MTI3NjY0fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Milliarden für Zivilschutz" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/milliarden-fuer-zivilschutz_20260518.html">Milliarden für Zivilschutz</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/milliarden-fuer-zivilschutz_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1617704548623-340376564e68?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFbG9uJTIwTXVza3xlbnwwfDB8fHwxNzc5MTM3OTc4fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Elon Musk scheitert mit Klage gegen OpenAI" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">18.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/elon-musk-klage-gegen-openai_20260518.html">Elon Musk scheitert mit Klage gegen OpenAI</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/elon-musk-klage-gegen-openai_20260518.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇩🇪</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">17.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/wes-streeting-fordert-keir-starmer-heraus.html">Wes Streeting fordert Premierminister Keir Starmer heraus</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/wes-streeting-fordert-keir-starmer-heraus.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1604608619736-53e7be31f8d4?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxQZmxlZ2VyZWZvcm18ZW58MHwwfHx8MTc3ODk4NDkxNHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Pflegereform: CSU warnt vor &#x27;Kurs in soziale Kälte&#x27;" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">17.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/pflegereform-csu-warnt-vor-kurs-in-soziale-kaelte.html">Pflegereform: CSU warnt vor &#x27;Kurs in soziale Kälte&#x27;</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/pflegereform-csu-warnt-vor-kurs-in-soziale-kaelte.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1618259278412-2819cbdea4dc?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxEZXV0c2NoZSUyMFdpcnRzY2hhZnR8ZW58MHwwfHx8MTc3OTAxMjI4N3ww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Deutsche Wirtschaft zeigt sich stabil" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">17.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/deutsche-wirtschaft-stabil_20260517.html">Deutsche Wirtschaft zeigt sich stabil</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/deutsche-wirtschaft-stabil_20260517.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1552395599-0aced1169753?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxLbGltYXNjaHV0enxlbnwwfDB8fHwxNzc5MDEyMjgwfDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Klimaschutz: Neues Heizungsgesetz droht vor dem Bundesverfassungsgericht zu scheitern" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">17.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/klimaschutz-neues-heizungsgesetz-droht-vor-dem-bundesverfassungsgericht-zu-scheitern_20260517.html">Klimaschutz: Neues Heizungsgesetz droht vor dem Bundesverfassungsgericht zu scheitern</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/klimaschutz-neues-heizungsgesetz-droht-vor-dem-bundesverfassungsgericht-zu-scheitern_20260517.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1486286701208-1d58e9338013?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxGdSVDMyU5RmJhbGx8ZW58MHwwfHx8MTc3ODk4NDkxMnww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Wolfsburg rettet sich auf den Relegationsplatz" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">17.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/wolfsburg-relegt-sich.html">Wolfsburg rettet sich auf den Relegationsplatz</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/wolfsburg-relegt-sich.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1470004914212-05527e49370b?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxUYWl3YW58ZW58MHwwfHx8MTc3ODk4OTU5N3ww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Taiwan setzt auf schnelle Waffenlieferungen aus den USA" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">17.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/taiwan-usa-waffenlieferungen_20260517.html">Taiwan setzt auf schnelle Waffenlieferungen aus den USA</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/taiwan-usa-waffenlieferungen_20260517.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇩🇪</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/spd-fraktionschef-miersch-keine-zukunft-fuer-tankrabatt.html">SPD-Fraktionschef Miersch sieht keine Zukunft für Tankrabatt</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/spd-fraktionschef-miersch-keine-zukunft-fuer-tankrabatt.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇩🇪</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/nachbau-des-k-i-t-t-autos-in-new-york-mit-strafzettel-belegt.html">Nachbau des K.I.T.T.-Autos in New York mit Strafzettel belegt</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/nachbau-des-k-i-t-t-autos-in-new-york-mit-strafzettel-belegt.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇩🇪</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/andy-burnham-moeglicher-nachfolger-fuer-den-britischen-premierminister.html">Andy Burnham als möglicher Nachfolger für den britischen Premierminister</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/andy-burnham-moeglicher-nachfolger-fuer-den-britischen-premierminister.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇩🇪</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/iran-krieg-regierung-deutlichen-konjunkturdaeumerwartet.html">Iran-Krieg: Regierung erwartet deutlichen Konjunkturdämpfer</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/iran-krieg-regierung-deutlichen-konjunkturdaeumerwartet.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇩🇪</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/krieg-in-der-ukraine-zahl-der-toten-in-kiew-steigt-auf-24.html">Krieg in der Ukraine: Zahl der Toten in Kiew steigt auf 24</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/krieg-in-der-ukraine-zahl-der-toten-in-kiew-steigt-auf-24.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇩🇪</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/ebola-ausbruch-in-der-demokratischen-republik-kongo.html">Ebola-Ausbruch in der Demokratischen Republik Kongo</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/ebola-ausbruch-in-der-demokratischen-republik-kongo.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇩🇪</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/euroclear-schadenersatz-russische-gelder.html">Finanzdienstleister Euroclear soll für eingefrorene russische Gelder Schadenersatz leisten</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/euroclear-schadenersatz-russische-gelder.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇩🇪</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/regierungskrise-in-grossbritannien.html">Regierungskrise in Großbritannien</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/regierungskrise-in-grossbritannien.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1570161766218-f8488ebb8078?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxTY2h3ZWl6fGVufDB8MHx8fDE3Nzg5NTIyNzl8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Schweiz diskutiert über Zuwanderung von Deutschen" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/schweiz-diskutiert-ueber-zuwanderung-von-deutschen.html">Schweiz diskutiert über Zuwanderung von Deutschen</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/schweiz-diskutiert-ueber-zuwanderung-von-deutschen.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇩🇪</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/internationale-beziehungen-unter-druck.html">Internationale Beziehungen unter Druck</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/internationale-beziehungen-unter-druck.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇩🇪</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/putin-besucht-xi-jinping-in-china.html">Wladimir Putin bei Xi Jinping in China</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/putin-besucht-xi-jinping-in-china.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇩🇪</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/wirtschaftskrise-in-deutschland.html">Wirtschaftskrise in Deutschland</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/wirtschaftskrise-in-deutschland.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇩🇪</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/depot-insolvent-einrichtungsladen-schliesst-filialen.html">Depot insolvent: Einrichtungsladen schließt Filialen</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/depot-insolvent-einrichtungsladen-schliesst-filialen.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇩🇪</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/russlands-krieg-gegen-die-ukraine-zahl-der-toten-in-kiew-steigt-auf-24.html">Russlands Krieg gegen die Ukraine: Zahl der Toten in Kiew steigt auf 24</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/russlands-krieg-gegen-die-ukraine-zahl-der-toten-in-kiew-steigt-auf-24.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇩🇪</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/tankrabatt-zukunft-unklar.html">Tankrabatt: Zukunft unklar</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/tankrabatt-zukunft-unklar.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image"><img src="https://images.unsplash.com/photo-1706852523369-c51a4017a57c?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFU0N8ZW58MHwwfHx8MTc3ODk1MjI3N3ww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Felicia Eriksson kollabiert nach ESC-Generalprobe" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/felicia-eriksson-kollabiert-nach-esc-generalprobe.html">Felicia Eriksson kollabiert nach ESC-Generalprobe</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/felicia-eriksson-kollabiert-nach-esc-generalprobe.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇩🇪</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/rassistische-parolen-am-vatertag-in-hamburg.html">Rassistische Parolen am Vatertag in Hamburg</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/rassistische-parolen-am-vatertag-in-hamburg.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="card-image card-image-placeholder"><span>🇩🇪</span></div>
-        <div class="card-body">
-          <div class="card-meta">
-            <span class="card-category">🇩🇪 Germany</span>
-            <span class="card-date">16.05.2026</span>
-          </div>
-          <div class="card-title">
-            <a href="articles/usa-toeten-is-vizechef.html">USA töten IS-Vizechef</a>
-          </div>
-          <div class="card-footer">
-            <a class="read-more" href="articles/usa-toeten-is-vizechef.html">Devamını Oku →</a>
-          </div>
-        </div>
-      </div>
             <!-- GERMANY_END -->
           </div>
-        </div>
-
+        </section>
       </main>
 
-      <aside class="sidebar">
-
+      <aside class="sidebar" aria-label="Yan içerik">
         <div class="youtube-widget">
-          <div class="yt-icon">▶️</div>
+          <div class="yt-icon" aria-hidden="true">▶</div>
           <h3>YouTube Kanalımız</h3>
-          <p>Video haberler için kanalımıza abone olun</p>
-          <a href="https://www.youtube.com/@NartanesiHaber" target="_blank">Abone Ol</a>
+          <p>Video haberler ve gündem özetleri için kanalımızı takip edin.</p>
+          <a href="https://www.youtube.com/@NartanesiHaber" target="_blank" rel="noopener">Abone Ol</a>
         </div>
 
         <div class="sidebar-widget">
-          <div class="widget-title">🌍 Ülkeye Göre Git</div>
+          <div class="widget-title">Ülkeye Göre Git</div>
           <ul class="country-filter">
-            <li onclick="location.href='#turkiye'">
-              <span class="flag">🇹🇷</span>
-              Türkiye
-              <span class="count" id="count-turkey">0</span>
-            </li>
-            <li onclick="location.href='#amerika'">
-              <span class="flag">🇺🇸</span>
-              Amerika
-              <span class="count" id="count-usa">0</span>
-            </li>
-            <li onclick="location.href='#almanya'">
-              <span class="flag">🇩🇪</span>
-              Almanya
-              <span class="count" id="count-germany">0</span>
-            </li>
+            <li><a href="#turkiye"><span aria-hidden="true">🇹🇷</span> Türkiye <span class="count" id="count-turkey">0</span></a></li>
+            <li><a href="#amerika"><span aria-hidden="true">🇺🇸</span> Amerika <span class="count" id="count-usa">0</span></a></li>
+            <li><a href="#almanya"><span aria-hidden="true">🇩🇪</span> Almanya <span class="count" id="count-germany">0</span></a></li>
           </ul>
         </div>
 
         <div class="sidebar-widget">
-          <div class="widget-title">🕐 Bilgi</div>
-          <p style="font-size:0.85rem; color:#636e72; line-height:1.7;">
-            Türkiye, Amerika ve Almanya'dan derlenen haberler her 8 saatte bir güncellenir.<br><br>
-            <strong style="color:#2d3436;">hakancetin.com.tr</strong>
+          <div class="widget-title">Yayın Bilgisi</div>
+          <p class="info-text">
+            Haberler Türkiye, Amerika ve Almanya kaynaklarından derlenir ve düzenli aralıklarla güncellenir.
+            <br><br>
+            <strong>hakancetin.com.tr</strong>
           </p>
         </div>
-
       </aside>
     </div>
   </div>
@@ -2126,95 +1050,291 @@
     <div class="inner">
       <div class="footer-grid">
         <div>
-          <h4>📰 hakancetin.com.tr</h4>
+          <h4>hakancetin.com.tr</h4>
           <p>Türkiye, Amerika ve Almanya'dan derlenen güncel haberler.</p>
         </div>
         <div>
           <h4>Bağlantılar</h4>
           <a href="index.html">Ana Sayfa</a>
           <a href="haber.html">Haberler</a>
-          <a href="https://www.youtube.com/@NartanesiHaber" target="_blank">YouTube</a>
+          <a href="https://www.youtube.com/@NartanesiHaber" target="_blank" rel="noopener">YouTube</a>
+        </div>
+        <div>
+          <h4>Kurumsal</h4>
+          <a href="hakkinda.html">Hakkında</a>
+          <a href="kunye.html">Künye</a>
+          <a href="yayin-ilkeleri.html">Yayın İlkeleri</a>
+          <a href="iletisim.html">İletişim</a>
         </div>
         <div>
           <h4>Ülkeler</h4>
-          <a href="#turkiye">🇹🇷 Türkiye</a>
-          <a href="#amerika">🇺🇸 Amerika</a>
-          <a href="#almanya">🇩🇪 Almanya</a>
+          <a href="#turkiye">Türkiye</a>
+          <a href="#amerika">Amerika</a>
+          <a href="#almanya">Almanya</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 <a href="index.html">hakancetin.com.tr</a> — Tüm hakları saklıdır.</span>
-        <span>hakancetin.com.tr</span>
+        <span>© 2026 <a href="index.html">hakancetin.com.tr</a> — Tüm hakları saklıdır.</span>
+        <span>Güncel Haber Platformu</span>
       </div>
     </div>
   </footer>
 
   <script>
-    // Saat güncelle
     function updateTime() {
-      const now  = new Date();
+      const now = new Date();
       const time = now.toLocaleString('tr-TR', {
-        weekday: 'long', day: '2-digit', month: 'long',
-        year: 'numeric', hour: '2-digit', minute: '2-digit'
+        weekday: 'long',
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
       });
-      document.getElementById('current-time').textContent = '⏰ ' + time;
+      document.getElementById('current-time').textContent = time;
     }
-    updateTime();
-    setInterval(updateTime, 60000);
 
-    // Haber sayılarını sidebar'a yaz
-    function countCards() {
-      document.getElementById('count-turkey').textContent =
-        document.querySelectorAll('#grid-turkey .news-card').length;
-      document.getElementById('count-usa').textContent =
-        document.querySelectorAll('#grid-usa .news-card').length;
-      document.getElementById('count-germany').textContent =
-        document.querySelectorAll('#grid-germany .news-card').length;
+    function setMarketText(id, text) {
+      const node = document.getElementById(id);
+      if (node) node.textContent = text;
     }
-    countCards();
 
-    // ✅ PAGINATION — Her ülke için 20'şer haber göster
-    function initPagination(gridId, pageSize = 20) {
-      const grid = document.getElementById(gridId);
-      if (!grid) return;
+    function formatTry(value) {
+      return new Intl.NumberFormat('tr-TR', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }).format(value);
+    }
 
-      const cards = Array.from(grid.querySelectorAll('.news-card'));
-      if (cards.length === 0) return;
+    function formatShortTry(value) {
+      return new Intl.NumberFormat('tr-TR', {
+        notation: 'compact',
+        maximumFractionDigits: 1
+      }).format(value);
+    }
 
-      let shown = pageSize;
+    function previousMarketDate(dateString) {
+      const date = new Date(`${dateString}T12:00:00Z`);
+      do {
+        date.setUTCDate(date.getUTCDate() - 1);
+      } while (date.getUTCDay() === 0 || date.getUTCDay() === 6);
+      return date.toISOString().slice(0, 10);
+    }
 
-      // İlk 20'den sonrasını gizle
-      cards.forEach((card, i) => {
-        if (i >= pageSize) card.style.display = 'none';
-      });
+    async function fetchFiatMarket(base) {
+      const latestResponse = await fetch(`https://api.frankfurter.dev/v1/latest?base=${base}&symbols=TRY`, { cache: 'no-store' });
+      if (!latestResponse.ok) throw new Error(`${base} latest failed`);
+      const latest = await latestResponse.json();
+      const value = latest && latest.rates ? latest.rates.TRY : null;
+      if (!value) throw new Error(`${base} rate missing`);
 
-      // 20'den fazla haber varsa "Daha Fazla Göster" butonu ekle
-      if (cards.length > pageSize) {
-        const btn     = document.createElement('button');
-        btn.className = 'load-more-btn';
-        btn.textContent = `Daha Fazla Göster (${cards.length - shown} haber daha)`;
-        grid.parentElement.appendChild(btn);
+      let previous = null;
+      let lookupDate = previousMarketDate(latest.date);
+      for (let i = 0; i < 5 && !previous; i++) {
+        const previousResponse = await fetch(`https://api.frankfurter.dev/v1/${lookupDate}?base=${base}&symbols=TRY`, { cache: 'no-store' });
+        if (previousResponse.ok) {
+          const previousData = await previousResponse.json();
+          previous = previousData && previousData.rates ? previousData.rates.TRY : null;
+        }
+        if (!previous) lookupDate = previousMarketDate(lookupDate);
+      }
 
-        btn.addEventListener('click', () => {
-          const nextShown = Math.min(shown + pageSize, cards.length);
-          for (let i = shown; i < nextShown; i++) {
-            cards[i].style.display = 'flex';
+      return {
+        value,
+        change: previous ? ((value - previous) / previous) * 100 : null
+      };
+    }
+
+    function setMarketMove(itemId, changeId, change) {
+      const item = document.getElementById(itemId);
+      const changeNode = document.getElementById(changeId);
+      if (!item || !changeNode) return;
+
+      item.classList.remove('up', 'down', 'neutral');
+      changeNode.classList.remove('up', 'down');
+
+      if (typeof change !== 'number' || Number.isNaN(change)) {
+        item.classList.add('neutral');
+        changeNode.textContent = '--';
+        return;
+      }
+
+      if (Math.abs(change) < 0.01) {
+        item.classList.add('neutral');
+        changeNode.textContent = '0.0%';
+        return;
+      }
+
+      const direction = change > 0 ? 'up' : 'down';
+      const arrow = change > 0 ? '▲' : '▼';
+      item.classList.add(direction);
+      changeNode.classList.add(direction);
+      changeNode.textContent = `${arrow} ${Math.abs(change).toFixed(1)}%`;
+    }
+
+    async function updateMarkets() {
+      const status = document.getElementById('market-status');
+      try {
+        const [usdRes, eurRes, gbpRes, btcRes] = await Promise.allSettled([
+          fetchFiatMarket('USD'),
+          fetchFiatMarket('EUR'),
+          fetchFiatMarket('GBP'),
+          fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=try&include_24hr_change=true', { cache: 'no-store' })
+        ]);
+
+        function applyFiat(result, valueId, itemId, changeId) {
+          if (result.status !== 'fulfilled') {
+            setMarketMove(itemId, changeId, null);
+            return;
           }
-          shown = nextShown;
+          setMarketText(valueId, formatTry(result.value.value));
+          setMarketMove(itemId, changeId, result.value.change);
+        }
 
-          if (shown >= cards.length) {
-            btn.style.display = 'none';
-          } else {
-            btn.textContent = `Daha Fazla Göster (${cards.length - shown} haber daha)`;
-          }
-        });
+        applyFiat(usdRes, 'market-usd', 'market-usd-item', 'market-usd-change');
+        applyFiat(eurRes, 'market-eur', 'market-eur-item', 'market-eur-change');
+        applyFiat(gbpRes, 'market-gbp', 'market-gbp-item', 'market-gbp-change');
+
+        if (btcRes.status === 'fulfilled' && btcRes.value.ok) {
+          const data = await btcRes.value.json();
+          const btc = data && data.bitcoin ? data.bitcoin.try : null;
+          const change = data && data.bitcoin ? data.bitcoin.try_24h_change : null;
+          if (btc) setMarketText('market-btc', formatShortTry(btc));
+          setMarketMove('market-btc-item', 'market-btc-change', change);
+        } else {
+          setMarketMove('market-btc-item', 'market-btc-change', null);
+        }
+
+        if (status) {
+          status.textContent = 'Gecikmeli';
+          status.title = 'Piyasa verileri harici kaynaklardan gecikmeli alınır.';
+        }
+      } catch (error) {
+        if (status) status.textContent = 'Veri yok';
       }
     }
 
+    function countCards() {
+      const pairs = [
+        ['count-turkey', '#turkiye .topic-card, #grid-turkey .topic-card'],
+        ['count-usa', '#grid-usa .news-card'],
+        ['count-germany', '#grid-germany .news-card']
+      ];
+      pairs.forEach(([id, selector]) => {
+        const node = document.getElementById(id);
+        if (!node) return;
+        const visibleCards = Array.from(document.querySelectorAll(selector))
+          .filter(card => card.dataset.filteredOut !== 'true');
+        node.textContent = visibleCards.length;
+      });
+    }
+
+    function applyTopicFilter() {
+      const params = new URLSearchParams(window.location.search);
+      const activeTopic = params.get('kategori') || 'son-dakika';
+      const showAll = activeTopic === 'son-dakika';
+
+      document.querySelectorAll('.topic-link[data-topic]').forEach(link => {
+        link.classList.toggle('is-active', link.dataset.topic === activeTopic);
+      });
+
+      document.querySelectorAll('.topic-card').forEach(card => {
+        const keep = showAll || card.dataset.topic === activeTopic;
+        card.dataset.filteredOut = keep ? 'false' : 'true';
+        card.hidden = !keep;
+      });
+
+      let visibleTotal = 0;
+      document.querySelectorAll('[data-news-section]').forEach(section => {
+        const hasVisibleCards = section.querySelector('.topic-card[data-filtered-out="false"]');
+        visibleTotal += section.querySelectorAll('.topic-card[data-filtered-out="false"]').length;
+        section.hidden = !showAll && !hasVisibleCards;
+      });
+
+      const empty = document.getElementById('empty-topic');
+      if (empty) empty.hidden = showAll || visibleTotal > 0;
+    }
+
+    function initPagination(gridId, pageSize = 18) {
+      const grid = document.getElementById(gridId);
+      if (!grid) return;
+
+      const oldBtn = grid.parentElement.querySelector(`.load-more-btn[data-grid="${gridId}"]`);
+      if (oldBtn) oldBtn.remove();
+
+      const cards = Array.from(grid.querySelectorAll('.news-card'))
+        .filter(card => card.dataset.filteredOut !== 'true');
+      if (cards.length <= pageSize) return;
+
+      let shown = pageSize;
+      cards.forEach((card, i) => {
+        if (i >= pageSize) card.hidden = true;
+      });
+
+      const btn = document.createElement('button');
+      btn.className = 'load-more-btn';
+      btn.type = 'button';
+      btn.dataset.grid = gridId;
+      btn.textContent = `Daha Fazla Göster (${cards.length - shown} haber daha)`;
+      grid.parentElement.appendChild(btn);
+
+      btn.addEventListener('click', () => {
+        const nextShown = Math.min(shown + pageSize, cards.length);
+        for (let i = shown; i < nextShown; i++) {
+          cards[i].hidden = false;
+        }
+        shown = nextShown;
+        if (shown >= cards.length) {
+          btn.remove();
+        } else {
+          btn.textContent = `Daha Fazla Göster (${cards.length - shown} haber daha)`;
+        }
+      });
+    }
+
+    function initHeadlineSlider() {
+      const slider = document.querySelector('.headline-slider');
+      if (!slider) return;
+
+      const allSlides = Array.from(slider.querySelectorAll('.headline-slide'));
+      const slides = allSlides.filter(slide => slide.dataset.filteredOut !== 'true');
+      const controls = slider.querySelector('.slider-controls');
+      if (slides.length === 0) {
+        if (controls) controls.hidden = true;
+        return;
+      }
+      if (controls) controls.hidden = slides.length <= 1;
+
+      allSlides.forEach(slide => slide.classList.remove('is-active'));
+      let current = 0;
+      slides[current].classList.add('is-active');
+
+      const showSlide = (nextIndex) => {
+        slides[current].classList.remove('is-active');
+        current = (nextIndex + slides.length) % slides.length;
+        slides[current].classList.add('is-active');
+      };
+
+      const nextBtn = slider.querySelector('[data-slider-next]');
+      const prevBtn = slider.querySelector('[data-slider-prev]');
+      if (nextBtn) nextBtn.addEventListener('click', () => showSlide(current + 1));
+      if (prevBtn) prevBtn.addEventListener('click', () => showSlide(current - 1));
+
+      if (slides.length > 1) {
+        setInterval(() => showSlide(current + 1), 6500);
+      }
+    }
+
+    updateTime();
+    setInterval(updateTime, 60000);
+    updateMarkets();
+    setInterval(updateMarkets, 300000);
+    applyTopicFilter();
+    initHeadlineSlider();
+    countCards();
     initPagination('grid-turkey');
     initPagination('grid-usa');
     initPagination('grid-germany');
   </script>
-
 </body>
 </html>
