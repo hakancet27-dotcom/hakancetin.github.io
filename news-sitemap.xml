@@ -2,58 +2,69 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://hakancetin.com.tr/articles/kolombiyali-savascilar-ukrayna-rus-isgaline-karsi-savasiyor_20260519.html</loc>
+    <loc>https://hakancetin.com.tr/articles/tayland-turkiye-93-ulke-vizesiz-kalis-suresi_20260519.html</loc>
     <news:news>
       <news:publication>
         <news:name>hakancetin.com.tr</news:name>
         <news:language>tr</news:language>
       </news:publication>
       <news:publication_date>2026-05-19</news:publication_date>
-      <news:title>Kolombiyalı Savaşçılar Ukrayna&#x27;nın Rus İşgaline Karşı Savaşına Katılıyor</news:title>
+      <news:title>Tayland, Türkiye dahil 93 ülkenin vizesiz kalış süresini azaltıyor</news:title>
     </news:news>
   </url>
   <url>
-    <loc>https://hakancetin.com.tr/articles/trump-iran-saldiri_20260519.html</loc>
+    <loc>https://hakancetin.com.tr/articles/almanya-turkiye-ye-patriot-sistemi-ve-asker-konusslandiriyor_20260519.html</loc>
     <news:news>
       <news:publication>
         <news:name>hakancetin.com.tr</news:name>
         <news:language>tr</news:language>
       </news:publication>
       <news:publication_date>2026-05-19</news:publication_date>
-      <news:title>Trump İran&#x27;a &#x27;Çok Büyük Bir Saldırı&#x27;yı Ertelediğini Söyledi</news:title>
+      <news:title>Almanya Türkiye&#x27;ye Patriot Sistemi ve Asker Konuşlandırıyor</news:title>
     </news:news>
   </url>
   <url>
-    <loc>https://hakancetin.com.tr/articles/nato-jeti-estonya-uzerinde-suslu-ukrayna-insansiz-hava-araci_20260519.html</loc>
+    <loc>https://hakancetin.com.tr/articles/almanya-tahvil-getirileri-yukseliyor-borc-piyasasi-kriz-sinyalleri_20260519.html</loc>
     <news:news>
       <news:publication>
         <news:name>hakancetin.com.tr</news:name>
         <news:language>tr</news:language>
       </news:publication>
       <news:publication_date>2026-05-19</news:publication_date>
-      <news:title>NATO Jeti Estonya Üzerinde Şüpheli Ukrayna İnsansız Hava Aracını Düşürdü</news:title>
+      <news:title>Almanya&#x27;da Tahvil Getirileri Yükseliyor: Borç Piyasasından Kriz Sinyalleri Artıyor</news:title>
     </news:news>
   </url>
   <url>
-    <loc>https://hakancetin.com.tr/articles/trump-in-thomas-massie-ye-karsi-cabasi_20260519.html</loc>
+    <loc>https://hakancetin.com.tr/articles/abd-ebola-salginindan-etkilenen-ulkelerden-giris-kisitladi_20260519.html</loc>
     <news:news>
       <news:publication>
         <news:name>hakancetin.com.tr</news:name>
         <news:language>tr</news:language>
       </news:publication>
       <news:publication_date>2026-05-19</news:publication_date>
-      <news:title>Trump&#x27;ın Thomas Massie’yi Yenilgiye Uğratma Çabası Son Yılların En Pahalı Temsilciler Meclisi Ön Seçimi</news:title>
+      <news:title>ABD, Ebola Salgını Nedeniyle 3 Afrika Ülkesinden Girişi Kısıtladı</news:title>
     </news:news>
   </url>
   <url>
-    <loc>https://hakancetin.com.tr/articles/kahramanmaras-deprem_20260519.html</loc>
+    <loc>https://hakancetin.com.tr/articles/iran-savasi-gubre-krizi-ab-ciftcilere-destek_20260519.html</loc>
     <news:news>
       <news:publication>
         <news:name>hakancetin.com.tr</news:name>
         <news:language>tr</news:language>
       </news:publication>
       <news:publication_date>2026-05-19</news:publication_date>
-      <news:title>Kahramanmaraş&#x27;ta Deprem</news:title>
+      <news:title>İran Savaşının Gölgesinde Gübre Krizi: AB Çiftçilere Destek Olacak</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/iran-savasi-abd-askeri-sanayi-altyapisi_20260519.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-19</news:publication_date>
+      <news:title>İran Savaşı ABD Askeri Sanayi Altyapısındaki Eksiklikleri Ortaya Çıkardı</news:title>
     </news:news>
   </url>
   <url>
@@ -167,6 +178,39 @@
     </news:news>
   </url>
   <url>
+    <loc>https://hakancetin.com.tr/articles/kolombiyali-savascilar-ukrayna-rus-isgaline-karsi-savasiyor_20260519.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-19</news:publication_date>
+      <news:title>Kolombiyalı Savaşçılar Ukrayna&#x27;nın Rus İşgaline Karşı Savaşına Katılıyor</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/trump-iran-saldiri_20260519.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-19</news:publication_date>
+      <news:title>Trump İran&#x27;a &#x27;Çok Büyük Bir Saldırı&#x27;yı Ertelediğini Söyledi</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/nato-jeti-estonya-uzerinde-suslu-ukrayna-insansiz-hava-araci_20260519.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-19</news:publication_date>
+      <news:title>NATO Jeti Estonya Üzerinde Şüpheli Ukrayna İnsansız Hava Aracını Düşürdü</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://hakancetin.com.tr/articles/pollock-brancusi-artworks-100-million-christies-auction_20260519.html</loc>
     <news:news>
       <news:publication>
@@ -175,6 +219,17 @@
       </news:publication>
       <news:publication_date>2026-05-19</news:publication_date>
       <news:title>Pollock and Brancusi Artworks Sold for Over $100 Million Each at Auction</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/trump-in-thomas-massie-ye-karsi-cabasi_20260519.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-19</news:publication_date>
+      <news:title>Trump&#x27;ın Thomas Massie’yi Yenilgiye Uğratma Çabası Son Yılların En Pahalı Temsilciler Meclisi Ön Seçimi</news:title>
     </news:news>
   </url>
   <url>
@@ -208,6 +263,17 @@
       </news:publication>
       <news:publication_date>2026-05-19</news:publication_date>
       <news:title>AB, çelik sektörünü daha sıkı koruyacak</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/kahramanmaras-deprem_20260519.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-19</news:publication_date>
+      <news:title>Kahramanmaraş&#x27;ta Deprem</news:title>
     </news:news>
   </url>
   <url>
