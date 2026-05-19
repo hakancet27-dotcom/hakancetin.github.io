@@ -54,45 +54,38 @@
     <!-- Haber makaleleri buraya otomatik eklenecek -->
     <!-- SITEMAP_ARTICLES_START -->
     <url>
-        <loc>https://hakancetin.com.tr/articles/elon-musk-openai-sam-altman-lawsuit-dismissed_20260518.html</loc>
-        <lastmod>2026-05-18</lastmod>
+        <loc>https://hakancetin.com.tr/articles/iran-neuer-vorschlag-usa-verhandlungen_20260519.html</loc>
+        <lastmod>2026-05-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-        <image:image><image:loc>https://images.unsplash.com/photo-1617704548623-340376564e68?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFbG9uJTIwTXVza3xlbnwwfDB8fHwxNzc5MTM3OTc4fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+        <image:image><image:loc>https://images.unsplash.com/photo-1693139062697-f5f8663217fa?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxJcmFuJTIwZmxhZ3xlbnwwfDB8fHwxNzc5MTg0NDQyfDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
     </url>
     <url>
-        <loc>https://hakancetin.com.tr/articles/mersin-silahli-saldiri_20260518.html</loc>
-        <lastmod>2026-05-18</lastmod>
+        <loc>https://hakancetin.com.tr/articles/kolumbianische-kaempfer-in-der-ukraine_20260519.html</loc>
+        <lastmod>2026-05-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-        <image:image><image:loc>https://images.unsplash.com/photo-1693838474853-2941885c674a?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxzaWxhaGwlQzQlQjElMjBzYWxkJUM0JUIxciVDNCVCMXxlbnwwfDB8fHwxNzc5MTQ2MjU5fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+        <image:image><image:loc>https://images.unsplash.com/photo-1639341267320-2d062b250c0d?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxVa3JhaW5lJTIwZmxhZ3xlbnwwfDB8fHwxNzc5MTg0NDIyfDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
     </url>
     <url>
-        <loc>https://hakancetin.com.tr/articles/ebola-ausbruch-dr-kongo-uganda-gefahr_20260518.html</loc>
-        <lastmod>2026-05-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <image:image><image:loc>https://images.unsplash.com/photo-1624448713098-baface803acf?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFYm9sYXxlbnwwfDB8fHwxNzc5MTAxNDU2fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
-    </url>
-    <url>
-        <loc>https://hakancetin.com.tr/articles/trump-iran-saldiriyi-erteledi-korfez-ulkeleri-talebi_20260518.html</loc>
-        <lastmod>2026-05-18</lastmod>
+        <loc>https://hakancetin.com.tr/articles/trump-administration-proposes-10000-white-south-african-refugees-100-million-cos_20260519.html</loc>
+        <lastmod>2026-05-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image><image:loc>https://images.unsplash.com/photo-1550531996-ff3dcede9477?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxUcnVtcHxlbnwwfDB8fHwxNzc5MTEwNTU1fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
     </url>
     <url>
-        <loc>https://hakancetin.com.tr/articles/westjordanland-israel-e1-siedlung-palastina-staat_20260518.html</loc>
-        <lastmod>2026-05-18</lastmod>
+        <loc>https://hakancetin.com.tr/articles/bahceliden-ocalan-icin-sosyal-statue-cagrisi_20260519.html</loc>
+        <lastmod>2026-05-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://hakancetin.com.tr/articles/us-restricts-entry-ebola-outbreak-africa-who-emergency_20260518.html</loc>
-        <lastmod>2026-05-18</lastmod>
+        <loc>https://hakancetin.com.tr/articles/pollock-brancusi-artworks-100-million-christies-auction_20260519.html</loc>
+        <lastmod>2026-05-19</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-        <image:image><image:loc>https://images.unsplash.com/photo-1624448713098-baface803acf?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFYm9sYXxlbnwwfDB8fHwxNzc5MTAxNDU2fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+        <image:image><image:loc>https://images.unsplash.com/photo-1547891654-e66ed7ebb968?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxBcnR8ZW58MHwwfHx8MTc3OTE4NDM2OHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
     </url>
     <url>
         <loc>https://hakancetin.com.tr/articles/ebola-outbreak-global-health-emergency_20260518.html</loc>
@@ -100,6 +93,13 @@
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image><image:loc>https://images.unsplash.com/photo-1624448713098-baface803acf?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFYm9sYXxlbnwwfDB8fHwxNzc5MTAxNDU2fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/elon-musk-openai-sam-altman-lawsuit-dismissed_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1617704548623-340376564e68?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFbG9uJTIwTXVza3xlbnwwfDB8fHwxNzc5MTM3OTc4fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
     </url>
     <url>
         <loc>https://hakancetin.com.tr/articles/us-sondergesandter-landry-groenland_20260518.html</loc>
@@ -114,6 +114,13 @@
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image><image:loc>https://images.unsplash.com/photo-1617704548623-340376564e68?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFbG9uJTIwTXVza3xlbnwwfDB8fHwxNzc5MTM3OTc4fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/mersin-silahli-saldiri_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1693838474853-2941885c674a?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxzaWxhaGwlQzQlQjElMjBzYWxkJUM0JUIxciVDNCVCMXxlbnwwfDB8fHwxNzc5MTQ2MjU5fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
     </url>
     <url>
         <loc>https://hakancetin.com.tr/articles/abd-ve-israil-in-iran-a-saldirilari-yeniden-baslama-ihtimali_20260518.html</loc>
@@ -164,6 +171,13 @@
         <image:image><image:loc>https://images.unsplash.com/photo-1635668422380-8b4f751c6274?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxwb2xpc3xlbnwwfDB8fHwxNzc5MTI3NjM3fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
     </url>
     <url>
+        <loc>https://hakancetin.com.tr/articles/ebola-ausbruch-dr-kongo-uganda-gefahr_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1624448713098-baface803acf?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFYm9sYXxlbnwwfDB8fHwxNzc5MTAxNDU2fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
         <loc>https://hakancetin.com.tr/articles/panini-fussball-wm-2026-ueberleben-sticker-kultmarke_20260518.html</loc>
         <lastmod>2026-05-18</lastmod>
         <changefreq>monthly</changefreq>
@@ -192,6 +206,13 @@
         <image:image><image:loc>https://images.unsplash.com/photo-1546412414-8035e1776c9a?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxNaWRkbGUlMjBFYXN0fGVufDB8MHx8fDE3NzkxMDE0NDl8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
     </url>
     <url>
+        <loc>https://hakancetin.com.tr/articles/trump-iran-saldiriyi-erteledi-korfez-ulkeleri-talebi_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1550531996-ff3dcede9477?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxUcnVtcHxlbnwwfDB8fHwxNzc5MTEwNTU1fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
         <loc>https://hakancetin.com.tr/articles/cumhurbaskani-erdogandan-sehit-polisler-icin-bassagligi-mesaji_20260518.html</loc>
         <lastmod>2026-05-18</lastmod>
         <changefreq>monthly</changefreq>
@@ -204,6 +225,12 @@
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image><image:loc>https://images.unsplash.com/photo-1693139062697-f5f8663217fa?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxJcmFuLUtyaWVnfGVufDB8MHx8fDE3NzkxMDQyNzh8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/westjordanland-israel-e1-siedlung-palastina-staat_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
     <url>
         <loc>https://hakancetin.com.tr/articles/bundestag-cdu-abgeordneter-wilhelm-gebhard-diätenerhohung_20260518.html</loc>
@@ -262,6 +289,13 @@
         <lastmod>2026-05-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/us-restricts-entry-ebola-outbreak-africa-who-emergency_20260518.html</loc>
+        <lastmod>2026-05-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1624448713098-baface803acf?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFYm9sYXxlbnwwfDB8fHwxNzc5MTAxNDU2fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
     </url>
     <url>
         <loc>https://hakancetin.com.tr/articles/cankiri-kamyonet-kazasi_20260518.html</loc>
