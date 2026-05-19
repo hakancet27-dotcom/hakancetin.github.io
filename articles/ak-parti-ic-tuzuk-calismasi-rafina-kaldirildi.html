@@ -52,6 +52,14 @@
     article strong { color:#111827; font-weight:800; }
     .tag-list { display:flex; flex-wrap:wrap; gap:8px; margin-top:28px; padding-top:18px; border-top:1px solid var(--border); }
     .tag-list span { background:#f3f4f6; color:#4b5563; padding:5px 10px; border-radius:5px; font-size:.82rem; font-weight:700; }
+    .related-news { margin-top:26px; background:#fff; border:1px solid var(--border); border-radius:8px; padding:18px; box-shadow:0 4px 16px rgba(15,23,42,.05); }
+    .related-news h2 { margin:0 0 12px; padding:0; border:0; font-size:1.15rem; }
+    .related-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+    .related-card { border:1px solid var(--border); border-radius:7px; padding:10px 12px; background:#fafbfc; }
+    .related-card a { color:#111827; text-decoration:none; font-weight:700; line-height:1.35; display:block; }
+    .related-card a:hover { color:var(--red); }
+    .related-meta { display:flex; gap:8px; margin-top:6px; font-size:.76rem; color:var(--muted); }
+    .related-topic { background:#fdecea; color:var(--red); border-radius:999px; padding:2px 7px; font-weight:700; }
     footer { background:var(--dark); color:#cbd5e1; margin-top:46px; padding:28px 0; font-size:.88rem; }
     footer a { color:#fff; text-decoration:none; font-weight:700; }
     @media (max-width:720px) {
@@ -59,6 +67,7 @@
       header nav { width:100%; overflow-x:auto; }
       article { padding:22px; }
       .article-meta { font-size:.8rem; }
+      .related-grid { grid-template-columns:1fr; }
     }
   </style>
 </head>
@@ -100,6 +109,7 @@
       <figure class="article-image"><img src="https://hakancetin.com.tr/articles/images/ak-parti-ic-tuzuk-calismasi-rafina-kaldirildi.svg" alt="AK Parti’nin içtüzük çalışması rafa kaldırıldı" loading="eager" fetchpriority="high" width="1280" height="720"></figure>
       <h2>AK Parti’nin içtüzük çalışması rafa kaldırıldı</h2><h3>İçtüzük çalışması neden ertelendi?</h3><p>AK Parti, seçimden sonraya ertelediği içtüzük çalışmasıyla ilgili detayları paylaştı. Parti yetkilileri, muhalefet ile uzlaşı sağlanamaması nedeniyle bu kararı aldıklarını belirtti.</p><h3>Ne diyor AK Parti?</h3><p>AK Parti yetkilileri, “Muhalefet ile uzlaşı sağlanamaması nedeniyle içtüzük çalışması ertelendi. Seçimden sonra bu konuda yeniden değerlendirme yapılacaktır.” dedi.</p><h2>İçtüzük çalışmasının ertelenmesi nasıl değerlendiriliyor?</h2><p>AK Parti’nin içtüzük çalışmasının ertelenmesi, siyasi çevrelerde farklı şekilde değerlendiriliyor. Bazıları, bu kararın parti içi demokrasinin güçlenmesine katkı sağlayabileceğini düşünürken, diğerleri ise bunun seçim stratejisi olabileceğini öne sürüyor.</p><h3>Siyasi partilerin tepkisi</h3><ul><li>Muhalefet partileri, AK Parti’nin içtüzük çalışmasını erteleme kararını eleştirdi. “Bu karar, parti içi demokrasinin güçlenmesine değil, aksine zayıflamasına neden olacaktır.“ dediler.</li><li>AK Parti ise, “İçtüzük çalışmasının ertelenmesi, parti içi demokrasinin güçlenmesine katkı sağlayacaktır. Seçimden sonra bu konuda yeniden değerlendirme yapılacaktır.” diye cevap verdi.</li></ul><p>AK Parti’nin içtüzük çalışmasının ertelenmesi, siyasi gündemin önemli konularından biri olmaya devam ediyor. Parti yetkilileri, seçimden sonra bu konuda yeniden değerlendirme yapacağını açıkladı.</p>
     </article>
+    <section class="related-news" aria-label="related-news"><h2>Ilgili Haberler</h2><div class="related-grid"><article class="related-card"><a href="ab-celik-sektorunu-daha-siki-koruyacak_20260519.html">AB Çelik Sektörünü Koruma Kalkanını Güçlendiriyor: İthalat Kotaları Düşüyor, Gümrük Vergileri...</a><div class="related-meta"><span class="related-topic">Siyaset</span><time class="related-date">19.05.2026</time></div></article><article class="related-card"><a href="ak-parti-mkyk-toplantisi-celikten-aciklama_20260519.html">AK Parti MKYK Toplantısı Sona Erdi: Ömer Çelik&#x27;ten CHP Liderine Yanıt</a><div class="related-meta"><span class="related-topic">Siyaset</span><time class="related-date">19.05.2026</time></div></article><article class="related-card"><a href="bakan-fidan-iran-abd-muzakereleri_20260518.html">Bakan Fidan, İran ile ABD arasındaki müzakerelere ilişkin telefon görüşmeleri yaptı</a><div class="related-meta"><span class="related-topic">Siyaset</span><time class="related-date">18.05.2026</time></div></article><article class="related-card"><a href="cumhurbaskani-erdogandan-sehit-polisler-icin-bassagligi-mesaji_20260518.html">Cumhurbaşkanı Erdoğan&#x27;dan şehit polisler için başsağlığı mesajı</a><div class="related-meta"><span class="related-topic">Siyaset</span><time class="related-date">18.05.2026</time></div></article><article class="related-card"><a href="italya-basbakani-meloni-ab-enerji-butce-esnekligi_20260518.html">İtalya Başbakanı Meloni, AB&#x27;ye enerji konusunda bütçe esnekliği talep etti</a><div class="related-meta"><span class="related-topic">Siyaset</span><time class="related-date">18.05.2026</time></div></article><article class="related-card"><a href="cumhurbaskani-erdogan-terorsuz-bolge-vizyonu.html">Cumhurbaşkanı Erdoğan: Terörsüz bölge vizyonumuzu gençlerin güvenli geleceği için hayata geçirmek istiyoruz</a><div class="related-meta"><span class="related-topic">Siyaset</span><time class="related-date">17.05.2026</time></div></article><article class="related-card"><a href="israil-basbakani-netanyahu-new-york-timesa-dava-acacak.html">İsrail Başbakanı Netanyahu, New York Times&#x27;a Dava Açacak</a><div class="related-meta"><span class="related-topic">Siyaset</span><time class="related-date">16.05.2026</time></div></article><article class="related-card"><a href="almanya-turkiye-ye-patriot-sistemi-ve-asker-konusslandiriyor_20260519.html">Almanya Türkiye&#x27;ye Patriot Sistemi ve Asker Konuşlandırıyor</a><div class="related-meta"><span class="related-topic">Dünya</span><time class="related-date">19.05.2026</time></div></article></div></section>
   </main>
   <footer>
     <div class="inner">
