@@ -2,6 +2,61 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://hakancetin.com.tr/articles/tarsus-silahli-saldiri_20260519.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-19</news:publication_date>
+      <news:title>Tarsus&#x27;ta silahlı saldırı: Saldırgan intihar etti</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/trump-yonetimi-kubaya-yonelik-askeri-harekati-degerlendiriyor_20260519.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-19</news:publication_date>
+      <news:title>Trump yönetimi, Küba&#x27;ya yönelik askeri harekatı değerlendiriyor</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/steuerreform-gering-mitteleinkommen-koalition-plant_20260519.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-19</news:publication_date>
+      <news:title>Schwarz-rote Koalition plant Steuerreform für Gering- und Mitteleinkommen</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/bundesregierung-startet-uniper-reprivatisierung_20260519.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-19</news:publication_date>
+      <news:title>Bundesregierung startet Uniper-Reprivatisierung</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/global-ebola-emergency-declared-us-restricts-entry_20260519.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-19</news:publication_date>
+      <news:title>Global Ebola Emergency Declared; US Restricts Entry</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://hakancetin.com.tr/articles/iran-neuer-vorschlag-usa-verhandlungen_20260519.html</loc>
     <news:news>
       <news:publication>
