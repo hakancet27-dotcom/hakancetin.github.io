@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aktuelle Nachrichten aus Deutschland zu Politik, Wirtschaft, Welt, Technologie und wichtigen Entwicklungen.">
+  <link rel="canonical" href="https://hakancetin.com.tr/nachrichten/">
+  <link rel="alternate" hreflang="tr" href="https://hakancetin.com.tr/haber.html">
+  <link rel="alternate" hreflang="en" href="https://hakancetin.com.tr/news/">
+  <link rel="alternate" hreflang="de" href="https://hakancetin.com.tr/nachrichten/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Deutschland Nachrichten | hakancetin.com.tr">
+  <meta property="og:description" content="Aktuelle Nachrichten aus Deutschland zu Politik, Wirtschaft, Welt, Technologie und wichtigen Entwicklungen.">
+  <meta property="og:url" content="https://hakancetin.com.tr/nachrichten/">
+  <title>Deutschland Nachrichten | hakancetin.com.tr</title>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Deutschland Nachrichten | hakancetin.com.tr", "url": "https://hakancetin.com.tr/nachrichten/", "description": "Aktuelle Nachrichten aus Deutschland zu Politik, Wirtschaft, Welt, Technologie und wichtigen Entwicklungen.", "isPartOf": {"@type": "WebSite", "name": "hakancetin.com.tr", "url": "https://hakancetin.com.tr"}}</script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --red: #c0392b;
+      --red-dark: #922b21;
+      --dark: #171727;
+      --surface: #ffffff;
+      --page: #f4f6f8;
+      --border: #e1e5ea;
+      --text: #24292f;
+      --muted: #667085;
+      --shadow: 0 2px 10px rgba(15, 23, 42, 0.07);
+      --shadow-strong: 0 10px 26px rgba(15, 23, 42, 0.13);
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: var(--page);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    a { color: inherit; }
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 8px;
+      background: var(--dark);
+      color: white;
+      padding: 8px 12px;
+      z-index: 999;
+    }
+    .skip-link:focus { left: 8px; }
+
+    .top-bar {
+      background: var(--dark);
+      color: #c8c8d4;
+      font-size: 0.75rem;
+      padding: 6px 0;
+    }
+    .top-bar .inner,
+    header .inner,
+    .breaking .inner,
+    .container,
+    footer .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .top-bar .inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .top-links {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .top-bar a {
+      color: #c8c8d4;
+      text-decoration: none;
+    }
+    .top-bar a:hover { color: white; }
+
+    header {
+      background: var(--surface);
+      border-bottom: 3px solid var(--red);
+      padding: 14px 0;
+      box-shadow: var(--shadow);
+      z-index: 100;
+    }
+    @media (min-width: 901px) {
+      header {
+        position: sticky;
+        top: 0;
+      }
+    }
+    header .inner {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 20px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo-icon {
+      background: var(--red);
+      color: white;
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 800;
+    }
+    .logo-text strong {
+      display: block;
+      font-size: 1.2rem;
+      color: var(--dark);
+      letter-spacing: 0;
+    }
+    .logo-text span {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .market-strip {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 4px 0;
+    }
+    .market-strip::-webkit-scrollbar { display: none; }
+    .market-label {
+      flex: 0 0 auto;
+      background: var(--dark);
+      color: white;
+      border-radius: 6px;
+      padding: 7px 10px;
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.3px;
+      box-shadow: 0 5px 14px rgba(23, 23, 39, 0.18);
+    }
+    .market-item {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: white;
+      padding: 7px 11px;
+      line-height: 1;
+      box-shadow: 0 3px 10px rgba(15, 23, 42, 0.06);
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    }
+    .market-name {
+      color: var(--muted);
+      font-size: 0.7rem;
+      font-weight: 900;
+    }
+    .market-value {
+      color: var(--dark);
+      font-size: 0.98rem;
+      font-weight: 900;
+      min-width: 42px;
+      text-align: right;
+      letter-spacing: 0;
+    }
+    .market-change {
+      font-size: 0.74rem;
+      font-weight: 900;
+      min-width: 46px;
+      padding: 2px 5px;
+      border-radius: 999px;
+      text-align: center;
+    }
+    .market-item.up {
+      border-color: rgba(18, 128, 92, 0.42);
+      background: #ecfdf3;
+      box-shadow: 0 5px 16px rgba(18, 128, 92, 0.13);
+    }
+    .market-item.down {
+      border-color: rgba(180, 35, 24, 0.42);
+      background: #fff1f0;
+      box-shadow: 0 5px 16px rgba(180, 35, 24, 0.12);
+    }
+    .market-item.up .market-value,
+    .market-change.up { color: #087443; }
+    .market-item.down .market-value,
+    .market-change.down { color: #b42318; }
+    .market-change.up { background: rgba(18, 128, 92, 0.1); }
+    .market-change.down { background: rgba(180, 35, 24, 0.1); }
+    .market-item.neutral .market-change {
+      color: var(--muted);
+      background: #eef2f7;
+    }
+    .market-status {
+      flex: 0 0 auto;
+      color: var(--muted);
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+    nav {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    nav a {
+      padding: 8px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    nav a:hover { background: var(--page); color: var(--red); }
+    nav a.active { background: var(--red); color: white; }
+
+    .breaking {
+      background: var(--red);
+      color: white;
+      padding: 0;
+      border-top: 1px solid rgba(255,255,255,0.18);
+      box-shadow: inset 0 -1px 0 rgba(0,0,0,0.18);
+    }
+    .breaking .inner {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      min-height: 48px;
+    }
+    .breaking .inner::-webkit-scrollbar { display: none; }
+    .breaking-label {
+      color: rgba(255,255,255,0.72);
+      font-weight: 900;
+      font-size: 0.68rem;
+      padding: 0;
+      white-space: nowrap;
+      letter-spacing: 0.9px;
+      text-transform: uppercase;
+    }
+    .topic-list {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      min-width: 0;
+    }
+    .topic-link {
+      position: relative;
+      flex: 0 0 auto;
+      color: white;
+      text-decoration: none;
+      font-size: 0.86rem;
+      font-weight: 900;
+      line-height: 48px;
+      padding: 0 13px;
+      opacity: 0.88;
+      transition: opacity 0.2s, color 0.2s;
+    }
+    .topic-link + .topic-link::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 15px;
+      width: 1px;
+      height: 18px;
+      background: rgba(255,255,255,0.22);
+    }
+    .topic-link::after {
+      content: "";
+      position: absolute;
+      left: 13px;
+      right: 13px;
+      bottom: 0;
+      height: 3px;
+      background: transparent;
+    }
+    .topic-link:hover,
+    .topic-link.is-active {
+      color: white;
+      opacity: 1;
+    }
+    .topic-link:hover::after,
+    .topic-link.is-active::after {
+      background: white;
+    }
+    .topic-link.primary,
+    .topic-link.primary.is-active {
+      color: white;
+      opacity: 1;
+    }
+    .topic-link.primary::after {
+      color: white;
+      background: white;
+    }
+
+    .container { margin: 30px auto; }
+    .page-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 280px;
+      gap: 30px;
+      align-items: start;
+    }
+    .page-heading {
+      font-size: 1.9rem;
+      color: var(--dark);
+      letter-spacing: 0;
+      margin-bottom: 6px;
+    }
+    .page-intro {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+    }
+    .empty-state {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--muted);
+      padding: 18px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .turkey-showcase {
+      margin-bottom: 42px;
+      scroll-margin-top: 90px;
+    }
+    .showcase-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 16px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 12px;
+    }
+    .showcase-kicker {
+      color: var(--red);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.4px;
+      margin-bottom: 3px;
+    }
+    .showcase-title {
+      color: var(--dark);
+      font-size: 1.9rem;
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+    .showcase-note {
+      color: var(--muted);
+      font-size: 0.86rem;
+      text-align: right;
+      max-width: 250px;
+    }
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(280px, 0.85fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+    .headline-slider {
+      position: relative;
+      height: 456px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #11131f;
+      box-shadow: var(--shadow-strong);
+    }
+    .headline-slide {
+      position: absolute;
+      inset: 0;
+      display: block;
+      color: white;
+      text-decoration: none;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+    .headline-slide.is-active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .headline-card {
+      position: relative;
+      color: white;
+      overflow: hidden;
+      background: var(--dark);
+      min-width: 0;
+    }
+    .headline-slider .headline-slide {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+    }
+    .headline-image,
+    .headline-placeholder {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .headline-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+    .headline-card:hover .headline-image img { transform: scale(1.04); }
+    .headline-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.88);
+      font-size: 4.8rem;
+      font-weight: 900;
+      isolation: isolate;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.16), transparent 24%),
+        radial-gradient(circle at 85% 15%, rgba(192,57,43,0.5), transparent 26%),
+        linear-gradient(135deg, #121524 0%, #25283a 46%, #9d2d22 100%);
+    }
+    .headline-placeholder::before,
+    .headline-placeholder::after {
+      content: "";
+      position: absolute;
+      inset: auto;
+      z-index: -1;
+      opacity: 0.8;
+      transform: rotate(-12deg);
+    }
+    .headline-placeholder::before {
+      width: 62%;
+      height: 130px;
+      left: -12%;
+      top: 16%;
+      border-top: 2px solid rgba(255,255,255,0.16);
+      border-bottom: 2px solid rgba(255,255,255,0.08);
+    }
+    .headline-placeholder::after {
+      width: 44%;
+      height: 180px;
+      right: -10%;
+      bottom: 10%;
+      background: rgba(255,255,255,0.06);
+      border-left: 1px solid rgba(255,255,255,0.14);
+    }
+    .headline-placeholder span {
+      border: 2px solid rgba(255,255,255,0.22);
+      border-radius: 999px;
+      padding: 0.18em 0.38em;
+      background: rgba(0,0,0,0.16);
+      text-shadow: 0 5px 20px rgba(0,0,0,0.36);
+    }
+    .headline-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.86), rgba(0,0,0,0.35) 48%, rgba(0,0,0,0.06));
+      z-index: 1;
+    }
+    .headline-content {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      z-index: 2;
+    }
+    .headline-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .headline-tag,
+    .headline-topic {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 0.72rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .headline-tag { background: var(--red); color: white; }
+    .headline-topic { background: rgba(255,255,255,0.92); color: var(--red); }
+    .headline-title {
+      font-size: 2rem;
+      line-height: 1.16;
+      letter-spacing: 0;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+    .headline-date {
+      display: inline-block;
+      color: rgba(255,255,255,0.82);
+      font-size: 0.82rem;
+      margin-top: 10px;
+    }
+    .slider-controls {
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      z-index: 4;
+      display: flex;
+      gap: 8px;
+    }
+    .slider-btn {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(255,255,255,0.42);
+      border-radius: 999px;
+      background: rgba(0,0,0,0.42);
+      color: white;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .slider-btn:hover { background: var(--red); }
+    .headline-slider.has-image-active .headline-slide.is-active .headline-placeholder {
+      opacity: 0;
+    }
+    .side-headlines {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .side-headline {
+      min-height: 100px;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      text-decoration: none;
+    }
+    .side-headline .headline-content {
+      left: 14px;
+      right: 14px;
+      bottom: 12px;
+    }
+    .side-headline .headline-title {
+      font-size: 1rem;
+      line-height: 1.24;
+    }
+    .side-headline .headline-meta {
+      margin-bottom: 7px;
+    }
+    .side-headline .headline-tag,
+    .side-headline .headline-topic {
+      font-size: 0.66rem;
+      padding: 3px 7px;
+    }
+
+    .country-section { margin-bottom: 52px; scroll-margin-top: 90px; }
+    .country-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+    }
+    .country-flag { font-size: 2rem; line-height: 1; }
+    .country-title {
+      font-size: 1.32rem;
+      font-weight: 800;
+      color: var(--dark);
+      letter-spacing: 0;
+    }
+    .country-subtitle {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .country-divider {
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(to right, var(--red), transparent);
+      margin-left: 10px;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .news-grid .news-card:first-child { grid-column: span 2; }
+    .news-card {
+      background: var(--surface);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .news-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-strong);
+    }
+    .card-image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #dfe3e8;
+    }
+    .news-card:first-child .card-image { aspect-ratio: 2.1 / 1; }
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .news-card:hover .card-image img { transform: scale(1.04); }
+    .card-image-placeholder {
+      background:
+        linear-gradient(135deg, rgba(192,57,43,0.92), rgba(23,23,39,0.95)),
+        radial-gradient(circle at 20% 10%, rgba(255,255,255,0.15), transparent 30%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-image-placeholder span {
+      color: rgba(255,255,255,0.82);
+      font-size: 2.5rem;
+      font-weight: 800;
+    }
+    .card-body {
+      padding: 18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .card-category {
+      background: #fff0f0;
+      color: var(--red);
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.3px;
+      text-transform: none;
+    }
+    .card-topic {
+      background: #eef2f7;
+      color: #344054;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 20px;
+      letter-spacing: 0.3px;
+    }
+    .card-date {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .card-title {
+      font-size: 1rem;
+      font-weight: 800;
+      line-height: 1.42;
+      margin-bottom: 10px;
+      letter-spacing: 0;
+    }
+    .news-card:first-child .card-title { font-size: 1.25rem; }
+    .card-title a {
+      color: var(--text);
+      text-decoration: none;
+    }
+    .card-title a:hover { color: var(--red); }
+    .card-excerpt {
+      color: var(--muted);
+      font-size: 0.86rem;
+      margin-bottom: 12px;
+    }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .read-more {
+      color: var(--red);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .read-more:hover { text-decoration: underline; }
+
+    .sidebar { position: sticky; top: 96px; }
+    .sidebar-widget,
+    .youtube-widget {
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+    .sidebar-widget {
+      background: var(--surface);
+      padding: 20px;
+    }
+    .widget-title {
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--muted);
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--red);
+    }
+    .country-filter {
+      list-style: none;
+      display: grid;
+      gap: 2px;
+    }
+    .country-filter a {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .country-filter li:last-child a { border-bottom: none; }
+    .country-filter a:hover { color: var(--red); }
+    .country-filter .count {
+      margin-left: auto;
+      background: var(--page);
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .latest-news-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+    .latest-news-list li {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+    .latest-news-list li:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .latest-news-list a {
+      display: block;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+    .latest-news-list a:hover { color: var(--red); }
+    .latest-news-list span {
+      display: inline-block;
+      margin-bottom: 4px;
+      color: var(--red);
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+    .youtube-widget {
+      background: linear-gradient(135deg, #d91f1f, #b31313);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .youtube-widget .yt-icon { font-size: 2.2rem; margin-bottom: 10px; }
+    .youtube-widget h3 { font-size: 1rem; margin-bottom: 8px; }
+    .youtube-widget p { font-size: 0.82rem; opacity: 0.92; margin-bottom: 15px; }
+    .youtube-widget a {
+      background: white;
+      color: #b31313;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .info-text {
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+    .info-text strong { color: var(--text); }
+
+    .load-more-btn {
+      display: block;
+      margin: 20px auto 0;
+      padding: 12px 30px;
+      background: white;
+      color: var(--red);
+      border: 2px solid var(--red);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .load-more-btn:hover {
+      background: var(--red);
+      color: white;
+    }
+
+    footer {
+      background: var(--dark);
+      color: #bfc0cc;
+      padding: 40px 0 20px;
+      margin-top: 60px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 34px;
+      margin-bottom: 30px;
+    }
+    footer h4 {
+      color: white;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+    footer p,
+    footer a {
+      font-size: 0.85rem;
+      color: #bfc0cc;
+      text-decoration: none;
+      line-height: 2;
+      display: block;
+    }
+    footer a:hover { color: white; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 20px;
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-bottom a {
+      display: inline;
+      color: #ffb0a8;
+    }
+
+    @media (max-width: 900px) {
+      .top-bar .inner,
+      header .inner {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+      }
+      .market-strip {
+        width: 100%;
+        justify-content: flex-start;
+        padding-bottom: 2px;
+      }
+      .page-layout { grid-template-columns: 1fr; }
+      .showcase-grid { grid-template-columns: 1fr; }
+      .headline-slider { height: 380px; }
+      .side-headlines {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+      .news-grid { grid-template-columns: 1fr; }
+      .news-grid .news-card:first-child { grid-column: span 1; }
+      .news-card:first-child .card-image { aspect-ratio: 16 / 9; }
+      .footer-grid { grid-template-columns: 1fr; gap: 22px; }
+    }
+    @media (max-width: 600px) {
+      .container { margin-top: 24px; padding: 0 18px; }
+      .top-links { justify-content: center; flex-wrap: wrap; }
+      .breaking .inner { padding-right: 0; }
+      .topic-list { padding-right: 18px; }
+      .topic-link { font-size: 0.8rem; padding: 0 10px; }
+      .topic-link::after { left: 10px; right: 10px; }
+      .market-item { padding: 6px 9px; }
+      .market-label { padding: 6px 8px; }
+      .page-heading { font-size: 1.65rem; }
+      .showcase-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .showcase-note { text-align: left; max-width: none; }
+      .showcase-title { font-size: 1.55rem; }
+      .headline-slider { height: 330px; }
+      .headline-title { font-size: 1.45rem; }
+      .headline-content {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+      }
+      .side-headlines { grid-template-columns: 1fr; }
+      .side-headline { min-height: 118px; }
+      .country-header { align-items: flex-start; }
+      .country-divider { display: none; }
+      .card-body { padding: 17px; }
+      .news-card:first-child .card-title { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div class="top-bar">
+    <div class="inner">
+      <span id="current-time">Loading...</span>
+      <div class="top-links" aria-label="Top links">
+        <a href="../index.html">Home</a>
+        <a href="../haber.html">Türkçe Haberler</a>
+        <a href="./" aria-current="page">Aktuelle Deutschland Nachrichten</a>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="inner">
+      <a href="../index.html" class="logo" aria-label="hakancetin.com.tr home">
+        <div class="logo-icon">H</div>
+        <div class="logo-text">
+          <strong>hakancetin.com.tr</strong>
+          <span>Global News Platform</span>
+        </div>
+      </a>
+      <div class="market-strip" aria-label="Market data">
+        <span class="market-label">Markets</span>
+        <span class="market-item neutral" id="market-usd-item"><span class="market-name">USD/TRY</span><strong class="market-value" id="market-usd">--</strong><span class="market-change" id="market-usd-change">--</span></span>
+        <span class="market-item neutral" id="market-eur-item"><span class="market-name">EUR/TRY</span><strong class="market-value" id="market-eur">--</strong><span class="market-change" id="market-eur-change">--</span></span>
+        <span class="market-item neutral" id="market-gbp-item"><span class="market-name">GBP/TRY</span><strong class="market-value" id="market-gbp">--</strong><span class="market-change" id="market-gbp-change">--</span></span>
+        <span class="market-item neutral" id="market-btc-item"><span class="market-name">BTC</span><strong class="market-value" id="market-btc">--</strong><span class="market-change" id="market-btc-change">--</span></span>
+        <span class="market-status" id="market-status">Updating</span>
+      </div>
+      <nav aria-label="Main menu">
+        <a href="../index.html">Home</a>
+        <a href="../haber.html">Haberler</a>
+        <a href="./" class="active" aria-current="page">DE</a>
+      </nav>
+    </div>
+  </header>
+
+  <nav class="breaking" aria-label="News categories">
+    <div class="inner">
+      <span class="breaking-label">RUBRIKEN</span>
+      <div class="topic-list">
+        <a class="topic-link primary" href="./" data-topic="son-dakika">Aktuell</a>
+        <a class="topic-link" href="./?kategori=gundem" data-topic="gundem">Themen</a>
+        <a class="topic-link" href="./?kategori=siyaset" data-topic="siyaset">Politik</a>
+        <a class="topic-link" href="./?kategori=ekonomi" data-topic="ekonomi">Wirtschaft</a>
+        <a class="topic-link" href="./?kategori=dunya" data-topic="dunya">Welt</a>
+        <a class="topic-link" href="./?kategori=spor" data-topic="spor">Sport</a>
+        <a class="topic-link" href="./?kategori=magazin" data-topic="magazin">Kultur</a>
+        <a class="topic-link" href="./?kategori=teknoloji" data-topic="teknoloji">Technologie</a>
+        <a class="topic-link" href="./?kategori=saglik" data-topic="saglik">Gesundheit</a>
+        <a class="topic-link" href="./?kategori=video" data-topic="video">Video</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="page-layout">
+      <main id="main-content">
+        <section class="turkey-showcase" id="top-stories" data-news-section aria-labelledby="main-title">
+          <div class="showcase-header">
+            <div>
+              <div class="showcase-kicker">Deutschland</div>
+              <h1 class="showcase-title" id="main-title">Aktuelle Deutschland Nachrichten</h1>
+            </div>
+            <p class="showcase-note">Aus deutschen Quellen ausgewählte Schlagzeilen und aktuelle Entwicklungen.</p>
+          </div>
+          <div class="showcase-grid">
+            <div class="headline-slider" aria-label="Aktuelle Deutschland Nachrichten">
+              
+              <a class="headline-slide headline-card topic-card is-active" href="artikel/bundesregierung-startet-uniper-reprivatisierung_20260519.html" data-topic="gundem" aria-label="Bundesregierung startet Uniper-Reprivatisierung">
+                <div class="headline-image"><img src="https://images.unsplash.com/photo-1642888621621-ff7d83f3fdcf?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxVbmlwZXJ8ZW58MHwwfHx8MTc3OTE4NjQ4M3ww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Bundesregierung startet Uniper-Reprivatisierung" loading="eager" fetchpriority="high" width="1080" height="720"></div>
+                <div class="headline-content">
+                  <div class="headline-meta">
+                    <span class="headline-tag">Topmeldung</span>
+                    <span class="headline-topic">Themen</span>
+                  </div>
+                  <h3 class="headline-title">Bundesregierung startet Uniper-Reprivatisierung</h3>
+                  <time class="headline-date" datetime="2026-05-19">19.05.2026</time>
+                </div>
+              </a>
+              <a class="headline-slide headline-card topic-card" href="artikel/iran-neuer-vorschlag-usa-verhandlungen_20260519.html" data-topic="dunya" aria-label="Iran schickt neuen Vorschlag an die USA">
+                <div class="headline-image"><img src="https://images.unsplash.com/photo-1693139062697-f5f8663217fa?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxJcmFuJTIwZmxhZ3xlbnwwfDB8fHwxNzc5MTg0NDQyfDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Iran schickt neuen Vorschlag an die USA" loading="lazy" width="1080" height="720"></div>
+                <div class="headline-content">
+                  <div class="headline-meta">
+                    <span class="headline-tag">Topmeldung</span>
+                    <span class="headline-topic">Welt</span>
+                  </div>
+                  <h3 class="headline-title">Iran schickt neuen Vorschlag an die USA</h3>
+                  <time class="headline-date" datetime="2026-05-19">19.05.2026</time>
+                </div>
+              </a>
+              <a class="headline-slide headline-card topic-card" href="artikel/kolumbianische-kaempfer-in-der-ukraine_20260519.html" data-topic="teknoloji" aria-label="Kolumbianische Kämpfer in der Ukraine">
+                <div class="headline-image"><img src="https://images.unsplash.com/photo-1639341267320-2d062b250c0d?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxVa3JhaW5lJTIwZmxhZ3xlbnwwfDB8fHwxNzc5MTg0NDIyfDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Kolumbianische Kämpfer in der Ukraine" loading="lazy" width="1080" height="720"></div>
+                <div class="headline-content">
+                  <div class="headline-meta">
+                    <span class="headline-tag">Topmeldung</span>
+                    <span class="headline-topic">Technologie</span>
+                  </div>
+                  <h3 class="headline-title">Kolumbianische Kämpfer in der Ukraine</h3>
+                  <time class="headline-date" datetime="2026-05-19">19.05.2026</time>
+                </div>
+              </a>
+              <a class="headline-slide headline-card topic-card" href="artikel/steuerreform-gering-mitteleinkommen-koalition-plant_20260519.html" data-topic="dunya" aria-label="Schwarz-rote Koalition plant Steuerreform für Gering- und Mitteleinkommen">
+                <div class="headline-image"><img src="https://images.unsplash.com/photo-1598432439250-0330f9130e14?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxTdGV1ZXJyZWZvcm18ZW58MHwwfHx8MTc3OTE4NjUwOXww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Schwarz-rote Koalition plant Steuerreform für Gering- und Mitteleinkommen" loading="lazy" width="1080" height="720"></div>
+                <div class="headline-content">
+                  <div class="headline-meta">
+                    <span class="headline-tag">Topmeldung</span>
+                    <span class="headline-topic">Welt</span>
+                  </div>
+                  <h3 class="headline-title">Schwarz-rote Koalition plant Steuerreform für Gering- und Mitteleinkommen</h3>
+                  <time class="headline-date" datetime="2026-05-19">19.05.2026</time>
+                </div>
+              </a>
+              <div class="slider-controls" aria-label="Headline controls">
+                <button class="slider-btn" type="button" data-slider-prev aria-label="Previous">‹</button>
+                <button class="slider-btn" type="button" data-slider-next aria-label="Next">›</button>
+              </div>
+            </div>
+            <div class="side-headlines" aria-label="Featured stories">
+              
+              <a class="headline-card side-headline topic-card" href="artikel/dax-konzerne-gewinne-umsatzflaute-ey_20260518.html" data-topic="gundem" aria-label="DAX-Konzerne trotzen Konjunkturschwäche: Gewinne steigen trotz stagnierender Umsätze">
+                <div class="headline-image"><img src="https://images.unsplash.com/photo-1672953966838-e47cbfb4933f?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxEQVh8ZW58MHwwfHx8MTc3OTExMDYyNnww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="DAX-Konzerne trotzen Konjunkturschwäche: Gewinne steigen trotz stagnierender Umsätze" loading="lazy" width="1080" height="720"></div>
+                <div class="headline-content">
+                  <div class="headline-meta">
+                    <span class="headline-tag">Ausgewählt</span>
+                    <span class="headline-topic">Themen</span>
+                  </div>
+                  <h3 class="headline-title">DAX-Konzerne trotzen Konjunkturschwäche: Gewinne steigen trotz stagnierender Umsätze</h3>
+                  <time class="headline-date" datetime="2026-05-18">18.05.2026</time>
+                </div>
+              </a>
+              <a class="headline-card side-headline topic-card" href="artikel/ebola-ausbruch-dr-kongo-uganda-gefahr_20260518.html" data-topic="saglik" aria-label="Virus in DR Kongo und Uganda: Wie gefährlich ist der Ebola-Ausbruch?">
+                <div class="headline-image"><img src="https://images.unsplash.com/photo-1624448713098-baface803acf?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFYm9sYXxlbnwwfDB8fHwxNzc5MTAxNDU2fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Virus in DR Kongo und Uganda: Wie gefährlich ist der Ebola-Ausbruch?" loading="lazy" width="1080" height="720"></div>
+                <div class="headline-content">
+                  <div class="headline-meta">
+                    <span class="headline-tag">Ausgewählt</span>
+                    <span class="headline-topic">Gesundheit</span>
+                  </div>
+                  <h3 class="headline-title">Virus in DR Kongo und Uganda: Wie gefährlich ist der Ebola-Ausbruch?</h3>
+                  <time class="headline-date" datetime="2026-05-18">18.05.2026</time>
+                </div>
+              </a>
+              <a class="headline-card side-headline topic-card" href="artikel/elon-musk-klage-gegen-openai_20260518.html" data-topic="teknoloji" aria-label="Elon Musk scheitert mit Klage gegen OpenAI">
+                <div class="headline-image"><img src="https://images.unsplash.com/photo-1617704548623-340376564e68?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFbG9uJTIwTXVza3xlbnwwfDB8fHwxNzc5MTM3OTc4fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Elon Musk scheitert mit Klage gegen OpenAI" loading="lazy" width="1080" height="720"></div>
+                <div class="headline-content">
+                  <div class="headline-meta">
+                    <span class="headline-tag">Ausgewählt</span>
+                    <span class="headline-topic">Technologie</span>
+                  </div>
+                  <h3 class="headline-title">Elon Musk scheitert mit Klage gegen OpenAI</h3>
+                  <time class="headline-date" datetime="2026-05-18">18.05.2026</time>
+                </div>
+              </a>
+              <a class="headline-card side-headline topic-card" href="artikel/iran-krieg-teheran-schickt-neuen-vorschlag-an-die-usa_20260518.html" data-topic="dunya" aria-label="Iran-Krieg: Teheran schickt neuen Vorschlag an die USA">
+                <div class="headline-image"><img src="https://images.unsplash.com/photo-1613930648631-7191115e83d4?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxJcmFufGVufDB8MHx8fDE3NzkwNTA2MjB8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Iran-Krieg: Teheran schickt neuen Vorschlag an die USA" loading="lazy" width="1080" height="720"></div>
+                <div class="headline-content">
+                  <div class="headline-meta">
+                    <span class="headline-tag">Ausgewählt</span>
+                    <span class="headline-topic">Welt</span>
+                  </div>
+                  <h3 class="headline-title">Iran-Krieg: Teheran schickt neuen Vorschlag an die USA</h3>
+                  <time class="headline-date" datetime="2026-05-18">18.05.2026</time>
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section class="country-section" id="latest" data-news-section>
+          <div class="country-header">
+            <span class="country-flag">DE</span>
+            <div>
+              <div class="country-name">Nachrichtenfluss Deutschland</div>
+              <div class="country-subtitle">Aktuelle Meldungen aus deutschen Nachrichtenquellen</div>
+            </div>
+            <div class="country-divider"></div>
+          </div>
+          <div class="news-grid" id="grid-main">
+            
+      <article class="news-card topic-card" data-topic="gundem">
+        <div class="card-image card-image-placeholder" aria-hidden="true"><span>🇩🇪</span></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Themen</span>
+            <time class="card-date" datetime="2026-05-18">18.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/bundestag-cdu-abgeordneter-wilhelm-gebhard-diätenerhohung_20260518.html">Bundestag: CDU-Abgeordneter Wilhelm Gebhard über Diätenerhöhung</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/bundestag-cdu-abgeordneter-wilhelm-gebhard-diätenerhohung_20260518.html" aria-label="Bundestag: CDU-Abgeordneter Wilhelm Gebhard über Diätenerhöhung Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="teknoloji">
+        <div class="card-image card-image-placeholder" aria-hidden="true"><span>🇩🇪</span></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Technologie</span>
+            <time class="card-date" datetime="2026-05-18">18.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/infineon-halbleiterfabrik-dresden-fertigstellung_20260518.html">Infineon-Halbleiterfabrik in Dresden fast fertiggestellt</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/infineon-halbleiterfabrik-dresden-fertigstellung_20260518.html" aria-label="Infineon-Halbleiterfabrik in Dresden fast fertiggestellt Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="dunya">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1693139062697-f5f8663217fa?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxJcmFuLUtyaWVnfGVufDB8MHx8fDE3NzkxMDQyNzh8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Klingbeil sieht Weltwirtschaft durch Iran-Krieg bedroht" loading="lazy" width="1080" height="720"></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Welt</span>
+            <time class="card-date" datetime="2026-05-18">18.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/klingbeil-iran-krieg-weltwirtschaft-bedroht_20260518.html">Klingbeil sieht Weltwirtschaft durch Iran-Krieg bedroht</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/klingbeil-iran-krieg-weltwirtschaft-bedroht_20260518.html" aria-label="Klingbeil sieht Weltwirtschaft durch Iran-Krieg bedroht Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="dunya">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1613930648631-7191115e83d4?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxJcmFufGVufDB8MHx8fDE3NzkwNTA2MjB8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Klingbeil sieht Weltwirtschaft durch Iran-Krieg bedroht" loading="lazy" width="1080" height="720"></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">DE Deutschland</span>
+            <span class="card-topic">Welt</span>
+            <time class="card-date" datetime="2026-05-18">18.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/klingbeil-iran-krieg-weltwirtschaft_20260518.html">Klingbeil sieht Weltwirtschaft durch Iran-Krieg bedroht</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/klingbeil-iran-krieg-weltwirtschaft_20260518.html" aria-label="Klingbeil sieht Weltwirtschaft durch Iran-Krieg bedroht Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="gundem">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1586717937993-4bfb1856c62e?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxaaXZpbHNjaHV0enxlbnwwfDB8fHwxNzc5MTI3NjY0fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Milliarden für Zivilschutz" loading="lazy" width="1080" height="720"></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Themen</span>
+            <time class="card-date" datetime="2026-05-18">18.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/milliarden-fuer-zivilschutz_20260518.html">Milliarden für Zivilschutz</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/milliarden-fuer-zivilschutz_20260518.html" aria-label="Milliarden für Zivilschutz Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="gundem">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1618259278412-2819cbdea4dc?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxHZXJtYW55fGVufDB8MHx8fDE3NzkxMTA2MDJ8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Milliarden für Zivilschutz: Deutschland rüstet sich für Krisenfälle mit Feldbetten, Spezialfahrzeugen und Notvorräten" loading="lazy" width="1080" height="720"></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Themen</span>
+            <time class="card-date" datetime="2026-05-18">18.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/milliarden-zivilschutz-deutschland-krisenfaelle-feldbetten-spezialfahrzeuge-notv_20260518.html">Milliarden für Zivilschutz: Deutschland rüstet sich für Krisenfälle mit Feldbetten, Spezialfahrzeugen und Notvorräten</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/milliarden-zivilschutz-deutschland-krisenfaelle-feldbetten-spezialfahrzeuge-notv_20260518.html" aria-label="Milliarden für Zivilschutz: Deutschland rüstet sich für Krisenfälle mit Feldbetten, Spezialfahrzeugen und Notvorräten Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="spor">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1621852004158-f3bc188ace2d?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxQYW5pbml8ZW58MHwwfHx8MTc3OTEwNDMwNHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Panini vor Fußball-WM 2026: Wie die Sticker-Kultmarke ums Überleben kämpft" loading="lazy" width="1080" height="720"></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Sport</span>
+            <time class="card-date" datetime="2026-05-18">18.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/panini-fussball-wm-2026-ueberleben-sticker-kultmarke_20260518.html">Panini vor Fußball-WM 2026: Wie die Sticker-Kultmarke ums Überleben kämpft</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/panini-fussball-wm-2026-ueberleben-sticker-kultmarke_20260518.html" aria-label="Panini vor Fußball-WM 2026: Wie die Sticker-Kultmarke ums Überleben kämpft Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="teknoloji">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1639341267320-2d062b250c0d?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxVa3JhaW5lfGVufDB8MHx8fDE3NzkwMzIxNzZ8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Tote bei ukrainischen Angriffen auf Region Moskau" loading="lazy" width="1080" height="720"></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Technologie</span>
+            <time class="card-date" datetime="2026-05-18">18.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/tote-ukrainische-angriffe-region-moskau-drohnen-opfer_20260518.html">Tote bei ukrainischen Angriffen auf Region Moskau</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/tote-ukrainische-angriffe-region-moskau-drohnen-opfer_20260518.html" aria-label="Tote bei ukrainischen Angriffen auf Region Moskau Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="gundem">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1537267013710-d7b37fa331b3?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxHciVDMyVCNm5sYW5kfGVufDB8MHx8fDE3NzkxMjc2ODR8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="US-Sondergesandter Landry zu Gesprächen in Grönland eingetroffen" loading="lazy" width="1080" height="720"></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Themen</span>
+            <time class="card-date" datetime="2026-05-18">18.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/us-sondergesandter-landry-groenland_20260518.html">US-Sondergesandter Landry zu Gesprächen in Grönland eingetroffen</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/us-sondergesandter-landry-groenland_20260518.html" aria-label="US-Sondergesandter Landry zu Gesprächen in Grönland eingetroffen Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="gundem">
+        <div class="card-image card-image-placeholder" aria-hidden="true"><span>DE</span></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">DE Deutschland</span>
+            <span class="card-topic">Themen</span>
+            <time class="card-date" datetime="2026-05-18">18.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/westjordanland-israel-e1-siedlung-palastina-staat_20260518.html">Westjordanland: Israel beginnt mit Umsetzung von Siedlungsprojekt E1 – Aussichten auf palästinensischen Staat schwinden</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/westjordanland-israel-e1-siedlung-palastina-staat_20260518.html" aria-label="Westjordanland: Israel beginnt mit Umsetzung von Siedlungsprojekt E1 – Aussichten auf palästinensischen Staat schwinden Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="gundem">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1618259278412-2819cbdea4dc?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxEZXV0c2NoZSUyMFdpcnRzY2hhZnR8ZW58MHwwfHx8MTc3OTAxMjI4N3ww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Deutsche Wirtschaft zeigt sich stabil" loading="lazy" width="1080" height="720"></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Themen</span>
+            <time class="card-date" datetime="2026-05-17">17.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/deutsche-wirtschaft-stabil_20260517.html">Deutsche Wirtschaft zeigt sich stabil</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/deutsche-wirtschaft-stabil_20260517.html" aria-label="Deutsche Wirtschaft zeigt sich stabil Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="gundem">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1552395599-0aced1169753?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxLbGltYXNjaHV0enxlbnwwfDB8fHwxNzc5MDEyMjgwfDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Klimaschutz: Neues Heizungsgesetz droht vor dem Bundesverfassungsgericht zu scheitern" loading="lazy" width="1080" height="720"></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Themen</span>
+            <time class="card-date" datetime="2026-05-17">17.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/klimaschutz-neues-heizungsgesetz-droht-vor-dem-bundesverfassungsgericht-zu-scheitern_20260517.html">Klimaschutz: Neues Heizungsgesetz droht vor dem Bundesverfassungsgericht zu scheitern</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/klimaschutz-neues-heizungsgesetz-droht-vor-dem-bundesverfassungsgericht-zu-scheitern_20260517.html" aria-label="Klimaschutz: Neues Heizungsgesetz droht vor dem Bundesverfassungsgericht zu scheitern Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="dunya">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1604608619736-53e7be31f8d4?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxQZmxlZ2VyZWZvcm18ZW58MHwwfHx8MTc3ODk4NDkxNHww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Pflegereform: CSU warnt vor &#x27;Kurs in soziale Kälte&#x27;" loading="lazy" width="1080" height="720"></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Welt</span>
+            <time class="card-date" datetime="2026-05-17">17.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/pflegereform-csu-warnt-vor-kurs-in-soziale-kaelte.html">Pflegereform: CSU warnt vor &#x27;Kurs in soziale Kälte&#x27;</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/pflegereform-csu-warnt-vor-kurs-in-soziale-kaelte.html" aria-label="Pflegereform: CSU warnt vor &#x27;Kurs in soziale Kälte&#x27; Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="teknoloji">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1470004914212-05527e49370b?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxUYWl3YW58ZW58MHwwfHx8MTc3ODk4OTU5N3ww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Taiwan setzt auf schnelle Waffenlieferungen aus den USA" loading="lazy" width="1080" height="720"></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Technologie</span>
+            <time class="card-date" datetime="2026-05-17">17.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/taiwan-usa-waffenlieferungen_20260517.html">Taiwan setzt auf schnelle Waffenlieferungen aus den USA</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/taiwan-usa-waffenlieferungen_20260517.html" aria-label="Taiwan setzt auf schnelle Waffenlieferungen aus den USA Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="gundem">
+        <div class="card-image card-image-placeholder" aria-hidden="true"><span>🇩🇪</span></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Themen</span>
+            <time class="card-date" datetime="2026-05-17">17.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/wes-streeting-fordert-keir-starmer-heraus.html">Wes Streeting fordert Premierminister Keir Starmer heraus</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/wes-streeting-fordert-keir-starmer-heraus.html" aria-label="Wes Streeting fordert Premierminister Keir Starmer heraus Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="gundem">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1486286701208-1d58e9338013?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxGdSVDMyU5RmJhbGx8ZW58MHwwfHx8MTc3ODk4NDkxMnww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Wolfsburg rettet sich auf den Relegationsplatz" loading="lazy" width="1080" height="720"></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Themen</span>
+            <time class="card-date" datetime="2026-05-17">17.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/wolfsburg-relegt-sich.html">Wolfsburg rettet sich auf den Relegationsplatz</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/wolfsburg-relegt-sich.html" aria-label="Wolfsburg rettet sich auf den Relegationsplatz Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="gundem">
+        <div class="card-image card-image-placeholder" aria-hidden="true"><span>🇩🇪</span></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Themen</span>
+            <time class="card-date" datetime="2026-05-16">16.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/andy-burnham-moeglicher-nachfolger-fuer-den-britischen-premierminister.html">Andy Burnham als möglicher Nachfolger für den britischen Premierminister</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/andy-burnham-moeglicher-nachfolger-fuer-den-britischen-premierminister.html" aria-label="Andy Burnham als möglicher Nachfolger für den britischen Premierminister Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="gundem">
+        <div class="card-image card-image-placeholder" aria-hidden="true"><span>🇩🇪</span></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Themen</span>
+            <time class="card-date" datetime="2026-05-16">16.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/depot-insolvent-einrichtungsladen-schliesst-filialen.html">Depot insolvent: Einrichtungsladen schließt Filialen</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/depot-insolvent-einrichtungsladen-schliesst-filialen.html" aria-label="Depot insolvent: Einrichtungsladen schließt Filialen Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="saglik">
+        <div class="card-image card-image-placeholder" aria-hidden="true"><span>🇩🇪</span></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Gesundheit</span>
+            <time class="card-date" datetime="2026-05-16">16.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/ebola-ausbruch-in-der-demokratischen-republik-kongo.html">Ebola-Ausbruch in der Demokratischen Republik Kongo</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/ebola-ausbruch-in-der-demokratischen-republik-kongo.html" aria-label="Ebola-Ausbruch in der Demokratischen Republik Kongo Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="ekonomi">
+        <div class="card-image card-image-placeholder" aria-hidden="true"><span>🇩🇪</span></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Wirtschaft</span>
+            <time class="card-date" datetime="2026-05-16">16.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/euroclear-schadenersatz-russische-gelder.html">Finanzdienstleister Euroclear soll für eingefrorene russische Gelder Schadenersatz leisten</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/euroclear-schadenersatz-russische-gelder.html" aria-label="Finanzdienstleister Euroclear soll für eingefrorene russische Gelder Schadenersatz leisten Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="gundem">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1706852523369-c51a4017a57c?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFU0N8ZW58MHwwfHx8MTc3ODk1MjI3N3ww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Felicia Eriksson kollabiert nach ESC-Generalprobe" loading="lazy" width="1080" height="720"></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Themen</span>
+            <time class="card-date" datetime="2026-05-16">16.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/felicia-eriksson-kollabiert-nach-esc-generalprobe.html">Felicia Eriksson kollabiert nach ESC-Generalprobe</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/felicia-eriksson-kollabiert-nach-esc-generalprobe.html" aria-label="Felicia Eriksson kollabiert nach ESC-Generalprobe Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="gundem">
+        <div class="card-image card-image-placeholder" aria-hidden="true"><span>🇩🇪</span></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Themen</span>
+            <time class="card-date" datetime="2026-05-16">16.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/internationale-beziehungen-unter-druck.html">Internationale Beziehungen unter Druck</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/internationale-beziehungen-unter-druck.html" aria-label="Internationale Beziehungen unter Druck Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="dunya">
+        <div class="card-image card-image-placeholder" aria-hidden="true"><span>🇩🇪</span></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Welt</span>
+            <time class="card-date" datetime="2026-05-16">16.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/iran-krieg-regierung-deutlichen-konjunkturdaeumerwartet.html">Iran-Krieg: Regierung erwartet deutlichen Konjunkturdämpfer</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/iran-krieg-regierung-deutlichen-konjunkturdaeumerwartet.html" aria-label="Iran-Krieg: Regierung erwartet deutlichen Konjunkturdämpfer Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="dunya">
+        <div class="card-image card-image-placeholder" aria-hidden="true"><span>🇩🇪</span></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Welt</span>
+            <time class="card-date" datetime="2026-05-16">16.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/krieg-in-der-ukraine-zahl-der-toten-in-kiew-steigt-auf-24.html">Krieg in der Ukraine: Zahl der Toten in Kiew steigt auf 24</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/krieg-in-der-ukraine-zahl-der-toten-in-kiew-steigt-auf-24.html" aria-label="Krieg in der Ukraine: Zahl der Toten in Kiew steigt auf 24 Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="gundem">
+        <div class="card-image card-image-placeholder" aria-hidden="true"><span>🇩🇪</span></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Themen</span>
+            <time class="card-date" datetime="2026-05-16">16.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/nachbau-des-k-i-t-t-autos-in-new-york-mit-strafzettel-belegt.html">Nachbau des K.I.T.T.-Autos in New York mit Strafzettel belegt</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/nachbau-des-k-i-t-t-autos-in-new-york-mit-strafzettel-belegt.html" aria-label="Nachbau des K.I.T.T.-Autos in New York mit Strafzettel belegt Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="gundem">
+        <div class="card-image card-image-placeholder" aria-hidden="true"><span>🇩🇪</span></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Themen</span>
+            <time class="card-date" datetime="2026-05-16">16.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/putin-besucht-xi-jinping-in-china.html">Wladimir Putin bei Xi Jinping in China</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/putin-besucht-xi-jinping-in-china.html" aria-label="Wladimir Putin bei Xi Jinping in China Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="gundem">
+        <div class="card-image card-image-placeholder" aria-hidden="true"><span>🇩🇪</span></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Themen</span>
+            <time class="card-date" datetime="2026-05-16">16.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/rassistische-parolen-am-vatertag-in-hamburg.html">Rassistische Parolen am Vatertag in Hamburg</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/rassistische-parolen-am-vatertag-in-hamburg.html" aria-label="Rassistische Parolen am Vatertag in Hamburg Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="gundem">
+        <div class="card-image card-image-placeholder" aria-hidden="true"><span>🇩🇪</span></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Themen</span>
+            <time class="card-date" datetime="2026-05-16">16.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/regierungskrise-in-grossbritannien.html">Regierungskrise in Großbritannien</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/regierungskrise-in-grossbritannien.html" aria-label="Regierungskrise in Großbritannien Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="dunya">
+        <div class="card-image card-image-placeholder" aria-hidden="true"><span>🇩🇪</span></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Welt</span>
+            <time class="card-date" datetime="2026-05-16">16.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/russlands-krieg-gegen-die-ukraine-zahl-der-toten-in-kiew-steigt-auf-24.html">Russlands Krieg gegen die Ukraine: Zahl der Toten in Kiew steigt auf 24</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/russlands-krieg-gegen-die-ukraine-zahl-der-toten-in-kiew-steigt-auf-24.html" aria-label="Russlands Krieg gegen die Ukraine: Zahl der Toten in Kiew steigt auf 24 Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="gundem">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1570161766218-f8488ebb8078?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxTY2h3ZWl6fGVufDB8MHx8fDE3Nzg5NTIyNzl8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Schweiz diskutiert über Zuwanderung von Deutschen" loading="lazy" width="1080" height="720"></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Themen</span>
+            <time class="card-date" datetime="2026-05-16">16.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/schweiz-diskutiert-ueber-zuwanderung-von-deutschen.html">Schweiz diskutiert über Zuwanderung von Deutschen</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/schweiz-diskutiert-ueber-zuwanderung-von-deutschen.html" aria-label="Schweiz diskutiert über Zuwanderung von Deutschen Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="gundem">
+        <div class="card-image card-image-placeholder" aria-hidden="true"><span>🇩🇪</span></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Themen</span>
+            <time class="card-date" datetime="2026-05-16">16.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/spd-fraktionschef-miersch-keine-zukunft-fuer-tankrabatt.html">SPD-Fraktionschef Miersch sieht keine Zukunft für Tankrabatt</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/spd-fraktionschef-miersch-keine-zukunft-fuer-tankrabatt.html" aria-label="SPD-Fraktionschef Miersch sieht keine Zukunft für Tankrabatt Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="gundem">
+        <div class="card-image card-image-placeholder" aria-hidden="true"><span>🇩🇪</span></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Themen</span>
+            <time class="card-date" datetime="2026-05-16">16.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/tankrabatt-zukunft-unklar.html">Tankrabatt: Zukunft unklar</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/tankrabatt-zukunft-unklar.html" aria-label="Tankrabatt: Zukunft unklar Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="gundem">
+        <div class="card-image card-image-placeholder" aria-hidden="true"><span>🇩🇪</span></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Themen</span>
+            <time class="card-date" datetime="2026-05-16">16.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/usa-toeten-is-vizechef.html">USA töten IS-Vizechef</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/usa-toeten-is-vizechef.html" aria-label="USA töten IS-Vizechef Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+      <article class="news-card topic-card" data-topic="gundem">
+        <div class="card-image card-image-placeholder" aria-hidden="true"><span>🇩🇪</span></div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="card-category">🇩🇪 Deutschland</span>
+            <span class="card-topic">Themen</span>
+            <time class="card-date" datetime="2026-05-16">16.05.2026</time>
+          </div>
+          <h3 class="card-title">
+            <a href="artikel/wirtschaftskrise-in-deutschland.html">Wirtschaftskrise in Deutschland</a>
+          </h3>
+          
+          <div class="card-footer">
+            <a class="read-more" href="artikel/wirtschaftskrise-in-deutschland.html" aria-label="Wirtschaftskrise in Deutschland Artikel lesen">Weiterlesen -&gt;</a>
+          </div>
+        </div>
+      </article>
+          </div>
+        </section>
+      </main>
+
+      <aside class="sidebar" aria-label="Sidebar">
+        <div class="youtube-widget">
+          <div class="yt-icon" aria-hidden="true">▶</div>
+          <h3>YouTube</h3>
+          <p>Folgen Sie unserem Kanal für Videonachrichten und Zusammenfassungen.</p>
+          <a href="https://www.youtube.com/@NartanesiHaber" target="_blank" rel="noopener">Abonnieren</a>
+        </div>
+        <div class="sidebar-widget">
+          <div class="widget-title">Rubriken</div>
+          <ul class="country-filter">
+            <li><a href="#top-stories"><span aria-hidden="true">DE</span> Deutschland <span class="count" id="count-main">0</span></a></li>
+            <li><a href="../haber.html">TR Türkçe Haberler</a></li>
+            <li><a href="../news/">US News</a></li>
+            <li><a href="../nachrichten/">DE Nachrichten</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-widget">
+          <div class="widget-title">Neueste Meldungen</div>
+          <ol class="latest-news-list" id="latest-news-list" aria-label="Neueste Meldungen"></ol>
+        </div>
+        <div class="sidebar-widget">
+          <div class="widget-title">Veröffentlichung</div>
+          <p class="info-text">Deutsche Nachrichten werden aus deutschsprachigen Quellen gesammelt und regelmäßig aktualisiert.<br><br><strong>hakancetin.com.tr</strong></p>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <footer>
+    <div class="inner">
+      <div class="footer-grid">
+        <div>
+          <h4>hakancetin.com.tr</h4>
+          <p>Aktuelle Nachrichten aus Deutschland.</p>
+        </div>
+        <div>
+          <h4>Links</h4>
+          <a href="../index.html">Home</a>
+          <a href="../haber.html">Türkçe Haberler</a>
+          <a href="./">Aktuelle Deutschland Nachrichten</a>
+        </div>
+        <div>
+          <h4>Languages</h4>
+          <a href="../haber.html">Türkçe</a>
+          <a href="../news/">English</a>
+          <a href="../nachrichten/">Deutsch</a>
+        </div>
+        <div>
+          <h4>Video</h4>
+          <a href="https://www.youtube.com/@NartanesiHaber" target="_blank" rel="noopener">YouTube</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 <a href="../index.html">hakancetin.com.tr</a></span>
+        <span>Aktuelle Deutschland Nachrichten</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    function updateTime() {
+      const now = new Date();
+      const time = now.toLocaleString('de-DE', {
+        weekday: 'long',
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+      document.getElementById('current-time').textContent = time;
+    }
+
+    function setMarketText(id, text) {
+      const node = document.getElementById(id);
+      if (node) node.textContent = text;
+    }
+
+    function formatTry(value) {
+      return new Intl.NumberFormat('de-DE', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }).format(value);
+    }
+
+    function formatShortTry(value) {
+      return new Intl.NumberFormat('de-DE', {
+        notation: 'compact',
+        maximumFractionDigits: 1
+      }).format(value);
+    }
+
+    function previousMarketDate(dateString) {
+      const date = new Date(`${dateString}T12:00:00Z`);
+      do {
+        date.setUTCDate(date.getUTCDate() - 1);
+      } while (date.getUTCDay() === 0 || date.getUTCDay() === 6);
+      return date.toISOString().slice(0, 10);
+    }
+
+    async function fetchFiatMarket(base) {
+      const latestResponse = await fetch(`https://api.frankfurter.dev/v1/latest?base=${base}&symbols=TRY`, { cache: 'no-store' });
+      if (!latestResponse.ok) throw new Error(`${base} latest failed`);
+      const latest = await latestResponse.json();
+      const value = latest && latest.rates ? latest.rates.TRY : null;
+      if (!value) throw new Error(`${base} rate missing`);
+      let previous = null;
+      let lookupDate = previousMarketDate(latest.date);
+      for (let i = 0; i < 5 && !previous; i++) {
+        const previousResponse = await fetch(`https://api.frankfurter.dev/v1/${lookupDate}?base=${base}&symbols=TRY`, { cache: 'no-store' });
+        if (previousResponse.ok) {
+          const previousData = await previousResponse.json();
+          previous = previousData && previousData.rates ? previousData.rates.TRY : null;
+        }
+        if (!previous) lookupDate = previousMarketDate(lookupDate);
+      }
+      return { value, change: previous ? ((value - previous) / previous) * 100 : null };
+    }
+
+    function setMarketMove(itemId, changeId, change) {
+      const item = document.getElementById(itemId);
+      const changeNode = document.getElementById(changeId);
+      if (!item || !changeNode) return;
+      item.classList.remove('up', 'down', 'neutral');
+      changeNode.classList.remove('up', 'down');
+      if (typeof change !== 'number' || Number.isNaN(change)) {
+        item.classList.add('neutral');
+        changeNode.textContent = '--';
+        return;
+      }
+      if (Math.abs(change) < 0.01) {
+        item.classList.add('neutral');
+        changeNode.textContent = '0.0%';
+        return;
+      }
+      const direction = change > 0 ? 'up' : 'down';
+      const arrow = change > 0 ? '▲' : '▼';
+      item.classList.add(direction);
+      changeNode.classList.add(direction);
+      changeNode.textContent = `${arrow} ${Math.abs(change).toFixed(1)}%`;
+    }
+
+    async function updateMarkets() {
+      const status = document.getElementById('market-status');
+      try {
+        const [usdRes, eurRes, gbpRes, btcRes] = await Promise.allSettled([
+          fetchFiatMarket('USD'),
+          fetchFiatMarket('EUR'),
+          fetchFiatMarket('GBP'),
+          fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=try&include_24hr_change=true', { cache: 'no-store' })
+        ]);
+        function applyFiat(result, valueId, itemId, changeId) {
+          if (result.status !== 'fulfilled') {
+            setMarketMove(itemId, changeId, null);
+            return;
+          }
+          setMarketText(valueId, formatTry(result.value.value));
+          setMarketMove(itemId, changeId, result.value.change);
+        }
+        applyFiat(usdRes, 'market-usd', 'market-usd-item', 'market-usd-change');
+        applyFiat(eurRes, 'market-eur', 'market-eur-item', 'market-eur-change');
+        applyFiat(gbpRes, 'market-gbp', 'market-gbp-item', 'market-gbp-change');
+        if (btcRes.status === 'fulfilled' && btcRes.value.ok) {
+          const data = await btcRes.value.json();
+          const btc = data && data.bitcoin ? data.bitcoin.try : null;
+          const change = data && data.bitcoin ? data.bitcoin.try_24h_change : null;
+          if (btc) setMarketText('market-btc', formatShortTry(btc));
+          setMarketMove('market-btc-item', 'market-btc-change', change);
+        } else {
+          setMarketMove('market-btc-item', 'market-btc-change', null);
+        }
+        if (status) status.textContent = 'Delayed';
+      } catch (error) {
+        if (status) status.textContent = 'No data';
+      }
+    }
+
+    function countCards() {
+      const node = document.getElementById('count-main');
+      if (!node) return;
+      node.textContent = Array.from(document.querySelectorAll('.topic-card'))
+        .filter(card => card.dataset.filteredOut !== 'true').length;
+    }
+
+    function applyTopicFilter() {
+      const params = new URLSearchParams(window.location.search);
+      const activeTopic = params.get('kategori') || 'son-dakika';
+      const showAll = activeTopic === 'son-dakika';
+      document.querySelectorAll('.topic-link[data-topic]').forEach(link => {
+        link.classList.toggle('is-active', link.dataset.topic === activeTopic);
+      });
+      document.querySelectorAll('.topic-card').forEach(card => {
+        const keep = showAll || card.dataset.topic === activeTopic;
+        card.dataset.filteredOut = keep ? 'false' : 'true';
+        card.hidden = !keep;
+      });
+    }
+
+    function initLatestNews() {
+      const list = document.getElementById('latest-news-list');
+      if (!list) return;
+      const seen = new Set();
+      const items = Array.from(document.querySelectorAll('.headline-card, .news-card'))
+        .filter(card => card.dataset.filteredOut !== 'true')
+        .map(card => {
+          const link = card.matches('a') ? card : card.querySelector('a[href]');
+          const titleNode = card.querySelector('.headline-title, .card-title');
+          const topicNode = card.querySelector('.headline-topic, .card-topic');
+          if (!link || !titleNode) return null;
+          const href = link.getAttribute('href');
+          const title = titleNode.textContent.trim();
+          const topic = topicNode ? topicNode.textContent.trim() : 'News';
+          return { href, title, topic };
+        })
+        .filter(item => {
+          if (!item || seen.has(item.href)) return false;
+          seen.add(item.href);
+          return true;
+        })
+        .slice(0, 6);
+      list.innerHTML = items.map(item => (
+        `<li><span>${item.topic}</span><a href="${item.href}">${item.title}</a></li>`
+      )).join('');
+    }
+
+    function initPagination(gridId, pageSize = 18) {
+      const grid = document.getElementById(gridId);
+      if (!grid) return;
+      const cards = Array.from(grid.querySelectorAll('.news-card'))
+        .filter(card => card.dataset.filteredOut !== 'true');
+      if (cards.length <= pageSize) return;
+      let shown = pageSize;
+      cards.forEach((card, i) => {
+        if (i >= pageSize) card.hidden = true;
+      });
+      const btn = document.createElement('button');
+      btn.className = 'load-more-btn';
+      btn.type = 'button';
+      btn.textContent = `More stories (${cards.length - shown})`;
+      grid.parentElement.appendChild(btn);
+      btn.addEventListener('click', () => {
+        const nextShown = Math.min(shown + pageSize, cards.length);
+        for (let i = shown; i < nextShown; i++) cards[i].hidden = false;
+        shown = nextShown;
+        if (shown >= cards.length) btn.remove();
+        else btn.textContent = `More stories (${cards.length - shown})`;
+      });
+    }
+
+    function initHeadlineSlider() {
+      const slider = document.querySelector('.headline-slider');
+      if (!slider) return;
+      const allSlides = Array.from(slider.querySelectorAll('.headline-slide'));
+      const slides = allSlides.filter(slide => slide.dataset.filteredOut !== 'true');
+      const controls = slider.querySelector('.slider-controls');
+      if (slides.length === 0) {
+        if (controls) controls.hidden = true;
+        return;
+      }
+      if (controls) controls.hidden = slides.length <= 1;
+      allSlides.forEach(slide => slide.classList.remove('is-active'));
+      const preferred = slides.findIndex(slide => slide.querySelector('.headline-image img'));
+      let current = preferred >= 0 ? preferred : 0;
+      slides[current].classList.add('is-active');
+      slider.classList.toggle('has-image-active', Boolean(slides[current].querySelector('.headline-image img')));
+      const showSlide = (nextIndex) => {
+        slides[current].classList.remove('is-active');
+        current = (nextIndex + slides.length) % slides.length;
+        slides[current].classList.add('is-active');
+        slider.classList.toggle('has-image-active', Boolean(slides[current].querySelector('.headline-image img')));
+      };
+      const nextBtn = slider.querySelector('[data-slider-next]');
+      const prevBtn = slider.querySelector('[data-slider-prev]');
+      if (nextBtn) nextBtn.addEventListener('click', () => showSlide(current + 1));
+      if (prevBtn) prevBtn.addEventListener('click', () => showSlide(current - 1));
+      if (slides.length > 1) setInterval(() => showSlide(current + 1), 6500);
+    }
+
+    updateTime();
+    setInterval(updateTime, 60000);
+    updateMarkets();
+    setInterval(updateMarkets, 300000);
+    applyTopicFilter();
+    initLatestNews();
+    initHeadlineSlider();
+    countCards();
+    initPagination('grid-main');
+  </script>
+</body>
+</html>
