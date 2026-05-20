@@ -2,6 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://hakancetin.com.tr/articles/los_angeles_yakinlarinda_2_yangin_tahliyelere_neden_oldu_20260520.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-20</news:publication_date>
+      <news:title>Los Angeles Yakınlarında 2 Yangın Tahliyelere Neden Oldu</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/nato-ankara-zirvesi-muttefiklerin-taahhutlerine-odaklanilacak_20260520.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-20</news:publication_date>
+      <news:title>NATO Ankara Zirvesi: Müttefiklerin Taahhütlerine Odaklanılacak</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/trumpin_uzlasmasi_100_milyon_dolarlik_irs_cezasi_kayboldu_20260520.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-20</news:publication_date>
+      <news:title>Trump&#x27;ın Uzlaşması, 100 Milyon Dolarlık I.R.S. Cezası Kayboldu</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/malatya-depremi-5-6-buyukluguyle-sekiz-ilde-hissedildi_20260520.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-20</news:publication_date>
+      <news:title>Malatya&#x27;da 5,6 Büyüklüğünde Deprem: Sekiz İlde Hissedildi</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/elektroautos_uluslararasi_enerji_ajansi_petrol_krizini_artan_talebin_nedeni_olar_20260520.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-20</news:publication_date>
+      <news:title>Elektroautos: Uluslararası Enerji Ajansı, Petrol Krizini Artan Talebin Nedeni Olarak Görüyor</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/baltiklerde_drone_olayi_20260520.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-20</news:publication_date>
+      <news:title>Baltiklerde Drone Olayı</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://hakancetin.com.tr/articles/gulistandoku-sorusturmasi_20260520.html</loc>
     <news:news>
       <news:publication>
@@ -10,28 +76,6 @@
       </news:publication>
       <news:publication_date>2026-05-20</news:publication_date>
       <news:title>Gülistan Doku Soruşturmasında Yeni Gelişme</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://hakancetin.com.tr/articles/senato_trumpin_iranla_catismadaki_yetkilerini_sinirlandirmaya_hareket_ediyor_20260520.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>hakancetin.com.tr</news:name>
-        <news:language>tr</news:language>
-      </news:publication>
-      <news:publication_date>2026-05-20</news:publication_date>
-      <news:title>Senato, Trump&#x27;ın İran&#x27;la Çatışmadaki Yetkilerini Sınırlandırmaya Hareket Ediyor</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://hakancetin.com.tr/articles/iranin_savasta_stratejik_kaldiraci_20260520.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>hakancetin.com.tr</news:name>
-        <news:language>tr</news:language>
-      </news:publication>
-      <news:publication_date>2026-05-20</news:publication_date>
-      <news:title>İran&#x27;ın Savaşta Stratejik Kaldıracı</news:title>
     </news:news>
   </url>
   <url>
@@ -76,6 +120,28 @@
       </news:publication>
       <news:publication_date>2026-05-20</news:publication_date>
       <news:title>Rusya Devlet Başkanı Putin, Çin&#x27;i Ziyaret Ediyor</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/senato_trumpin_iranla_catismadaki_yetkilerini_sinirlandirmaya_hareket_ediyor_20260520.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-20</news:publication_date>
+      <news:title>Senato, Trump&#x27;ın İran&#x27;la Çatışmadaki Yetkilerini Sınırlandırmaya Hareket Ediyor</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/iranin_savasta_stratejik_kaldiraci_20260520.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-20</news:publication_date>
+      <news:title>İran&#x27;ın Savaşta Stratejik Kaldıracı</news:title>
     </news:news>
   </url>
   <url>
