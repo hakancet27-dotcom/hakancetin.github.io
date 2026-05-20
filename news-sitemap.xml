@@ -2,25 +2,47 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://hakancetin.com.tr/articles/hayatimizda_ainin_genisleyen_rolu_20260520.html</loc>
+    <loc>https://hakancetin.com.tr/articles/abd_buyuk_jurisi_eski_kuba_lideri_raul_castroya_cinayet_suclamasi_getirdi_20260520.html</loc>
     <news:news>
       <news:publication>
         <news:name>hakancetin.com.tr</news:name>
         <news:language>tr</news:language>
       </news:publication>
       <news:publication_date>2026-05-20</news:publication_date>
-      <news:title>Hayatımızda A.I.&#x27;nın Genişleyen Rolü</news:title>
+      <news:title>ABD Büyük Jürisi, Eski Küba Lideri Raul Castro&#x27;ya Cinayet Suçlaması Getirdi</news:title>
     </news:news>
   </url>
   <url>
-    <loc>https://hakancetin.com.tr/articles/trumpin_intikam_turu_devam_ediyor_massie_kentuckyde_ilk_turda_yenildi_20260520.html</loc>
+    <loc>https://hakancetin.com.tr/articles/irandan_abdye_orta_dogu_otesi_saldiri_tehdidi_20260520.html</loc>
     <news:news>
       <news:publication>
         <news:name>hakancetin.com.tr</news:name>
         <news:language>tr</news:language>
       </news:publication>
       <news:publication_date>2026-05-20</news:publication_date>
-      <news:title>Trump&#x27;ın İntikam Turu Devam Ediyor: Massie Kentucky&#x27;de İlk Turda Yenildi</news:title>
+      <news:title>İran&#x27;dan ABD&#x27;ye Orta Doğu Ötesi Saldırı Tehdidi</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/israilin_lubnan_saldirilarinda_en_az_19_kisi_hayatini_kaybetti_20260520.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-20</news:publication_date>
+      <news:title>İsrail&#x27;in Lübnan Saldırılarında En Az 19 Kişi Hayatını Kaybetti</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/abd_senatosundan_iran_savasi_yetkileri_karari_20260520.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-20</news:publication_date>
+      <news:title>ABD Senatosu&#x27;ndan İran Savaşı Yetkileri Kararı</news:title>
     </news:news>
   </url>
   <url>
@@ -109,6 +131,17 @@
       </news:publication>
       <news:publication_date>2026-05-20</news:publication_date>
       <news:title>İsrail Mahkemesi Netanyahu&#x27;nun Yolsuzluk Duruşmasının İptali Talebini Kabul Etti</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/hayatimizda_ainin_genisleyen_rolu_20260520.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-20</news:publication_date>
+      <news:title>Hayatımızda A.I.&#x27;nın Genişleyen Rolü</news:title>
     </news:news>
   </url>
   <url>
@@ -230,6 +263,17 @@
       </news:publication>
       <news:publication_date>2026-05-20</news:publication_date>
       <news:title>Lübnan&#x27;da İsrail Saldırılarında En Az 19 Kişi Öldü</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/trumpin_intikam_turu_devam_ediyor_massie_kentuckyde_ilk_turda_yenildi_20260520.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-20</news:publication_date>
+      <news:title>Trump&#x27;ın İntikam Turu Devam Ediyor: Massie Kentucky&#x27;de İlk Turda Yenildi</news:title>
     </news:news>
   </url>
   <url>
