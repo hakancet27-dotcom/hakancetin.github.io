@@ -45,6 +45,7 @@
     .spot { font-size:1.14rem; line-height:1.7; color:#374151; border-left:5px solid var(--red); padding:12px 0 12px 18px; margin:0 0 22px; background:#fff8f7; }
     .article-image { margin:0 0 26px; border-radius:8px; overflow:hidden; background:#111827; }
     .article-image img { width:100%; display:block; aspect-ratio:16/9; object-fit:cover; }
+    .article-image img[src$=".svg"] { object-fit:contain; background:#111827; }
     article h2 { font-size:1.35rem; line-height:1.3; margin:28px 0 10px; color:#111827; padding-top:4px; border-top:1px solid var(--border); }
     article h3 { font-size:1.08rem; margin:20px 0 8px; color:#1f2937; }
     article p { margin:0 0 16px; font-size:1.02rem; }
@@ -70,6 +71,26 @@
       .article-meta { font-size:.8rem; }
       .related-grid { grid-template-columns:1fr; }
     }
+
+
+    /* CODEX_ARTICLE_ENHANCEMENTS_START */
+    .article-share { margin-top: 20px; display:flex; align-items:center; flex-wrap:wrap; gap:8px; }
+    .share-label { color:#4b5563; font-size:.86rem; font-weight:800; margin-right:2px; }
+    .share-link { width:30px; height:30px; border-radius:50%; color:#fff; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; font-size:.76rem; font-weight:900; }
+    .share-x { background:#111827; }
+    .share-fb { background:#1877f2; }
+    .share-wa { background:#13a85b; }
+    .share-tg { background:#229ed9; }
+    .article-comments { margin-top:24px; border-top:1px solid var(--border, #e5e7eb); padding-top:18px; }
+    .article-comments h2 { margin:0 0 10px; font-size:1.1rem; border:0; padding:0; }
+    .comment-form { display:grid; gap:8px; }
+    .comment-form input, .comment-form textarea { width:100%; border:1px solid var(--border, #e5e7eb); border-radius:7px; padding:10px; font:inherit; }
+    .comment-form button { width:max-content; background:var(--red, #e10600); color:#fff; border:0; border-radius:7px; padding:9px 14px; font-weight:800; cursor:pointer; }
+    .comment-list { margin-top:12px; display:grid; gap:8px; }
+    .comment-item { border:1px solid var(--border, #e5e7eb); border-radius:7px; padding:10px; background:#fafafa; }
+    .comment-item strong { display:block; font-size:.88rem; margin-bottom:4px; }
+    /* CODEX_ARTICLE_ENHANCEMENTS_END */
+
   </style>
 </head>
 <body>
@@ -110,6 +131,23 @@
       <figure class="article-image"><img src="https://hakancetin.com.tr/articles/images/andy-burnham-moeglicher-nachfolger-fuer-den-britischen-premierminister.svg" alt="Andy Burnham, Starmer Sonrasi Icin One Cikan Isimlerden Biri" loading="eager" fetchpriority="high" width="1280" height="720"></figure>
       <h2>Burnham neden gundemde?</h2><p>Burnham, Manchester'daki gorevinde ulasim ve sosyal politika basliklarinda yuksek gorunurluk sagladi. Westminster ve kabine gecmisi onu ulusal olcekte de etkili kiluyor.</p><h2>Parti dengelerine etkisi</h2><p>Resmi bir yaris baslamamis olsa da adinin sik gecmesi parti icindeki alternatif liderlik merkezlerini guclendiriyor.</p><h2>Secmen acisindan anlami</h2><p>Bolgesel temsil, ekonomi ve kriz yonetimi performansi Ingiltere siyasetinde belirleyici. Burnham profili bu uc baslikta da karsilik buluyor.</p><h2>Ne bekleniyor?</h2><p>Kisa vadede resmi adaylik sinyali yok. Buna ragmen siyasi kulislerde Burnham adinin kalici bicimde yer almasi bekleniyor.</p>
       <div class="tag-list"><span>Andy Burnham</span><span>Keir Starmer</span><span>Ingiltere siyaseti</span><span>Isci Partisi</span><span>Manchester</span><span>liderlik</span><span>Birlesik Krallik</span></div>
+    
+      <div class="article-share" aria-label="share-news">
+        <span class="share-label">Haberi Payla&#351;</span>
+        <a class="share-link share-x" data-share-dynamic="x" target="_blank" rel="noopener" href="#" aria-label="X">X</a>
+        <a class="share-link share-fb" data-share-dynamic="fb" target="_blank" rel="noopener" href="#" aria-label="Facebook">f</a>
+        <a class="share-link share-wa" data-share-dynamic="wa" target="_blank" rel="noopener" href="#" aria-label="WhatsApp">W</a>
+        <a class="share-link share-tg" data-share-dynamic="tg" target="_blank" rel="noopener" href="#" aria-label="Telegram">T</a>
+      </div>
+      <section class="article-comments" aria-label="article-comments">
+        <h2>Yorumlar</h2>
+        <form id="comment-form" class="comment-form">
+          <input id="comment-name" type="text" maxlength="40" placeholder="Ad Soyad">
+          <textarea id="comment-text" rows="4" maxlength="700" placeholder="Yorumunuzu yaz&#305;n"></textarea>
+          <button type="submit">Yorum G&ouml;nder</button>
+        </form>
+        <div id="comment-list" class="comment-list"></div>
+      </section>
     </article>
     <section class="related-news" aria-label="related-news"><h2>İlgili Haberler</h2><div class="related-grid"><article class="related-card"><a href="ab_parlamentosu_csulu_milletvekili_niebler_hakkindaki_sorusturmayi_durdurdu_20260519.html">AB Parlamentosu, CSU&#x27;lu Milletvekili Niebler Hakkındaki Soruşturmayı Durdurdu</a><div class="related-meta"><span class="related-topic">Siyaset</span><time class="related-date">19.05.2026</time></div></article><article class="related-card"><a href="wes-streeting-fordert-keir-starmer-heraus.html">Wes Streeting, Keir Starmer&#x27;a karşı liderlik tartışmasını alevlendirdi</a><div class="related-meta"><span class="related-topic">Siyaset</span><time class="related-date">17.05.2026</time></div></article><article class="related-card"><a href="elektroautos_uluslararasi_enerji_ajansi_petrol_krizini_artan_talebin_nedeni_olar_20260520.html">Elektroautos: Uluslararası Enerji Ajansı, Petrol Krizini Artan Talebin Nedeni Olarak Görüyor</a><div class="related-meta"><span class="related-topic">Dünya</span><time class="related-date">20.05.2026</time></div></article><article class="related-card"><a href="baltiklerde_drone_olayi_20260520.html">Baltiklerde Drone Olayı</a><div class="related-meta"><span class="related-topic">Dünya</span><time class="related-date">20.05.2026</time></div></article><article class="related-card"><a href="iran_savasi_abd_senatosu_donald_trumpin_yetkilerini_kisitlamak_icin_oy_kullandi_20260520.html">İran Savaşı: ABD Senatosu Donald Trump&#x27;ın Yetkilerini Kısıtlamak için Oy Kullandı</a><div class="related-meta"><span class="related-topic">Dünya</span><time class="related-date">20.05.2026</time></div></article><article class="related-card"><a href="lubnanda_israil_saldirilarinda_en_az_19_kisi_oldu_20260520.html">Lübnan&#x27;da İsrail Saldırılarında En Az 19 Kişi Öldü</a><div class="related-meta"><span class="related-topic">Teknoloji</span><time class="related-date">20.05.2026</time></div></article><article class="related-card"><a href="iran-neuer-vorschlag-usa-verhandlungen_20260519.html">İran, ABD ile görüşmeler için yeni bir öneri sundu</a><div class="related-meta"><span class="related-topic">Dünya</span><time class="related-date">19.05.2026</time></div></article><article class="related-card"><a href="ukrayna_hava_savunmasini_guclendirmek_icin_kendi_gudumlu_bomasini_gelistiriyor_20260519.html">Ukrayna, hava savunmasını güçlendirmek için kendi güdümlü bombasını geliştiriyor</a><div class="related-meta"><span class="related-topic">Dünya</span><time class="related-date">19.05.2026</time></div></article></div></section>
   </main>
@@ -118,5 +156,45 @@
       <p><a href="../haber.html">hakancetin.com.tr</a> · Türkiye, Amerika ve Almanya&#x27;dan güncel haberler.</p>
     </div>
   </footer>
+
+  <script>
+    (function() {
+      const form = document.getElementById('comment-form');
+      const list = document.getElementById('comment-list');
+      document.querySelectorAll('[data-share-dynamic]').forEach((link) => {
+        const url = encodeURIComponent(location.href);
+        const title = encodeURIComponent(document.title.replace(/\s*\|.*$/, ''));
+        const type = link.getAttribute('data-share-dynamic');
+        if (type === 'x') link.href = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+        if (type === 'fb') link.href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+        if (type === 'wa') link.href = `https://api.whatsapp.com/send?text=${title}%20${url}`;
+        if (type === 'tg') link.href = `https://t.me/share/url?url=${url}&text=${title}`;
+      });
+      if (!form || !list) return;
+      const key = 'comments:' + location.pathname;
+      function escapeHtml(value) {
+        return (value || '').replace(/[&<>"']/g, (m) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+      }
+      function render() {
+        const rows = JSON.parse(localStorage.getItem(key) || '[]');
+        list.innerHTML = rows.slice(-25).reverse().map((row) =>
+          `<div class="comment-item"><strong>${escapeHtml(row.name)} &middot; ${escapeHtml(row.time)}</strong><p>${escapeHtml(row.text)}</p></div>`
+        ).join('');
+      }
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const name = (document.getElementById('comment-name') || {}).value || '';
+        const text = (document.getElementById('comment-text') || {}).value || '';
+        const cleanText = text.trim();
+        if (!cleanText) return;
+        const rows = JSON.parse(localStorage.getItem(key) || '[]');
+        rows.push({ name: name.trim() || '\u00dcye', text: cleanText, time: new Date().toLocaleString() });
+        localStorage.setItem(key, JSON.stringify(rows));
+        document.getElementById('comment-text').value = '';
+        render();
+      });
+      render();
+    })();
+  </script>
 </body>
 </html>
