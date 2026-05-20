@@ -1,0 +1,62 @@
+{
+  "title": "İsrail'in Sumud Filosu'na Saldırısında Türk Aktivist Yaralandı",
+  "meta_title": "İsrail Saldırısında Türk Aktivist Yaralandı",
+  "meta_description": "İsrail ordusunun Sumud Filosu'na düzenlediği saldırılar sırasında Türk aktivist Mecid Bağçivan yaralandı.",
+  "discover_titles": [
+    "İsrail'in Sumud Filosu Saldırısı",
+    "Türk Aktivist İsrail Saldırısında Yaralandı",
+    "Sumud Filosu'na Saldırı"
+  ],
+  "slug": "israilin-sumud-filosuna-saldirisinda-turk-aktivist-yaralandi_20260520",
+  "category": "Haber",
+  "spot": "İsrail ordusunun 18 Mayıs'ta düzenlediği saldırılar sırasında Türk aktivist Mecid Bağçivan plastik mermiyle bacağından yaralandı.",
+  "content_html": "<h2>İsrail'in Sumud Filosu'na Saldırısı</h2> <h2>Saldırı Detayları</h2> <p>İsrail ordusunun 18 Mayıs'ta düzenlediği saldırılar sırasında Türk aktivist Mecid Bağçivan yaralandı.</p> <h3>Saldırının Ardından</h3> <p>Saldırının ardından Mecid Bağçivan'ın durumu hakkında detaylı bilgi bulunmamaktadır.</p>",
+  "tags": [
+    "İsrail",
+    "Sumud Filosu",
+    "Türk Aktivist",
+    "Saldırı"
+  ],
+  "visual_keywords": [
+    "İsrail",
+    "Sumud Filosu"
+  ],
+  "image_prompt": "İsrail'in Sumud Filosu'na düzenlediği saldırılar sırasında yaralanan Türk aktivist Mecid Bağçivan",
+  "image_alt": "İsrail'in Sumud Filosu'na düzenlediği saldırılar",
+  "fact_guard": {
+    "used_only_source_facts": true,
+    "omitted_missing_reactions": true
+  },
+  "schema_version": 2,
+  "word_count": 49,
+  "date": "20.05.2026",
+  "flag": "TR",
+  "country": "Turkey",
+  "display_country": "Türkiye",
+  "image_url": "https://hakancetin.com.tr/articles/images/israilin-sumud-filosuna-saldirisinda-turk-aktivist-yaralandi_20260520.jpg",
+  "summary": "İsrail ordusunun 18 Mayıs'ta düzenlediği saldırılar sırasında Türk aktivist Mecid Bağçivan plastik mermiyle bacağından yaralandı.",
+  "language": "Turkish",
+  "url_prefix": "articles",
+  "source_language": "Turkish",
+  "target_language": "Turkish",
+  "quality_score": 50,
+  "quality_status": "blocked_from_index",
+  "review_required": true,
+  "quality_flags": [
+    "very_short_article",
+    "generated_image",
+    "meta_title_issue",
+    "meta_description_issue"
+  ],
+  "quality_notes": [
+    "Metin cok kisa (49 kelime).",
+    "Haber stok/gercek fotograf yerine uretilmis gorsel kullaniyor.",
+    "Meta title ideal aralikta degil.",
+    "Meta description ideal aralikta degil."
+  ],
+  "quality_word_count": 49,
+  "indexed_on_home": false,
+  "review_status": "pending",
+  "review_source": "quality_gate",
+  "review_run_id": "26187899155"
+}
