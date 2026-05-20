@@ -21,7 +21,7 @@
   <title>İran, ABD ile görüşmeler için yeni bir öneri sundu | hakancetin.com.tr</title>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
-    :root { --red:#c0392b; --dark:#171729; --text:#20242a; --muted:#68707d; --bg:#f4f6f8; --border:#e5e7eb; }
+    :root { --red:#e10600; --dark:#171729; --text:#20242a; --muted:#68707d; --bg:#f4f6f8; --border:#e5e7eb; }
     body { font-family:'Segoe UI',Arial,sans-serif; background:var(--bg); color:var(--text); line-height:1.75; }
     .top-bar { background:var(--dark); color:#cbd5e1; font-size:.78rem; padding:7px 0; }
     .top-bar .inner, header .inner, .article-shell, footer .inner { max-width:1040px; margin:0 auto; padding:0 20px; }
@@ -54,6 +54,21 @@
     article strong { color:#111827; font-weight:800; }
     .tag-list { display:flex; flex-wrap:wrap; gap:8px; margin-top:28px; padding-top:18px; border-top:1px solid var(--border); }
     .tag-list span { background:#f3f4f6; color:#4b5563; padding:5px 10px; border-radius:5px; font-size:.82rem; font-weight:700; }
+    .article-share { margin-top:18px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+    .share-label { color:#4b5563; font-size:.84rem; font-weight:700; margin-right:2px; }
+    .share-link { width:28px; height:28px; border-radius:999px; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; font-weight:800; font-size:.78rem; color:white; }
+    .share-x { background:#111827; }
+    .share-fb { background:#1877f2; }
+    .share-wa { background:#12a150; }
+    .share-tg { background:#229ed9; }
+    .article-comments { margin-top:24px; border-top:1px solid var(--border); padding-top:18px; }
+    .article-comments h2 { margin:0 0 10px; font-size:1.1rem; border:0; padding:0; }
+    .comment-form { display:grid; gap:8px; }
+    .comment-form input, .comment-form textarea { width:100%; border:1px solid var(--border); border-radius:6px; padding:10px; font:inherit; }
+    .comment-form button { width:max-content; background:var(--red); color:#fff; border:0; border-radius:6px; padding:9px 14px; font-weight:700; cursor:pointer; }
+    .comment-list { margin-top:12px; display:grid; gap:8px; }
+    .comment-item { border:1px solid var(--border); border-radius:6px; padding:10px; background:#fafafa; }
+    .comment-item strong { display:block; font-size:.88rem; margin-bottom:4px; }
     .related-news { margin-top:26px; background:#fff; border:1px solid var(--border); border-radius:8px; padding:18px; box-shadow:0 4px 16px rgba(15,23,42,.05); }
     .related-news h2 { margin:0 0 12px; padding:0; border:0; font-size:1.15rem; }
     .related-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
@@ -71,26 +86,6 @@
       .article-meta { font-size:.8rem; }
       .related-grid { grid-template-columns:1fr; }
     }
-
-
-    /* CODEX_ARTICLE_ENHANCEMENTS_START */
-    .article-share { margin-top: 20px; display:flex; align-items:center; flex-wrap:wrap; gap:8px; }
-    .share-label { color:#4b5563; font-size:.86rem; font-weight:800; margin-right:2px; }
-    .share-link { width:30px; height:30px; border-radius:50%; color:#fff; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; font-size:.76rem; font-weight:900; }
-    .share-x { background:#111827; }
-    .share-fb { background:#1877f2; }
-    .share-wa { background:#13a85b; }
-    .share-tg { background:#229ed9; }
-    .article-comments { margin-top:24px; border-top:1px solid var(--border, #e5e7eb); padding-top:18px; }
-    .article-comments h2 { margin:0 0 10px; font-size:1.1rem; border:0; padding:0; }
-    .comment-form { display:grid; gap:8px; }
-    .comment-form input, .comment-form textarea { width:100%; border:1px solid var(--border, #e5e7eb); border-radius:7px; padding:10px; font:inherit; }
-    .comment-form button { width:max-content; background:var(--red, #e10600); color:#fff; border:0; border-radius:7px; padding:9px 14px; font-weight:800; cursor:pointer; }
-    .comment-list { margin-top:12px; display:grid; gap:8px; }
-    .comment-item { border:1px solid var(--border, #e5e7eb); border-radius:7px; padding:10px; background:#fafafa; }
-    .comment-item strong { display:block; font-size:.88rem; margin-bottom:4px; }
-    /* CODEX_ARTICLE_ENHANCEMENTS_END */
-
   </style>
 </head>
 <body>
@@ -131,23 +126,8 @@
       <figure class="article-image"><img src="https://images.unsplash.com/photo-1693139062697-f5f8663217fa?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxJcmFuJTIwZmxhZ3xlbnwwfDB8fHwxNzc5MTg0NDQyfDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="İran, ABD ile görüşmeler için yeni bir öneri sundu" loading="eager" fetchpriority="high" width="1280" height="720"></figure>
       <h2>Gelişmenin özeti</h2><p>İran, ABD ile görüşmeler için yeni bir öneri sundu başlıklı gelişme Almanya gündeminde öne çıktı. Mevcut kaynak kaydında olayın ayrıntıları sınırlı olduğu için haber, doğrulanmış başlık bilgisi ve temel bağlam üzerinden aktarılıyor.</p><h2>Neden önemli?</h2><p>Bu başlık dünya alanındaki gelişmelerin takip edilmesi gerektiğini gösteriyor. Okurlar açısından temel önem, kararın veya olayın bölgesel gündeme, kamuoyuna ve ilgili kurumların sonraki adımlarına olası etkisinde toplanıyor.</p><h2>Takip edilecek başlıklar</h2><p>19.05.2026 tarihli bu haber için resmi açıklamalar, yeni veriler ve taraflardan gelecek tepkiler izlenecek. İçeriğe yeni ayrıntılar eklendiğinde başlık, spot ve haber metni güncellenecek.</p>
       <div class="tag-list"><span>Dünya</span><span>Almanya</span><span>Güncel Haberler</span><span>Son Dakika</span></div>
-    
-      <div class="article-share" aria-label="share-news">
-        <span class="share-label">Haberi Payla&#351;</span>
-        <a class="share-link share-x" data-share-dynamic="x" target="_blank" rel="noopener" href="#" aria-label="X">X</a>
-        <a class="share-link share-fb" data-share-dynamic="fb" target="_blank" rel="noopener" href="#" aria-label="Facebook">f</a>
-        <a class="share-link share-wa" data-share-dynamic="wa" target="_blank" rel="noopener" href="#" aria-label="WhatsApp">W</a>
-        <a class="share-link share-tg" data-share-dynamic="tg" target="_blank" rel="noopener" href="#" aria-label="Telegram">T</a>
-      </div>
-      <section class="article-comments" aria-label="article-comments">
-        <h2>Yorumlar</h2>
-        <form id="comment-form" class="comment-form">
-          <input id="comment-name" type="text" maxlength="40" placeholder="Ad Soyad">
-          <textarea id="comment-text" rows="4" maxlength="700" placeholder="Yorumunuzu yaz&#305;n"></textarea>
-          <button type="submit">Yorum G&ouml;nder</button>
-        </form>
-        <div id="comment-list" class="comment-list"></div>
-      </section>
+      <div class="article-share" aria-label="share-news"><span class="share-label">Haberi Paylaş</span><a class="share-link share-x" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fhakancetin.com.tr%2Farticles%2Firan-neuer-vorschlag-usa-verhandlungen_20260519.html&text=%C4%B0ran%2C+ABD+ile+g%C3%B6r%C3%BC%C5%9Fmeler+i%C3%A7in+yeni+bir+%C3%B6neri+sundu" aria-label="X">X</a><a class="share-link share-fb" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhakancetin.com.tr%2Farticles%2Firan-neuer-vorschlag-usa-verhandlungen_20260519.html" aria-label="Facebook">f</a><a class="share-link share-wa" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?text=%C4%B0ran%2C+ABD+ile+g%C3%B6r%C3%BC%C5%9Fmeler+i%C3%A7in+yeni+bir+%C3%B6neri+sundu%20https%3A%2F%2Fhakancetin.com.tr%2Farticles%2Firan-neuer-vorschlag-usa-verhandlungen_20260519.html" aria-label="WhatsApp">W</a><a class="share-link share-tg" target="_blank" rel="noopener" href="https://t.me/share/url?url=https%3A%2F%2Fhakancetin.com.tr%2Farticles%2Firan-neuer-vorschlag-usa-verhandlungen_20260519.html&text=%C4%B0ran%2C+ABD+ile+g%C3%B6r%C3%BC%C5%9Fmeler+i%C3%A7in+yeni+bir+%C3%B6neri+sundu" aria-label="Telegram">T</a></div>
+      <section class="article-comments" aria-label="article-comments"><h2>Yorumlar</h2><form id="comment-form" class="comment-form"><input id="comment-name" type="text" maxlength="40" placeholder="Ad Soyad"><textarea id="comment-text" rows="4" maxlength="700" placeholder="Yorumunuzu yazın"></textarea><button type="submit">Yorum Gönder</button></form><div id="comment-list" class="comment-list"></div></section>
     </article>
     
   </main>
@@ -156,24 +136,14 @@
       <p><a href="../haber.html">hakancetin.com.tr</a> · Türkiye, Amerika ve Almanya&#x27;dan güncel haberler.</p>
     </div>
   </footer>
-
   <script>
     (function() {
       const form = document.getElementById('comment-form');
       const list = document.getElementById('comment-list');
-      document.querySelectorAll('[data-share-dynamic]').forEach((link) => {
-        const url = encodeURIComponent(location.href);
-        const title = encodeURIComponent(document.title.replace(/\s*\|.*$/, ''));
-        const type = link.getAttribute('data-share-dynamic');
-        if (type === 'x') link.href = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
-        if (type === 'fb') link.href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-        if (type === 'wa') link.href = `https://api.whatsapp.com/send?text=${title}%20${url}`;
-        if (type === 'tg') link.href = `https://t.me/share/url?url=${url}&text=${title}`;
-      });
       if (!form || !list) return;
       const key = 'comments:' + location.pathname;
-      function escapeHtml(value) {
-        return (value || '').replace(/[&<>"']/g, (m) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+      function escapeHtml(v) {
+        return (v || '').replace(/[&<>"']/g, (m) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
       }
       function render() {
         const rows = JSON.parse(localStorage.getItem(key) || '[]');
@@ -181,14 +151,13 @@
           `<div class="comment-item"><strong>${escapeHtml(row.name)} &middot; ${escapeHtml(row.time)}</strong><p>${escapeHtml(row.text)}</p></div>`
         ).join('');
       }
-      form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const name = (document.getElementById('comment-name') || {}).value || '';
-        const text = (document.getElementById('comment-text') || {}).value || '';
-        const cleanText = text.trim();
-        if (!cleanText) return;
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('comment-name').value.trim() || 'Üye';
+        const text = document.getElementById('comment-text').value.trim();
+        if (!text) return;
         const rows = JSON.parse(localStorage.getItem(key) || '[]');
-        rows.push({ name: name.trim() || '\u00dcye', text: cleanText, time: new Date().toLocaleString() });
+        rows.push({ name, text, time: new Date().toLocaleString() });
         localStorage.setItem(key, JSON.stringify(rows));
         document.getElementById('comment-text').value = '';
         render();
