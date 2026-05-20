@@ -1,0 +1,29 @@
+name: Publish Approved Review Articles
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "review/pending/**/*.json"
+
+permissions:
+  contents: write
+
+jobs:
+  publish-approved:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor != 'github-actions[bot]' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Publish approved review articles
+        run: python tools/publish_approved_review.py
+
+      - name: Commit published articles
+        run: |
+          git config user.name "Review Publish Bot"
+          git config user.email "review-publish@hakancetin.com.tr"
+          git add articles news nachrichten review haber.html
+          git diff --staged --quiet || git commit -m "Publish approved review articles"
+          git push

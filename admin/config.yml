@@ -10,27 +10,35 @@ public_folder: /articles/images
 publish_mode: simple
 site_url: https://hakancetin.com.tr
 display_url: https://hakancetin.com.tr
-logo_url: /images/logo.png
 locale: tr
 
 collections:
-  - name: tr_articles
-    label: Türkçe Haberler
-    label_singular: Türkçe Haber
-    folder: articles
+  - name: review_pending
+    label: "1 - Bekleyen İncelemeler"
+    label_singular: "Bekleyen Haber"
+    folder: review/pending
     create: false
     extension: json
     format: json
     identifier_field: title
-    summary: "{{date}} - {{title}}"
-    fields: &article_fields
+    summary: "{{review_status}} | {{quality_score}} | {{date}} - {{title}}"
+    fields:
+      - label: İnceleme Durumu
+        name: review_status
+        widget: select
+        default: pending
+        options:
+          - { label: Beklemede, value: pending }
+          - { label: Onaylandı ve Yayınlanacak, value: approved }
+          - { label: Reddedildi, value: rejected }
       - { label: Başlık, name: title, widget: string }
       - { label: Slug, name: slug, widget: string, readonly: true }
       - { label: Tarih, name: date, widget: string }
-      - { label: Dil, name: language, widget: string, required: false }
-      - { label: Ülke, name: country, widget: string, required: false }
-      - { label: Bayrak, name: flag, widget: string, required: false }
-      - label: Kategori
+      - { label: Dil, name: language, widget: string, required: false, readonly: true }
+      - { label: Ülke, name: country, widget: string, required: false, readonly: true }
+      - { label: Hedef Yol, name: url_prefix, widget: string, required: false, readonly: true }
+      - &category_field
+        label: Kategori
         name: category
         widget: select
         required: false
@@ -50,6 +58,48 @@ collections:
       - { label: Haber Gövdesi HTML, name: content_html, widget: code, default_language: html, required: false }
       - { label: Görsel URL, name: image_url, widget: string, required: false }
       - { label: Görsel Alt Metni, name: image_alt, widget: string, required: false }
+      - { label: Meta Title, name: meta_title, widget: string, required: false }
+      - { label: Meta Description, name: meta_description, widget: text, required: false }
+      - &tags_field
+        label: Etiketler
+        name: tags
+        widget: list
+        required: false
+        field: { label: Etiket, name: tag, widget: string }
+      - { label: Kalite Puanı, name: quality_score, widget: number, required: false, readonly: true }
+      - { label: Kalite Durumu, name: quality_status, widget: string, required: false, readonly: true }
+      - label: Kalite Uyarıları
+        name: quality_flags
+        widget: list
+        required: false
+        field: { label: Uyarı, name: flag, widget: string }
+      - label: Kalite Notları
+        name: quality_notes
+        widget: list
+        required: false
+        field: { label: Not, name: note, widget: string }
+
+  - name: published_tr
+    label: "2.1 - Yayındaki Haberler / Türkçe"
+    label_singular: "Yayındaki Türkçe Haber"
+    folder: articles
+    create: false
+    extension: json
+    format: json
+    identifier_field: title
+    summary: "{{date}} - {{title}}"
+    fields: &published_fields
+      - { label: Başlık, name: title, widget: string }
+      - { label: Slug, name: slug, widget: string, readonly: true }
+      - { label: Tarih, name: date, widget: string }
+      - { label: Dil, name: language, widget: string, required: false, readonly: true }
+      - { label: Ülke, name: country, widget: string, required: false, readonly: true }
+      - *category_field
+      - { label: Spot, name: spot, widget: text, required: false }
+      - { label: Özet, name: summary, widget: text, required: false }
+      - { label: Haber Gövdesi HTML, name: content_html, widget: code, default_language: html, required: false }
+      - { label: Görsel URL, name: image_url, widget: string, required: false }
+      - { label: Görsel Alt Metni, name: image_alt, widget: string, required: false }
       - { label: Görsel Promptu, name: image_prompt, widget: text, required: false }
       - { label: Meta Title, name: meta_title, widget: string, required: false }
       - { label: Meta Description, name: meta_description, widget: text, required: false }
@@ -58,11 +108,7 @@ collections:
         widget: list
         required: false
         field: { label: Başlık, name: title, widget: string }
-      - label: Etiketler
-        name: tags
-        widget: list
-        required: false
-        field: { label: Etiket, name: tag, widget: string }
+      - *tags_field
       - label: Görsel Anahtar Kelimeleri
         name: visual_keywords
         widget: list
@@ -75,42 +121,25 @@ collections:
       - { label: Quality Status, name: quality_status, widget: string, required: false, readonly: true }
       - { label: Review Required, name: review_required, widget: boolean, required: false, readonly: true }
       - { label: Indexed On Home, name: indexed_on_home, widget: boolean, required: false, readonly: true }
-      - label: Quality Flags
-        name: quality_flags
-        widget: list
-        required: false
-        field: { label: Flag, name: flag, widget: string }
-      - label: Quality Notes
-        name: quality_notes
-        widget: list
-        required: false
-        field: { label: Not, name: note, widget: string }
-      - label: Fact Guard
-        name: fact_guard
-        widget: object
-        required: false
-        fields:
-          - { label: Sadece Kaynak Bilgisi, name: used_only_source_facts, widget: boolean, required: false }
-          - { label: Eksik Tepkiler Atlandı, name: omitted_missing_reactions, widget: boolean, required: false }
 
-  - name: en_articles
-    label: English News
-    label_singular: English News
+  - name: published_en
+    label: "2.2 - Published News / English"
+    label_singular: "Published English News"
     folder: news/articles
     create: false
     extension: json
     format: json
     identifier_field: title
     summary: "{{date}} - {{title}}"
-    fields: *article_fields
+    fields: *published_fields
 
-  - name: de_articles
-    label: Deutsche Nachrichten
-    label_singular: Deutsche Nachricht
+  - name: published_de
+    label: "2.3 - Veröffentlichte Nachrichten / Deutsch"
+    label_singular: "Veröffentlichte Nachricht"
     folder: nachrichten/artikel
     create: false
     extension: json
     format: json
     identifier_field: title
     summary: "{{date}} - {{title}}"
-    fields: *article_fields
+    fields: *published_fields
