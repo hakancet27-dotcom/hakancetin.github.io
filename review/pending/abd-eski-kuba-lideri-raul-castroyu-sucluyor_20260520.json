@@ -1,0 +1,62 @@
+{
+  "title": "ABD, Eski Küba Lideri Raul Castro'yu Suçluyor",
+  "meta_title": "Raul Castro ABD'de Suçlanıyor",
+  "meta_description": "ABD Adalet Bakan Vekili Todd Blanche, eski Küba Devlet Başkanı Raul Castro ve diğer yetkilileri 'ABD vatandaşlarını öldürmek amacıyla komplo kurmaktan'...",
+  "discover_titles": [
+    "Raul Castro ABD'de Suçlanıyor",
+    "Eski Küba Lideri Raul Castro",
+    "ABD Küba İlişkileri"
+  ],
+  "slug": "abd-eski-kuba-lideri-raul-castroyu-sucluyor_20260520",
+  "category": "Dünya Haberleri",
+  "spot": "ABD Adalet Bakan Vekili Todd Blanche, eski Küba Devlet Başkanı Raul Castro ve diğer yetkilileri 'ABD vatandaşlarını öldürmek amacıyla komplo kurmaktan' suçlayan iddianameyi açıkladı.",
+  "content_html": "<h2>Raul Castro'nun Suçlanması</h2> <h3>Suçlama Detayları</h3> <p>İddianamede, Raul Castro ve diğer yetkililerin ABD vatandaşlarını öldürmek amacıyla komplo kurdukları iddia edildi.</p> <h2>ABD-Küba İlişkileri</h2> <p>ABD ve Küba arasındaki ilişkiler uzun süredir gergin. İki ülke arasında çeşitli konularda anlaşmazlıklar yaşanmaktadır.</p> <h3>İki Ülke Arasındaki Anlaşmazlıklar</h3> <p>İki ülke arasındaki anlaşmazlıkların temelinde, ekonomi, siyaset ve insan hakları gibi konular yer almaktadır.</p>",
+  "tags": [
+    "Raul Castro",
+    "ABD",
+    "Küba",
+    "Suçlama",
+    "İddianame"
+  ],
+  "visual_keywords": [
+    "Raul Castro",
+    "ABD Bayrağı",
+    "Küba Bayrağı"
+  ],
+  "image_prompt": "Raul Castro'nun resmedildiği bir fotoğraf",
+  "image_alt": "Raul Castro",
+  "fact_guard": {
+    "used_only_source_facts": true,
+    "omitted_missing_reactions": true
+  },
+  "schema_version": 2,
+  "word_count": 80,
+  "date": "20.05.2026",
+  "flag": "TR",
+  "country": "Turkey",
+  "display_country": "Türkiye",
+  "image_url": "https://hakancetin.com.tr/articles/images/abd-eski-kuba-lideri-raul-castroyu-sucluyor_20260520.jpg",
+  "summary": "ABD Adalet Bakan Vekili Todd Blanche, eski Küba Devlet Başkanı Raul Castro ve diğer yetkilileri 'ABD vatandaşlarını öldürmek amacıyla komplo kurmaktan' suçlayan iddianameyi açıkladı.",
+  "language": "Turkish",
+  "url_prefix": "articles",
+  "source_language": "Turkish",
+  "target_language": "Turkish",
+  "quality_score": 55,
+  "quality_status": "blocked_from_index",
+  "review_required": true,
+  "quality_flags": [
+    "very_short_article",
+    "generated_image",
+    "meta_title_issue"
+  ],
+  "quality_notes": [
+    "Metin cok kisa (80 kelime).",
+    "Haber stok/gercek fotograf yerine uretilmis gorsel kullaniyor.",
+    "Meta title ideal aralikta degil."
+  ],
+  "quality_word_count": 80,
+  "indexed_on_home": false,
+  "review_status": "pending",
+  "review_source": "quality_gate",
+  "review_run_id": "26185017729"
+}
