@@ -1,0 +1,31 @@
+name: CMS Content Sync
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "articles/**/*.json"
+      - "news/articles/**/*.json"
+      - "nachrichten/artikel/**/*.json"
+
+permissions:
+  contents: write
+
+jobs:
+  sync-html:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor != 'github-actions[bot]' && !contains(github.event.head_commit.message, 'Haberler') }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Sync article HTML from edited JSON
+        run: python tools/cms_sync_articles.py
+
+      - name: Commit synced HTML
+        run: |
+          git config user.name "CMS Sync Bot"
+          git config user.email "cms-sync@hakancetin.com.tr"
+          git add articles/*.html news/articles/*.html nachrichten/artikel/*.html
+          git diff --staged --quiet || git commit -m "Sync CMS JSON edits to article HTML"
+          git push
