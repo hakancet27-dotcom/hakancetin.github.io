@@ -66,6 +66,27 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://hakancetin.com.tr/articles/gulistandoku-sorusturmasi_20260520.html</loc>
+        <lastmod>2026-05-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1712171481903-9519e53fd58f?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxHJUMzJUJDbGlzdGFuJTIwRG9rdXxlbnwwfDB8fHwxNzc5MjQ5OTI2fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/senato_trumpin_iranla_catismadaki_yetkilerini_sinirlandirmaya_hareket_ediyor_20260520.html</loc>
+        <lastmod>2026-05-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1600870003315-e1c945702030?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxVUyUyMFNlbmF0ZXxlbnwwfDB8fHwxNzc5MjQwOTExfDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/articles/iranin_savasta_stratejik_kaldiraci_20260520.html</loc>
+        <lastmod>2026-05-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1613930648631-7191115e83d4?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxJcmFufGVufDB8MHx8fDE3NzkyMDczNDZ8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
         <loc>https://hakancetin.com.tr/articles/abd_ve_israil_iranda_ahmadinejadi_lider_yapmak_istiyordu_20260520.html</loc>
         <lastmod>2026-05-20</lastmod>
         <changefreq>monthly</changefreq>
@@ -955,18 +976,25 @@
         <image:image><image:loc>https://hakancetin.com.tr/articles/images/usa-toeten-is-vizechef.svg</image:loc></image:image>
     </url>
     <url>
-        <loc>https://hakancetin.com.tr/news/articles/us-israel-iran-regime-change_20260520.html</loc>
+        <loc>https://hakancetin.com.tr/news/articles/senate-votes-to-limit-trump-iran-war-powers_20260520.html</loc>
+        <lastmod>2026-05-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1600870003315-e1c945702030?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxVUyUyMFNlbmF0ZXxlbnwwfDB8fHwxNzc5MjQwOTExfDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/news/articles/iran-war-leverage_20260520.html</loc>
         <lastmod>2026-05-20</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image><image:loc>https://images.unsplash.com/photo-1613930648631-7191115e83d4?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxJcmFufGVufDB8MHx8fDE3NzkyMDczNDZ8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
     </url>
     <url>
-        <loc>https://hakancetin.com.tr/news/articles/senate-votes-to-limit-trump-iran-war-powers_20260520.html</loc>
+        <loc>https://hakancetin.com.tr/news/articles/us-israel-iran-regime-change_20260520.html</loc>
         <lastmod>2026-05-20</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
-        <image:image><image:loc>https://images.unsplash.com/photo-1600870003315-e1c945702030?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxVUyUyMFNlbmF0ZXxlbnwwfDB8fHwxNzc5MjQwOTExfDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+        <image:image><image:loc>https://images.unsplash.com/photo-1613930648631-7191115e83d4?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxJcmFufGVufDB8MHx8fDE3NzkyMDczNDZ8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
     </url>
     <url>
         <loc>https://hakancetin.com.tr/news/articles/iran-war-exposes-us-military-industrial-base-shortcomings_20260519.html</loc>
@@ -1200,6 +1228,20 @@
         <image:image><image:loc>https://images.unsplash.com/photo-1630280368109-cfd06624996f?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxMb25nJTIwSXNsYW5kJTIwUmFpbCUyMFJvYWR8ZW58MHwwfHx8MTc3ODk1MTYwM3ww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
     </url>
     <url>
+        <loc>https://hakancetin.com.tr/nachrichten/artikel/deutsche-waelder-kritischer-zustand-vielfalt-zukunftsstrategie_20260520.html</loc>
+        <lastmod>2026-05-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1473274978487-4324cc103b13?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxnZXNjaHclQzMlQTRjaHRlciUyMEJhdW18ZW58MHwwfHx8MTc3OTI1MDA0N3ww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
+        <loc>https://hakancetin.com.tr/nachrichten/artikel/ebola-ausbreitung-kongo-who-besorgt-uganda-us-arzt-deutschland_20260520.html</loc>
+        <lastmod>2026-05-20</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <image:image><image:loc>https://images.unsplash.com/photo-1706647155426-6fafce5ad47f?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFYm9sYSUyMHZpcnVzfGVufDB8MHx8fDE3NzkyNTAwMDF8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
+    </url>
+    <url>
         <loc>https://hakancetin.com.tr/nachrichten/artikel/iran-krieg-us-senat-stimmt-fuer-einschraenkung-von-donald-trumps-befugnissen_20260520.html</loc>
         <lastmod>2026-05-20</lastmod>
         <changefreq>monthly</changefreq>
@@ -1331,13 +1373,6 @@
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
         <image:image><image:loc>https://images.unsplash.com/photo-1618259278412-2819cbdea4dc?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxHZXJtYW55fGVufDB8MHx8fDE3NzkxMTA2MDJ8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
-    </url>
-    <url>
-        <loc>https://hakancetin.com.tr/nachrichten/artikel/ebola-ausbruch-dr-kongo-uganda-gefahr_20260518.html</loc>
-        <lastmod>2026-05-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-        <image:image><image:loc>https://images.unsplash.com/photo-1624448713098-baface803acf?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFYm9sYXxlbnwwfDB8fHwxNzc5MTAxNDU2fDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080</image:loc></image:image>
     </url>
     <url>
         <loc>https://hakancetin.com.tr/nachrichten/artikel/panini-fussball-wm-2026-ueberleben-sticker-kultmarke_20260518.html</loc>

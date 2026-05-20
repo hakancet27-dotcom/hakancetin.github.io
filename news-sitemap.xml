@@ -2,6 +2,39 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://hakancetin.com.tr/articles/gulistandoku-sorusturmasi_20260520.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-20</news:publication_date>
+      <news:title>Gülistan Doku Soruşturmasında Yeni Gelişme</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/senato_trumpin_iranla_catismadaki_yetkilerini_sinirlandirmaya_hareket_ediyor_20260520.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-20</news:publication_date>
+      <news:title>Senato, Trump&#x27;ın İran&#x27;la Çatışmadaki Yetkilerini Sınırlandırmaya Hareket Ediyor</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/iranin_savasta_stratejik_kaldiraci_20260520.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-20</news:publication_date>
+      <news:title>İran&#x27;ın Savaşta Stratejik Kaldıracı</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://hakancetin.com.tr/articles/abd_ve_israil_iranda_ahmadinejadi_lider_yapmak_istiyordu_20260520.html</loc>
     <news:news>
       <news:publication>
