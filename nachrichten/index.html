@@ -1878,12 +1878,6 @@
       </main>
 
       <aside class="sidebar" aria-label="Sidebar">
-        <div class="youtube-widget">
-          <div class="yt-icon" aria-hidden="true">▶</div>
-          <h3>YouTube</h3>
-          <p>Folgen Sie unserem Kanal für Videonachrichten und Zusammenfassungen.</p>
-          <a href="https://www.youtube.com/@NartanesiHaber" target="_blank" rel="noopener">Abonnieren</a>
-        </div>
         <div class="sidebar-widget">
           <div class="widget-title">Rubriken</div>
           <ul class="country-filter">
@@ -1898,8 +1892,22 @@
           <ol class="latest-news-list" id="latest-news-list" aria-label="Neueste Meldungen"></ol>
         </div>
         <div class="sidebar-widget">
+          <div class="widget-title">Wetter</div>
+          <ul class="weather-list" id="weather-list" aria-label="Wetter">
+            <li><span class="weather-city">Berlin</span><span class="weather-temp">--</span><span class="weather-meta">Lädt</span></li>
+            <li><span class="weather-city">Hamburg</span><span class="weather-temp">--</span><span class="weather-meta">Lädt</span></li>
+            <li><span class="weather-city">München</span><span class="weather-temp">--</span><span class="weather-meta">Lädt</span></li>
+          </ul>
+        </div>
+        <div class="sidebar-widget">
           <div class="widget-title">Veröffentlichung</div>
           <p class="info-text">Deutsche Nachrichten werden aus deutschsprachigen Quellen gesammelt und regelmäßig aktualisiert.<br><br><strong>hakancetin.com.tr</strong></p>
+        </div>
+        <div class="youtube-widget">
+          <div class="yt-icon" aria-hidden="true">▶</div>
+          <h3>YouTube</h3>
+          <p>Folgen Sie unserem Kanal für Videonachrichten und Zusammenfassungen.</p>
+          <a href="https://www.youtube.com/@NartanesiHaber" target="_blank" rel="noopener">Abonnieren</a>
         </div>
       </aside>
     </div>
@@ -1938,6 +1946,11 @@
 
 
   <script>
+    const weatherCities = [{"name": "Berlin", "lat": 52.52, "lon": 13.405}, {"name": "Hamburg", "lat": 53.5511, "lon": 9.9937}, {"name": "München", "lat": 48.1351, "lon": 11.582}];
+    const weatherLoadingText = "Lädt";
+    const weatherNoDataText = "Keine Daten";
+    const weatherWindText = "Wind";
+
     function updateTime() {
       const now = new Date();
       const time = now.toLocaleString('de-DE', {
@@ -2103,6 +2116,42 @@
       )).join('');
     }
 
+    function weatherCodeToText(code) {
+      if ([0, 1].includes(code)) return 'Klar';
+      if ([2, 3].includes(code)) return 'Bewölkt';
+      if ([45, 48].includes(code)) return 'Nebel';
+      if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code)) return 'Regen';
+      if ([71, 73, 75, 77, 85, 86].includes(code)) return 'Schnee';
+      if ([95, 96, 99].includes(code)) return 'Gewitter';
+      return 'Wetter';
+    }
+
+    async function updateWeather() {
+      const weatherList = document.getElementById('weather-list');
+      if (!weatherList || !weatherCities.length) return;
+      try {
+        const rows = await Promise.all(weatherCities.map(async (city) => {
+          const response = await fetch(
+            `https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lon}&current=temperature_2m,weather_code,wind_speed_10m&timezone=Europe%2FBerlin`,
+            { cache: 'no-store' }
+          );
+          if (!response.ok) throw new Error('weather failed');
+          const data = await response.json();
+          const current = data.current;
+          if (!current) throw new Error('weather missing');
+          const temp = `${Math.round(current.temperature_2m)}°`;
+          const wind = `${Math.round(current.wind_speed_10m)} km/h`;
+          const label = weatherCodeToText(current.weather_code);
+          return `<li><span class="weather-city">${city.name}</span><span class="weather-temp">${temp}</span><span class="weather-meta">${label} · ${weatherWindText} ${wind}</span></li>`;
+        }));
+        weatherList.innerHTML = rows.join('');
+      } catch (error) {
+        weatherList.innerHTML = weatherCities.map(city =>
+          `<li><span class="weather-city">${city.name}</span><span class="weather-temp">--</span><span class="weather-meta">${weatherNoDataText}</span></li>`
+        ).join('');
+      }
+    }
+
     function initPagination(gridId, pageSize = 18) {
       const grid = document.getElementById(gridId);
       if (!grid) return;
@@ -2160,6 +2209,8 @@
     setInterval(updateTime, 60000);
     updateMarkets();
     setInterval(updateMarkets, 300000);
+    updateWeather();
+    setInterval(updateWeather, 600000);
     applyTopicFilter();
     initLatestNews();
     initHeadlineSlider();

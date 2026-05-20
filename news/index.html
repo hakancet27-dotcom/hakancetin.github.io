@@ -1640,12 +1640,6 @@
       </main>
 
       <aside class="sidebar" aria-label="Sidebar">
-        <div class="youtube-widget">
-          <div class="yt-icon" aria-hidden="true">▶</div>
-          <h3>YouTube</h3>
-          <p>Follow our channel for video news and agenda summaries.</p>
-          <a href="https://www.youtube.com/@NartanesiHaber" target="_blank" rel="noopener">Subscribe</a>
-        </div>
         <div class="sidebar-widget">
           <div class="widget-title">Sections</div>
           <ul class="country-filter">
@@ -1660,8 +1654,22 @@
           <ol class="latest-news-list" id="latest-news-list" aria-label="Latest News"></ol>
         </div>
         <div class="sidebar-widget">
+          <div class="widget-title">Weather</div>
+          <ul class="weather-list" id="weather-list" aria-label="Weather">
+            <li><span class="weather-city">New York</span><span class="weather-temp">--</span><span class="weather-meta">Loading</span></li>
+            <li><span class="weather-city">Washington</span><span class="weather-temp">--</span><span class="weather-meta">Loading</span></li>
+            <li><span class="weather-city">Los Angeles</span><span class="weather-temp">--</span><span class="weather-meta">Loading</span></li>
+          </ul>
+        </div>
+        <div class="sidebar-widget">
           <div class="widget-title">Publishing Info</div>
           <p class="info-text">US news is collected from English-language sources and updated regularly.<br><br><strong>hakancetin.com.tr</strong></p>
+        </div>
+        <div class="youtube-widget">
+          <div class="yt-icon" aria-hidden="true">▶</div>
+          <h3>YouTube</h3>
+          <p>Follow our channel for video news and agenda summaries.</p>
+          <a href="https://www.youtube.com/@NartanesiHaber" target="_blank" rel="noopener">Subscribe</a>
         </div>
       </aside>
     </div>
@@ -1700,6 +1708,11 @@
 
 
   <script>
+    const weatherCities = [{"name": "New York", "lat": 40.7128, "lon": -74.006}, {"name": "Washington", "lat": 38.9072, "lon": -77.0369}, {"name": "Los Angeles", "lat": 34.0522, "lon": -118.2437}];
+    const weatherLoadingText = "Loading";
+    const weatherNoDataText = "No data";
+    const weatherWindText = "Wind";
+
     function updateTime() {
       const now = new Date();
       const time = now.toLocaleString('en-US', {
@@ -1865,6 +1878,42 @@
       )).join('');
     }
 
+    function weatherCodeToText(code) {
+      if ([0, 1].includes(code)) return 'Clear';
+      if ([2, 3].includes(code)) return 'Cloudy';
+      if ([45, 48].includes(code)) return 'Fog';
+      if ([51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code)) return 'Rain';
+      if ([71, 73, 75, 77, 85, 86].includes(code)) return 'Snow';
+      if ([95, 96, 99].includes(code)) return 'Storm';
+      return 'Weather';
+    }
+
+    async function updateWeather() {
+      const weatherList = document.getElementById('weather-list');
+      if (!weatherList || !weatherCities.length) return;
+      try {
+        const rows = await Promise.all(weatherCities.map(async (city) => {
+          const response = await fetch(
+            `https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lon}&current=temperature_2m,weather_code,wind_speed_10m&timezone=America%2FNew_York`,
+            { cache: 'no-store' }
+          );
+          if (!response.ok) throw new Error('weather failed');
+          const data = await response.json();
+          const current = data.current;
+          if (!current) throw new Error('weather missing');
+          const temp = `${Math.round(current.temperature_2m)}°`;
+          const wind = `${Math.round(current.wind_speed_10m)} km/h`;
+          const label = weatherCodeToText(current.weather_code);
+          return `<li><span class="weather-city">${city.name}</span><span class="weather-temp">${temp}</span><span class="weather-meta">${label} · ${weatherWindText} ${wind}</span></li>`;
+        }));
+        weatherList.innerHTML = rows.join('');
+      } catch (error) {
+        weatherList.innerHTML = weatherCities.map(city =>
+          `<li><span class="weather-city">${city.name}</span><span class="weather-temp">--</span><span class="weather-meta">${weatherNoDataText}</span></li>`
+        ).join('');
+      }
+    }
+
     function initPagination(gridId, pageSize = 18) {
       const grid = document.getElementById(gridId);
       if (!grid) return;
@@ -1922,6 +1971,8 @@
     setInterval(updateTime, 60000);
     updateMarkets();
     setInterval(updateMarkets, 300000);
+    updateWeather();
+    setInterval(updateWeather, 600000);
     applyTopicFilter();
     initLatestNews();
     initHeadlineSlider();
