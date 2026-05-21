@@ -1,5 +1,5 @@
 {
-  "review_status": "approved",
+  "review_status": "published",
   "title": "Anklage: Anschlag in Berlin im Auftrag der Revolutionsgarde geplant?",
   "slug": "anklage-anschlag-berlin-revolutionsgarde_20260521",
   "date": "21.05.2026",
@@ -35,9 +35,9 @@
   "url_prefix": "nachrichten/artikel",
   "word_count": 162,
   "quality_score": 62,
-  "quality_status": "blocked_from_index",
-  "review_required": true,
-  "indexed_on_home": false,
+  "quality_status": "approved",
+  "review_required": false,
+  "indexed_on_home": true,
   "quality_word_count": 162,
   "quality_notes": [
     "Metin cok kisa (162 kelime).",
