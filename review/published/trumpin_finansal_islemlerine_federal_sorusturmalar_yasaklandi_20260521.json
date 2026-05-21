@@ -1,5 +1,5 @@
 {
-  "review_status": "approved",
+  "review_status": "published",
   "title": "Trump'ın Finansal İşlemlerine Federal Soruşturmalar Yasaklandı",
   "slug": "trumpin_finansal_islemlerine_federal_sorusturmalar_yasaklandi_20260521",
   "date": "21.05.2026",
@@ -25,7 +25,7 @@
     "Yürütme Yetkisi"
   ],
   "quality_score": 62,
-  "quality_status": "blocked_from_index",
+  "quality_status": "approved",
   "quality_flags": [
     "very_short_article",
     "category_issue"
@@ -34,7 +34,7 @@
     "Metin cok kisa (169 kelime).",
     "Kategori standart haber kategorileriyle uyumlu degil: Siyasal Haberler."
   ],
-  "indexed_on_home": false,
+  "indexed_on_home": true,
   "quality_word_count": 169,
   "display_country": "Amerika",
   "flag": "US",
@@ -59,7 +59,7 @@
   "source_slug": "trump-justice-department-prohibition-investigations_20260521",
   "source_url_prefix": "news/articles",
   "translation_of": "news/articles/trump-justice-department-prohibition-investigations_20260521.html",
-  "review_required": true,
+  "review_required": false,
   "review_source": "quality_gate",
   "review_run_id": "26199014739"
 }
