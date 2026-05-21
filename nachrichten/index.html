@@ -1197,6 +1197,114 @@
     .market-item.down .market-value,
     .market-item.down .market-change { color: #7f1d1d; }
     .market-status { white-space: nowrap; color: #7a1a12; font-weight: 800; }
+    /* Mobil üst alan dengeleme: piyasa + arama + üye girişi taşmalarını önler */
+    @media (max-width: 900px) {
+      header .inner {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+        align-items: stretch;
+      }
+      header .inner nav {
+        justify-self: stretch;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+      .market-strip {
+        max-width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        border-radius: 14px;
+        padding: 6px;
+      }
+      .header-tools {
+        width: 100%;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 8px;
+        align-items: center;
+      }
+      .header-search,
+      .header-search.is-open,
+      .header-search:focus-within {
+        width: 100%;
+        min-width: 0;
+      }
+      .member-login-btn {
+        white-space: nowrap;
+        min-height: 38px;
+      }
+    }
+    @media (max-width: 640px) {
+      .top-bar .inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+      .top-links {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      header {
+        padding: 10px 0;
+      }
+      .logo-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1.05rem;
+      }
+      .logo-text strong {
+        font-size: 1.02rem;
+      }
+      .logo-text span {
+        font-size: 0.68rem;
+      }
+      .market-strip {
+        padding: 5px;
+        border-radius: 12px;
+        gap: 6px;
+      }
+      .market-label {
+        padding: 6px 9px;
+        font-size: 0.66rem;
+      }
+      .market-item {
+        padding: 7px 9px;
+        gap: 5px;
+      }
+      .market-name {
+        font-size: 0.64rem;
+      }
+      .market-value {
+        font-size: 0.92rem;
+        min-width: 44px;
+      }
+      .market-change {
+        font-size: 0.68rem;
+        min-width: 44px;
+      }
+      .market-status {
+        display: none;
+      }
+      .header-tools {
+        grid-template-columns: minmax(0, 1fr) auto;
+      }
+      .header-search input {
+        font-size: 0.88rem;
+        padding: 9px 35px 9px 33px;
+      }
+      .member-login-btn {
+        padding: 8px 10px;
+        font-size: 0.83rem;
+      }
+      nav a {
+        padding: 7px 11px;
+        font-size: 0.84rem;
+      }
+    }
     @media (min-width: 901px) {
       header .inner { grid-template-columns: auto minmax(320px, 1fr) auto auto; gap: 14px; }
       header .inner nav { justify-self: end; }
