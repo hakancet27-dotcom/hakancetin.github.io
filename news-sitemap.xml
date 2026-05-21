@@ -2,6 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://hakancetin.com.tr/articles/muskin_spacexi_halka_arz_oncesinde_finansal_bilgilerini_acikladi_20260521.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-21</news:publication_date>
+      <news:title>Musk&#x27;ın SpaceX&#x27;i Halka Arz Öncesinde Finansal Bilgilerini Açıkladı</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://hakancetin.com.tr/articles/los_angeles_yakinlarinda_2_yangin_tahliyelere_neden_oldu_20260520.html</loc>
     <news:news>
       <news:publication>

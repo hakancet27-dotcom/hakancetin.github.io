@@ -2954,18 +2954,11 @@
 
     updateTime();
     setInterval(updateTime, 60000);
+    updateMarkets();
     initMarketStripAutoScroll();
-    function scheduleLiveWidgets() {
-      updateMarkets();
-      setInterval(updateMarkets, 300000);
-      updateWeather();
-      setInterval(updateWeather, 600000);
-    }
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(scheduleLiveWidgets, { timeout: 1500 });
-    } else {
-      setTimeout(scheduleLiveWidgets, 1200);
-    }
+    setInterval(updateMarkets, 300000);
+    updateWeather();
+    setInterval(updateWeather, 600000);
     initSearchBar();
     refreshNewsGrid();
   </script>
