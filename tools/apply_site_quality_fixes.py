@@ -1,4 +1,4 @@
-"""
+﻿"""
 Site kalite düzeltme aracı.
 
 Ne işe yarar?
@@ -108,7 +108,7 @@ def article_section_for_path(path: Path):
     if rel.startswith("nachrichten/artikel/"):
         return "Deutschland Nachrichten", f"{SITE_URL}/nachrichten/"
     if rel.startswith("articles/"):
-        return "Haberler", f"{SITE_URL}/haber.html"
+        return "Haberler", f"{SITE_URL}/haber"
     return None
 
 
@@ -384,3 +384,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
