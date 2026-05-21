@@ -1,0 +1,61 @@
+{
+  "title": "Uganda Unaware of Ebola Clinics Promised by US",
+  "meta_title": "Uganda Says It’s Not Aware of Ebola Clinics Promised by U.S.",
+  "meta_description": "Uganda claims it has no knowledge of Ebola clinics promised by the US, despite State Department announcement",
+  "discover_titles": [
+    "Uganda Ebola Clinics",
+    "US Ebola Aid",
+    "Ebola Outbreak Response"
+  ],
+  "slug": "uganda-unaware-of-ebola-clinics-promised-by-us_20260521",
+  "category": "Health",
+  "spot": "The Ugandan government says it is not aware of Ebola clinics promised by the US, despite the State Department announcing plans to fund up to 50 clinics in Uganda and the Democratic Republic of Congo.",
+  "content_html": "<h2>Background on the Ebola Crisis</h2> <p>The Ebola outbreak has been a major concern for global health authorities, with various countries and organizations providing aid to affected regions.</p> <h2>US Announcement and Ugandan Response</h2> <p>The State Department announced plans to fund up to 50 clinics in Uganda and the Democratic Republic of Congo, but a top Ugandan official claims they are not aware of such clinics.</p> <h3>Implications of the Discrepancy</h3> <p>The discrepancy between the US announcement and the Ugandan government's claim of unawareness raises questions about the coordination and communication between the two countries on the Ebola response.</p> <h2>Next Steps and Concerns</h2> <p>As the situation unfolds, it remains to be seen how the US and Uganda will address the discrepancy and work together to combat the Ebola outbreak.</p>",
+  "tags": [
+    "Ebola",
+    "Uganda",
+    "US Aid",
+    "Global Health"
+  ],
+  "visual_keywords": [
+    "Ebola",
+    "Uganda",
+    "Clinics"
+  ],
+  "image_prompt": "A photo of a healthcare worker in Uganda, with a caption about the Ebola outbreak",
+  "image_alt": "Healthcare worker in Uganda",
+  "fact_guard": {
+    "used_only_source_facts": true,
+    "omitted_missing_reactions": true
+  },
+  "schema_version": 2,
+  "word_count": 162,
+  "date": "21.05.2026",
+  "flag": "US",
+  "country": "USA",
+  "display_country": "United States",
+  "image_url": "https://images.unsplash.com/photo-1580378156095-317d986123f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFYm9sYXxlbnwwfDB8fHwxNzc5MzM2ODcwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+  "summary": "The Ugandan government says it is not aware of Ebola clinics promised by the US, despite the State Department announcing plans to fund up to 50 clinics in Uganda and the Democratic Republic of Congo.",
+  "language": "English",
+  "url_prefix": "news/articles",
+  "source_language": "English",
+  "target_language": "English",
+  "quality_score": 57,
+  "quality_status": "blocked_from_index",
+  "review_required": true,
+  "quality_flags": [
+    "very_short_article",
+    "meta_description_issue",
+    "category_issue"
+  ],
+  "quality_notes": [
+    "Metin cok kisa (162 kelime).",
+    "Meta description ideal aralikta degil.",
+    "Kategori standart haber kategorileriyle uyumlu degil: Health."
+  ],
+  "quality_word_count": 162,
+  "indexed_on_home": false,
+  "review_status": "pending",
+  "review_source": "quality_gate",
+  "review_run_id": "26238927192"
+}

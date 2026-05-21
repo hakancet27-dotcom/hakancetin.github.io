@@ -1,0 +1,62 @@
+{
+  "title": "CHP MYK Olağanüstü Toplandı",
+  "meta_title": "CHP Merkez Yönetim Kurulu Olağanüstü Toplantı",
+  "meta_description": "CHP'de mutlak butlan kararı sonrası Merkez Yönetim Kurulu olağanüstü toplandı.",
+  "discover_titles": [
+    "CHP MYK Toplantısı",
+    "Merkez Yönetim Kurulu Olağanüstü Toplantı",
+    "CHP'de Son Gelişmeler"
+  ],
+  "slug": "chp-myk-olaganustu-toplanti_20260521",
+  "category": "Siyasal Haberler",
+  "spot": "CHP'de mutlak butlan kararı sonrası Merkez Yönetim Kurulu olağanüstü toplandı. CHP'de yaşanan gelişmeler sonrası MYK üyeleri bir araya geldi.",
+  "content_html": "<h2>CHP MYK Olağanüstü Toplantısı</h2> <h3>Merkez Yönetim Kurulu Toplantısı</h3> <p>Merkez Yönetim Kurulu üyeleri, CHP'de yaşanan son gelişmeleri değerlendirdi. Toplantıda partinin geleceği ve alınması gereken önlemler konuşuldu.</p> <h2>CHP'de Son Gelişmeler</h2> <p>CHP'de mutlak butlan kararı sonrası partideki uyum ve iş birliği konusundaki endişeler arttı. Parti üyeleri, MYK'nın bu konuda gerekli adımları atmasını bekliyor.</p> <ul> <li>CHP MYK olağanüstü toplandı</li> <li>Merkez Yönetim Kurulu üyeleri partideki son gelişmeleri değerlendirdi</li> <li>Parti üyeleri, MYK'nın gerekli adımları atmasını bekliyor</li> </ul>",
+  "tags": [
+    "CHP",
+    "MYK",
+    "Merkez Yönetim Kurulu",
+    "Siyasal Haberler",
+    "Politika"
+  ],
+  "visual_keywords": [
+    "CHP",
+    "MYK",
+    "Politika"
+  ],
+  "image_prompt": "CHP MYK toplantısı",
+  "image_alt": "CHP MYK toplantısı",
+  "fact_guard": {
+    "used_only_source_facts": true,
+    "omitted_missing_reactions": true
+  },
+  "schema_version": 2,
+  "word_count": 95,
+  "date": "21.05.2026",
+  "flag": "TR",
+  "country": "Turkey",
+  "display_country": "Türkiye",
+  "image_url": "https://images.unsplash.com/photo-1690973691999-7bb38d2c402a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxDSFB8ZW58MHwwfHx8MTc3OTM4MDk1OHww&ixlib=rb-4.1.0&q=80&w=1080",
+  "summary": "CHP'de mutlak butlan kararı sonrası Merkez Yönetim Kurulu olağanüstü toplandı. CHP'de yaşanan gelişmeler sonrası MYK üyeleri bir araya geldi.",
+  "language": "Turkish",
+  "url_prefix": "articles",
+  "source_language": "Turkish",
+  "target_language": "Turkish",
+  "quality_score": 57,
+  "quality_status": "blocked_from_index",
+  "review_required": true,
+  "quality_flags": [
+    "very_short_article",
+    "meta_description_issue",
+    "category_issue"
+  ],
+  "quality_notes": [
+    "Metin cok kisa (95 kelime).",
+    "Meta description ideal aralikta degil.",
+    "Kategori standart haber kategorileriyle uyumlu degil: Siyasal Haberler."
+  ],
+  "quality_word_count": 95,
+  "indexed_on_home": false,
+  "review_status": "pending",
+  "review_source": "quality_gate",
+  "review_run_id": "26238927192"
+}
