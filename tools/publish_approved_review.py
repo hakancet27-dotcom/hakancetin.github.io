@@ -192,7 +192,8 @@ def update_index(data, target):
         return False
     content = index_path.read_text(encoding="utf-8")
     slug = clean(data.get("slug"))
-    if f"/{slug}.html" in content or f"{slug}.html" in content:
+    pretty_href = f"/{target['site_prefix']}/{slug}/"
+    if f"/{slug}.html" in content or f"{slug}.html" in content or pretty_href in content:
         return False
     marker = target["insert_after"]
     pos = content.find(marker)
@@ -253,6 +254,9 @@ def publish_one(json_path):
         shutil.copy2(pending_html, target_html)
     else:
         target_html.write_text(render_article_html(data, target), encoding="utf-8")
+    pretty_dir = target_dir / slug
+    pretty_dir.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(target_html, pretty_dir / "index.html")
 
     update_index(data, target)
 
