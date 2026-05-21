@@ -1,0 +1,58 @@
+{
+  "title": "Ünlü Şarkıcı: Gençliğinde Çalıştı, Şimdi Sefasını Sürüyor",
+  "meta_title": "Ünlü Şarkıcı: Gençliğinde Çalıştı, Şimdi Sefasını Sürüyor",
+  "meta_description": "Ünlü şarkıcı, gençliğinde çok çalıştı ve şimdi müziği ve oyunculuğuyla elde ettiği başarıların getirilerini keyifle yaşıyor.",
+  "discover_titles": [
+    "Ünlü Şarkıcı",
+    "Müzik ve Oyunculuk",
+    "Başarı Hikayesi"
+  ],
+  "slug": "unlu-sarkici-basarisi_20260521",
+  "category": "Magazin",
+  "spot": "Ünlü şarkıcı, gençliğinde çok çalıştı ve şimdi müziği ve oyunculuğuyla elde ettiği başarıların getirilerini keyifle yaşıyor. İsterse ölene kadar su gibi para harcayabilir!",
+  "content_html": "<h2>Ünlü Şarkıcının Başarı Hikayesi</h2> <p>Ünlü şarkıcı, gençliğinde çok çalışarak müziğe ve oyunculuğa adım attı. Zamanla büyük bir başarı elde etti ve şimdi bu başarının getirilerini keyifle yaşıyor.</p> <h3>Müzik ve Oyunculuk Kariyeri</h3> <p>Ünlü şarkıcı, müziğe ve oyunculuğa başladığı günden beri büyük bir emek verdi. Bu emek, zamanla büyük bir başarıya dönüştü ve şimdi birçok kişi tarafından tanınan ve sevilen bir isim oldu.</p> <h2>Gelecek Planları</h2> <p>Ünlü şarkıcı, gelecekte neler yapacağı konusunda herhangi bir açıklama yapmadı. Ancak, şu anda elde ettiği başarıların getirilerini keyifle yaşadığı ve istese ölene kadar su gibi para harcayabileceği söyleniyor.</p> <h3>Ünlü Şarkıcının Mesajı</h3> <p>Ünlü şarkıcı, gençliğine ve emeğine dikkat çekerek, herkesin benzer bir başarı elde edebileceğini söylüyor. Ancak, bunun için çok çalışmak ve azimle ilerlemek gerektiğini vurguluyor.</p>",
+  "tags": [
+    "Ünlü Şarkıcı",
+    "Müzik",
+    "Oyunculuk",
+    "Başarı Hikayesi",
+    "Magazin"
+  ],
+  "visual_keywords": [
+    "Ünlü Şarkıcı",
+    "Müzik",
+    "Oyunculuk"
+  ],
+  "image_prompt": "Ünlü şarkıcı",
+  "image_alt": "Ünlü şarkıcı",
+  "fact_guard": {
+    "used_only_source_facts": true,
+    "omitted_missing_reactions": true
+  },
+  "schema_version": 2,
+  "word_count": 141,
+  "date": "21.05.2026",
+  "flag": "TR",
+  "country": "Turkey",
+  "display_country": "Türkiye",
+  "image_url": "https://images.unsplash.com/photo-1550696043-8d6b42d33931?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHwlQzMlOUNubCVDMyVCQyUyMCVDNSU5RWFyayVDNCVCMWMlQzQlQjF8ZW58MHwwfHx8MTc3OTM4NDUzMnww&ixlib=rb-4.1.0&q=80&w=1080",
+  "summary": "Ünlü şarkıcı, gençliğinde çok çalıştı ve şimdi müziği ve oyunculuğuyla elde ettiği başarıların getirilerini keyifle yaşıyor. İsterse ölene kadar su gibi para harcayabilir!",
+  "language": "Turkish",
+  "url_prefix": "articles",
+  "source_language": "Turkish",
+  "target_language": "Turkish",
+  "quality_score": 70,
+  "quality_status": "blocked_from_index",
+  "review_required": true,
+  "quality_flags": [
+    "very_short_article"
+  ],
+  "quality_notes": [
+    "Metin cok kisa (141 kelime)."
+  ],
+  "quality_word_count": 141,
+  "indexed_on_home": false,
+  "review_status": "pending",
+  "review_source": "quality_gate",
+  "review_run_id": "26241990331"
+}

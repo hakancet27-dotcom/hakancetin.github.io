@@ -24,6 +24,17 @@
     </news:news>
   </url>
   <url>
+    <loc>https://hakancetin.com.tr/articles/chp-myk-olaganustu-toplanti_20260521.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-21</news:publication_date>
+      <news:title>CHP MYK Olağanüstü Toplandı</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://hakancetin.com.tr/articles/muskin_spacexi_halka_arz_oncesinde_finansal_bilgilerini_acikladi_20260521.html</loc>
     <news:news>
       <news:publication>
@@ -32,6 +43,39 @@
       </news:publication>
       <news:publication_date>2026-05-21</news:publication_date>
       <news:title>Musk&#x27;ın SpaceX&#x27;i Halka Arz Öncesinde Finansal Bilgilerini Açıkladı</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/organize-suc-orgutlerine-yonelik-operasyon_20260521.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-21</news:publication_date>
+      <news:title>Organize Suç Örgütlerine Yönelik Operasyon</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/israil-istanbul-konsoloslugu-kapatma-tartismasi_20260521.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-21</news:publication_date>
+      <news:title>İsrail, İstanbul&#x27;daki Konsolosluğu Kapatmayı Tartşıyor</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/israil_polis_bakaninin_videosu_uluslararasi_elestiri_topladi_20260521.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-21</news:publication_date>
+      <news:title>İsrail Polis Bakanı&#x27;nın Videosu Uluslararası Eleştiri Topladı</news:title>
     </news:news>
   </url>
   <url>
