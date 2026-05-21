@@ -1,0 +1,64 @@
+{
+  "title": "İran, Hürmüz Boğazı’nda Denetim Altındaki Sınırları Açıkladı",
+  "meta_title": "İran Hürmüz Boğazı Sınırları Açıkladı",
+  "meta_description": "İran, Hürmüz Boğazı’ndaki geçişleri düzenlemek amacıyla kurduğu 'Fars Körfezi Su Yolu İdaresi', boğazda denetim altına aldığı sınırları açıkladı.",
+  "discover_titles": [
+    "İran Hürmüz Boğazı Sınırları",
+    "Hürmüz Boğazı Denetim Sınırları",
+    "Fars Körfezi Su Yolu İdaresi"
+  ],
+  "slug": "iran-hurmuz-bogazi-sinirlari_20260521",
+  "category": "Uluslararası Haberler",
+  "spot": "İran, Hürmüz Boğazı’ndaki geçişleri düzenlemek amacıyla kurduğu 'Fars Körfezi Su Yolu İdaresi', boğazda denetim altına aldığı sınırları açıkladı. İran’ın bu adımı, bölgedeki deniz trafiğini düzenlemek amacıyla atıldığı belirtildi.",
+  "content_html": "<h2>Hürmüz Boğazı’nın Önemi</h2> <p>Hürmüz Boğazı, İran ve Umman arasında yer alan stratejik bir su yolu. Boğaz, petrol ve doğalgaz gibi enerji kaynaklarının taşınması için kritik bir güzergah olarak kabul ediliyor.</p> <h2>Fars Körfezi Su Yolu İdaresi</h2> <p>İran, Hürmüz Boğazı’ndaki geçişleri düzenlemek amacıyla 'Fars Körfezi Su Yolu İdaresi'ni kurdu. İdare, boğazda denetim altına aldığı sınırları açıkladı.</p> <h3>Denetim Altındaki Sınırlar</h3> <p>İran’ın açıkladığı sınırlar, Hürmüz Boğazı’ndaki deniz trafiğini düzenlemek amacıyla belirlendi. Sınırların açıklanması, bölgedeki gemi trafiğinin güvenli ve düzenli bir şekilde yürütülmesini amaçlıyor.</p>",
+  "tags": [
+    "İran",
+    "Hürmüz Boğazı",
+    "Fars Körfezi Su Yolu İdaresi",
+    "Deniz Trafiği",
+    "Enerji Kaynakları"
+  ],
+  "visual_keywords": [
+    "Hürmüz Boğazı",
+    "İran Bayrağı",
+    "Gemi Trafiği"
+  ],
+  "image_prompt": "Hürmüz Boğazı’nda bir gemi",
+  "image_alt": "Hürmüz Boğazı’nda bir gemi",
+  "fact_guard": {
+    "used_only_source_facts": true,
+    "omitted_missing_reactions": true
+  },
+  "schema_version": 2,
+  "word_count": 114,
+  "date": "21.05.2026",
+  "flag": "TR",
+  "country": "Turkey",
+  "display_country": "Türkiye",
+  "image_url": "https://hakancetin.com.tr/articles/images/iran-hurmuz-bogazi-sinirlari_20260521.jpg",
+  "summary": "İran, Hürmüz Boğazı’ndaki geçişleri düzenlemek amacıyla kurduğu 'Fars Körfezi Su Yolu İdaresi', boğazda denetim altına aldığı sınırları açıkladı. İran’ın bu adımı, bölgedeki deniz trafiğini düzenlemek amacıyla atıldığı belirtildi.",
+  "language": "Turkish",
+  "url_prefix": "articles",
+  "source_language": "Turkish",
+  "target_language": "Turkish",
+  "quality_score": 47,
+  "quality_status": "blocked_from_index",
+  "review_required": true,
+  "quality_flags": [
+    "very_short_article",
+    "generated_image",
+    "meta_title_issue",
+    "category_issue"
+  ],
+  "quality_notes": [
+    "Metin cok kisa (114 kelime).",
+    "Haber stok/gercek fotograf yerine uretilmis gorsel kullaniyor.",
+    "Meta title ideal aralikta degil.",
+    "Kategori standart haber kategorileriyle uyumlu degil: Uluslararası Haberler."
+  ],
+  "quality_word_count": 114,
+  "indexed_on_home": false,
+  "review_status": "pending",
+  "review_source": "quality_gate",
+  "review_run_id": "26204920611"
+}
