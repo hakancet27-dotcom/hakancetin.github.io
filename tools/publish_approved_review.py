@@ -20,7 +20,7 @@ TARGETS = {
         "href_prefix": "articles",
         "site_prefix": "articles",
         "country_label": "TR Türkiye",
-        "back_href": "../haber",
+        "back_href": "/haber",
         "read_more": "Devamını Oku →",
         "topic_default": "Gündem",
     },
@@ -276,4 +276,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
