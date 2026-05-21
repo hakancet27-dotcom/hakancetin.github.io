@@ -1,5 +1,5 @@
 {
-  "review_status": "approved",
+  "review_status": "published",
   "title": "USA klagen Kubas Ex-Staatschef Raúl Castro an",
   "slug": "usa-klagen-kubas-ex-staatschef-raul-castro-an_20260520",
   "date": "20.05.2026",
@@ -25,7 +25,7 @@
     "Politik"
   ],
   "quality_score": 65,
-  "quality_status": "blocked_from_index",
+  "quality_status": "approved",
   "quality_flags": [
     "very_short_article",
     "meta_description_issue"
@@ -43,7 +43,7 @@
   "flag": "DE",
   "display_country": "Deutschland",
   "quality_word_count": 154,
-  "indexed_on_home": false,
+  "indexed_on_home": true,
   "visual_keywords": [
     "Kuba",
     "USA",
@@ -57,7 +57,7 @@
   "word_count": 154,
   "source_language": "German",
   "target_language": "German",
-  "review_required": true,
+  "review_required": false,
   "review_source": "quality_gate",
   "review_run_id": "26185017729"
 }
