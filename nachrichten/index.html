@@ -196,13 +196,13 @@
       box-shadow: 0 5px 16px rgba(180, 35, 24, 0.12);
     }
     .market-item.up .market-value,
-    .market-change.up { color: #087443; }
+    .market-change.up { color: #064e3b; }
     .market-item.down .market-value,
-    .market-change.down { color: #b42318; }
-    .market-change.up { background: rgba(18, 128, 92, 0.1); }
-    .market-change.down { background: rgba(180, 35, 24, 0.1); }
+    .market-change.down { color: #7f1d1d; }
+    .market-change.up { background: #065f46; color: #ffffff; }
+    .market-change.down { background: #991b1b; color: #ffffff; }
     .market-item.neutral .market-change {
-      color: var(--muted);
+      color: #334155;
       background: #eef2f7;
     }
     .market-status {
@@ -246,7 +246,7 @@
     }
     .breaking .inner::-webkit-scrollbar { display: none; }
     .breaking-label {
-      color: rgba(255,255,255,0.72);
+      color: #ffffff;
       font-weight: 900;
       font-size: 0.68rem;
       padding: 0;
@@ -263,7 +263,7 @@
     .topic-link {
       position: relative;
       flex: 0 0 auto;
-      color: white;
+      color: #ffffff;
       text-decoration: none;
       font-size: 0.86rem;
       font-weight: 900;
@@ -658,8 +658,8 @@
       flex-wrap: wrap;
     }
     .card-category {
-      background: #fff0f0;
-      color: var(--red);
+      background: #fee2e2;
+      color: #7f1d1d;
       font-size: 0.7rem;
       font-weight: 800;
       padding: 3px 10px;
@@ -1193,9 +1193,9 @@
     .market-item.up { border-color: rgba(3, 152, 85, 0.28); background: #ecfdf3; }
     .market-item.down { border-color: rgba(225, 6, 0, 0.30); background: #fff1f0; }
     .market-item.up .market-value,
-    .market-item.up .market-change { color: #039855; }
+    .market-item.up .market-change { color: #064e3b; }
     .market-item.down .market-value,
-    .market-item.down .market-change { color: #e10600; }
+    .market-item.down .market-change { color: #7f1d1d; }
     .market-status { white-space: nowrap; color: #7a1a12; font-weight: 800; }
     @media (min-width: 901px) {
       header .inner { grid-template-columns: auto minmax(320px, 1fr) auto auto; gap: 14px; }
@@ -2954,11 +2954,18 @@
 
     updateTime();
     setInterval(updateTime, 60000);
-    updateMarkets();
     initMarketStripAutoScroll();
-    setInterval(updateMarkets, 300000);
-    updateWeather();
-    setInterval(updateWeather, 600000);
+    function scheduleLiveWidgets() {
+      updateMarkets();
+      setInterval(updateMarkets, 300000);
+      updateWeather();
+      setInterval(updateWeather, 600000);
+    }
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(scheduleLiveWidgets, { timeout: 1500 });
+    } else {
+      setTimeout(scheduleLiveWidgets, 1200);
+    }
     initSearchBar();
     refreshNewsGrid();
   </script>
