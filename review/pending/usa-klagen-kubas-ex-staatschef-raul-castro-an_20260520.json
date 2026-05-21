@@ -1,5 +1,5 @@
 {
-  "review_status": "pending",
+  "review_status": "approved",
   "title": "USA klagen Kubas Ex-Staatschef Raúl Castro an",
   "slug": "usa-klagen-kubas-ex-staatschef-raul-castro-an_20260520",
   "date": "20.05.2026",
@@ -10,13 +10,13 @@
   "spot": "Das US-Justizministerium hat eine Klage gegen Kubas ehemaligen Präsidenten Raúl Castro angekündigt, im Zusammenhang mit dem Abschuss zweier US-Flugzeuge durch die kubanische Luftwaffe vor 30 Jahren, bei dem vier Menschen starben. US-Präsident Trump sprach zudem davon, Kuba 'befreien' zu wollen.",
   "summary": "Das US-Justizministerium hat eine Klage gegen Kubas ehemaligen Präsidenten Raúl Castro angekündigt, im Zusammenhang mit dem Abschuss zweier US-Flugzeuge durch die kubanische Luftwaffe vor 30 Jahren, bei dem vier Menschen starben. US-Präsident Trump sprach zudem davon, Kuba 'befreien' zu wollen.",
   "content_html": {
-    "lang": "html",
-    "code": ""
+    "code": "",
+    "lang": "html"
   },
   "image_url": "https://images.unsplash.com/photo-1570299437488-d430e1e677c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxLdWJhfGVufDB8MHx8fDE3NzkzMDU4MDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
   "image_alt": "Raúl Castro",
   "meta_title": "US-Justizministerium kündigt Klage gegen Ex-Kuba-Präsidenten Raúl Castro an",
-  "meta_description": "Das US-Justizministerium hat angekündigt, eine Klage gegen den ehemaligen kubanischen Präsidenten Raúl Castro einzureichen. Die politischen und internationalen Folgen könnten weitreichend sein.",
+  "meta_description": "The U.S. Department of Justice has announced that it will file a lawsuit against former Cuban President Raúl Castro. This move carries significant political and international implications. It signals a tougher stance in Washington’s legal approach toward former heads of state and could further strain U.S.–Cuba relations. Additionally, reactions from other nations and international organizations may alter diplomatic balances and potentially affect regional trade and investment environments.",
   "tags": [
     "Kuba",
     "USA",
@@ -34,16 +34,16 @@
     "Metin cok kisa (154 kelime).",
     "Meta description ideal aralikta degil."
   ],
-  "indexed_on_home": false,
-  "quality_word_count": 154,
-  "display_country": "Deutschland",
-  "flag": "DE",
-  "image_prompt": "Ein Bild von Raúl Castro oder dem kubanischen Präsidentenpalast",
   "discover_titles": [
     "Klage gegen Raúl Castro",
     "USA fordern Gerechtigkeit",
     "Kuba und USA im Konflikt"
   ],
+  "image_prompt": "Ein Bild von Raúl Castro oder dem kubanischen Präsidentenpalast",
+  "flag": "DE",
+  "display_country": "Deutschland",
+  "quality_word_count": 154,
+  "indexed_on_home": false,
   "visual_keywords": [
     "Kuba",
     "USA",
