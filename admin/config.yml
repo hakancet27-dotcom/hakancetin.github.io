@@ -12,25 +12,26 @@ site_url: https://hakancetin.com.tr
 display_url: https://hakancetin.com.tr
 locale: tr
 
-# CMS bilincli olarak JSON kaynak dosyalari uzerinden calisir.
-# Uretilmis HTML sayfalari bot workflow'lari tarafindan yeniden yazilabilir;
-# bu yuzden editoryal duzenlemeler articles/*.json, news/articles/*.json,
-# nachrichten/artikel/*.json ve review/pending/*.json kayitlarinda yapilir.
+# Not:
+# - CMS sadece JSON kaynaklarını düzenler.
+# - HTML sayfalar workflow tarafından yeniden üretilir.
+# - CMS değişikliklerini sitede görmek için website_only workflow çalıştırılmalıdır.
+# - Bazı eski JSON dosyalarında content_html alanı olmayabilir; bu durumda gövde alanı boş görünür.
 collections:
   - name: review_pending
     label: "1 - Bekleyen İncelemeler"
     label_singular: "Bekleyen Haber"
-    description: "Uretim kalite kontrolunde bekleyen JSON haber kayitlari. Buradaki duzenleme yayindaki HTML sayfalari dogrudan tetiklemez."
     folder: review/pending
     create: false
     extension: json
     format: json
     identifier_field: title
     summary: "{{review_status}} | {{quality_score}} | {{date}} - {{title}}"
-    fields:
+    fields: &base_fields
       - label: İnceleme Durumu
         name: review_status
         widget: select
+        required: false
         default: pending
         options:
           - { label: Beklemede, value: pending }
@@ -41,9 +42,7 @@ collections:
       - { label: Tarih, name: date, widget: string }
       - { label: Dil, name: language, widget: string, required: false, readonly: true }
       - { label: Ülke, name: country, widget: string, required: false, readonly: true }
-      - { label: Hedef Yol, name: url_prefix, widget: string, required: false, readonly: true }
-      - &category_field
-        label: Kategori
+      - label: Kategori
         name: category
         widget: select
         required: false
@@ -60,50 +59,7 @@ collections:
           - Video
       - { label: Spot, name: spot, widget: text, required: false }
       - { label: Özet, name: summary, widget: text, required: false }
-      - { label: Haber Gövdesi HTML, name: content_html, widget: code, default_language: html, required: false }
-      - { label: Görsel URL, name: image_url, widget: string, required: false }
-      - { label: Görsel Alt Metni, name: image_alt, widget: string, required: false }
-      - { label: Meta Title, name: meta_title, widget: string, required: false }
-      - { label: Meta Description, name: meta_description, widget: text, required: false }
-      - &tags_field
-        label: Etiketler
-        name: tags
-        widget: list
-        required: false
-        field: { label: Etiket, name: tag, widget: string }
-      - { label: Kalite Puanı, name: quality_score, widget: number, required: false, readonly: true }
-      - { label: Kalite Durumu, name: quality_status, widget: string, required: false, readonly: true }
-      - label: Kalite Uyarıları
-        name: quality_flags
-        widget: list
-        required: false
-        field: { label: Uyarı, name: flag, widget: string }
-      - label: Kalite Notları
-        name: quality_notes
-        widget: list
-        required: false
-        field: { label: Not, name: note, widget: string }
-
-  - name: published_tr
-    label: "2.1 - Yayındaki Haberler / Türkçe"
-    label_singular: "Yayındaki Türkçe Haber"
-    description: "Turkce yayindaki haberlerin kaynak JSON kayitlari. HTML sayfalari workflow tarafindan bu kayitlardan uretilir."
-    folder: articles
-    create: false
-    extension: json
-    format: json
-    identifier_field: title
-    summary: "{{date}} - {{title}}"
-    fields: &published_fields
-      - { label: Başlık, name: title, widget: string }
-      - { label: Slug, name: slug, widget: string, readonly: true }
-      - { label: Tarih, name: date, widget: string }
-      - { label: Dil, name: language, widget: string, required: false, readonly: true }
-      - { label: Ülke, name: country, widget: string, required: false, readonly: true }
-      - *category_field
-      - { label: Spot, name: spot, widget: text, required: false }
-      - { label: Özet, name: summary, widget: text, required: false }
-      - { label: Haber Gövdesi HTML, name: content_html, widget: code, default_language: html, required: false }
+      - { label: Haber Gövdesi HTML, name: content_html, widget: text, required: false }
       - { label: Görsel URL, name: image_url, widget: string, required: false }
       - { label: Görsel Alt Metni, name: image_alt, widget: string, required: false }
       - { label: Görsel Promptu, name: image_prompt, widget: text, required: false }
@@ -113,41 +69,53 @@ collections:
         name: discover_titles
         widget: list
         required: false
-        field: { label: Başlık, name: title, widget: string }
-      - *tags_field
+        field: { label: Başlık, widget: string }
+      - label: Etiketler
+        name: tags
+        widget: list
+        required: false
+        field: { label: Etiket, widget: string }
       - label: Görsel Anahtar Kelimeleri
         name: visual_keywords
         widget: list
         required: false
-        field: { label: Kelime, name: keyword, widget: string }
+        field: { label: Kelime, widget: string }
       - { label: URL Prefix, name: url_prefix, widget: string, required: false, readonly: true }
-      - { label: Schema Version, name: schema_version, widget: number, required: false, readonly: true }
       - { label: Word Count, name: word_count, widget: number, required: false, readonly: true }
       - { label: Quality Score, name: quality_score, widget: number, required: false, readonly: true }
       - { label: Quality Status, name: quality_status, widget: string, required: false, readonly: true }
       - { label: Review Required, name: review_required, widget: boolean, required: false, readonly: true }
       - { label: Indexed On Home, name: indexed_on_home, widget: boolean, required: false, readonly: true }
 
+  - name: published_tr
+    label: "2.1 - Yayındaki Haberler / Türkçe"
+    label_singular: "Yayındaki Türkçe Haber"
+    folder: articles
+    create: false
+    extension: json
+    format: json
+    identifier_field: title
+    summary: "{{date}} - {{title}}"
+    fields: *base_fields
+
   - name: published_en
     label: "2.2 - Published News / English"
     label_singular: "Published English News"
-    description: "English source JSON records for published news. Generated HTML remains workflow-owned output."
     folder: news/articles
     create: false
     extension: json
     format: json
     identifier_field: title
     summary: "{{date}} - {{title}}"
-    fields: *published_fields
+    fields: *base_fields
 
   - name: published_de
     label: "2.3 - Veröffentlichte Nachrichten / Deutsch"
     label_singular: "Veröffentlichte Nachricht"
-    description: "Deutsche JSON-Quelldaten fur veroffentlichte Nachrichten. Die HTML-Ausgabe wird vom Workflow erzeugt."
     folder: nachrichten/artikel
     create: false
     extension: json
     format: json
     identifier_field: title
     summary: "{{date}} - {{title}}"
-    fields: *published_fields
+    fields: *base_fields

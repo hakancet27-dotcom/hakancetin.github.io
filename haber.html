@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Son Dakika Haberleri | hakancetin.com.tr</title>
   <meta name="description" content="Gündem, siyaset, ekonomi, dünya, spor, magazin, teknoloji ve sağlık başlıklarında Türkiye, Amerika ve Almanya&#x27;dan güncel haberler.">
-  <link rel="canonical" href="https://hakancetin.com.tr/haber/">
+  <link rel="canonical" href="https://hakancetin.com.tr/haber">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Son Dakika Haberleri | hakancetin.com.tr">
   <meta property="og:description" content="Gündem, siyaset, ekonomi, dünya, spor, magazin, teknoloji ve sağlık başlıklarında Türkiye, Amerika ve Almanya&#x27;dan güncel haberler.">
-  <meta property="og:url" content="https://hakancetin.com.tr/haber/">
+  <meta property="og:url" content="https://hakancetin.com.tr/haber">
   <meta property="og:site_name" content="hakancetin.com.tr">
   <meta name="twitter:card" content="summary_large_image">
   <!-- HABER_SCHEMA_START -->
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Son Dakika Haberleri | hakancetin.com.tr", "url": "https://hakancetin.com.tr/haber/", "description": "Gündem, siyaset, ekonomi, dünya, spor, magazin, teknoloji ve sağlık başlıklarında Türkiye, Amerika ve Almanya'dan güncel haberler.", "about": [{"@type": "Thing", "name": "Gündem"}, {"@type": "Thing", "name": "Siyaset"}, {"@type": "Thing", "name": "Ekonomi"}, {"@type": "Thing", "name": "Dünya"}, {"@type": "Thing", "name": "Spor"}, {"@type": "Thing", "name": "Magazin"}, {"@type": "Thing", "name": "Teknoloji"}, {"@type": "Thing", "name": "Sağlık"}], "hasPart": [{"@type": "SiteNavigationElement", "name": "Gündem", "url": "https://hakancetin.com.tr/haber/?kategori=gundem"}, {"@type": "SiteNavigationElement", "name": "Siyaset", "url": "https://hakancetin.com.tr/haber/?kategori=siyaset"}, {"@type": "SiteNavigationElement", "name": "Ekonomi", "url": "https://hakancetin.com.tr/haber/?kategori=ekonomi"}, {"@type": "SiteNavigationElement", "name": "Dünya", "url": "https://hakancetin.com.tr/haber/?kategori=dunya"}, {"@type": "SiteNavigationElement", "name": "Spor", "url": "https://hakancetin.com.tr/haber/?kategori=spor"}, {"@type": "SiteNavigationElement", "name": "Magazin", "url": "https://hakancetin.com.tr/haber/?kategori=magazin"}, {"@type": "SiteNavigationElement", "name": "Teknoloji", "url": "https://hakancetin.com.tr/haber/?kategori=teknoloji"}, {"@type": "SiteNavigationElement", "name": "Sağlık", "url": "https://hakancetin.com.tr/haber/?kategori=saglik"}], "isPartOf": {"@type": "WebSite", "name": "hakancetin.com.tr", "url": "https://hakancetin.com.tr"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Son Dakika Haberleri | hakancetin.com.tr", "url": "https://hakancetin.com.tr/haber", "description": "Gündem, siyaset, ekonomi, dünya, spor, magazin, teknoloji ve sağlık başlıklarında Türkiye, Amerika ve Almanya'dan güncel haberler.", "about": [{"@type": "Thing", "name": "Gündem"}, {"@type": "Thing", "name": "Siyaset"}, {"@type": "Thing", "name": "Ekonomi"}, {"@type": "Thing", "name": "Dünya"}, {"@type": "Thing", "name": "Spor"}, {"@type": "Thing", "name": "Magazin"}, {"@type": "Thing", "name": "Teknoloji"}, {"@type": "Thing", "name": "Sağlık"}], "hasPart": [{"@type": "SiteNavigationElement", "name": "Gündem", "url": "https://hakancetin.com.tr/haber?kategori=gundem"}, {"@type": "SiteNavigationElement", "name": "Siyaset", "url": "https://hakancetin.com.tr/haber?kategori=siyaset"}, {"@type": "SiteNavigationElement", "name": "Ekonomi", "url": "https://hakancetin.com.tr/haber?kategori=ekonomi"}, {"@type": "SiteNavigationElement", "name": "Dünya", "url": "https://hakancetin.com.tr/haber?kategori=dunya"}, {"@type": "SiteNavigationElement", "name": "Spor", "url": "https://hakancetin.com.tr/haber?kategori=spor"}, {"@type": "SiteNavigationElement", "name": "Magazin", "url": "https://hakancetin.com.tr/haber?kategori=magazin"}, {"@type": "SiteNavigationElement", "name": "Teknoloji", "url": "https://hakancetin.com.tr/haber?kategori=teknoloji"}, {"@type": "SiteNavigationElement", "name": "Sağlık", "url": "https://hakancetin.com.tr/haber?kategori=saglik"}], "isPartOf": {"@type": "WebSite", "name": "hakancetin.com.tr", "url": "https://hakancetin.com.tr"}}</script>
 <!-- HABER_SCHEMA_END -->
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CE7WH86RBS"></script>
@@ -1207,6 +1207,114 @@
     .market-item.down .market-value,
     .market-item.down .market-change { color: #7f1d1d; }
     .market-status { white-space: nowrap; color: #7a1a12; font-weight: 800; }
+    /* Mobil üst alan dengeleme: piyasa + arama + üye girişi taşmalarını önler */
+    @media (max-width: 900px) {
+      header .inner {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+        align-items: stretch;
+      }
+      header .inner nav {
+        justify-self: stretch;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+      .market-strip {
+        max-width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        border-radius: 14px;
+        padding: 6px;
+      }
+      .header-tools {
+        width: 100%;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 8px;
+        align-items: center;
+      }
+      .header-search,
+      .header-search.is-open,
+      .header-search:focus-within {
+        width: 100%;
+        min-width: 0;
+      }
+      .member-login-btn {
+        white-space: nowrap;
+        min-height: 38px;
+      }
+    }
+    @media (max-width: 640px) {
+      .top-bar .inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+      .top-links {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      header {
+        padding: 10px 0;
+      }
+      .logo-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1.05rem;
+      }
+      .logo-text strong {
+        font-size: 1.02rem;
+      }
+      .logo-text span {
+        font-size: 0.68rem;
+      }
+      .market-strip {
+        padding: 5px;
+        border-radius: 12px;
+        gap: 6px;
+      }
+      .market-label {
+        padding: 6px 9px;
+        font-size: 0.66rem;
+      }
+      .market-item {
+        padding: 7px 9px;
+        gap: 5px;
+      }
+      .market-name {
+        font-size: 0.64rem;
+      }
+      .market-value {
+        font-size: 0.92rem;
+        min-width: 44px;
+      }
+      .market-change {
+        font-size: 0.68rem;
+        min-width: 44px;
+      }
+      .market-status {
+        display: none;
+      }
+      .header-tools {
+        grid-template-columns: minmax(0, 1fr) auto;
+      }
+      .header-search input {
+        font-size: 0.88rem;
+        padding: 9px 35px 9px 33px;
+      }
+      .member-login-btn {
+        padding: 8px 10px;
+        font-size: 0.83rem;
+      }
+      nav a {
+        padding: 7px 11px;
+        font-size: 0.84rem;
+      }
+    }
     @media (min-width: 901px) {
       header .inner { grid-template-columns: auto minmax(320px, 1fr) auto auto; gap: 14px; }
       header .inner nav { justify-self: end; }
@@ -1223,7 +1331,7 @@
     <div class="inner">
       <span id="current-time">Yükleniyor...</span>
       <div class="top-links" aria-label="Üst bağlantılar">
-        <a href="haber/">Ana Sayfa</a>
+        <a href="/haber">Ana Sayfa</a>
         <a href="hakkinda/">Hakkında</a>
         <a href="iletisim/">İletişim</a>
       </div>
@@ -1232,7 +1340,7 @@
 
   <header>
     <div class="inner">
-      <a href="haber/" class="logo" aria-label="hakancetin.com.tr ana sayfa">
+      <a href="/haber" class="logo" aria-label="hakancetin.com.tr ana sayfa">
         <div class="logo-icon">H</div>
         <div class="logo-text">
           <strong>hakancetin.com.tr</strong>
@@ -1272,8 +1380,8 @@
         <a class="member-login-btn" href="#">&Uuml;ye Giri&#351;i</a>
       </div>
 <nav aria-label="Ana menü">
-        <a href="haber/">Ana Sayfa</a>
-        <a href="haber/" class="active" aria-current="page">Haberler</a>
+        <a href="/haber">Ana Sayfa</a>
+        <a href="/haber" class="active" aria-current="page">Haberler</a>
       </nav>
     </div>
   </header>
@@ -1282,15 +1390,15 @@
     <div class="inner">
       <span class="breaking-label">KATEGORİLER</span>
       <div class="topic-list">
-        <a class="topic-link primary" href="haber/" data-topic="son-dakika">Son Dakika</a>
-        <a class="topic-link" href="haber/?kategori=gundem" data-topic="gundem">Gündem</a>
-        <a class="topic-link" href="haber/?kategori=siyaset" data-topic="siyaset">Siyaset</a>
-        <a class="topic-link" href="haber/?kategori=ekonomi" data-topic="ekonomi">Ekonomi</a>
-        <a class="topic-link" href="haber/?kategori=dunya" data-topic="dunya">Dünya</a>
-        <a class="topic-link" href="haber/?kategori=spor" data-topic="spor">Spor</a>
-        <a class="topic-link" href="haber/?kategori=magazin" data-topic="magazin">Magazin</a>
-        <a class="topic-link" href="haber/?kategori=teknoloji" data-topic="teknoloji">Teknoloji</a>
-        <a class="topic-link" href="haber/?kategori=saglik" data-topic="saglik">Sağlık</a>
+        <a class="topic-link primary" href="/haber" data-topic="son-dakika">Son Dakika</a>
+        <a class="topic-link" href="/haber?kategori=gundem" data-topic="gundem">Gündem</a>
+        <a class="topic-link" href="/haber?kategori=siyaset" data-topic="siyaset">Siyaset</a>
+        <a class="topic-link" href="/haber?kategori=ekonomi" data-topic="ekonomi">Ekonomi</a>
+        <a class="topic-link" href="/haber?kategori=dunya" data-topic="dunya">Dünya</a>
+        <a class="topic-link" href="/haber?kategori=spor" data-topic="spor">Spor</a>
+        <a class="topic-link" href="/haber?kategori=magazin" data-topic="magazin">Magazin</a>
+        <a class="topic-link" href="/haber?kategori=teknoloji" data-topic="teknoloji">Teknoloji</a>
+        <a class="topic-link" href="/haber?kategori=saglik" data-topic="saglik">Sağlık</a>
         <a class="topic-link" href="video/">Video</a>
       </div>
     </div>
@@ -4923,8 +5031,8 @@
         </div>
         <div>
           <h4>Bağlantılar</h4>
-          <a href="haber/">Ana Sayfa</a>
-          <a href="haber/">Haberler</a>
+          <a href="/haber">Ana Sayfa</a>
+          <a href="/haber">Haberler</a>
           <a href="https://www.youtube.com/@NartanesiHaber" target="_blank" rel="noopener">YouTube</a>
         </div>
         <div>
@@ -4942,7 +5050,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2026 <a href="haber/">hakancetin.com.tr</a> — Tüm hakları saklıdır.</span>
+        <span>© 2026 <a href="/haber">hakancetin.com.tr</a> — Tüm hakları saklıdır.</span>
         <span>Güncel Haber Platformu</span>
       </div>
     </div>
