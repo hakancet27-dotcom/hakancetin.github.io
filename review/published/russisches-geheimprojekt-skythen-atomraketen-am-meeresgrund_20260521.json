@@ -1,5 +1,5 @@
 {
-  "review_status": "approved",
+  "review_status": "published",
   "title": "Russisches Geheimprojekt 'Skythen' - Atomraketen am Meeresgrund?",
   "slug": "russisches-geheimprojekt-skythen-atomraketen-am-meeresgrund_20260521",
   "date": "21.05.2026",
@@ -33,9 +33,9 @@
   "url_prefix": "nachrichten/artikel",
   "word_count": 98,
   "quality_score": 62,
-  "quality_status": "blocked_from_index",
-  "review_required": true,
-  "indexed_on_home": false,
+  "quality_status": "approved",
+  "review_required": false,
+  "indexed_on_home": true,
   "quality_word_count": 98,
   "quality_notes": [
     "Metin cok kisa (98 kelime).",
