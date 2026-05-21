@@ -1,5 +1,5 @@
 {
-  "review_status": "approved",
+  "review_status": "published",
   "title": "İsrailli Bakan Ben-Gvir'in Videosu Tartışma Yarattı: Netanyahu'dan Tepki",
   "slug": "israilli_bakan_ben-gvirin_videosu_tartisma_yaratti_netanyahudan_tepki_20260520",
   "date": "20.05.2026",
@@ -28,14 +28,14 @@
     "protesto"
   ],
   "quality_score": 70,
-  "quality_status": "blocked_from_index",
+  "quality_status": "approved",
   "quality_flags": [
     "very_short_article"
   ],
   "quality_notes": [
     "Metin cok kisa (157 kelime)."
   ],
-  "indexed_on_home": false,
+  "indexed_on_home": true,
   "quality_word_count": 157,
   "display_country": "Amerika",
   "flag": "US",
@@ -64,7 +64,7 @@
   "source_slug": "israeli-minister-ben-gvir-video-controversy_20260520",
   "source_url_prefix": "news/articles",
   "translation_of": "news/articles/israeli-minister-ben-gvir-video-controversy_20260520.html",
-  "review_required": true,
+  "review_required": false,
   "review_source": "quality_gate",
   "review_run_id": "26185017729"
 }
