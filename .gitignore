@@ -38,3 +38,6 @@ Thumbs.db
 
 # Log files
 *.log
+
+# Local quality audit reports
+reports/
