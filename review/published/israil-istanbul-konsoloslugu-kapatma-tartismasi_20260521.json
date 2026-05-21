@@ -1,5 +1,5 @@
 {
-  "review_status": "approved",
+  "review_status": "published",
   "title": "İsrail, İstanbul'daki Konsolosluğu Kapatmayı Tartşıyor",
   "slug": "israil-istanbul-konsoloslugu-kapatma-tartismasi_20260521",
   "date": "21.05.2026",
@@ -34,9 +34,9 @@
   "url_prefix": "articles",
   "word_count": 105,
   "quality_score": 57,
-  "quality_status": "blocked_from_index",
-  "review_required": true,
-  "indexed_on_home": false,
+  "quality_status": "approved",
+  "review_required": false,
+  "indexed_on_home": true,
   "quality_word_count": 105,
   "quality_notes": [
     "Metin cok kisa (105 kelime).",
