@@ -1,5 +1,5 @@
 {
-  "review_status": "approved",
+  "review_status": "published",
   "title": "GOP Pushes for $72 Billion Immigration Enforcement Package, US Indicts Former Cuban President",
   "slug": "gop-immigration-enforcement-cuban-president-indictment_20260521",
   "date": "21.05.2026",
@@ -34,9 +34,9 @@
   "url_prefix": "news/articles",
   "word_count": 163,
   "quality_score": 62,
-  "quality_status": "blocked_from_index",
-  "review_required": true,
-  "indexed_on_home": false,
+  "quality_status": "approved",
+  "review_required": false,
+  "indexed_on_home": true,
   "quality_word_count": 163,
   "quality_notes": [
     "Metin cok kisa (163 kelime).",
