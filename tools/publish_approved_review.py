@@ -116,7 +116,7 @@ def make_card(data, target):
     slug = clean(data.get("slug"))
     title = clean(data.get("title"))
     topic = clean(data.get("category") or target["topic_default"])
-    href = f'{target["href_prefix"]}/{slug}.html'
+    href = f'/{target["site_prefix"]}/{slug}/'
     absolute = f"{SITE_URL}/{target['site_prefix']}/{slug}.html"
     image_url = clean(data.get("image_url")) or f"{SITE_URL}/{target['site_prefix']}/images/{slug}.jpg"
     card_excerpt = excerpt(data)
