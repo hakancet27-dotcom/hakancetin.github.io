@@ -1,0 +1,43 @@
+{
+  "title": "Tarsus'ta silahlı saldırı: Saldırgan intihar etti",
+  "slug": "tarsus-silahli-saldiri_20260519",
+  "date": "19.05.2026",
+  "language": "",
+  "country": "Turkey",
+  "category": "Son Dakika",
+  "spot": "",
+  "summary": "",
+  "content_html": {
+    "lang": "html",
+    "code": ""
+  },
+  "image_url": "https://images.unsplash.com/photo-1693838474853-2941885c674a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxzaWxhaGwlQzQlQjElMjBzYWxkJUM0JUIxciVDNCVCMXxlbnwwfDB8fHwxNzc5MTQ2MjU5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+  "url_prefix": "",
+  "schema_version": null,
+  "word_count": null,
+  "quality_score": 39,
+  "quality_status": "blocked_from_index",
+  "flag": "TR",
+  "review_required": true,
+  "quality_flags": [
+    "very_short_article",
+    "weak_spot",
+    "meta_title_issue",
+    "meta_description_issue",
+    "thin_structure",
+    "few_tags"
+  ],
+  "quality_notes": [
+    "Metin cok kisa (4 kelime).",
+    "Spot paragraf zayif.",
+    "Meta title ideal aralikta degil.",
+    "Meta description ideal aralikta degil.",
+    "H2 alt baslik yapisi zayif.",
+    "Etiket sayisi az."
+  ],
+  "quality_word_count": 4,
+  "indexed_on_home": false,
+  "review_status": "pending",
+  "review_source": "quality_gate",
+  "review_run_id": ""
+}
