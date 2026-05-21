@@ -57,6 +57,17 @@
     </news:news>
   </url>
   <url>
+    <loc>https://hakancetin.com.tr/articles/israilli_bakan_ben-gvirin_videosu_tartisma_yaratti_netanyahudan_tepki_20260520.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-20</news:publication_date>
+      <news:title>İsrailli Bakan Ben-Gvir&#x27;in Videosu Tartışma Yarattı: Netanyahu&#x27;dan Tepki</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://hakancetin.com.tr/articles/abd_buyuk_jurisi_eski_kuba_lideri_raul_castroya_cinayet_suclamasi_getirdi_20260520.html</loc>
     <news:news>
       <news:publication>
@@ -548,7 +559,7 @@
         <news:language>tr</news:language>
       </news:publication>
       <news:publication_date>2026-05-19</news:publication_date>
-      <news:title>Bahçeli&#x27;den Öcalan için &#x27;sosyal statü&#x27; çağrısı</news:title>
+      <news:title>Bahçeli&#x27;den Öcalan için &#x27;Sosyal Statü&#x27; Çağrısı</news:title>
     </news:news>
   </url>
   <url>
@@ -1516,7 +1527,7 @@
         <news:language>tr</news:language>
       </news:publication>
       <news:publication_date>2026-05-16</news:publication_date>
-      <news:title>AK Parti’nin içtüzük çalışması rafa kaldırıldı</news:title>
+      <news:title>AK Parti&#x27;nin İçtüzük Çalışması Rafa Kaldırıldı</news:title>
     </news:news>
   </url>
   <url>
