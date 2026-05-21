@@ -1,5 +1,17 @@
 {
+  "review_status": "rejected",
   "title": "Geplante Börsengänge von Tech-Giganten",
+  "slug": "boersengaenge-von-tech-giganten_20260521",
+  "date": "21.05.2026",
+  "language": "German",
+  "country": "Germany",
+  "category": "Wirtschaft",
+  "spot": "Geplante Börsengänge von US-Tech-Unternehmen, wie Elon Musks SpaceX, versprechen der Wall Street Milliarden. Diese geplanten Börsengänge sollen der Wall Street Milliarden einbringen und sind somit ein wichtiger Schritt für die US-Tech-Branche.",
+  "summary": "Geplante Börsengänge von US-Tech-Unternehmen, wie Elon Musks SpaceX, versprechen der Wall Street Milliarden. Diese geplanten Börsengänge sollen der Wall Street Milliarden einbringen und sind somit ein wichtiger Schritt für die US-Tech-Branche.",
+  "content_html": "<h2>Geplante Börsengänge</h2> <p>Geplante Börsengänge von US-Tech-Unternehmen wie Elon Musks SpaceX sind ein wichtiger Schritt für die US-Tech-Branche. Diese Unternehmen sind aufgrund ihrer innovativen Produkte und Dienstleistungen sehr erfolgreich und sollen nun ihre Aktien an der Börse platzieren.</p> <h2>Einfluss auf die Wall Street</h2> <p>Die geplanten Börsengänge sollen der Wall Street Milliarden einbringen und somit einen wichtigen Beitrag zum Wachstum der US-Wirtschaft leisten. Die Wall Street ist ein wichtiger Teil der US-Wirtschaft und die geplanten Börsengänge werden somit einen großen Einfluss auf die Wirtschaft haben.</p> <h3>Elon Musks SpaceX</h3> <p>Elon Musks SpaceX ist eines der bekanntesten US-Tech-Unternehmen, das einen geplanten Börsengang angekündigt hat. SpaceX ist ein Unternehmen, das sich auf die Entwicklung und den Bau von Raketen und Raumfahrzeugen spezialisiert hat und ist somit ein wichtiger Spieler in der Raumfahrtindustrie.</p> <h2>Zukunftsaussichten</h2> <p>Die geplanten Börsengänge von US-Tech-Unternehmen wie Elon Musks SpaceX sind ein wichtiger Schritt für die Zukunft der US-Tech-Branche. Diese Unternehmen werden somit in der Lage sein, weitere Investitionen zu tätigen und somit ihre Produkte und Dienstleistungen weiter zu entwickeln.</p>",
+  "image_url": "https://hakancetin.com.tr/nachrichten/artikel/images/boersengaenge-von-tech-giganten_20260521.webp",
+  "image_alt": "Bild von der Wall Street oder einem US-Tech-Unternehmen",
+  "image_prompt": "Ein Bild von der Wall Street oder einem US-Tech-Unternehmen",
   "meta_title": "Börsengänge von US-Tech-Unternehmen: Milliarden für die...",
   "meta_description": "Geplante Börsengänge von US-Tech-Unternehmen wie Elon Musks SpaceX versprechen der Wall Street Milliarden",
   "discover_titles": [
@@ -7,10 +19,6 @@
     "US-Tech-Unternehmen an der Börse",
     "Milliarden für die Wall Street"
   ],
-  "slug": "boersengaenge-von-tech-giganten_20260521",
-  "category": "Wirtschaft",
-  "spot": "Geplante Börsengänge von US-Tech-Unternehmen, wie Elon Musks SpaceX, versprechen der Wall Street Milliarden. Diese geplanten Börsengänge sollen der Wall Street Milliarden einbringen und sind somit ein wichtiger Schritt für die US-Tech-Branche.",
-  "content_html": "<h2>Geplante Börsengänge</h2> <p>Geplante Börsengänge von US-Tech-Unternehmen wie Elon Musks SpaceX sind ein wichtiger Schritt für die US-Tech-Branche. Diese Unternehmen sind aufgrund ihrer innovativen Produkte und Dienstleistungen sehr erfolgreich und sollen nun ihre Aktien an der Börse platzieren.</p> <h2>Einfluss auf die Wall Street</h2> <p>Die geplanten Börsengänge sollen der Wall Street Milliarden einbringen und somit einen wichtigen Beitrag zum Wachstum der US-Wirtschaft leisten. Die Wall Street ist ein wichtiger Teil der US-Wirtschaft und die geplanten Börsengänge werden somit einen großen Einfluss auf die Wirtschaft haben.</p> <h3>Elon Musks SpaceX</h3> <p>Elon Musks SpaceX ist eines der bekanntesten US-Tech-Unternehmen, das einen geplanten Börsengang angekündigt hat. SpaceX ist ein Unternehmen, das sich auf die Entwicklung und den Bau von Raketen und Raumfahrzeugen spezialisiert hat und ist somit ein wichtiger Spieler in der Raumfahrtindustrie.</p> <h2>Zukunftsaussichten</h2> <p>Die geplanten Börsengänge von US-Tech-Unternehmen wie Elon Musks SpaceX sind ein wichtiger Schritt für die Zukunft der US-Tech-Branche. Diese Unternehmen werden somit in der Lage sein, weitere Investitionen zu tätigen und somit ihre Produkte und Dienstleistungen weiter zu entwickeln.</p>",
   "tags": [
     "Börsengänge",
     "US-Tech-Unternehmen",
@@ -24,42 +32,34 @@
     "US-Tech-Unternehmen",
     "Wall Street"
   ],
-  "image_prompt": "Ein Bild von der Wall Street oder einem US-Tech-Unternehmen",
-  "image_alt": "Bild von der Wall Street oder einem US-Tech-Unternehmen",
-  "fact_guard": {
-    "used_only_source_facts": true,
-    "omitted_missing_reactions": true
-  },
-  "schema_version": 2,
-  "word_count": 214,
-  "date": "21.05.2026",
-  "flag": "DE",
-  "country": "Germany",
-  "display_country": "Deutschland",
-  "image_url": "https://hakancetin.com.tr/nachrichten/artikel/images/boersengaenge-von-tech-giganten_20260521.webp",
-  "summary": "Geplante Börsengänge von US-Tech-Unternehmen, wie Elon Musks SpaceX, versprechen der Wall Street Milliarden. Diese geplanten Börsengänge sollen der Wall Street Milliarden einbringen und sind somit ein wichtiger Schritt für die US-Tech-Branche.",
-  "language": "German",
   "url_prefix": "nachrichten/artikel",
-  "source_language": "German",
-  "target_language": "German",
+  "word_count": 214,
   "quality_score": 63,
   "quality_status": "needs_review",
   "review_required": true,
-  "quality_flags": [
-    "short_article",
-    "generated_image",
-    "meta_description_issue",
-    "category_issue"
-  ],
+  "indexed_on_home": false,
+  "quality_word_count": 214,
   "quality_notes": [
     "Metin hedefin altinda (214 kelime).",
     "Haber stok/gercek fotograf yerine uretilmis gorsel kullaniyor.",
     "Meta description ideal aralikta degil.",
     "Kategori standart haber kategorileriyle uyumlu degil: Wirtschaft."
   ],
-  "quality_word_count": 214,
-  "indexed_on_home": false,
-  "review_status": "pending",
+  "quality_flags": [
+    "short_article",
+    "generated_image",
+    "meta_description_issue",
+    "category_issue"
+  ],
+  "display_country": "Deutschland",
+  "flag": "DE",
+  "fact_guard": {
+    "used_only_source_facts": true,
+    "omitted_missing_reactions": true
+  },
+  "schema_version": 2,
+  "source_language": "German",
+  "target_language": "German",
   "review_source": "quality_gate",
   "review_run_id": "26228914934"
 }
