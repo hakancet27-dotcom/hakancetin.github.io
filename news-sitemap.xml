@@ -2,61 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://hakancetin.com.tr/articles/efes-2026-tatbikati-gece-hedefleri-tam-isabetle-vuruldu_20260520.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>hakancetin.com.tr</news:name>
-        <news:language>tr</news:language>
-      </news:publication>
-      <news:publication_date>2026-05-20</news:publication_date>
-      <news:title>EFES-2026 Tatbikatı&#x27;nda Gece Hedefleri Tam İsabetle Vuruldu</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://hakancetin.com.tr/articles/almanya_savunma_devi_kndsye_ortak_olmayi_planliyor_20260520.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>hakancetin.com.tr</news:name>
-        <news:language>tr</news:language>
-      </news:publication>
-      <news:publication_date>2026-05-20</news:publication_date>
-      <news:title>Almanya, Savunma Devi KNDS&#x27;ye Ortak Olmayı Planlıyor</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://hakancetin.com.tr/articles/avusturyada_eski_istihbaratci_rusya_icin_casusluktan_hapis_cezasina_carptirildi_20260520.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>hakancetin.com.tr</news:name>
-        <news:language>tr</news:language>
-      </news:publication>
-      <news:publication_date>2026-05-20</news:publication_date>
-      <news:title>Avusturya&#x27;da Eski İstihbaratçı Rusya İçin Casusluktan Hapis Cezasına Çarptırıldı</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://hakancetin.com.tr/articles/6_ocak_polisleri_trumpin_odul_fonunu_engellemek_icin_dava_acti_20260520.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>hakancetin.com.tr</news:name>
-        <news:language>tr</news:language>
-      </news:publication>
-      <news:publication_date>2026-05-20</news:publication_date>
-      <news:title>6 Ocak Polisleri, Trump&#x27;ın Ödül Fonunu Engellemek İçin Dava Açtı</news:title>
-    </news:news>
-  </url>
-  <url>
-    <loc>https://hakancetin.com.tr/articles/trumpin_18_milyar_dolarlik_fon_anlasmasi_anayasal_sinirlari_zorluyor_20260520.html</loc>
-    <news:news>
-      <news:publication>
-        <news:name>hakancetin.com.tr</news:name>
-        <news:language>tr</news:language>
-      </news:publication>
-      <news:publication_date>2026-05-20</news:publication_date>
-      <news:title>Trump&#x27;ın 1.8 Milyar Dolarlık Fon Anlaşması Anayasal Sınırları Zorluyor</news:title>
-    </news:news>
-  </url>
-  <url>
     <loc>https://hakancetin.com.tr/articles/los_angeles_yakinlarinda_2_yangin_tahliyelere_neden_oldu_20260520.html</loc>
     <news:news>
       <news:publication>
@@ -101,6 +46,17 @@
     </news:news>
   </url>
   <url>
+    <loc>https://hakancetin.com.tr/articles/efes-2026-tatbikati-gece-hedefleri-tam-isabetle-vuruldu_20260520.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-20</news:publication_date>
+      <news:title>EFES-2026 Tatbikatı&#x27;nda Gece Hedefleri Tam İsabetle Vuruldu</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://hakancetin.com.tr/articles/abd_buyuk_jurisi_eski_kuba_lideri_raul_castroya_cinayet_suclamasi_getirdi_20260520.html</loc>
     <news:news>
       <news:publication>
@@ -109,6 +65,17 @@
       </news:publication>
       <news:publication_date>2026-05-20</news:publication_date>
       <news:title>ABD Büyük Jürisi, Eski Küba Lideri Raul Castro&#x27;ya Cinayet Suçlaması Getirdi</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/almanya_savunma_devi_kndsye_ortak_olmayi_planliyor_20260520.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-20</news:publication_date>
+      <news:title>Almanya, Savunma Devi KNDS&#x27;ye Ortak Olmayı Planlıyor</news:title>
     </news:news>
   </url>
   <url>
@@ -255,6 +222,17 @@
     </news:news>
   </url>
   <url>
+    <loc>https://hakancetin.com.tr/articles/avusturyada_eski_istihbaratci_rusya_icin_casusluktan_hapis_cezasina_carptirildi_20260520.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-20</news:publication_date>
+      <news:title>Avusturya&#x27;da Eski İstihbaratçı Rusya İçin Casusluktan Hapis Cezasına Çarptırıldı</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://hakancetin.com.tr/articles/malatya-depremi-5-6-buyukluguyle-sekiz-ilde-hissedildi_20260520.html</loc>
     <news:news>
       <news:publication>
@@ -340,6 +318,28 @@
       </news:publication>
       <news:publication_date>2026-05-20</news:publication_date>
       <news:title>ABD Senatosu&#x27;ndan İran Savaşı Yetkileri Kararı</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/6_ocak_polisleri_trumpin_odul_fonunu_engellemek_icin_dava_acti_20260520.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-20</news:publication_date>
+      <news:title>6 Ocak Polisleri, Trump&#x27;ın Ödül Fonunu Engellemek İçin Dava Açtı</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://hakancetin.com.tr/articles/trumpin_18_milyar_dolarlik_fon_anlasmasi_anayasal_sinirlari_zorluyor_20260520.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-20</news:publication_date>
+      <news:title>Trump&#x27;ın 1.8 Milyar Dolarlık Fon Anlaşması Anayasal Sınırları Zorluyor</news:title>
     </news:news>
   </url>
   <url>

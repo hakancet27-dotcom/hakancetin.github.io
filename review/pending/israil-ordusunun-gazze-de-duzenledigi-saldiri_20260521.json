@@ -1,0 +1,62 @@
+{
+  "title": "İsrail Ordusunun Gazze'de Düzenlediği Saldırıda Çok Sayıda Kişi Yaralandı",
+  "meta_title": "İsrail Ordusunun Gazze'de Düzenlediği Saldırı - Çok Sayıda...",
+  "meta_description": "İsrail ordusunun ateşkese rağmen Gazze Şeridi'ne düzenlediği saldırılarda çok sayıda Filistinli yaralandı.",
+  "discover_titles": [
+    "İsrail Gazze Saldırısı",
+    "Gazze Şeridi Saldırısı",
+    "İsrail Ordusunun Saldırısı"
+  ],
+  "slug": "israil-ordusunun-gazze-de-duzenledigi-saldiri_20260521",
+  "category": "Haber",
+  "spot": "İsrail ordusunun ateşkese rağmen Gazze Şeridi'ne düzenlediği saldırılarda aralarında kadın ve çocukların olduğu çok sayıda Filistinli yaralandı. İsrail ordusunun Gazze'de bir evi hedef aldığı saldırıda çok sayıda kişi yaralandı.",
+  "content_html": "<h2>Gazze Şeridi'ndeki Saldırı</h2> <p>İsrail ordusunun ateşkese rağmen Gazze Şeridi'ne düzenlediği saldırılarda çok sayıda Filistinli yaralandı. Saldırıda aralarında kadın ve çocukların olduğu çok sayıda kişi etkilendi.</p> <h2>Saldırının Detayları</h2> <p>İsrail ordusunun Gazze'de bir evi hedef aldığı saldırıda çok sayıda kişi yaralandı. Saldırının detayları hakkında henüz resmi bir açıklama yapılmadı.</p> <h3>Saldırının Sonrası</h3> <p>Saldırının ardından bölgede gerginlik yaşandı. Saldırının ardından çok sayıda kişi yaralandı ve bazı binalar hasar gördü.</p> <ul> <li>İsrail ordusunun ateşkese rağmen Gazze Şeridi'ne düzenlediği saldırılarda çok sayıda Filistinli yaralandı.</li> <li>İsrail ordusunun Gazze'de bir evi hedef aldığı saldırıda çok sayıda kişi yaralandı.</li> </ul>",
+  "tags": [
+    "İsrail",
+    "Gazze",
+    "Saldırı",
+    "Filistin",
+    "Ordu"
+  ],
+  "visual_keywords": [
+    "İsrail",
+    "Gazze",
+    "Saldırı"
+  ],
+  "image_prompt": "İsrail ordusunun Gazze'de düzenlediği saldırı",
+  "image_alt": "İsrail ordusunun Gazze'de düzenlediği saldırı",
+  "fact_guard": {
+    "used_only_source_facts": true,
+    "omitted_missing_reactions": true
+  },
+  "schema_version": 2,
+  "word_count": 125,
+  "date": "21.05.2026",
+  "flag": "TR",
+  "country": "Turkey",
+  "display_country": "Türkiye",
+  "image_url": "https://hakancetin.com.tr/articles/images/israil-ordusunun-gazze-de-duzenledigi-saldiri_20260521.jpg",
+  "summary": "İsrail ordusunun ateşkese rağmen Gazze Şeridi'ne düzenlediği saldırılarda aralarında kadın ve çocukların olduğu çok sayıda Filistinli yaralandı. İsrail ordusunun Gazze'de bir evi hedef aldığı saldırıda çok sayıda kişi yaralandı.",
+  "language": "Turkish",
+  "url_prefix": "articles",
+  "source_language": "Turkish",
+  "target_language": "Turkish",
+  "quality_score": 55,
+  "quality_status": "blocked_from_index",
+  "review_required": true,
+  "quality_flags": [
+    "very_short_article",
+    "generated_image",
+    "meta_description_issue"
+  ],
+  "quality_notes": [
+    "Metin cok kisa (125 kelime).",
+    "Haber stok/gercek fotograf yerine uretilmis gorsel kullaniyor.",
+    "Meta description ideal aralikta degil."
+  ],
+  "quality_word_count": 125,
+  "indexed_on_home": false,
+  "review_status": "pending",
+  "review_source": "quality_gate",
+  "review_run_id": "26199014739"
+}

@@ -1,0 +1,65 @@
+{
+  "title": "İran, ABD'ye Potansiyel Saldırılar Hakkında Uyarıda Bulundu",
+  "meta_title": "İran ABD'ye Uyarıda Bulundu: Potansiyel Saldırılar",
+  "meta_description": "İran, ABD'nin potansiyel saldırılarına karşı uyarıda bulundu ve Orta Doğu'nun ötesine saldırabileceğini açıkladı.",
+  "discover_titles": [
+    "İran ABD İlişkileri",
+    "Orta Doğu Gerilimi",
+    "İran'ın Uyarısı"
+  ],
+  "slug": "iran_abdye_potansiyel_saldirilar_hakkinda_uyarida_bulundu_20260521",
+  "category": "Dünya Haberleri",
+  "spot": "İran, ABD'ye potansiyel saldırılar konusunda uyarıda bulundu. İran, ABD'nin saldırılarına karşılık olarak Orta Doğu'nun ötesine saldırabileceğini açıkladı. Bu durum, iki ülke arasındaki gerilimi artırarak küresel istikrar ve güvenliği etkileyebilir.",
+  "content_html": "<h2>ABD-İran İlişkileri</h2> <p>ABD ve İran arasındaki ilişki kompleks ve çoğu zaman çatışmalı olmuştur. İki ülke arasındaki son gelişmeler, durumun daha da kötüye gittiğini gösteriyor.</p> <h3>Potansiyel Sonuçlar</h3> <p>Eğer ABD saldırılarına devam ederse, İran'ın uyarısı, sonuçların ciddi ve geniş çaplı olabileceğini gösteriyor. Bu, küresel istikrar ve güvenliği etkileyebilir.</p> <h3>Bölgesel Etkiler</h3> <p>Orta Doğu, birçok ülkenin hem ABD hem de İran ile kompleks ilişkileri olan bir bölgedir. İki ülke arasındaki gerilimin artması, bölgedeki diğer ülkeleri de etkileyerek mevcut çatışmaları artırabilir.</p> <h3>Küresel Tepki</h3> <p>Uluslararası toplum, durumun gelişimini yakından izleyecek. Birçok ülke, ABD ve İran arasındaki gerilimin artmasının potansiyel sonuçlarından endişe duyabilir. Diplomatik çabalar, gerilimi azaltmak ve daha fazla çatışmayı önlemek için gerekli olabilir.</p>",
+  "tags": [
+    "İran",
+    "ABD",
+    "Orta Doğu",
+    "Küresel Güvenlik",
+    "International Relations"
+  ],
+  "visual_keywords": [
+    "İran",
+    "ABD",
+    "Orta Doğu"
+  ],
+  "image_prompt": "İran ve ABD bayrakları",
+  "image_alt": "İran ve ABD bayrakları",
+  "fact_guard": {
+    "used_only_source_facts": true,
+    "omitted_missing_reactions": true
+  },
+  "schema_version": 2,
+  "word_count": 142,
+  "date": "21.05.2026",
+  "flag": "US",
+  "country": "USA",
+  "display_country": "Amerika",
+  "image_url": "https://images.unsplash.com/photo-1613930648631-7191115e83d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxJcmFufGVufDB8MHx8fDE3NzkyMDczNDZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+  "summary": "İran, ABD'ye potansiyel saldırılar konusunda uyarıda bulundu. İran, ABD'nin saldırılarına karşılık olarak Orta Doğu'nun ötesine saldırabileceğini açıkladı. Bu durum, iki ülke arasındaki gerilimi artırarak küresel istikrar ve güvenliği etkileyebilir.",
+  "language": "Turkish",
+  "url_prefix": "articles",
+  "source_language": "English",
+  "target_language": "Turkish",
+  "source_slug": "iran-warns-us-of-potential-strikes_20260521",
+  "source_url_prefix": "news/articles",
+  "translation_of": "news/articles/iran-warns-us-of-potential-strikes_20260521.html",
+  "quality_score": 59,
+  "quality_status": "blocked_from_index",
+  "review_required": true,
+  "quality_flags": [
+    "very_short_article",
+    "meta_description_issue",
+    "thin_structure"
+  ],
+  "quality_notes": [
+    "Metin cok kisa (142 kelime).",
+    "Meta description ideal aralikta degil.",
+    "H2 alt baslik yapisi zayif."
+  ],
+  "quality_word_count": 142,
+  "indexed_on_home": false,
+  "review_status": "pending",
+  "review_source": "quality_gate",
+  "review_run_id": "26199014739"
+}
