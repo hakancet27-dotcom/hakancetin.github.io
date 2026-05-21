@@ -1,0 +1,61 @@
+{
+  "title": "Korruptionsfall in Euskirchen: Gefängnismitarbeiter im Visier",
+  "meta_title": "Korruptionsfall Euskirchen - Gefängnismitarbeiter stehen...",
+  "meta_description": "Gefängnismitarbeiter in Euskirchen stehen im Verdacht, Vorteile angenommen zu haben, um Hafterleichterungen zu gewähren",
+  "discover_titles": [
+    "Korruptionsfall Euskirchen",
+    "Gefängnismitarbeiter im Visier",
+    "Korruption in deutschen Gefängnissen"
+  ],
+  "slug": "korruptionsfall-euskirchen_20260521",
+  "category": "Justiz",
+  "spot": "Gefängnismitarbeiter in Euskirchen stehen im Verdacht, Vorteile angenommen zu haben, um Hafterleichterungen zu gewähren. Der Korruptionsfall wirft Fragen über die Integrität des Justizsystems auf.",
+  "content_html": "<h2>Hintergrund des Korruptionsfalls</h2> <p>Der Korruptionsfall in Euskirchen hat ein großes Ausmaß angenommen. Es geht um den Verdacht, dass Gefängnismitarbeiter Vorteile angenommen haben, um Hafterleichterungen zu gewähren.</p> <h2>Folgen des Korruptionsfalls</h2> <p>Der Korruptionsfall wirft Fragen über die Integrität des Justizsystems auf. Es bleibt abzuwarten, wie die Ermittlungen verlaufen und welche Konsequenzen sich daraus ergeben.</p> <h3>Mögliche Auswirkungen auf das Justizsystem</h3> <p>Der Korruptionsfall könnte weitreichende Auswirkungen auf das Justizsystem haben. Es könnte zu einer Überprüfung der internen Prozesse und Verfahren kommen, um sicherzustellen, dass solche Vorfälle in Zukunft vermieden werden.</p> <h2>Reaktionen und nächste Schritte</h2> <p>Bisher liegen keine offiziellen Reaktionen oder Ankündigungen zu den nächsten Schritten vor. Es bleibt abzuwarten, wie die Behörden auf den Korruptionsfall reagieren werden.</p>",
+  "tags": [
+    "Korruption",
+    "Justiz",
+    "Gefängnis",
+    "Euskirchen"
+  ],
+  "visual_keywords": [
+    "Gefängnis",
+    "Justiz",
+    "Korruption"
+  ],
+  "image_prompt": "Ein Bild von einem Gefängnis oder einem Justizgebäude",
+  "image_alt": "Gefängnis oder Justizgebäude",
+  "fact_guard": {
+    "used_only_source_facts": true,
+    "omitted_missing_reactions": true
+  },
+  "schema_version": 2,
+  "word_count": 137,
+  "date": "21.05.2026",
+  "flag": "DE",
+  "country": "Germany",
+  "display_country": "Deutschland",
+  "image_url": "https://images.unsplash.com/photo-1543536833-6d65fcc64f66?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxHZWYlQzMlQTRuZ25pc3xlbnwwfDB8fHwxNzc5MzY2MzQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+  "summary": "Gefängnismitarbeiter in Euskirchen stehen im Verdacht, Vorteile angenommen zu haben, um Hafterleichterungen zu gewähren. Der Korruptionsfall wirft Fragen über die Integrität des Justizsystems auf.",
+  "language": "German",
+  "url_prefix": "nachrichten/artikel",
+  "source_language": "German",
+  "target_language": "German",
+  "quality_score": 57,
+  "quality_status": "blocked_from_index",
+  "review_required": true,
+  "quality_flags": [
+    "very_short_article",
+    "meta_description_issue",
+    "category_issue"
+  ],
+  "quality_notes": [
+    "Metin cok kisa (137 kelime).",
+    "Meta description ideal aralikta degil.",
+    "Kategori standart haber kategorileriyle uyumlu degil: Justiz."
+  ],
+  "quality_word_count": 137,
+  "indexed_on_home": false,
+  "review_status": "pending",
+  "review_source": "quality_gate",
+  "review_run_id": "26225590424"
+}

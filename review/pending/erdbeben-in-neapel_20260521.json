@@ -1,0 +1,63 @@
+{
+  "title": "Erdbeben in Neapel: Einbeben erschüttert die Stadt und Umgebung",
+  "meta_title": "Erdbeben in Neapel - Aktuelle Nachrichten",
+  "meta_description": "Ein Erdbeben hat Neapel und Umgebung erschüttert. Das Epizentrum lag in einem Supervulkan.",
+  "discover_titles": [
+    "Erdbeben in Neapel",
+    "Neapel erschüttert",
+    "Supervulkan Erdbeben"
+  ],
+  "slug": "erdbeben-in-neapel_20260521",
+  "category": "Naturkatastrophen",
+  "spot": "Ein Erdbeben hat Neapel und Umgebung erschüttert, das Epizentrum lag in einem Supervulkan.",
+  "content_html": "<h2>Erdbeben in Neapel</h2> <p>Ein Erdbeben hat Neapel und Umgebung erschüttert. Das Epizentrum lag in einem Supervulkan. Die genauen Auswirkungen des Erdbebens sind noch nicht bekannt.</p> <h2>Hintergrund</h2> <p>Supervulkane sind bekannt für ihre enorme Zerstörungskraft. Ein Ausbruch kann verheerende Folgen für die Umgebung haben.</p> <h3>Mögliche Auswirkungen</h3> <ul> <li>Verwüstung in der Umgebung</li> <li>Evakuierungen</li> <li>Schäden an Gebäuden und Infrastruktur</li> </ul> <p>Es ist noch zu früh, um die genauen Auswirkungen des Erdbebens zu bewerten. Die Behörden werden wahrscheinlich in den nächsten Stunden und Tagen weitere Informationen bereitstellen.</p>",
+  "tags": [
+    "Erdbeben",
+    "Neapel",
+    "Supervulkan",
+    "Naturkatastrophen"
+  ],
+  "visual_keywords": [
+    "Erdbeben",
+    "Neapel",
+    "Supervulkan"
+  ],
+  "image_prompt": "Erdbeben in Neapel",
+  "image_alt": "Erdbeben in Neapel",
+  "fact_guard": {
+    "used_only_source_facts": true,
+    "omitted_missing_reactions": true
+  },
+  "schema_version": 2,
+  "word_count": 93,
+  "date": "21.05.2026",
+  "flag": "DE",
+  "country": "Germany",
+  "display_country": "Deutschland",
+  "image_url": "https://images.unsplash.com/photo-1677233860259-ce1a8e0f8498?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxFcmRiZWJlbnxlbnwwfDB8fHwxNzc5MzY2MzQ3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+  "summary": "Ein Erdbeben hat Neapel und Umgebung erschüttert, das Epizentrum lag in einem Supervulkan.",
+  "language": "German",
+  "url_prefix": "nachrichten/artikel",
+  "source_language": "German",
+  "target_language": "German",
+  "quality_score": 52,
+  "quality_status": "blocked_from_index",
+  "review_required": true,
+  "quality_flags": [
+    "very_short_article",
+    "meta_title_issue",
+    "meta_description_issue",
+    "category_issue"
+  ],
+  "quality_notes": [
+    "Metin cok kisa (93 kelime).",
+    "Meta title ideal aralikta degil.",
+    "Meta description ideal aralikta degil.",
+    "Kategori standart haber kategorileriyle uyumlu degil: Naturkatastrophen."
+  ],
+  "quality_word_count": 93,
+  "indexed_on_home": false,
+  "review_status": "pending",
+  "review_source": "quality_gate",
+  "review_run_id": "26225590424"
+}

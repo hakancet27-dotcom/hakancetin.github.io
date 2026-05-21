@@ -1,0 +1,63 @@
+{
+  "title": "Nimitz Aircraft Carrier Enters Caribbean as Trump Pressures Cuba",
+  "meta_title": "US Increases Pressure on Cuba with Nimitz Carrier Deployment",
+  "meta_description": "The Nimitz aircraft carrier has entered the southern Caribbean, coinciding with US charges against Raúl Castro",
+  "discover_titles": [
+    "US-Cuba Tensions Rise",
+    "Nimitz Carrier Deployment",
+    "Trump Administration Pressure"
+  ],
+  "slug": "nimitz-aircraft-carrier-enters-caribbean_20260521",
+  "category": "US News",
+  "spot": "The Nimitz aircraft carrier has entered the southern Caribbean, coinciding with the Justice Department's announcement of charges against Raúl Castro, as the Trump administration increases pressure on Cuba.",
+  "content_html": "<h2>Background on US-Cuba Relations</h2> <p>The Trump administration has been increasing pressure on Cuba, with various measures aimed at influencing the island nation's government.</p> <h2>Significance of the Nimitz Carrier Deployment</h2> <p>The deployment of the Nimitz aircraft carrier to the southern Caribbean is a significant development in the region, and its impact is being closely watched.</p> <h3>US Military Presence in the Caribbean</h3> <p>The US has a long history of military presence in the Caribbean, with various bases and deployments in the region.</p> <h2>Implications of the Charges Against Raúl Castro</h2> <p>The Justice Department's announcement of charges against Raúl Castro is a significant development in US-Cuba relations, and its implications are being closely watched.</p> <h3>Possible Next Steps</h3> <p>While the exact next steps are unclear, the deployment of the Nimitz carrier and the charges against Raúl Castro suggest a continued hardline stance by the Trump administration towards Cuba.</p>",
+  "tags": [
+    "US News",
+    "Cuba",
+    "Nimitz Aircraft Carrier",
+    "Trump Administration"
+  ],
+  "visual_keywords": [
+    "Nimitz Aircraft Carrier",
+    "Caribbean",
+    "US Military"
+  ],
+  "image_prompt": "US Navy aircraft carrier in the Caribbean",
+  "image_alt": "Nimitz aircraft carrier at sea",
+  "fact_guard": {
+    "used_only_source_facts": true,
+    "omitted_missing_reactions": true
+  },
+  "schema_version": 2,
+  "word_count": 176,
+  "date": "21.05.2026",
+  "flag": "US",
+  "country": "USA",
+  "display_country": "United States",
+  "image_url": "https://hakancetin.com.tr/news/articles/images/nimitz-aircraft-carrier-enters-caribbean_20260521.webp",
+  "summary": "The Nimitz aircraft carrier has entered the southern Caribbean, coinciding with the Justice Department's announcement of charges against Raúl Castro, as the Trump administration increases pressure on Cuba.",
+  "language": "English",
+  "url_prefix": "news/articles",
+  "source_language": "English",
+  "target_language": "English",
+  "quality_score": 47,
+  "quality_status": "blocked_from_index",
+  "review_required": true,
+  "quality_flags": [
+    "very_short_article",
+    "generated_image",
+    "meta_description_issue",
+    "category_issue"
+  ],
+  "quality_notes": [
+    "Metin cok kisa (176 kelime).",
+    "Haber stok/gercek fotograf yerine uretilmis gorsel kullaniyor.",
+    "Meta description ideal aralikta degil.",
+    "Kategori standart haber kategorileriyle uyumlu degil: US News."
+  ],
+  "quality_word_count": 176,
+  "indexed_on_home": false,
+  "review_status": "pending",
+  "review_source": "quality_gate",
+  "review_run_id": "26225590424"
+}

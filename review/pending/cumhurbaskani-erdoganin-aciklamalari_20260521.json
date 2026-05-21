@@ -1,0 +1,60 @@
+{
+  "title": "Cumhurbaşkanı Erdoğan'dan Önemli Açıklamalar",
+  "meta_title": "Cumhurbaşkanı Erdoğan Efes-2026 Tatbikatı'nda Konuştu",
+  "meta_description": "Cumhurbaşkanı Recep Tayyip Erdoğan, Efes-2026 Tatbikatı'nda önemli açıklamalarda bulundu.",
+  "discover_titles": [
+    "Cumhurbaşkanı Erdoğan'ın Açıklamaları",
+    "Efes-2026 Tatbikatı",
+    "Cumhurbaşkanı Erdoğan Konuştu"
+  ],
+  "slug": "cumhurbaskani-erdoganin-aciklamalari_20260521",
+  "category": "Siyasal Haberler",
+  "spot": "Cumhurbaşkanı Recep Tayyip Erdoğan, Efes-2026 Tatbikatı'nda önemli açıklamalarda bulunuyor. Efes-2026 Tatbikatı'nda konuşan Cumhurbaşkanı Erdoğan, önemli açıklamalarda bulundu.",
+  "content_html": "<h2>Efes-2026 Tatbikatı</h2> <p>Cumhurbaşkanı Recep Tayyip Erdoğan, Efes-2026 Tatbikatı'nda konuştu. Efes-2026 Tatbikatı, önemli bir askeri tatbikat olarak dikkat çekiyor.</p> <h3>Cumhurbaşkanı Erdoğan'ın Açıklamaları</h3> <p>Cumhurbaşkanı Erdoğan, Efes-2026 Tatbikatı'nda önemli açıklamalarda bulundu. Açıklamalarında, tatbikata ilişkin bilgi verdi.</p> <h2>Tatbikatın Önemi</h2> <p>Efes-2026 Tatbikatı, askeri alanda önemli bir etkinlik olarak görülüyor. Tatbikat, askeri güçlerin çalışma ve iş birliği konusundaki yeteneklerini gösteriyor.</p> <h3>Cumhurbaşkanı Erdoğan'ın Konuşması</h3> <p>Cumhurbaşkanı Erdoğan, Efes-2026 Tatbikatı'nda konuşmasının ardından, önemli açıklamalarda bulundu. Açıklamalarında, ülkenin güvenliği ve askeri güçlerine ilişkin bilgi verdi.</p>",
+  "tags": [
+    "Cumhurbaşkanı Erdoğan",
+    "Efes-2026 Tatbikatı",
+    "Askeri Tatbikat",
+    "Siyasal Haberler"
+  ],
+  "visual_keywords": [
+    "Cumhurbaşkanı Erdoğan",
+    "Efes-2026 Tatbikatı"
+  ],
+  "image_prompt": "Cumhurbaşkanı Erdoğan'ın Efes-2026 Tatbikatı'nda konuşmasını gösteren bir fotoğraf",
+  "image_alt": "Cumhurbaşkanı Erdoğan Efes-2026 Tatbikatı'nda",
+  "fact_guard": {
+    "used_only_source_facts": true,
+    "omitted_missing_reactions": true
+  },
+  "schema_version": 2,
+  "word_count": 107,
+  "date": "21.05.2026",
+  "flag": "TR",
+  "country": "Turkey",
+  "display_country": "Türkiye",
+  "image_url": "https://images.unsplash.com/photo-1550696043-8d6b42d33931?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxDdW1odXJiYSVDNSU5RmthbiVDNCVCMSUyMEVyZG8lQzQlOUZhbnxlbnwwfDB8fHwxNzc5MzY2Mjc3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+  "summary": "Cumhurbaşkanı Recep Tayyip Erdoğan, Efes-2026 Tatbikatı'nda önemli açıklamalarda bulunuyor. Efes-2026 Tatbikatı'nda konuşan Cumhurbaşkanı Erdoğan, önemli açıklamalarda bulundu.",
+  "language": "Turkish",
+  "url_prefix": "articles",
+  "source_language": "Turkish",
+  "target_language": "Turkish",
+  "quality_score": 57,
+  "quality_status": "blocked_from_index",
+  "review_required": true,
+  "quality_flags": [
+    "very_short_article",
+    "meta_description_issue",
+    "category_issue"
+  ],
+  "quality_notes": [
+    "Metin cok kisa (107 kelime).",
+    "Meta description ideal aralikta degil.",
+    "Kategori standart haber kategorileriyle uyumlu degil: Siyasal Haberler."
+  ],
+  "quality_word_count": 107,
+  "indexed_on_home": false,
+  "review_status": "pending",
+  "review_source": "quality_gate",
+  "review_run_id": "26225590424"
+}

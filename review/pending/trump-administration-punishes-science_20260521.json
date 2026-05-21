@@ -1,0 +1,60 @@
+{
+  "title": "Trump Administration Finding New Ways to Punish Science",
+  "meta_title": "Trump Administration Limits Federal Grants to Scientists",
+  "meta_description": "The Trump administration is preventing federal grants from reaching scientists, despite the grants being largely restored, with consequences already becoming...",
+  "discover_titles": [
+    "Trump Administration vs Science",
+    "Federal Grants Restricted",
+    "Science Funding Under Threat"
+  ],
+  "slug": "trump-administration-punishes-science_20260521",
+  "category": "US News",
+  "spot": "The Trump administration is preventing federal grants from reaching scientists, despite the grants being largely restored, with consequences already becoming apparent.",
+  "content_html": "<h2>Background on Federal Grants</h2> <h2>Impact on the Scientific Community</h2> <p>The restriction of federal grants to scientists will likely have far-reaching consequences, affecting not only the scientists themselves but also the broader scientific community. This move may hinder the progress of scientific research and innovation in the United States.</p> <h3>Consequences of Limited Funding</h3> <p>With limited funding, scientists may struggle to continue their research, leading to a potential decline in scientific breakthroughs and advancements. This could ultimately impact various fields, including medicine, technology, and environmental science.</p> <ul> <li>Reduced research opportunities</li> <li>Decreased innovation</li> <li>Potential decline in scientific breakthroughs</li> </ul> <h2>Next Steps and Implications</h2> <p>As the situation unfolds, it remains to be seen how the scientific community will respond to the Trump administration's actions. One thing is certain, however: the consequences of this move will be closely watched and analyzed in the coming days and weeks.</p>",
+  "tags": [
+    "Trump Administration",
+    "Federal Grants",
+    "Science Funding",
+    "US News"
+  ],
+  "visual_keywords": [
+    "science",
+    "research",
+    "funding",
+    "Trump administration"
+  ],
+  "image_prompt": "a scientist in a laboratory with a concerned expression",
+  "image_alt": "Scientist in a lab with a concerned expression",
+  "fact_guard": {
+    "used_only_source_facts": true,
+    "omitted_missing_reactions": true
+  },
+  "schema_version": 2,
+  "word_count": 163,
+  "date": "21.05.2026",
+  "flag": "US",
+  "country": "USA",
+  "display_country": "United States",
+  "image_url": "https://images.unsplash.com/photo-1628595351029-c2bf17511435?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxzY2llbmNlfGVufDB8MHx8fDE3NzkzNjYyOTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+  "summary": "The Trump administration is preventing federal grants from reaching scientists, despite the grants being largely restored, with consequences already becoming apparent.",
+  "language": "English",
+  "url_prefix": "news/articles",
+  "source_language": "English",
+  "target_language": "English",
+  "quality_score": 62,
+  "quality_status": "blocked_from_index",
+  "review_required": true,
+  "quality_flags": [
+    "very_short_article",
+    "category_issue"
+  ],
+  "quality_notes": [
+    "Metin cok kisa (163 kelime).",
+    "Kategori standart haber kategorileriyle uyumlu degil: US News."
+  ],
+  "quality_word_count": 163,
+  "indexed_on_home": false,
+  "review_status": "pending",
+  "review_source": "quality_gate",
+  "review_run_id": "26225590424"
+}
