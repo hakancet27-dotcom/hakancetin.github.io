@@ -1,16 +1,22 @@
 {
+  "review_status": "approved",
   "title": "İsrailli Bakan Ben-Gvir'in Videosu Tartışma Yarattı: Netanyahu'dan Tepki",
-  "meta_title": "İsrailli Bakan Ben-Gvir'in Tartışmalı Videosu ve...",
-  "meta_description": "İsrail Ulusal Güvenlik Bakanı Itamar Ben-Gvir'in kelepçeli Filistin yanlısı aktivistlerle çekilen videosu büyük tartışma yarattı. Başbakan Binyamin...",
-  "discover_titles": [
-    "Ben-Gvir'in Tartışmalı Videosu İsrail'i Karıştırdı",
-    "Netanyahu'dan Ben-Gvir'e Sert Tepki: Video Krizi",
-    "İsrailli Bakanın Aktivistlerle Videosu Gerilimi Tırmandırdı"
-  ],
   "slug": "israilli_bakan_ben-gvirin_videosu_tartisma_yaratti_netanyahudan_tepki_20260520",
+  "date": "20.05.2026",
+  "language": "Turkish",
+  "country": "USA",
+  "url_prefix": "articles",
   "category": "Orta Doğu",
   "spot": "İsrail Ulusal Güvenlik Bakanı Itamar Ben-Gvir, kelepçeli Filistin yanlısı aktivistlerle bir gemide diz çökerken çekilmiş bir videoyu sosyal medyada paylaşarak büyük tartışma yarattı. Bu olay, Başbakan Binyamin Netanyahu'dan sert bir tepki alırken, bakanın eylemleri hükümet içinde ve kamuoyunda sorgulanmaya başlandı.",
-  "content_html": "<h2>Olayın Arka Planı</h2><p>İsrail Ulusal Güvenlik Bakanı Itamar Ben-Gvir, dikkat çeken ve eleştirilere neden olan bir video yayınladı. Videoda, bakanın kelepçeli ve bir gemide diz çökmüş Filistin yanlısı aktivistlerle birlikte olduğu görülüyor.</p><h2>Başbakan Netanyahu'dan Tepki</h2><p>Başbakan Binyamin Netanyahu, Bakan Ben-Gvir'in videodaki eylemleri nedeniyle kendisini kınadı. Başbakan'ın bu tepkisi, bakanın davranışlarına ilişkin hükümet içinde bir onaylamama düzeyinin olduğunu gösteriyor.</p><h2>Olayın Olası Etkileri</h2><p>Bu olay, İsrail ile Filistin yanlısı gruplar arasındaki ilişkiler açısından önemli sonuçlar doğurabilir. Video, büyük bir tartışma yaratmış olup, ilgili taraflar arasında gerilimin daha da artmasına yol açabilir.</p><p>Olayın çeşitli paydaşlar tarafından yakından takip edilmesi bekleniyor. Başbakan Netanyahu'nun tepkisi, bakanın eylemleri hakkında hükümet içinde iç tartışmaların olabileceğini düşündürüyor.</p>",
+  "summary": "İsrail Ulusal Güvenlik Bakanı Itamar Ben-Gvir, kelepçeli Filistin yanlısı aktivistlerle bir gemide diz çökerken çekilmiş bir videoyu sosyal medyada paylaşarak büyük tartışma yarattı. Bu olay, Başbakan Binyamin Netanyahu'dan sert bir tepki alırken, bakanın eylemleri hükümet içinde ve kamuoyunda sorgulanmaya başlandı.",
+  "content_html": {
+    "lang": "html",
+    "code": ""
+  },
+  "image_url": "https://images.unsplash.com/photo-1547483029-77784da27709?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxJc3JhZWx8ZW58MHwwfHx8MTc3OTI0MTAwNXww&ixlib=rb-4.1.0&q=80&w=1080",
+  "image_alt": "İsrail Ulusal Güvenlik Bakanı Itamar Ben-Gvir, kelepçeli Filistin yanlısı aktivistlerle bir gemide dururken, Başbakan...",
+  "meta_title": "İsrailli Bakan Ben-Gvir'in Tartışmalı Videosu ve...",
+  "meta_description": "İsrail Ulusal Güvenlik Bakanı Itamar Ben-Gvir'in kelepçeli Filistin yanlısı aktivistlerle çekilen videosu büyük tartışma yarattı. Başbakan Binyamin...",
   "tags": [
     "İsrail",
     "Itamar Ben-Gvir",
@@ -21,6 +27,24 @@
     "hükümet",
     "protesto"
   ],
+  "quality_score": 70,
+  "quality_status": "blocked_from_index",
+  "quality_flags": [
+    "very_short_article"
+  ],
+  "quality_notes": [
+    "Metin cok kisa (157 kelime)."
+  ],
+  "indexed_on_home": false,
+  "quality_word_count": 157,
+  "display_country": "Amerika",
+  "flag": "US",
+  "image_prompt": "Israeli National Security Minister Itamar Ben-Gvir, a stern expression, standing on a ship deck next to several handcuffed pro-Palestinian activists who are kneeling. The...",
+  "discover_titles": [
+    "Ben-Gvir'in Tartışmalı Videosu İsrail'i Karıştırdı",
+    "Netanyahu'dan Ben-Gvir'e Sert Tepki: Video Krizi",
+    "İsrailli Bakanın Aktivistlerle Videosu Gerilimi Tırmandırdı"
+  ],
   "visual_keywords": [
     "Itamar Ben-Gvir",
     "Binyamin Netanyahu",
@@ -29,39 +53,18 @@
     "gemide protesto",
     "kelepçeli insanlar"
   ],
-  "image_prompt": "Israeli National Security Minister Itamar Ben-Gvir, a stern expression, standing on a ship deck next to several handcuffed pro-Palestinian activists who are kneeling. The...",
-  "image_alt": "İsrail Ulusal Güvenlik Bakanı Itamar Ben-Gvir, kelepçeli Filistin yanlısı aktivistlerle bir gemide dururken, Başbakan...",
   "fact_guard": {
     "used_only_source_facts": true,
     "omitted_missing_reactions": true
   },
   "schema_version": 2,
   "word_count": 157,
-  "date": "20.05.2026",
-  "flag": "US",
-  "country": "USA",
-  "display_country": "Amerika",
-  "image_url": "https://images.unsplash.com/photo-1547483029-77784da27709?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxJc3JhZWx8ZW58MHwwfHx8MTc3OTI0MTAwNXww&ixlib=rb-4.1.0&q=80&w=1080",
-  "summary": "İsrail Ulusal Güvenlik Bakanı Itamar Ben-Gvir, kelepçeli Filistin yanlısı aktivistlerle bir gemide diz çökerken çekilmiş bir videoyu sosyal medyada paylaşarak büyük tartışma yarattı. Bu olay, Başbakan Binyamin Netanyahu'dan sert bir tepki alırken, bakanın eylemleri hükümet içinde ve kamuoyunda sorgulanmaya başlandı.",
-  "language": "Turkish",
-  "url_prefix": "articles",
   "source_language": "English",
   "target_language": "Turkish",
   "source_slug": "israeli-minister-ben-gvir-video-controversy_20260520",
   "source_url_prefix": "news/articles",
   "translation_of": "news/articles/israeli-minister-ben-gvir-video-controversy_20260520.html",
-  "quality_score": 70,
-  "quality_status": "blocked_from_index",
   "review_required": true,
-  "quality_flags": [
-    "very_short_article"
-  ],
-  "quality_notes": [
-    "Metin cok kisa (157 kelime)."
-  ],
-  "quality_word_count": 157,
-  "indexed_on_home": false,
-  "review_status": "pending",
   "review_source": "quality_gate",
   "review_run_id": "26185017729"
 }
