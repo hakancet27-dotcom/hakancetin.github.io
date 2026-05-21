@@ -12,10 +12,15 @@ site_url: https://hakancetin.com.tr
 display_url: https://hakancetin.com.tr
 locale: tr
 
+# CMS bilincli olarak JSON kaynak dosyalari uzerinden calisir.
+# Uretilmis HTML sayfalari bot workflow'lari tarafindan yeniden yazilabilir;
+# bu yuzden editoryal duzenlemeler articles/*.json, news/articles/*.json,
+# nachrichten/artikel/*.json ve review/pending/*.json kayitlarinda yapilir.
 collections:
   - name: review_pending
     label: "1 - Bekleyen İncelemeler"
     label_singular: "Bekleyen Haber"
+    description: "Uretim kalite kontrolunde bekleyen JSON haber kayitlari. Buradaki duzenleme yayindaki HTML sayfalari dogrudan tetiklemez."
     folder: review/pending
     create: false
     extension: json
@@ -82,6 +87,7 @@ collections:
   - name: published_tr
     label: "2.1 - Yayındaki Haberler / Türkçe"
     label_singular: "Yayındaki Türkçe Haber"
+    description: "Turkce yayindaki haberlerin kaynak JSON kayitlari. HTML sayfalari workflow tarafindan bu kayitlardan uretilir."
     folder: articles
     create: false
     extension: json
@@ -125,6 +131,7 @@ collections:
   - name: published_en
     label: "2.2 - Published News / English"
     label_singular: "Published English News"
+    description: "English source JSON records for published news. Generated HTML remains workflow-owned output."
     folder: news/articles
     create: false
     extension: json
@@ -136,6 +143,7 @@ collections:
   - name: published_de
     label: "2.3 - Veröffentlichte Nachrichten / Deutsch"
     label_singular: "Veröffentlichte Nachricht"
+    description: "Deutsche JSON-Quelldaten fur veroffentlichte Nachrichten. Die HTML-Ausgabe wird vom Workflow erzeugt."
     folder: nachrichten/artikel
     create: false
     extension: json
