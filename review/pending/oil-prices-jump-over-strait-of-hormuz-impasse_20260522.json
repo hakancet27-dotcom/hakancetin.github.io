@@ -1,0 +1,62 @@
+{
+  "title": "Oil Prices Surge Amid Impasse Over Strait of Hormuz Reopening",
+  "meta_title": "Strait of Hormuz Impasse Drives Up Oil Prices",
+  "meta_description": "Disagreements over Iran's uranium stockpile and transit fees for the Strait of Hormuz have led to a surge in oil prices",
+  "discover_titles": [
+    "Oil Prices Rise",
+    "Strait of Hormuz Dispute",
+    "Global Oil Market Impact"
+  ],
+  "slug": "oil-prices-jump-over-strait-of-hormuz-impasse_20260522",
+  "category": "Business",
+  "spot": "Oil prices have jumped due to disagreements over the fate of Iran's uranium stockpile and transit fees for the Strait of Hormuz, affecting global oil prices.",
+  "content_html": "<h2>Background of the Dispute</h2> <p>The Strait of Hormuz is a critical waterway for international oil trade, and any disruptions to its operation can have significant effects on global oil prices.</p> <h2>Current Situation</h2> <p>Disagreements between parties involved have led to an impasse over the reopening of the Strait of Hormuz, resulting in increased oil prices.</p> <h3>Key Issues</h3> <ul> <li>Iran's uranium stockpile</li> <li>Transit fees for the Strait of Hormuz</li> </ul> <p>These unresolved issues have contributed to the current surge in oil prices, as the global oil market reacts to the uncertainty surrounding the Strait of Hormuz.</p>",
+  "tags": [
+    "Oil Prices",
+    "Strait of Hormuz",
+    "Iran",
+    "Uranium Stockpile",
+    "Global Oil Market"
+  ],
+  "visual_keywords": [
+    "oil",
+    "strait of hormuz",
+    "iran"
+  ],
+  "image_prompt": "an oil tanker navigating the Strait of Hormuz",
+  "image_alt": "Oil tanker in the Strait of Hormuz",
+  "fact_guard": {
+    "used_only_source_facts": true,
+    "omitted_missing_reactions": true
+  },
+  "schema_version": 2,
+  "word_count": 120,
+  "date": "22.05.2026",
+  "flag": "US",
+  "country": "USA",
+  "display_country": "United States",
+  "image_url": "https://images.unsplash.com/photo-1516199423456-1f1e91b06f25?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxvaWx8ZW58MHwwfHx8MTc3OTQ0NzUzM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+  "summary": "Oil prices have jumped due to disagreements over the fate of Iran's uranium stockpile and transit fees for the Strait of Hormuz, affecting global oil prices.",
+  "language": "English",
+  "url_prefix": "news/articles",
+  "source_language": "English",
+  "target_language": "English",
+  "quality_score": 57,
+  "quality_status": "blocked_from_index",
+  "review_required": true,
+  "quality_flags": [
+    "very_short_article",
+    "meta_description_issue",
+    "category_issue"
+  ],
+  "quality_notes": [
+    "Metin cok kisa (120 kelime).",
+    "Meta description ideal aralikta degil.",
+    "Kategori standart haber kategorileriyle uyumlu degil: Business."
+  ],
+  "quality_word_count": 120,
+  "indexed_on_home": false,
+  "review_status": "pending",
+  "review_source": "quality_gate",
+  "review_run_id": "26283691749"
+}

@@ -1,0 +1,59 @@
+{
+  "title": "Hatay'da Sel Felaketi: Kaybolan 2 Genç Aranıyor",
+  "meta_title": "Hatay Sel Felaketi - 2 Genç Kayıp",
+  "meta_description": "Hatay'da meydana gelen sel felaketinde 3 kişi hayatını kaybetti. Dereye düşerek kaybolan otomobildeki 2 gencin bulunması için arama kurtarma çalışmaları devam...",
+  "discover_titles": [
+    "Hatay Sel Felaketi",
+    "Kaybolan Gençler Aranıyor",
+    "Hatay'da Arama Kurtarma Çalışmaları"
+  ],
+  "slug": "hatay-sel-felaketi-kaybolan-gencler-araniyor_20260522",
+  "category": "Haber",
+  "spot": "Hatay'da 3 kişinin hayatını kaybettiği sel felaketinde, dereye düşerek kaybolan otomobildeki 2 gencin bulunması için arama kurtarma çalışmaları devam ediyor. Hatay'da meydana gelen sel, 3 kişinin ölümüne neden oldu.",
+  "content_html": "<h2>Sel Felaketinin Sebebi</h2> <p>Hatay'da meydana gelen sel felaketinin sebebi henüz bilinmiyor. Ancak selin, bölgede meydana gelen şiddetli yağışlar sonucu oluştuğu düşünülüyor.</p> <h2>Arama Kurtarma Çalışmaları</h2> <p>Arama kurtarma ekipleri, kaybolan 2 gencin bulunması için çalışmalara devam ediyor. Dere yatağında ve çevresinde arama çalışmaları sürdürülüyor.</p> <h3>İlgili Makamların Açıklamaları</h3> <p>İlgili makamlar, sel felaketinin ardından açıklamalarda bulundu. Ancak henüz resmi bir açıklama yapılmadı.</p> <h2>Sel Felaketinin Sonrası</h2> <p>Sel felaketinin ardından bölgede hasar tespiti çalışmaları başladı. Ekipler, selin neden olduğu hasarın boyutunu belirlemek için çalışmalara devam ediyor.</p>",
+  "tags": [
+    "Hatay",
+    "Sel Felaketi",
+    "Kaybolan Gençler",
+    "Arama Kurtarma"
+  ],
+  "visual_keywords": [
+    "sel",
+    "felaket",
+    "kaybolan gençler"
+  ],
+  "image_prompt": "Hatay'da sel felaketinin ardından dere yatağında arama kurtarma çalışmaları",
+  "image_alt": "Hatay'da sel felaketinin ardından dere yatağında arama kurtarma çalışmaları",
+  "fact_guard": {
+    "used_only_source_facts": true,
+    "omitted_missing_reactions": true
+  },
+  "schema_version": 2,
+  "word_count": 112,
+  "date": "22.05.2026",
+  "flag": "TR",
+  "country": "Turkey",
+  "display_country": "Türkiye",
+  "image_url": "https://images.unsplash.com/photo-1518110925495-5fe2fda0442c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxzZWx8ZW58MHwwfHx8MTc3OTQ0NzUyN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+  "summary": "Hatay'da 3 kişinin hayatını kaybettiği sel felaketinde, dereye düşerek kaybolan otomobildeki 2 gencin bulunması için arama kurtarma çalışmaları devam ediyor. Hatay'da meydana gelen sel, 3 kişinin ölümüne neden oldu.",
+  "language": "Turkish",
+  "url_prefix": "articles",
+  "source_language": "Turkish",
+  "target_language": "Turkish",
+  "quality_score": 65,
+  "quality_status": "blocked_from_index",
+  "review_required": true,
+  "quality_flags": [
+    "very_short_article",
+    "meta_title_issue"
+  ],
+  "quality_notes": [
+    "Metin cok kisa (112 kelime).",
+    "Meta title ideal aralikta degil."
+  ],
+  "quality_word_count": 112,
+  "indexed_on_home": false,
+  "review_status": "pending",
+  "review_source": "quality_gate",
+  "review_run_id": "26283691749"
+}
