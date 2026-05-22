@@ -2,6 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
+    <loc>https://hakancetin.com.tr/articles/trumpin_kirsal_saglik_fonundaki_aciklar_20260522.html</loc>
+    <news:news>
+      <news:publication>
+        <news:name>hakancetin.com.tr</news:name>
+        <news:language>tr</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-22</news:publication_date>
+      <news:title>Trump&#x27;ın Kırsal Sağlık Fonundaki Açıklar</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://hakancetin.com.tr/articles/cumhurbaskani-erdoganin-aciklamalari_20260521.html</loc>
     <news:news>
       <news:publication>
