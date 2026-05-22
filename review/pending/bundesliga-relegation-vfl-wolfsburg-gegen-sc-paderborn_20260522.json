@@ -1,0 +1,63 @@
+{
+  "title": "Bundesliga-Relegation: Kein Tor gegen Paderborn – VfL Wolfsburg gerät unter Druck",
+  "meta_title": "Bundesliga-Relegation: VfL Wolfsburg ohne Tor gegen SC...",
+  "meta_description": "VfL Wolfsburg trat zu harmlos auf im Relegations-Hinspiel gegen SC Paderborn und geriet unter Druck",
+  "discover_titles": [
+    "Bundesliga-Relegation",
+    "VfL Wolfsburg gegen SC Paderborn",
+    "Relegations-Hinspiel ohne Tor"
+  ],
+  "slug": "bundesliga-relegation-vfl-wolfsburg-gegen-sc-paderborn_20260522",
+  "category": "Sport",
+  "spot": "VfL Wolfsburg trat zu harmlos auf im Relegations-Hinspiel gegen SC Paderborn und geriet unter Druck, da das Team kein Tor erzielen konnte.",
+  "content_html": "<h2>Relegations-Hinspiel ohne Tor</h2> <p>VfL Wolfsburg trat zu harmlos auf im Relegations-Hinspiel gegen SC Paderborn. Das Team konnte kein Tor erzielen und geriet unter Druck.</p> <h3>Keine Torchancen für Wolfsburg</h3> <p>Das Relegations-Hinspiel gegen SC Paderborn verlief für VfL Wolfsburg nicht wie geplant. Das Team konnte keine Torchancen nutzen und blieb ohne Tor.</p> <h2>Folgen für Wolfsburg</h2> <p>Das Ergebnis des Relegations-Hinspiels gegen SC Paderborn könnte für VfL Wolfsburg folgenreich sein. Das Team geriet unter Druck und muss nun umso mehr kämpfen, um die Relegation zu überstehen.</p> <ul> <li>Kein Tor im Relegations-Hinspiel</li> <li>Wolfsburg geriet unter Druck</li> <li>Das Team muss nun umso mehr kämpfen, um die Relegation zu überstehen</li> </ul>",
+  "tags": [
+    "Bundesliga",
+    "Relegation",
+    "VfL Wolfsburg",
+    "SC Paderborn",
+    "Fußball"
+  ],
+  "visual_keywords": [
+    "Bundesliga",
+    "Relegation",
+    "VfL Wolfsburg",
+    "SC Paderborn"
+  ],
+  "image_prompt": "VfL Wolfsburg spielt gegen SC Paderborn im Relegations-Hinspiel",
+  "image_alt": "VfL Wolfsburg spielt gegen SC Paderborn im Relegations-Hinspiel",
+  "fact_guard": {
+    "used_only_source_facts": true,
+    "omitted_missing_reactions": true
+  },
+  "schema_version": 2,
+  "word_count": 130,
+  "date": "22.05.2026",
+  "flag": "DE",
+  "country": "Germany",
+  "display_country": "Deutschland",
+  "image_url": "https://images.unsplash.com/photo-1634467599303-d123a536e7fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxCdW5kZXNsaWdhfGVufDB8MHx8fDE3Nzk0MjIxMzZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+  "summary": "VfL Wolfsburg trat zu harmlos auf im Relegations-Hinspiel gegen SC Paderborn und geriet unter Druck, da das Team kein Tor erzielen konnte.",
+  "language": "German",
+  "url_prefix": "nachrichten/artikel",
+  "source_language": "German",
+  "target_language": "German",
+  "quality_score": 57,
+  "quality_status": "blocked_from_index",
+  "review_required": true,
+  "quality_flags": [
+    "very_short_article",
+    "meta_description_issue",
+    "category_issue"
+  ],
+  "quality_notes": [
+    "Metin cok kisa (130 kelime).",
+    "Meta description ideal aralikta degil.",
+    "Kategori standart haber kategorileriyle uyumlu degil: Sport."
+  ],
+  "quality_word_count": 130,
+  "indexed_on_home": false,
+  "review_status": "pending",
+  "review_source": "quality_gate",
+  "review_run_id": "26267377952"
+}

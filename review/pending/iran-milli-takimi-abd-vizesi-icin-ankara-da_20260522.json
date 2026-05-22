@@ -1,0 +1,62 @@
+{
+  "title": "İran Milli Takımı ABD Vizesi İçin Ankara'da",
+  "meta_title": "İran Milli Futbol Takımı ABD ve Kanada Vizesi İçin Başvuru...",
+  "meta_description": "İran Milli Futbol Takımı, 2026 FIFA Dünya Kupası öncesi ABD ve Kanada vizesi için Ankara'da başvuru sürecini başlattı.",
+  "discover_titles": [
+    "İran Milli Takımı Vize Başvurusu",
+    "2026 FIFA Dünya Kupası",
+    "İran Milli Futbol Takımı"
+  ],
+  "slug": "iran-milli-takimi-abd-vizesi-icin-ankara-da_20260522",
+  "category": "Spor",
+  "spot": "İran Milli Futbol Takımı, 2026 FIFA Dünya Kupası öncesi ABD ve Kanada vizesi için Ankara’da başvuru sürecini başlattı.",
+  "content_html": "<h2>İran Milli Takımı'nın Vize Başvurusu</h2> <h3>Vize Başvuru Süreci</h3> <p>İran Milli Takımı, 2026 FIFA Dünya Kupası'na katılacak olan ABD ve Kanada'ya seyahat edebilmek için vize başvurusunda bulundu.</p> <h2>2026 FIFA Dünya Kupası</h2> <p>2026 FIFA Dünya Kupası, dünya çapında en prestijli futbol turnuvalarından biri olarak kabul ediliyor. Turnuvaya katılan takımlar, kendi gruplarında diğer takımlarla maçlar yaparak puanlarını artırma şansına sahip olacaklar.</p> <h3>İran Milli Futbol Takımı</h3> <p>İran Milli Futbol Takımı, İran'ın ulusal futbol takımı olarak bilinir. Takım, İran Futbol Federasyonu tarafından yönetiliyor ve çeşitli uluslararası turnuvalara katılıyor.</p>",
+  "tags": [
+    "İran Milli Takımı",
+    "ABD Vizesi",
+    "Kanada Vizesi",
+    "2026 FIFA Dünya Kupası",
+    "Futbol"
+  ],
+  "visual_keywords": [
+    "İran Bayrağı",
+    "Futbol Topu",
+    "Vize Başvuru Formu"
+  ],
+  "image_prompt": "İran Milli Takımı'nın vize başvurusu için Ankara'da bulunan bir ofis görüntüsü",
+  "image_alt": "İran Milli Takımı'nın vize başvurusu için Ankara'da bulunan bir ofis",
+  "fact_guard": {
+    "used_only_source_facts": true,
+    "omitted_missing_reactions": true
+  },
+  "schema_version": 2,
+  "word_count": 106,
+  "date": "22.05.2026",
+  "flag": "TR",
+  "country": "Turkey",
+  "display_country": "Türkiye",
+  "image_url": "https://hakancetin.com.tr/articles/images/iran-milli-takimi-abd-vizesi-icin-ankara-da_20260522.webp",
+  "summary": "İran Milli Futbol Takımı, 2026 FIFA Dünya Kupası öncesi ABD ve Kanada vizesi için Ankara’da başvuru sürecini başlattı.",
+  "language": "Turkish",
+  "url_prefix": "articles",
+  "source_language": "Turkish",
+  "target_language": "Turkish",
+  "quality_score": 55,
+  "quality_status": "blocked_from_index",
+  "review_required": true,
+  "quality_flags": [
+    "very_short_article",
+    "generated_image",
+    "meta_description_issue"
+  ],
+  "quality_notes": [
+    "Metin cok kisa (106 kelime).",
+    "Haber stok/gercek fotograf yerine uretilmis gorsel kullaniyor.",
+    "Meta description ideal aralikta degil."
+  ],
+  "quality_word_count": 106,
+  "indexed_on_home": false,
+  "review_status": "pending",
+  "review_source": "quality_gate",
+  "review_run_id": "26267377952"
+}
