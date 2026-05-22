@@ -1,0 +1,63 @@
+{
+  "title": "Küresel Sumud Filosu'ndan İsrail'in Aktivistlere Uyguladığı Şiddete İlişkin Açıklama",
+  "meta_title": "İsrail'in Aktivistlere Uyguladığı Şiddet: Küresel Sumud...",
+  "meta_description": "Küresel Sumud Filosu, İsrail'in aktivistlere uyguladığı şiddet ve cinsel saldırıya ilişkin açıklama yaptı.",
+  "discover_titles": [
+    "İsrail'in Aktivistlere Uyguladığı Şiddet",
+    "Küresel Sumud Filosu Açıklama Yaptı",
+    "Aktivistlere Uygulanan Şiddet"
+  ],
+  "slug": "kuresel-sumud-filotundan-israilin-aktivistlere-uyguladigi-siddete-iliskin-acikla_20260522",
+  "category": "Haber",
+  "spot": "Küresel Sumud Filosu, İsrail'in aktivistlere uyguladığı 'yakın mesafeden ateşlenen plastik mermiler, şok tabancaları, zorla başörtüsü çıkarma, aşağılayıcı çıplak aramalar, şiddet ve cinsel saldırıya' maruz bıraktığını belirtti.",
+  "content_html": "<h2>İsrail'in Aktivistlere Uyguladığı Şiddet</h2> <p>Küresel Sumud Filosu, İsrail'in aktivistlere uyguladığı şiddet ve cinsel saldırıya ilişkin açıklama yaptı. Açıklamada, İsrail'in aktivistleri 'yakın mesafeden ateşlenen plastik mermiler, şok tabancaları, zorla başörtüsü çıkarma, aşağılayıcı çıplak aramalar, şiddet ve cinsel saldırıya' maruz bıraktığı belirtildi.</p> <h3>Şiddetin Boyutları</h3> <p>İsrail'in uyguladığı şiddet, aktivistlerin fiziksel ve psikolojik sağlığını olumsuz etkiledi. Aktivistler, yakın mesafeden ateşlenen plastik mermiler ve şok tabancaları nedeniyle yaralandı. Ayrıca, zorla başörtüsü çıkarma ve aşağılayıcı çıplak aramalar, aktivistlerin onur ve haysiyetini zedeledi.</p> <h2>Uluslararası Topluluğun Tepkisi</h2> <p>İsrail'in aktivistlere uyguladığı şiddet, uluslararası topluluğun tepkisini çekti. Birçok insan hakları örgütü ve aktivist, İsrail'in uyguladığı şiddeti kınadı ve aktivistlerin haklarını savunma çağrısında bulundu.</p>",
+  "tags": [
+    "İsrail",
+    "Aktivistler",
+    "Şiddet",
+    "Cinsel Saldırı",
+    "Küresel Sumud Filosu",
+    "İnsan Hakları"
+  ],
+  "visual_keywords": [
+    "İsrail",
+    "Aktivistler",
+    "Şiddet"
+  ],
+  "image_prompt": "İsrail'in aktivistlere uyguladığı şiddeti gösteren bir fotoğraf",
+  "image_alt": "İsrail'in aktivistlere uyguladığı şiddet",
+  "fact_guard": {
+    "used_only_source_facts": true,
+    "omitted_missing_reactions": true
+  },
+  "schema_version": 2,
+  "word_count": 136,
+  "date": "22.05.2026",
+  "flag": "TR",
+  "country": "Turkey",
+  "display_country": "Türkiye",
+  "image_url": "https://hakancetin.com.tr/articles/images/kuresel-sumud-filotundan-israilin-aktivistlere-uyguladigi-siddete-iliskin-acikla_20260522.webp",
+  "summary": "Küresel Sumud Filosu, İsrail'in aktivistlere uyguladığı 'yakın mesafeden ateşlenen plastik mermiler, şok tabancaları, zorla başörtüsü çıkarma, aşağılayıcı çıplak aramalar, şiddet ve cinsel saldırıya' maruz bıraktığını belirtti.",
+  "language": "Turkish",
+  "url_prefix": "articles",
+  "source_language": "Turkish",
+  "target_language": "Turkish",
+  "quality_score": 55,
+  "quality_status": "blocked_from_index",
+  "review_required": true,
+  "quality_flags": [
+    "very_short_article",
+    "generated_image",
+    "meta_description_issue"
+  ],
+  "quality_notes": [
+    "Metin cok kisa (136 kelime).",
+    "Haber stok/gercek fotograf yerine uretilmis gorsel kullaniyor.",
+    "Meta description ideal aralikta degil."
+  ],
+  "quality_word_count": 136,
+  "indexed_on_home": false,
+  "review_status": "pending",
+  "review_source": "quality_gate",
+  "review_run_id": "26310859523"
+}
