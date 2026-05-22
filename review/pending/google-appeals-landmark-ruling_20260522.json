@@ -1,0 +1,64 @@
+{
+  "title": "Google Appeals Landmark Ruling Declaring It a Monopolist in Search",
+  "meta_title": "Google Appeals Monopolist Ruling in Search",
+  "meta_description": "Google asks a federal appeals court to reverse a judge's ruling that it had violated antitrust laws",
+  "discover_titles": [
+    "Google Appeals Ruling",
+    "Monopolist Ruling in Search",
+    "Google Antitrust Appeal"
+  ],
+  "slug": "google-appeals-landmark-ruling_20260522",
+  "category": "US News",
+  "spot": "Google has asked a federal appeals court to reverse a judge's ruling that it had violated antitrust laws and a requirement to share some data with rivals, in a landmark case that declared the company a monopolist in search.",
+  "content_html": "<h2>Background of the Case</h2> <p>Google has been accused of violating antitrust laws by engaging in anti-competitive practices in the search market.</p> <h2>The Ruling</h2> <p>A judge's ruling declared Google a monopolist in search and required the company to share some data with rivals.</p> <h3>Google's Appeal</h3> <p>Google has asked a federal appeals court to reverse the judge's ruling, arguing that it did not violate antitrust laws.</p> <h2>Potential Impact</h2> <p>The outcome of the appeal could have significant implications for the search market and Google's dominance in the industry.</p>",
+  "tags": [
+    "Google",
+    "Antitrust",
+    "Monopolist",
+    "Search",
+    "US News"
+  ],
+  "visual_keywords": [
+    "Google",
+    "Search",
+    "Antitrust"
+  ],
+  "image_prompt": "a picture of the Google logo",
+  "image_alt": "Google logo",
+  "fact_guard": {
+    "used_only_source_facts": true,
+    "omitted_missing_reactions": true
+  },
+  "schema_version": 2,
+  "word_count": 130,
+  "date": "22.05.2026",
+  "flag": "US",
+  "country": "USA",
+  "display_country": "United States",
+  "image_url": "https://images.unsplash.com/photo-1529612700005-e35377bf1415?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxHb29nbGV8ZW58MHwwfHx8MTc3OTQ3Mjg3NHww&ixlib=rb-4.1.0&q=80&w=1080",
+  "summary": "Google has asked a federal appeals court to reverse a judge's ruling that it had violated antitrust laws and a requirement to share some data with rivals, in a landmark case that declared the company a monopolist in search.",
+  "language": "English",
+  "url_prefix": "news/articles",
+  "source_language": "English",
+  "target_language": "English",
+  "quality_score": 52,
+  "quality_status": "blocked_from_index",
+  "review_required": true,
+  "quality_flags": [
+    "very_short_article",
+    "meta_title_issue",
+    "meta_description_issue",
+    "category_issue"
+  ],
+  "quality_notes": [
+    "Metin cok kisa (130 kelime).",
+    "Meta title ideal aralikta degil.",
+    "Meta description ideal aralikta degil.",
+    "Kategori standart haber kategorileriyle uyumlu degil: US News."
+  ],
+  "quality_word_count": 130,
+  "indexed_on_home": false,
+  "review_status": "pending",
+  "review_source": "quality_gate",
+  "review_run_id": "26303674708"
+}

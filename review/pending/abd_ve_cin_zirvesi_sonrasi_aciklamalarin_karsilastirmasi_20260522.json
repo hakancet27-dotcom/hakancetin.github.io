@@ -1,0 +1,67 @@
+{
+  "title": "ABD ve Çin Zirvesi Sonrası: Açıklamaların Karşılaştırması",
+  "meta_title": "ABD ve Çin Zirvesi Sonrası Açıklamalar",
+  "meta_description": "ABD ve Çin, Trump-Xi zirvesinin ardından açıklamalarını yayınladı. Uzmanlar, tarım, gümrük vergileri ve nadir toprak elementleri gibi konularda küçük...",
+  "discover_titles": [
+    "ABD Çin İlişkileri",
+    "Trump Xi Zirvesi",
+    "ABD Çin Ticaret"
+  ],
+  "slug": "abd_ve_cin_zirvesi_sonrasi_aciklamalarin_karsilastirmasi_20260522",
+  "category": "Dünya Haberleri",
+  "spot": "ABD ve Çin, Trump-Xi zirvesinin ardından açıklamalarını yayınladı. Uzmanlar, tarım, gümrük vergileri ve nadir toprak elementleri gibi konularda küçük tutarsızlıklar olduğunu belirtti. İki ülke, karmaşık ticaret ilişkilerini devam ettirmeye çalışıyor.",
+  "content_html": "<h2>Zirve Açıklamaları</h2> <p>ABD ve Çin, Trump-Xi zirvesi hakkında açıklamalarını yayınladı. İki taraf da işbirliğine olan bağlılıklarını ifade etti, ancak küçük tutarsızlıklar tespit edildi.</p> <h3>Önemli Konular</h3> <p>Uzmanlar, tarım, gümrük vergileri ve nadir toprak elementleri gibi konularda tutarsızlıklara dikkat çekti. Bu tutarsızlıklar, farklı öncelikler veya zirvenin sonuçlarının farklı yorumları olabilir.</p> <ul> <li><strong>Tarım:</strong> ABD açıklaması, tarım ticaretinin önemini vurgularken, Çin açıklaması daha geniş ekonomik işbirliğine odaklandı.</li> <li><strong>Gümrük Vergileri:</strong> ABD, gümrük vergilerinin ele alınacağını belirtirken, Çin açıklaması bu konuyu açıkça mention etmedi.</li> <li><strong>Nadir Toprak Elementleri:</strong> Çin açıklaması, nadir toprak elementlerinin önemini vurgularken, ABD açıklaması bu konuyu mention etmedi.</li> </ul> <h2>Sonuçlar ve Sonraki Adımlar</h2> <p>Açıklamalardaki küçük tutarsızlıklar, ABD-Çin ticaret ilişkilerinin geleceği için sonuçlar doğurabilir. İki ülke, karmaşık ilişkilerini devam ettirmeye çalışırken, bu tutarsızlıklar müzakerelerin ve işbirliğinin yönünü etkileyebilir.</p>",
+  "tags": [
+    "ABD",
+    "Çin",
+    "Trump",
+    "Xi",
+    "Ticaret",
+    "Tarım",
+    "Gümrük Vergileri",
+    "Nadir Toprak Elementleri"
+  ],
+  "visual_keywords": [
+    "ABD",
+    "Çin",
+    "Trump",
+    "Xi"
+  ],
+  "image_prompt": "ABD ve Çin bayrakları",
+  "image_alt": "ABD ve Çin bayrakları",
+  "fact_guard": {
+    "used_only_source_facts": true,
+    "omitted_missing_reactions": true
+  },
+  "schema_version": 2,
+  "word_count": 154,
+  "date": "22.05.2026",
+  "flag": "US",
+  "country": "USA",
+  "display_country": "Amerika",
+  "image_url": "https://images.unsplash.com/photo-1742845851727-e52e6093bb1e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxVUy1DaGluYSUyMEZsYWdzfGVufDB8MHx8fDE3Nzk0NzI4Njh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+  "summary": "ABD ve Çin, Trump-Xi zirvesinin ardından açıklamalarını yayınladı. Uzmanlar, tarım, gümrük vergileri ve nadir toprak elementleri gibi konularda küçük tutarsızlıklar olduğunu belirtti. İki ülke, karmaşık ticaret ilişkilerini devam ettirmeye çalışıyor.",
+  "language": "Turkish",
+  "url_prefix": "articles",
+  "source_language": "English",
+  "target_language": "Turkish",
+  "source_slug": "us-china-summit-aftermath_20260522",
+  "source_url_prefix": "news/articles",
+  "translation_of": "news/articles/us-china-summit-aftermath_20260522/",
+  "quality_score": 65,
+  "quality_status": "blocked_from_index",
+  "review_required": true,
+  "quality_flags": [
+    "very_short_article",
+    "meta_title_issue"
+  ],
+  "quality_notes": [
+    "Metin cok kisa (154 kelime).",
+    "Meta title ideal aralikta degil."
+  ],
+  "quality_word_count": 154,
+  "indexed_on_home": false,
+  "review_status": "pending",
+  "review_source": "quality_gate",
+  "review_run_id": "26303674708"
+}

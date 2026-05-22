@@ -1,0 +1,63 @@
+{
+  "title": "200 Milyar Liralık Yasadışı Bahis Soruşturması Başladı",
+  "meta_title": "Yasadışı Bahis ve Kara Para Aklama Soruşturması",
+  "meta_description": "Yaklaşık 200 milyar liralık yasadışı bahis ve kara para aklama soruşturması başladı.",
+  "discover_titles": [
+    "Yasadışı Bahis Soruşturması",
+    "Kara Para Aklama Soruşturması",
+    "200 Milyar Liralık Soruşturma"
+  ],
+  "slug": "200-milyar-liralik-yasadi-bahis-sorusturmasi_20260522",
+  "category": "Haber",
+  "spot": "Yaklaşık 200 milyar liralık yasadışı bahis ve kara para aklama soruşturması başladı.",
+  "content_html": "<h2>Yasadışı Bahis ve Kara Para Aklama Soruşturması</h2> <h3>Soruşturma Detayları</h3> <p>Soruşturma hakkında detaylı bilgi bulunmamaktadır.</p> <h3>Soruşturmanın Önemi</h3> <p>Yasadışı bahis ve kara para aklama soruşturması, ekonomi ve toplum için önemli bir sorun teşkil etmektedir.</p>",
+  "tags": [
+    "Yasadışı Bahis",
+    "Kara Para Aklama",
+    "Soruşturma",
+    "Ekonomi",
+    "Toplum"
+  ],
+  "visual_keywords": [
+    "Yasadışı Bahis",
+    "Kara Para Aklama"
+  ],
+  "image_prompt": "Yasadışı bahis ve kara para aklama soruşturması ile ilgili bir görsel",
+  "image_alt": "Yasadışı bahis ve kara para aklama soruşturması",
+  "fact_guard": {
+    "used_only_source_facts": true,
+    "omitted_missing_reactions": true
+  },
+  "schema_version": 2,
+  "word_count": 44,
+  "date": "22.05.2026",
+  "flag": "TR",
+  "country": "Turkey",
+  "display_country": "Türkiye",
+  "image_url": "https://images.unsplash.com/photo-1773211324361-aece5da6c44a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxZYXNhZCVDNCVCMSVDNSU5RiVDNCVCMSUyMEJhaGlzfGVufDB8MHx8fDE3Nzk0NzI4NjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+  "summary": "Yaklaşık 200 milyar liralık yasadışı bahis ve kara para aklama soruşturması başladı.",
+  "language": "Turkish",
+  "url_prefix": "articles",
+  "source_language": "Turkish",
+  "target_language": "Turkish",
+  "quality_score": 49,
+  "quality_status": "blocked_from_index",
+  "review_required": true,
+  "quality_flags": [
+    "very_short_article",
+    "weak_spot",
+    "meta_description_issue",
+    "thin_structure"
+  ],
+  "quality_notes": [
+    "Metin cok kisa (44 kelime).",
+    "Spot paragraf zayif.",
+    "Meta description ideal aralikta degil.",
+    "H2 alt baslik yapisi zayif."
+  ],
+  "quality_word_count": 44,
+  "indexed_on_home": false,
+  "review_status": "pending",
+  "review_source": "quality_gate",
+  "review_run_id": "26303674708"
+}
