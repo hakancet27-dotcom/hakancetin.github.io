@@ -12,10 +12,12 @@
     a { color:#e10600; text-decoration:none; font-weight:800; }
     h1 { font-size:clamp(1.85rem,3vw,2.65rem); line-height:1.14; color:#111827; }
     .spot { border-left:5px solid #e10600; padding:12px 0 12px 18px; background:#fff8f7; color:#374151; }
-    .article-image img { width:100%; aspect-ratio:16/9; object-fit:cover; display:block; border-radius:8px; background:#111827; }
+    .article-image { margin:24px 0; }
+    .article-image img { width:100%; max-width:100%; height:auto; object-fit:contain; display:block; border-radius:8px; background:#111827; }
     h2 { margin-top:28px; border-top:1px solid #e5e7eb; padding-top:12px; }
     .tag-list { display:flex; flex-wrap:wrap; gap:8px; margin-top:28px; padding-top:18px; border-top:1px solid #e5e7eb; }
     .tag-list span { background:#f3f4f6; padding:5px 10px; border-radius:5px; font-weight:700; }
+    @media (max-width: 640px) { main { padding:0 12px; margin:12px auto; } article { padding:18px; } }
   </style>
 </head>
 <body>
