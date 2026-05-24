@@ -1,0 +1,100 @@
+name: Rebuild Home From Quality Metadata
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'articles/*.json'
+      - '.github/workflows/rebuild-home-from-quality.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild-home:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remove quarantined article cards from home page
+        run: |
+          python - <<'PY'
+          import json
+          import re
+          from pathlib import Path
+
+          hidden = set()
+          for path in Path('articles').glob('*.json'):
+              try:
+                  data = json.loads(path.read_text(encoding='utf-8'))
+              except Exception:
+                  continue
+              slug = data.get('slug') or path.stem
+              if data.get('indexed_on_home') is False or data.get('review_status') == 'needs_editorial_review':
+                  hidden.add(str(slug).strip('/'))
+
+          index = Path('haber/index.html')
+          text = index.read_text(encoding='utf-8')
+          original = text
+          removed = []
+
+          def hide_blocks(text, slug):
+              before = text
+              href = re.escape(f'/articles/{slug}/')
+              # Remove regular article cards containing the slug.
+              text = re.sub(
+                  r'\n\s*<article class="news-card[\s\S]*?' + href + r'[\s\S]*?</article>',
+                  '',
+                  text,
+                  flags=re.MULTILINE,
+              )
+              # Remove hero/side headline anchor blocks containing the slug.
+              text = re.sub(
+                  r'\n\s*<a class="headline-slide[\s\S]*?' + href + r'[\s\S]*?</a>',
+                  '',
+                  text,
+                  flags=re.MULTILINE,
+              )
+              text = re.sub(
+                  r'\n\s*<a class="side-headline[\s\S]*?' + href + r'[\s\S]*?</a>',
+                  '',
+                  text,
+                  flags=re.MULTILINE,
+              )
+              return text, before != text
+
+          for slug in sorted(hidden):
+              text, changed = hide_blocks(text, slug)
+              if changed:
+                  removed.append(slug)
+
+          # Ensure a hero remains active if the first active one was removed.
+          if 'headline-slide headline-card topic-card is-active' not in text:
+              text = text.replace('headline-slide headline-card topic-card"', 'headline-slide headline-card topic-card is-active"', 1)
+
+          # Update a small machine-readable audit comment near the end of body.
+          marker = '<!-- HOME_QUALITY_REBUILD_AUDIT:'
+          audit = f'<!-- HOME_QUALITY_REBUILD_AUDIT: hidden={len(hidden)} removed={len(removed)} -->'
+          if marker in text:
+              text = re.sub(r'<!-- HOME_QUALITY_REBUILD_AUDIT:[\s\S]*?-->', audit, text)
+          else:
+              text = text.replace('</body>', f'  {audit}\n</body>')
+
+          if text != original:
+              index.write_text(text, encoding='utf-8')
+          print('hidden slugs:', len(hidden))
+          print('removed blocks:', len(removed))
+          for slug in removed[:100]:
+              print('removed', slug)
+          PY
+      - name: Commit home rebuild
+        run: |
+          git config user.name "Home Quality Rebuild"
+          git config user.email "home-quality-rebuild@users.noreply.github.com"
+          git add haber/index.html
+          if git diff --staged --quiet; then
+            echo "No home rebuild changes."
+            exit 0
+          fi
+          git commit -m "Rebuild home page from quality metadata"
+          git push
