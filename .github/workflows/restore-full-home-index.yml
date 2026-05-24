@@ -1,0 +1,52 @@
+name: Restore Full Home Index
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/restore-full-home-index.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Restore populated haber index
+        run: |
+          git show 40f95cdeef09cd0793d668a06742d1e891d22617:haber/index.html > haber/index.html
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('haber/index.html')
+          text = p.read_text(encoding='utf-8')
+          text = text.replace('href="hakkinda/"', 'href="/haber/hakkinda/"')
+          text = text.replace('href="iletisim/"', 'href="/haber/iletisim/"')
+          text = text.replace('href="kunye/"', 'href="/haber/kunye/"')
+          text = text.replace('href="yayin-ilkeleri/"', 'href="/haber/yayin-ilkeleri/"')
+          text = text.replace('href="video/"', 'href="/haber/video/"')
+          text = text.replace('href="/haber"', 'href="/haber/"')
+          text = text.replace('id="market-usd">--</strong>', 'id="market-usd">40,75</strong>')
+          text = text.replace('id="market-eur">--</strong>', 'id="market-eur">47,70</strong>')
+          text = text.replace('id="market-gbp">--</strong>', 'id="market-gbp">55,80</strong>')
+          text = text.replace('id="market-btc">--</strong>', 'id="market-btc">4,35 Mn</strong>')
+          text = text.replace('id="market-status">Güncelleniyor</span>', 'id="market-status">Canlı veri yükleniyor</span>')
+          p.write_text(text, encoding='utf-8')
+          print('news cards:', text.count('class="news-card'))
+          print('headline slides:', text.count('headline-slide'))
+          PY
+      - name: Commit restored populated index
+        run: |
+          git config user.name "Home Index Restore"
+          git config user.email "home-index-restore@users.noreply.github.com"
+          git add haber/index.html
+          if git diff --staged --quiet; then
+            echo "No index restore changes."
+            exit 0
+          fi
+          git commit -m "Restore populated haber index after quarantine"
+          git push
