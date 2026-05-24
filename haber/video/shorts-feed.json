@@ -1,0 +1,15 @@
+{
+  "updated_at": "2026-05-24T19:40:00Z",
+  "source": "haber-botu youtube upload pipeline",
+  "channel": "https://www.youtube.com/@NartanesiHaber",
+  "videos": [
+    {
+      "video_id": "_JlZOhyX_5U",
+      "title": "Nartanesi Haber Shorts",
+      "description": "YouTube hattından gelen mevcut video kaydı.",
+      "youtube_url": "https://www.youtube.com/watch?v=_JlZOhyX_5U",
+      "embed_url": "https://www.youtube.com/embed/_JlZOhyX_5U",
+      "news_url": "/haber/"
+    }
+  ]
+}
