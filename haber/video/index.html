@@ -28,17 +28,18 @@ html,body{margin:0;height:100%;overflow:hidden;background:#0f0f0f;color:#fff;fon
   const form=document.getElementById('comment-form');
   const input=document.getElementById('comment-input');
   let currentId='';
+  let userStartedPlayback=false;
   function key(id,type){return 'shorts:'+id+':'+type;}
   function text(parent,tag,value,className){const node=document.createElement(tag);if(className){node.className=className;}node.textContent=String(value||'');parent.appendChild(node);return node;}
   function notify(message){toast.textContent=message;toast.style.display='block';window.setTimeout(function(){toast.style.display='none';},1600);}
   function newsUrl(value){return typeof value==='string'&&/^\/haber(?:\/|\?|$)/.test(value)?value:'/haber/';}
-  function embedUrl(id){return 'https://www.youtube.com/embed/'+encodeURIComponent(id)+'?rel=0&modestbranding=1&playsinline=1';}
+  function embedUrl(id,autoplay){return 'https://www.youtube.com/embed/'+encodeURIComponent(id)+'?rel=0&modestbranding=1&playsinline=1'+(autoplay?'&autoplay=1&mute=1':'');}
   function storedComments(){try{return JSON.parse(localStorage.getItem(key(currentId,'comments'))||'[]');}catch(error){return [];}}
   function renderComments(){list.replaceChildren();const rows=storedComments();if(!rows.length){text(list,'div','İlk yorumu sen yaz.','comment');return;}rows.forEach(function(row){text(list,'div',row,'comment');});}
   function action(label,symbol,className){const button=document.createElement('button');button.type='button';button.className='act '+className;button.setAttribute('aria-label',label);button.textContent=symbol;return button;}
   function buildItem(video){
     const item=document.createElement('section');item.className='item';item.dataset.id=video.video_id;
-    const phone=document.createElement('div');phone.className='phone';const frame=document.createElement('iframe');frame.dataset.src=embedUrl(video.video_id);frame.title=video.title||'Nartanesi Haber Shorts';frame.loading='lazy';frame.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';frame.allowFullscreen=true;phone.appendChild(frame);item.appendChild(phone);
+    const phone=document.createElement('div');phone.className='phone';const frame=document.createElement('iframe');frame.dataset.src=embedUrl(video.video_id,false);frame.dataset.autoplaySrc=embedUrl(video.video_id,true);frame.title=video.title||'Nartanesi Haber Shorts';frame.loading='lazy';frame.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';frame.allowFullscreen=true;phone.appendChild(frame);item.appendChild(phone);
     const actions=document.createElement('div');actions.className='actions';
     const likeBox=document.createElement('div');const like=action('Beğen','♥','like');const small=document.createElement('small');const countNode=text(small,'span','0','like-count');likeBox.append(like,small);actions.appendChild(likeBox);
     const commentBox=document.createElement('div');commentBox.appendChild(action('Yorum yaz','💬','comment-open'));text(commentBox,'small','Yorum');actions.appendChild(commentBox);
@@ -50,7 +51,9 @@ html,body{margin:0;height:100%;overflow:hidden;background:#0f0f0f;color:#fff;fon
     item.querySelector('.share').addEventListener('click',async function(){const url=location.origin+location.pathname+'?v='+encodeURIComponent(video.video_id);try{if(navigator.share){await navigator.share({title:video.title||'Shorts',url:url});}else{await navigator.clipboard.writeText(url);notify('Link kopyalandı');}}catch(error){notify('Paylaşım iptal edildi');}});
     return item;
   }
-  function activate(item){document.querySelectorAll('.item iframe').forEach(function(frame){if(frame.closest('.item')===item){if(!frame.src){frame.src=frame.dataset.src;}}else if(frame.src){frame.removeAttribute('src');}});}
+  function activate(item){document.querySelectorAll('.item iframe').forEach(function(frame){if(frame.closest('.item')===item){if(!frame.src){frame.src=userStartedPlayback?frame.dataset.autoplaySrc:frame.dataset.src;}}else if(frame.src){frame.removeAttribute('src');}});}
+  document.addEventListener('pointerdown',function(){userStartedPlayback=true;},{once:true});
+  document.addEventListener('keydown',function(){userStartedPlayback=true;},{once:true});
   function showError(){feed.replaceChildren();const wrap=document.createElement('div');wrap.className='status';const card=document.createElement('div');card.className='status-card';text(card,'strong','Shorts akışı şu anda yüklenemedi.');text(card,'p','Videoları YouTube kanalımızdan izleyebilirsiniz.');const link=document.createElement('a');link.href='https://www.youtube.com/@NartanesiHaber/shorts';link.target='_blank';link.rel='noopener';link.textContent='YouTube Shorts';card.appendChild(link);wrap.appendChild(card);feed.appendChild(wrap);}
   async function loadFeed(){
     try{
