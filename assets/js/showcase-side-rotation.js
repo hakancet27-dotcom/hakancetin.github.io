@@ -4,11 +4,12 @@
   var sidebar = document.querySelector('.side-headlines');
   if (!sidebar) return;
 
-  var cards = Array.prototype.slice.call(sidebar.querySelectorAll('.side-headline')).slice(0, 10);
-  if (!cards.length) return;
+  var allCards = Array.prototype.slice.call(sidebar.querySelectorAll('.side-headline')).slice(0, 10);
+  if (!allCards.length) return;
 
   var pageSize = 2;
-  var pageCount = Math.ceil(cards.length / pageSize);
+  var visibleCards = allCards.slice();
+  var pageCount = 1;
   var page = 0;
   var timer = null;
   var paused = false;
@@ -21,15 +22,39 @@
   status.setAttribute('aria-hidden', 'true');
   sidebar.appendChild(status);
 
+  function selectedTopic() {
+    return new URLSearchParams(window.location.search).get('kategori') || 'son-dakika';
+  }
+
+  function eligibleCards() {
+    var selected = selectedTopic();
+    if (selected === 'son-dakika') return allCards.slice();
+    return allCards.filter(function (card) {
+      return card.dataset.topic === selected;
+    });
+  }
+
   function showPage(index) {
+    if (!visibleCards.length) {
+      allCards.forEach(function (card) {
+        card.hidden = true;
+        card.setAttribute('aria-hidden', 'true');
+        card.setAttribute('tabindex', '-1');
+      });
+      status.hidden = true;
+      return;
+    }
+
     page = (index + pageCount) % pageCount;
-    cards.forEach(function (card, cardIndex) {
-      var visible = Math.floor(cardIndex / pageSize) === page;
+    allCards.forEach(function (card) {
+      var position = visibleCards.indexOf(card);
+      var visible = position >= 0 && Math.floor(position / pageSize) === page;
       card.hidden = !visible;
       card.setAttribute('aria-hidden', visible ? 'false' : 'true');
       if (!visible) card.setAttribute('tabindex', '-1');
       else card.removeAttribute('tabindex');
     });
+    status.hidden = pageCount <= 1;
     status.textContent = String(page + 1) + ' / ' + String(pageCount);
   }
 
@@ -46,6 +71,15 @@
     timer = window.setInterval(function () {
       showPage(page + 1);
     }, 10000);
+  }
+
+  function refresh() {
+    stop();
+    visibleCards = eligibleCards();
+    pageCount = Math.max(1, Math.ceil(visibleCards.length / pageSize));
+    page = 0;
+    showPage(0);
+    start();
   }
 
   sidebar.addEventListener('mouseenter', function () {
@@ -70,6 +104,6 @@
     else start();
   });
 
-  showPage(0);
-  start();
+  window.refreshSideHeadlineRotation = refresh;
+  refresh();
 })();
