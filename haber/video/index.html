@@ -7,167 +7,45 @@
 <meta name="description" content="Nartanesi Haber YouTube Shorts videolarını dikey akışta izleyin.">
 <link rel="canonical" href="https://hakancetin.com.tr/haber/video/">
 <style>
-*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#0f0f0f;color:#fff;font-family:Arial,sans-serif}a{color:#fff;text-decoration:none}button{font:inherit;color:inherit}.top{position:fixed;left:0;top:0;bottom:0;width:92px;background:#0f0f0f;z-index:3;padding-top:18px;text-align:center}.top a{display:block;margin:0 0 28px;font-size:13px;font-weight:700}.top .logo{font-size:20px}.feed{height:100dvh;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch}.item{height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;display:grid;place-items:center;position:relative}.phone{height:calc(100dvh - 44px);max-height:820px;aspect-ratio:9/16;background:#111 center/cover no-repeat;border-radius:18px;overflow:hidden;position:relative}.player-slot,.phone iframe{display:block;width:100%;height:100%;border:0}.gesture-layer{position:absolute;inset:0;z-index:1;border:0;padding:0;background:transparent;touch-action:pan-y;display:grid;place-items:center;cursor:pointer}.play-symbol{width:68px;height:68px;border-radius:50%;background:rgba(0,0,0,.48);display:grid;place-items:center;opacity:1;transition:opacity .16s ease,transform .16s ease}.play-symbol:after{content:"";display:block;margin-left:5px;border-top:15px solid transparent;border-bottom:15px solid transparent;border-left:23px solid #fff}.item.is-playing .play-symbol{opacity:0;transform:scale(.94)}.actions{position:absolute;left:calc(50% + 250px);top:50%;transform:translateY(-38%);display:grid;gap:16px;text-align:center;z-index:3}.action-wrap{display:grid;justify-items:center;gap:4px}.act{width:58px;height:58px;border:0;border-radius:50%;background:#272727;display:grid;place-items:center;cursor:pointer}.act svg{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.act.like svg{fill:currentColor;stroke:none}.act.active{background:#e10600}.actions small{display:block;font-size:12px}.meta{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);width:min(420px,90vw);padding:12px;text-shadow:0 2px 10px #000;z-index:2}.meta b{display:block;margin-bottom:7px}.meta h1{font-size:1.06rem;line-height:1.35;margin:0 0 7px}.meta p{font-size:.86rem;margin:0}.btn{display:inline-block;margin-top:8px;background:#e10600;padding:8px 12px;border-radius:999px;font-weight:700}.hint{position:fixed;right:24px;top:50%;display:grid;gap:24px}.hint span{width:64px;height:64px;border-radius:50%;background:#272727;display:grid;place-items:center;font-size:30px}.badge{display:none;position:fixed;right:16px;top:16px;z-index:4;border:1px solid rgba(255,255,255,.12);border-radius:999px;background:rgba(22,22,22,.65);backdrop-filter:blur(8px);padding:7px 11px;font-size:12px;font-weight:700}.toast{position:fixed;left:50%;bottom:max(20px,env(safe-area-inset-bottom));transform:translateX(-50%);background:#222;padding:10px 14px;border-radius:999px;z-index:12;display:none}.comment-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.42);z-index:7;opacity:0;transition:opacity .18s ease}.comment-backdrop.is-open{opacity:1}.comments{position:fixed;right:20px;bottom:20px;width:min(360px,92vw);max-height:70vh;background:#181818;border:1px solid #333;border-radius:18px;z-index:8;box-shadow:0 20px 60px #000;overflow:hidden;visibility:hidden;opacity:0;transform:translateY(14px);pointer-events:none;transition:transform .18s ease,opacity .18s ease,visibility .18s}.comments.is-open{visibility:visible;opacity:1;transform:none;pointer-events:auto}.comments header{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid #333;font-weight:700}.comments header button{background:#333;border:0;border-radius:999px;padding:6px 10px;cursor:pointer}.comment-list{max-height:42vh;overflow:auto;padding:12px 14px;display:grid;gap:8px}.comment{background:#252525;border-radius:12px;padding:8px 10px}.comment-form{display:flex;gap:8px;padding:12px 14px;border-top:1px solid #333}.comment-form input{flex:1;min-width:0;background:#0f0f0f;color:#fff;border:1px solid #444;border-radius:999px;padding:10px 13px;font-size:16px}.comment-form button{background:#e10600;border:0;border-radius:999px;padding:10px 12px;font-weight:700}.status{height:100dvh;display:grid;place-items:center;text-align:center;padding:20px}.status-card{max-width:370px;background:#181818;border:1px solid #333;border-radius:18px;padding:20px}.status-card p{color:#c0c0c0}.status-card a{display:inline-block;margin-top:12px;background:#e10600;padding:10px 14px;border-radius:999px;font-weight:700}
-@media(max-width:760px){
-  .top{display:none!important}
-  .phone{width:100vw;height:100dvh;max-height:none;border-radius:0}
-  .play-symbol{width:62px;height:62px;background:rgba(0,0,0,.38)}
-  .actions{right:max(9px,env(safe-area-inset-right));left:auto;top:auto;bottom:max(126px,calc(env(safe-area-inset-bottom) + 94px));transform:none;gap:10px}
-  .act{width:42px;height:42px;font-size:0;background:rgba(17,17,17,.42);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(6px);box-shadow:0 1px 4px rgba(0,0,0,.18)}
-  .act svg{width:20px;height:20px}
-  .actions small{display:none}
-  .actions .like-count:not(:empty){display:block;font-size:11px;text-shadow:0 1px 3px #000;line-height:1}
-  .hint{display:none}
-  .meta{left:0;right:58px;bottom:max(16px,calc(env(safe-area-inset-bottom) + 10px));transform:none;width:auto;padding:12px 14px}
-  .meta b{font-size:.87rem}.meta h1{font-size:1rem;line-height:1.28;max-width:100%}.meta p{font-size:.79rem;opacity:.92}.btn{padding:8px 13px;font-size:.88rem}
-  .badge{top:max(12px,env(safe-area-inset-top));right:max(12px,env(safe-area-inset-right));font-size:11px;padding:6px 10px}
-  .comments{left:0;right:0;bottom:0;width:100%;max-height:min(74dvh,560px);border-radius:20px 20px 0 0;border:0;background:#151515;transform:translateY(100%);padding-bottom:env(safe-area-inset-bottom)}
-  .comments.is-open{transform:translateY(0)}
-  .comments header{position:relative;padding:22px 16px 12px;font-size:1.02rem}
-  .comments header:before{content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);width:38px;height:4px;border-radius:999px;background:#5d5d5d}
-  .comments header button{background:transparent;color:#d0d5dd;padding:6px;font-size:.9rem}
-  .comment-list{max-height:calc(min(74dvh,560px) - 124px);padding:12px 16px}
-  .comment-form{padding:10px 12px 12px;background:#151515}
-  body.comments-open .feed{overflow:hidden}
-}
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#0f0f0f;color:#fff;font-family:Arial,sans-serif}a{color:#fff;text-decoration:none}button{font:inherit;color:inherit;border:0}.feed{height:100dvh;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch}.item{height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;position:relative;display:grid;place-items:center;background:#111}.phone{position:relative;width:100vw;height:100dvh;background:#111 center/cover no-repeat;overflow:hidden}.player,.player iframe{display:block;width:100%;height:100%;border:0}.touch{position:absolute;inset:0;z-index:1;background:transparent;touch-action:pan-y;display:grid;place-items:center}.play{width:66px;height:66px;border-radius:50%;background:rgba(0,0,0,.42);display:grid;place-items:center;transition:.15s}.play:after{content:"";margin-left:5px;border-top:15px solid transparent;border-bottom:15px solid transparent;border-left:23px solid #fff}.item.playing .play{opacity:0;transform:scale(.94)}.tools{position:absolute;right:max(10px,env(safe-area-inset-right));bottom:max(136px,calc(env(safe-area-inset-bottom) + 102px));z-index:3;display:grid;gap:10px}.toolbox{text-align:center}.tool{width:42px;height:42px;border-radius:50%;background:rgba(17,17,17,.42);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(6px);display:grid;place-items:center}.tool svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.tool.like svg{fill:#fff;stroke:none}.tool.active{background:#df0909}.count{display:block;font-size:11px;text-shadow:0 1px 3px #000}.caption{position:absolute;left:0;right:60px;bottom:max(16px,calc(env(safe-area-inset-bottom) + 10px));z-index:2;padding:12px 14px;text-shadow:0 2px 10px #000}.caption b{display:block;margin-bottom:7px;font-size:.87rem}.caption h1{font-size:1rem;line-height:1.28;margin:0 0 7px}.caption p{font-size:.79rem;margin:0;opacity:.92}.read{display:inline-block;margin-top:8px;background:#df0909;padding:8px 13px;border-radius:999px;font-size:.88rem;font-weight:700}.badge{position:fixed;right:max(12px,env(safe-area-inset-right));top:max(12px,env(safe-area-inset-top));z-index:5;border:1px solid rgba(255,255,255,.13);border-radius:999px;background:rgba(22,22,22,.62);backdrop-filter:blur(8px);padding:6px 10px;font-size:11px;font-weight:700;display:none}.toast{position:fixed;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:20;background:#222;padding:10px 14px;border-radius:999px;display:none}.shade{position:fixed;inset:0;background:rgba(0,0,0,.42);z-index:7;opacity:0;transition:opacity .18s}.shade.open{opacity:1}.comments{position:fixed;left:0;right:0;bottom:0;max-height:min(74dvh,560px);z-index:8;background:#151515;border-radius:20px 20px 0 0;padding-bottom:env(safe-area-inset-bottom);transform:translateY(100%);visibility:hidden;transition:transform .18s,visibility .18s}.comments.open{visibility:visible;transform:none}.comments header{position:relative;display:flex;justify-content:space-between;align-items:center;padding:22px 16px 12px;font-weight:700}.comments header:before{content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);width:38px;height:4px;background:#5d5d5d;border-radius:999px}.comments header button{background:transparent;color:#d0d5dd;padding:6px}.list{max-height:calc(min(74dvh,560px) - 124px);overflow:auto;padding:12px 16px;display:grid;gap:8px}.comment{background:#252525;border-radius:12px;padding:8px 10px}.form{display:flex;gap:8px;padding:10px 12px 12px}.form input{flex:1;min-width:0;background:#0f0f0f;color:#fff;border:1px solid #444;border-radius:999px;padding:10px 13px;font-size:16px}.form button{background:#df0909;border-radius:999px;padding:10px 12px;font-weight:700}body.comments-open .feed{overflow:hidden}.status{height:100dvh;display:grid;place-items:center;text-align:center;padding:20px}.status a{display:inline-block;margin-top:12px;background:#df0909;padding:10px 14px;border-radius:999px;font-weight:700}@media(min-width:761px){.phone{height:calc(100dvh - 44px);max-height:820px;width:auto;aspect-ratio:9/16;border-radius:18px}.comments{left:auto;right:20px;width:360px;bottom:20px;border-radius:18px}}
 </style>
 <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
-<nav class="top"><a class="logo" href="/haber/" aria-label="Ana Sayfa">H</a><a href="/haber/">Ana Sayfa</a><a href="/haber/video/">Shorts</a><a href="https://www.youtube.com/@NartanesiHaber/shorts" target="_blank" rel="noopener">Kanal</a></nav>
-<div class="badge" id="feed-badge"></div>
-<main class="feed" id="feed"><div class="status"><div class="status-card"><strong>Shorts videoları yükleniyor…</strong></div></div></main>
-<div class="hint"><span>↑</span><span>↓</span></div>
+<div class="badge" id="badge"></div>
+<main class="feed" id="feed"><div class="status">Shorts videoları yükleniyor…</div></main>
 <div class="toast" id="toast"></div>
-<div class="comment-backdrop" id="comment-backdrop" hidden></div>
-<aside class="comments" id="comments" role="dialog" aria-modal="true" aria-label="Yorumlar" aria-hidden="true"><header><span>Yorumlar</span><button type="button" id="comment-close" aria-label="Yorumları kapat">Kapat</button></header><div class="comment-list" id="comment-list"></div><form class="comment-form" id="comment-form"><input id="comment-input" maxlength="240" placeholder="Yorum yaz" aria-label="Yorum yaz"><button type="submit">Gönder</button></form></aside>
+<div class="shade" id="shade" hidden></div>
+<aside class="comments" id="comments" role="dialog" aria-modal="true" aria-label="Yorumlar" aria-hidden="true"><header><span>Yorumlar</span><button type="button" id="close">Kapat</button></header><div class="list" id="list"></div><form class="form" id="form"><input id="input" maxlength="240" placeholder="Yorum yaz" aria-label="Yorum yaz"><button>Gönder</button></form></aside>
 <script>
 (function(){
-  'use strict';
-  const feed=document.getElementById('feed');
-  const badge=document.getElementById('feed-badge');
-  const toast=document.getElementById('toast');
-  const panel=document.getElementById('comments');
-  const backdrop=document.getElementById('comment-backdrop');
-  const list=document.getElementById('comment-list');
-  const form=document.getElementById('comment-form');
-  const input=document.getElementById('comment-input');
-  const players=new Map();
-  let currentId='';
-  let activeItem=null;
-  let pendingItems=[];
-  let continuousPlayback=false;
-  let transitionUntil=0;
-
-  function key(id,type){return 'shorts:'+id+':'+type;}
-  function text(parent,tag,value,className){const node=document.createElement(tag);if(className){node.className=className;}node.textContent=String(value||'');parent.appendChild(node);return node;}
-  function notify(message){toast.textContent=message;toast.style.display='block';window.setTimeout(function(){toast.style.display='none';},1600);}
-  function newsUrl(value){return typeof value==='string'&&/^\/haber(?:\/|\?|$)/.test(value)?value:'/haber/';}
-  function storedComments(){try{return JSON.parse(localStorage.getItem(key(currentId,'comments'))||'[]');}catch(error){return [];}}
-  function renderComments(){list.replaceChildren();const rows=storedComments();if(!rows.length){text(list,'div','İlk yorumu sen yaz.','comment');return;}rows.forEach(function(row){text(list,'div',row,'comment');});}
-  function svg(path){return '<svg viewBox="0 0 24 24" aria-hidden="true">'+path+'</svg>';}
-  const icons={like:svg('<path d="M12 20.5S4 15.8 4 9.3A4.4 4.4 0 0 1 12 6.7 4.4 4.4 0 0 1 20 9.3c0 6.5-8 11.2-8 11.2Z"/>'),comment:svg('<path d="M4 5.5h16v11H9l-5 3v-14Z"/>'),share:svg('<path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M5 13v7h14v-7"/>')};
-  function action(label,icon,className){const button=document.createElement('button');button.type='button';button.className='act '+className;button.setAttribute('aria-label',label);button.innerHTML=icon;return button;}
-  function openComments(videoId){currentId=videoId;renderComments();backdrop.hidden=false;requestAnimationFrame(function(){backdrop.classList.add('is-open');panel.classList.add('is-open');});panel.setAttribute('aria-hidden','false');document.body.classList.add('comments-open');input.focus();}
-  function closeComments(){panel.classList.remove('is-open');backdrop.classList.remove('is-open');panel.setAttribute('aria-hidden','true');document.body.classList.remove('comments-open');window.setTimeout(function(){backdrop.hidden=true;},190);}
-  function markPlaying(item,playing){if(item){item.classList.toggle('is-playing',Boolean(playing));}}
-  function navigateBySwipe(item,distance){
-    const target=distance<0?item.nextElementSibling:item.previousElementSibling;
-    if(!target||!target.classList.contains('item')) return;
-    target.scrollIntoView({block:'start',behavior:'smooth'});
-    window.setTimeout(function(){activateItem(target);},80);
-  }
-  function bindSurface(surface,item){
-    let startY=null;
-    let swiped=false;
-    surface.addEventListener('touchstart',function(event){if(event.changedTouches.length){startY=event.changedTouches[0].clientY;swiped=false;}},{passive:true});
-    surface.addEventListener('touchend',function(event){
-      if(startY===null||!event.changedTouches.length) return;
-      const distance=event.changedTouches[0].clientY-startY;
-      startY=null;
-      if(Math.abs(distance)>=42){swiped=true;navigateBySwipe(item,distance);}
-    },{passive:true});
-    surface.addEventListener('click',function(event){
-      if(swiped){swiped=false;event.preventDefault();return;}
-      togglePlayback(item);
-    });
-  }
-  function buildItem(video){
-    const item=document.createElement('section');item.className='item';item.dataset.id=video.video_id;
-    const phone=document.createElement('div');phone.className='phone';phone.style.backgroundImage='url(https://i.ytimg.com/vi/'+encodeURIComponent(video.video_id)+'/hqdefault.jpg)';
-    const slot=document.createElement('div');slot.className='player-slot';phone.appendChild(slot);
-    const surface=document.createElement('button');surface.className='gesture-layer';surface.type='button';surface.setAttribute('aria-label','Videoyu oynat veya durdur');surface.innerHTML='<span class="play-symbol" aria-hidden="true"></span>';bindSurface(surface,item);phone.appendChild(surface);item.appendChild(phone);
-    const actions=document.createElement('div');actions.className='actions';
-    const likeBox=document.createElement('div');likeBox.className='action-wrap';const like=action('Beğen',icons.like,'like');const countNode=text(likeBox,'small','0','like-count');likeBox.prepend(like);actions.appendChild(likeBox);
-    const commentBox=document.createElement('div');commentBox.className='action-wrap';commentBox.appendChild(action('Yorum yaz',icons.comment,'comment-open'));actions.appendChild(commentBox);
-    const shareBox=document.createElement('div');shareBox.className='action-wrap';shareBox.appendChild(action('Paylaş',icons.share,'share'));actions.appendChild(shareBox);item.appendChild(actions);
-    const meta=document.createElement('div');meta.className='meta';text(meta,'b','@NartanesiHaber');text(meta,'h1',video.title||'Nartanesi Haber Shorts');text(meta,'p',video.description||'Nartanesi Haber Shorts içeriği.');const read=document.createElement('a');read.className='btn';read.href=newsUrl(video.news_url);read.textContent='Haberi Oku';meta.appendChild(read);item.appendChild(meta);
-    let count=Number(localStorage.getItem(key(video.video_id,'likes'))||0);if(localStorage.getItem(key(video.video_id,'liked'))==='1'){like.classList.add('active');}countNode.textContent=count?String(count):'';
-    like.addEventListener('click',function(){const liked=localStorage.getItem(key(video.video_id,'liked'))==='1';count=Math.max(0,count+(liked?-1:1));if(liked){localStorage.removeItem(key(video.video_id,'liked'));like.classList.remove('active');}else{localStorage.setItem(key(video.video_id,'liked'),'1');like.classList.add('active');}localStorage.setItem(key(video.video_id,'likes'),String(count));countNode.textContent=count?String(count):'';});
-    item.querySelector('.comment-open').addEventListener('click',function(){openComments(video.video_id);});
-    item.querySelector('.share').addEventListener('click',async function(){const url=location.origin+location.pathname+'?v='+encodeURIComponent(video.video_id);try{if(navigator.share){await navigator.share({title:video.title||'Shorts',url:url});}else{await navigator.clipboard.writeText(url);notify('Link kopyalandı');}}catch(error){notify('Paylaşım iptal edildi');}});
-    return item;
-  }
-  function handleState(item,event){
-    if(!window.YT) return;
-    if(event.data===YT.PlayerState.PLAYING){
-      if(item===activeItem){continuousPlayback=true;transitionUntil=0;markPlaying(item,true);}
-      return;
-    }
-    if(event.data===YT.PlayerState.PAUSED){
-      if(item===activeItem&&Date.now()>transitionUntil){continuousPlayback=false;markPlaying(item,false);}
-      return;
-    }
-    if(event.data===YT.PlayerState.ENDED&&item===activeItem){
-      markPlaying(item,false);
-      if(continuousPlayback){event.target.seekTo(0,true);event.target.playVideo();}
-    }
-  }
-  function createPlayer(item,playNow){
-    if(!window.YT||!YT.Player){pendingItems.push({item:item,playNow:playNow});return null;}
-    if(players.has(item)){if(playNow){players.get(item).playVideo();}return players.get(item);}
-    const mount=document.createElement('div');item.querySelector('.player-slot').appendChild(mount);
-    const instance=new YT.Player(mount,{videoId:item.dataset.id,playerVars:{playsinline:1,rel:0,modestbranding:1,controls:0,autoplay:playNow?1:0},events:{onReady:function(event){if(playNow){event.target.playVideo();}},onStateChange:function(event){handleState(item,event);}}});
-    players.set(item,instance);
-    return instance;
-  }
-  function activateItem(item){
-    if(!item) return;
-    const previous=activeItem;
-    activeItem=item;
-    transitionUntil=Date.now()+1200;
-    if(previous&&previous!==item){markPlaying(previous,false);const previousPlayer=players.get(previous);if(previousPlayer){previousPlayer.pauseVideo();}}
-    const current=players.get(item)||createPlayer(item,continuousPlayback);
-    if(current&&continuousPlayback){current.playVideo();}
-  }
-  function togglePlayback(item){
-    if(item!==activeItem){activeItem=item;}
-    let instance=players.get(item);
-    if(!instance){continuousPlayback=true;createPlayer(item,true);return;}
-    let state=-1;try{state=instance.getPlayerState();}catch(error){}
-    if(window.YT&&state===YT.PlayerState.PLAYING){continuousPlayback=false;instance.pauseVideo();markPlaying(item,false);}
-    else{continuousPlayback=true;instance.playVideo();}
-  }
-  window.onYouTubeIframeAPIReady=function(){
-    const queued=pendingItems.slice();pendingItems=[];
-    queued.forEach(function(entry){createPlayer(entry.item,entry.playNow);});
-  };
-  function showError(){feed.replaceChildren();const wrap=document.createElement('div');wrap.className='status';const card=document.createElement('div');card.className='status-card';text(card,'strong','Shorts akışı şu anda yüklenemedi.');text(card,'p','Videoları YouTube kanalımızdan izleyebilirsiniz.');const link=document.createElement('a');link.href='https://www.youtube.com/@NartanesiHaber/shorts';link.target='_blank';link.rel='noopener';link.textContent='YouTube Shorts';card.appendChild(link);wrap.appendChild(card);feed.appendChild(wrap);}
-  async function loadFeed(){
-    try{
-      const response=await fetch('./shorts-feed.json',{cache:'no-store'});if(!response.ok){throw new Error('feed '+response.status);}
-      const payload=await response.json();const seen=new Set();const videos=Array.isArray(payload.videos)?payload.videos.filter(function(video){if(!video||typeof video.video_id!=='string'||!/^[A-Za-z0-9_-]{11}$/.test(video.video_id)||seen.has(video.video_id)){return false;}seen.add(video.video_id);return true;}):[];
-      if(!videos.length){throw new Error('empty feed');}
-      const fragment=document.createDocumentFragment();videos.forEach(function(video){fragment.appendChild(buildItem(video));});feed.replaceChildren(fragment);badge.textContent=String(videos.length)+' Shorts';badge.style.display='block';
-      const items=Array.from(document.querySelectorAll('.item'));const requested=new URL(location.href).searchParams.get('v');const initial=items.find(function(item){return item.dataset.id===requested;})||items[0];if(initial&&requested){initial.scrollIntoView({block:'start'});}activeItem=initial;createPlayer(initial,false);
-      const observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting&&entry.intersectionRatio>=0.65){activateItem(entry.target);const url=new URL(location.href);url.searchParams.set('v',entry.target.dataset.id);history.replaceState(null,'',url.pathname+url.search);}});},{threshold:[0.65]});items.forEach(function(item){observer.observe(item);});
-    }catch(error){showError();}
-  }
-  document.getElementById('comment-close').addEventListener('click',closeComments);
-  backdrop.addEventListener('click',closeComments);
-  document.addEventListener('keydown',function(event){if(event.key==='Escape'&&panel.classList.contains('is-open')){closeComments();}});
-  form.addEventListener('submit',function(event){event.preventDefault();const value=input.value.trim();if(!value||!currentId){return;}const rows=storedComments();rows.push(value);localStorage.setItem(key(currentId,'comments'),JSON.stringify(rows.slice(-50)));input.value='';renderComments();});
-  loadFeed();
+'use strict';
+const feed=document.getElementById('feed'), badge=document.getElementById('badge'), toast=document.getElementById('toast');
+const drawer=document.getElementById('comments'), shade=document.getElementById('shade'), list=document.getElementById('list'), form=document.getElementById('form'), input=document.getElementById('input');
+const players=new Map(), desired=new Set(); let active=null, apiReady=false, keepPlaying=false, switching=false, currentId='';
+function k(id,t){return 'shorts:'+id+':'+t;} function esc(v){return String(v||'');}
+function notify(t){toast.textContent=t;toast.style.display='block';setTimeout(()=>toast.style.display='none',1500);}
+function icon(p){return '<svg viewBox="0 0 24 24" aria-hidden="true">'+p+'</svg>';}
+const icons={heart:icon('<path d="M12 20.5S4 15.8 4 9.3A4.4 4.4 0 0 1 12 6.7 4.4 4.4 0 0 1 20 9.3c0 6.5-8 11.2-8 11.2Z"/>'),chat:icon('<path d="M4 5.5h16v11H9l-5 3v-14Z"/>'),share:icon('<path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M5 13v7h14v-7"/>')};
+function playerFor(item, play){
+ if(!item)return null; if(players.has(item)){if(play){players.get(item).playVideo();}return players.get(item);}
+ if(!apiReady){if(play)desired.add(item);return null;}
+ const mount=document.createElement('div'); item.querySelector('.player').appendChild(mount);
+ const p=new YT.Player(mount,{videoId:item.dataset.id,playerVars:{playsinline:1,rel:0,modestbranding:1,controls:0,autoplay:0},events:{onReady:e=>{if(desired.has(item)||(play&&item===active)){desired.delete(item);e.target.playVideo();}},onStateChange:e=>state(item,e)}});
+ players.set(item,p); if(play)desired.add(item); return p;
+}
+function prime(item){if(!item)return; [item.previousElementSibling,item,item.nextElementSibling].forEach(x=>{if(x&&x.classList.contains('item'))playerFor(x,false);});}
+function state(item,e){if(!window.YT)return; if(e.data===YT.PlayerState.PLAYING){if(item===active){keepPlaying=true;item.classList.add('playing');prime(item);}return;} if(e.data===YT.PlayerState.PAUSED){item.classList.remove('playing');if(item===active&&!switching)keepPlaying=false;return;} if(e.data===YT.PlayerState.ENDED&&item===active&&keepPlaying){e.target.seekTo(0,true);e.target.playVideo();}}
+function select(item, userSwipe){if(!item)return; const before=active; active=item; switching=true; if(before&&before!==item){before.classList.remove('playing');const old=players.get(before);if(old)old.pauseVideo();} prime(item); if(keepPlaying){desired.add(item);const p=playerFor(item,true);if(p&&userSwipe)p.playVideo();} setTimeout(()=>switching=false,500);}
+function toggle(item){select(item,false); const p=playerFor(item,true); if(!p){keepPlaying=true;desired.add(item);return;} let s=-1;try{s=p.getPlayerState();}catch(e){} if(window.YT&&s===YT.PlayerState.PLAYING){keepPlaying=false;p.pauseVideo();item.classList.remove('playing');}else{keepPlaying=true;desired.add(item);p.playVideo();}}
+function swipeSurface(surface,item){let y=null,moved=false;surface.addEventListener('touchstart',e=>{if(e.changedTouches.length){y=e.changedTouches[0].clientY;moved=false;}},{passive:true});surface.addEventListener('touchend',e=>{if(y===null||!e.changedTouches.length)return;const d=e.changedTouches[0].clientY-y;y=null;if(Math.abs(d)>42){moved=true;const target=d<0?item.nextElementSibling:item.previousElementSibling;if(target&&target.classList.contains('item')){select(target,true);target.scrollIntoView({block:'start',behavior:'smooth'});}}},{passive:true});surface.addEventListener('click',e=>{if(moved){moved=false;e.preventDefault();return;}toggle(item);});}
+function commentRows(){let rows=[];try{rows=JSON.parse(localStorage.getItem(k(currentId,'comments'))||'[]');}catch(e){}list.replaceChildren();(rows.length?rows:['İlk yorumu sen yaz.']).forEach(t=>{const d=document.createElement('div');d.className='comment';d.textContent=t;list.appendChild(d);});}
+function openComments(id){currentId=id;commentRows();shade.hidden=false;requestAnimationFrame(()=>{shade.classList.add('open');drawer.classList.add('open');});drawer.setAttribute('aria-hidden','false');document.body.classList.add('comments-open');input.focus();}
+function closeComments(){shade.classList.remove('open');drawer.classList.remove('open');drawer.setAttribute('aria-hidden','true');document.body.classList.remove('comments-open');setTimeout(()=>shade.hidden=true,190);}
+function tool(label,cl,svg){const b=document.createElement('button');b.type='button';b.className='tool '+cl;b.setAttribute('aria-label',label);b.innerHTML=svg;return b;}
+function card(v){const item=document.createElement('section');item.className='item';item.dataset.id=v.video_id;const phone=document.createElement('div');phone.className='phone';phone.style.backgroundImage='url(https://i.ytimg.com/vi/'+encodeURIComponent(v.video_id)+'/hqdefault.jpg)';const mount=document.createElement('div');mount.className='player';phone.appendChild(mount);const touch=document.createElement('button');touch.className='touch';touch.type='button';touch.innerHTML='<span class="play" aria-hidden="true"></span>';swipeSurface(touch,item);phone.appendChild(touch);item.appendChild(phone);const tools=document.createElement('div');tools.className='tools';const likeBox=document.createElement('div');likeBox.className='toolbox';const like=tool('Beğen','like',icons.heart);const count=document.createElement('small');count.className='count';let n=Number(localStorage.getItem(k(v.video_id,'likes'))||0);count.textContent=n?String(n):'';like.classList.toggle('active',localStorage.getItem(k(v.video_id,'liked'))==='1');like.onclick=()=>{const on=localStorage.getItem(k(v.video_id,'liked'))==='1';n=Math.max(0,n+(on?-1:1));if(on){localStorage.removeItem(k(v.video_id,'liked'));}else{localStorage.setItem(k(v.video_id,'liked'),'1');}localStorage.setItem(k(v.video_id,'likes'),String(n));like.classList.toggle('active',!on);count.textContent=n?String(n):'';};likeBox.append(like,count);tools.append(likeBox);const com=tool('Yorum yaz','',icons.chat);com.onclick=()=>openComments(v.video_id);tools.append(com);const share=tool('Paylaş','',icons.share);share.onclick=async()=>{const u=location.origin+location.pathname+'?v='+encodeURIComponent(v.video_id);try{if(navigator.share)await navigator.share({title:v.title||'Shorts',url:u});else{await navigator.clipboard.writeText(u);notify('Link kopyalandı');}}catch(e){}};tools.append(share);item.appendChild(tools);const cap=document.createElement('div');cap.className='caption';cap.innerHTML='<b>@NartanesiHaber</b><h1></h1><p></p><a class="read">Haberi Oku</a>';cap.querySelector('h1').textContent=esc(v.title||'Nartanesi Haber Shorts');cap.querySelector('p').textContent=esc(v.description||'Nartanesi Haber Shorts içeriği.');cap.querySelector('a').href=typeof v.news_url==='string'&&/^\/haber(?:\/|\?|$)/.test(v.news_url)?v.news_url:'/haber/';item.appendChild(cap);return item;}
+async function load(){try{const r=await fetch('./shorts-feed.json',{cache:'no-store'});const data=await r.json();const seen=new Set();const videos=(data.videos||[]).filter(v=>v&&/^[A-Za-z0-9_-]{11}$/.test(v.video_id)&&!seen.has(v.video_id)&&(seen.add(v.video_id)||true));if(!videos.length)throw Error();const frag=document.createDocumentFragment();videos.forEach(v=>frag.appendChild(card(v)));feed.replaceChildren(frag);badge.textContent=videos.length+' Shorts';badge.style.display='block';const items=[...feed.querySelectorAll('.item')];active=items[0];prime(active);const q=new URL(location.href).searchParams.get('v');const requested=items.find(i=>i.dataset.id===q);if(requested){active=requested;requested.scrollIntoView({block:'start'});prime(active);}new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&e.intersectionRatio>.65){select(e.target,false);}}),{threshold:[.65]}).observe(items[0]);items.forEach((i,n)=>{if(n)new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&e.intersectionRatio>.65)select(e.target,false);}),{threshold:[.65]}).observe(i);});}catch(e){feed.innerHTML='<div class="status"><div>Shorts akışı şu anda yüklenemedi.<br><a href="https://www.youtube.com/@NartanesiHaber/shorts">YouTube Shorts</a></div></div>';}}
+window.onYouTubeIframeAPIReady=()=>{apiReady=true;if(active)prime(active);desired.forEach(i=>playerFor(i,true));};document.getElementById('close').onclick=closeComments;shade.onclick=closeComments;form.onsubmit=e=>{e.preventDefault();const v=input.value.trim();if(!v||!currentId)return;let a=[];try{a=JSON.parse(localStorage.getItem(k(currentId,'comments'))||'[]');}catch(err){}a.push(v);localStorage.setItem(k(currentId,'comments'),JSON.stringify(a.slice(-50)));input.value='';commentRows();};load();
 })();
 </script>
 </body>
