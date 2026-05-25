@@ -1,18 +1,362 @@
 {
-  "updated_at": "2026-05-25T00:05:12.004507Z",
+  "updated_at": "2026-05-25T05:06:32.122596Z",
   "channel": "https://www.youtube.com/@NartanesiHaber/shorts",
   "source_urls": [
     "https://www.youtube.com/@NartanesiHaber/shorts",
     "https://www.youtube.com/@NartanesiHaber/videos"
   ],
-  "count": 151,
+  "count": 194,
   "videos": [
+    {
+      "video_id": "o8I-vCohPng",
+      "title": "Özel Kendini Makam Odasına Kilitledi: “Buradan Çıkmayacağız, Sonuna Kadar Direneceğiz!”",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/o8I-vCohPng",
+      "embed_url": "https://www.youtube.com/embed/o8I-vCohPng",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "jEFX_42G0xw",
+      "title": "Acun Ilıcalı Gözyaşlarını Tutamadı: “Böyle Bir Gururu Hayatımda Yaşamadım!”",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/jEFX_42G0xw",
+      "embed_url": "https://www.youtube.com/embed/jEFX_42G0xw",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "hqhYptDL9xU",
+      "title": "Özel’den Kılıçdaroğlu’na: “Ahlaki Eleştiri Değil, İftira Atılıyor!”",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/hqhYptDL9xU",
+      "embed_url": "https://www.youtube.com/embed/hqhYptDL9xU",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "SLru8v0Kctk",
+      "title": "CHP İl Örgütü İsyan Etti: Kılıçdaroğlu’nun Resmini Çöpe Attılar!",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/SLru8v0Kctk",
+      "embed_url": "https://www.youtube.com/embed/SLru8v0Kctk",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "iWRzDm7KQa0",
+      "title": "Özel: \"51 yaşındayım, 30 sene oturabilirdim\" — neden oturmadı?",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/iWRzDm7KQa0",
+      "embed_url": "https://www.youtube.com/embed/iWRzDm7KQa0",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "cCRotXmkIr8",
+      "title": "Mutlak butlan nedir? Adalet Bakanı  Gürlek açıkladı",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/cCRotXmkIr8",
+      "embed_url": "https://www.youtube.com/embed/cCRotXmkIr8",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "XRV6C-JRn5w",
+      "title": "Mutlak Butlan Ne Demek? CHP'de Her Şey Sıfırlandı!",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/XRV6C-JRn5w",
+      "embed_url": "https://www.youtube.com/embed/XRV6C-JRn5w",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "emn5t4EerlI",
+      "title": "Dilan Polat Uyuşturucu Olayından Sonra Dondurma Yaptı",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/emn5t4EerlI",
+      "embed_url": "https://www.youtube.com/embed/emn5t4EerlI",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "T-FZa7WnEy8",
+      "title": "Son Dakika: Ece Gürel’in Yanındaki Sevimli Köpek ile İlk Görüntüleri #sondakika",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/T-FZa7WnEy8",
+      "embed_url": "https://www.youtube.com/embed/T-FZa7WnEy8",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "9hqBg-Nz24Y",
+      "title": "Çinli Askerlerin Rusya Cephesindeki Rolü: İddiaların Gerçekliği Üzerine İnceleme",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/9hqBg-Nz24Y",
+      "embed_url": "https://www.youtube.com/embed/9hqBg-Nz24Y",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "6rZAjKRcgys",
+      "title": "🆘 Kayıp Mimar Ece Gürel 4 Gün Sonra Belgrad Ormanı'nda Sağ Bulundu! 🌳 | Son Dakika Haberi",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/6rZAjKRcgys",
+      "embed_url": "https://www.youtube.com/embed/6rZAjKRcgys",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "va7gyMK52R8",
+      "title": "Tarihi An: Iğdır-Nahçivan Gaz Boru Hattı Resmen Açıldı! #sondakika",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/va7gyMK52R8",
+      "embed_url": "https://www.youtube.com/embed/va7gyMK52R8",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "V11DNNv2XrA",
+      "title": "Engin Polat Uyuşturucu İddiası - Şok Anlar | YouTube Shorts",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/V11DNNv2XrA",
+      "embed_url": "https://www.youtube.com/embed/V11DNNv2XrA",
+      "news_url": "/haber/"
+    },
     {
       "video_id": "OLP9oTOInTI",
       "title": "Dilan Polat Kuran Okuyor! Duygusal Anlar…",
       "description": "Nartanesi Haber Shorts içeriği.",
       "shorts_url": "https://www.youtube.com/shorts/OLP9oTOInTI",
       "embed_url": "https://www.youtube.com/embed/OLP9oTOInTI",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "Wdss76PZreM",
+      "title": "Ece Gürel’e Ait Kişisel Eşyalar Ortaya Çıktı",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/Wdss76PZreM",
+      "embed_url": "https://www.youtube.com/embed/Wdss76PZreM",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "iMy9P0jf4qQ",
+      "title": "Emre Belözoğlu GFB Maç Öncesi Çiçek Alıyor! Şaşırtan Anlar | YouTube Shorts",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/iMy9P0jf4qQ",
+      "embed_url": "https://www.youtube.com/embed/iMy9P0jf4qQ",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "mEirc763EFc",
+      "title": "Aziz Yıldırım Fenerbahçe 3-0 Antalyaspor Zaferini Kutluyor | Maç Sonrası Eğlence",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/mEirc763EFc",
+      "embed_url": "https://www.youtube.com/embed/mEirc763EFc",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "tSAH4Hu5fvU",
+      "title": "Carlos Cuesta Galatasaray Otobüsüne Alınmadı! Şok Gelişme!",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/tSAH4Hu5fvU",
+      "embed_url": "https://www.youtube.com/embed/tSAH4Hu5fvU",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "nfsOu9a1QDc",
+      "title": "Ademreis'ten Sıradışı Müzik Deneyimi! Kola Şişeleri Konuşuyor!!!",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/nfsOu9a1QDc",
+      "embed_url": "https://www.youtube.com/embed/nfsOu9a1QDc",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "Lk72dK3oSDI",
+      "title": "Arda Turan ve Selçuk İnan Karşı Karşıya!",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/Lk72dK3oSDI",
+      "embed_url": "https://www.youtube.com/embed/Lk72dK3oSDI",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "lK92Rh0RjK4",
+      "title": "Sıla Polat & Dilan Polat: Cezaevinde Yaşadıklarını İlk Kez Anlatıyor! 😱🔓",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/lK92Rh0RjK4",
+      "embed_url": "https://www.youtube.com/embed/lK92Rh0RjK4",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "0-2a3g4ko3Q",
+      "title": "Dilan Polat Şok Doğum Günü Kutlaması",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/0-2a3g4ko3Q",
+      "embed_url": "https://www.youtube.com/embed/0-2a3g4ko3Q",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "PD3D6x8TG00",
+      "title": "Edip Akbayram Vefat Etti! 🕊️ Anadolu Rock Efsanesi",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/PD3D6x8TG00",
+      "embed_url": "https://www.youtube.com/embed/PD3D6x8TG00",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "A2NcQ1yqcco",
+      "title": "Dünyanın En Zor 7 Mesleği: Bu İşleri Yapanlar Nasıl Hayatta Kalıyor?",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/A2NcQ1yqcco",
+      "embed_url": "https://www.youtube.com/embed/A2NcQ1yqcco",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "f2_K47pW_DM",
+      "title": "Engin Polat Gözaltı Sonrası Konuştu! Uyuşturucu Soruşturması Gündemde",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/f2_K47pW_DM",
+      "embed_url": "https://www.youtube.com/embed/f2_K47pW_DM",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "xns_p7QSPd4",
+      "title": "Uyuşturucu İddiası Sonrası Dilan Polat Yıkıldı.",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/xns_p7QSPd4",
+      "embed_url": "https://www.youtube.com/embed/xns_p7QSPd4",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "NeFzwPpN4A4",
+      "title": "Şok İddia: Dilan Polat Uyuşturucuyla mı Yakalandı?",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/NeFzwPpN4A4",
+      "embed_url": "https://www.youtube.com/embed/NeFzwPpN4A4",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "zTGOxbDDmaM",
+      "title": "Ramazan’da Mutlaka Yenilmesi Gereken 7 Yiyecek! 🌙 Bereket ve Şifa Dolu Sofralar!",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/zTGOxbDDmaM",
+      "embed_url": "https://www.youtube.com/embed/zTGOxbDDmaM",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "e-vuOuv__NM",
+      "title": "Futbol Tarihinin En Pahalı 7 Transferi! 💰 Şok Eden Rakamlar!",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/e-vuOuv__NM",
+      "embed_url": "https://www.youtube.com/embed/e-vuOuv__NM",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "5IkJltcBn8o",
+      "title": "Trump ve Zelenski Karşı Karşıya: Beyaz Saray’daki Gerilim Büyüyor!",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/5IkJltcBn8o",
+      "embed_url": "https://www.youtube.com/embed/5IkJltcBn8o",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "yuMss1QrC9M",
+      "title": "İzlemeniz Gereken 7 Efsane Amerikan Dizisi!",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/yuMss1QrC9M",
+      "embed_url": "https://www.youtube.com/embed/yuMss1QrC9M",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "jGP5LdH6bb4",
+      "title": "Beşiktaş Lyon Maç Öncesi Vodafone Arena",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/jGP5LdH6bb4",
+      "embed_url": "https://www.youtube.com/embed/jGP5LdH6bb4",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "x6Vo_82QQ1U",
+      "title": "İstanbul'da Referandum Sonuçlarına Tepki",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/x6Vo_82QQ1U",
+      "embed_url": "https://www.youtube.com/embed/x6Vo_82QQ1U",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "jWdNNd94I5g",
+      "title": "Akp'li Maganda Eveti Böyle Kutladı",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/jWdNNd94I5g",
+      "embed_url": "https://www.youtube.com/embed/jWdNNd94I5g",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "pyy1mrWdwW4",
+      "title": "Oh Oh Diye Çalınan Oylar (16.04.2017)",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/pyy1mrWdwW4",
+      "embed_url": "https://www.youtube.com/embed/pyy1mrWdwW4",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "OvP0p5MY06w",
+      "title": "Referandum'da Çalınan Oylar",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/OvP0p5MY06w",
+      "embed_url": "https://www.youtube.com/embed/OvP0p5MY06w",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "7OGmMUf0tyQ",
+      "title": "Sokakta Çok Fena Kavga",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/7OGmMUf0tyQ",
+      "embed_url": "https://www.youtube.com/embed/7OGmMUf0tyQ",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "KbNpDqO8TI4",
+      "title": "Sokak Ortasında Kavga",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/KbNpDqO8TI4",
+      "embed_url": "https://www.youtube.com/embed/KbNpDqO8TI4",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "1R6Oe_c2d-8",
+      "title": "Transların (LGBT) Bayrağı Böyle Yakıldı",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/1R6Oe_c2d-8",
+      "embed_url": "https://www.youtube.com/embed/1R6Oe_c2d-8",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "_GekzhpXLq8",
+      "title": "Çin'de Trafikte Çığır Açan İcat",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/_GekzhpXLq8",
+      "embed_url": "https://www.youtube.com/embed/_GekzhpXLq8",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "5HtVrnqIKcQ",
+      "title": "Beşiktaşlı Futbolcuların Şampiyonluk Sevinci",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/5HtVrnqIKcQ",
+      "embed_url": "https://www.youtube.com/embed/5HtVrnqIKcQ",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "ZsD_QP7rXp4",
+      "title": "Şampiyon Beşiktaş",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/ZsD_QP7rXp4",
+      "embed_url": "https://www.youtube.com/embed/ZsD_QP7rXp4",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "pZMa0bMd0Y4",
+      "title": "Komik video haberleri 1",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/pZMa0bMd0Y4",
+      "embed_url": "https://www.youtube.com/embed/pZMa0bMd0Y4",
+      "news_url": "/haber/"
+    },
+    {
+      "video_id": "yq-AUsJ9WHs",
+      "title": "1 Kasım Seçim Sonuçları",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/yq-AUsJ9WHs",
+      "embed_url": "https://www.youtube.com/embed/yq-AUsJ9WHs",
       "news_url": "/haber/"
     },
     {
