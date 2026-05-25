@@ -29,11 +29,22 @@
         }
       }
       const preferences=document.getElementById('prefs-form');
-      if(preferences)preferences.addEventListener('submit',async function(event){
-        event.preventDefault();
-        const result=await HaberMember.savePrefs({email_daily_digest:document.getElementById('pref-mail').checked,breaking_news_push:document.getElementById('pref-push').checked,categories:[]});
-        setText('prefs-message',result.error?'Bildirim tercihleri özelliği henüz etkinleştirilmedi.':'Tercihler kaydedildi.');
-      });
+      const prefMail=document.getElementById('pref-mail');
+      const prefPush=document.getElementById('pref-push');
+      if(preferences){
+        const stored=await HaberMember.loadPrefs();
+        if(stored.error){
+          setText('prefs-message','Kayıtlı tercihler şu anda yüklenemedi.');
+        }else if(stored.data){
+          if(prefMail)prefMail.checked=!!stored.data.email_daily_digest;
+          if(prefPush)prefPush.checked=!!stored.data.breaking_news_push;
+        }
+        preferences.addEventListener('submit',async function(event){
+          event.preventDefault();
+          const result=await HaberMember.savePrefs({email_daily_digest:!!(prefMail&&prefMail.checked),breaking_news_push:!!(prefPush&&prefPush.checked),categories:[]});
+          setText('prefs-message',result.error?'Bildirim tercihleri özelliği henüz etkinleştirilmedi.':'Tercihler kaydedildi.');
+        });
+      }
     }catch(error){
       setText('member-error',error.message||'Hesap bilgileri alınamadı.');
     }

@@ -88,6 +88,13 @@
     return instance.from('saved_articles').select('id,article_url,article_title,article_slug,created_at').order('created_at',{ascending:false});
   }
 
+  async function loadPrefs(){
+    const instance=await client();
+    const currentUser=await user();
+    if(!currentUser)throw new Error('Oturum açmanız gerekiyor.');
+    return instance.from('notification_preferences').select('email_daily_digest,breaking_news_push,categories,updated_at').eq('user_id',currentUser.id).maybeSingle();
+  }
+
   async function savePrefs(prefs){
     const instance=await client();
     const currentUser=await user();
@@ -95,5 +102,5 @@
     return instance.from('notification_preferences').upsert({user_id:currentUser.id,email_daily_digest:!!prefs.email_daily_digest,breaking_news_push:!!prefs.breaking_news_push,categories:Array.isArray(prefs.categories)?prefs.categories:[]},{onConflict:'user_id'});
   }
 
-  window.HaberMember={client,session,user,login,register,googleLogin,logout,requireMember,saveArticle,savedArticles,savePrefs};
+  window.HaberMember={client,session,user,login,register,googleLogin,logout,requireMember,saveArticle,savedArticles,loadPrefs,savePrefs};
 })();
