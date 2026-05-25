@@ -97,7 +97,33 @@
     .member-article-message { flex:1 1 210px; min-height:20px; margin:0; color:#667085; font-size:.88rem; font-weight:650; }
     .member-article-message.error { color:#b42318; }
     /* MEMBER_ARTICLE_ACTIONS_END */
+  
+    /* ARTICLE_READING_UX_START */
+    /* Read-first article media: preserve framing while shortening the scroll to the story. */
+    .article-shell { max-width:960px; }
+    .article-image {
+      width:min(100%, 760px);
+      margin:0 auto 25px;
+      border-radius:10px;
+      overflow:hidden;
+      background:#111827;
+    }
+    .article-image img {
+      width:100%;
+      height:auto;
+      display:block;
+      aspect-ratio:16 / 9;
+      object-fit:cover;
+      object-position:center;
+    }
+    .article-image img[src$=".svg"] { object-fit:contain; }
+    @media (max-width:720px) {
+      .article-shell { margin-top:16px; }
+      .article-image { width:100%; margin-bottom:20px; border-radius:8px; }
+    }
+    /* ARTICLE_READING_UX_END */
   </style>
+  <meta name="robots" content="index,follow,max-image-preview:large">
 </head>
 <body>
   <div class="top-bar">

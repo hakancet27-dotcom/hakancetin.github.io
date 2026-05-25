@@ -89,6 +89,31 @@
       .related-grid { grid-template-columns:1fr; }
     }
   
+    /* ARTICLE_READING_UX_START */
+    /* Read-first article media: preserve framing while shortening the scroll to the story. */
+    .article-shell { max-width:960px; }
+    .article-image {
+      width:min(100%, 760px);
+      margin:0 auto 25px;
+      border-radius:10px;
+      overflow:hidden;
+      background:#111827;
+    }
+    .article-image img {
+      width:100%;
+      height:auto;
+      display:block;
+      aspect-ratio:16 / 9;
+      object-fit:cover;
+      object-position:center;
+    }
+    .article-image img[src$=".svg"] { object-fit:contain; }
+    @media (max-width:720px) {
+      .article-shell { margin-top:16px; }
+      .article-image { width:100%; margin-bottom:20px; border-radius:8px; }
+    }
+    /* ARTICLE_READING_UX_END */
+  
     /* MEMBER_ARTICLE_ACTIONS_START */
     .member-article-actions { margin-top:22px; padding:16px; background:#f8fafc; border:1px solid var(--border); border-radius:10px; display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
     .member-save-article { display:inline-flex; align-items:center; justify-content:center; min-height:44px; border:1px solid #e10600; border-radius:999px; padding:10px 18px; background:#fff; color:#e10600; font:inherit; font-weight:800; cursor:pointer; transition:background .16s,color .16s,border-color .16s; }
@@ -99,6 +124,7 @@
     .member-article-message.error { color:#b42318; }
     /* MEMBER_ARTICLE_ACTIONS_END */
   </style>
+  <meta name="robots" content="index,follow,max-image-preview:large">
 </head>
 <body>
   <div class="top-bar">
