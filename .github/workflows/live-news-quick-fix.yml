@@ -29,6 +29,17 @@ jobs:
               'Yukleniyor': 'Yükleniyor',
               'Uye Girişi': 'Üye Girişi',
           }
+          mobile_fix = '''
+    /* MOBILE_MARKET_NO_OVERFLOW_V2 */
+    @media (max-width: 640px) {
+      .market-strip { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px !important; width: 100%; overflow: visible !important; white-space: normal !important; padding: 8px !important; }
+      .market-label, .market-status { grid-column: 1 / -1; }
+      .market-status { display: block !important; }
+      .market-item { width: 100%; min-width: 0 !important; padding: 8px !important; display: flex !important; flex-wrap: wrap; gap: 4px 6px !important; }
+      .market-name { width: 100%; }
+      .market-value, .market-change { min-width: 0 !important; }
+    }
+'''
 
           html_paths = list(Path('.').glob('**/*.html')) + list(Path('.').glob('**/*.xml')) + list(Path('.').glob('**/*.json'))
           changed = []
@@ -53,6 +64,9 @@ jobs:
                   text = text.replace('id="market-gbp-change">--</span>', 'id="market-gbp-change">Beklemede</span>')
                   text = text.replace('id="market-btc-change">--</span>', 'id="market-btc-change">Beklemede</span>')
                   text = text.replace('id="market-status">Güncelleniyor</span>', 'id="market-status">Canlı veri yükleniyor</span>')
+                  if 'MOBILE_MARKET_NO_OVERFLOW_V2' not in text:
+                      text = text.replace('</style>', mobile_fix + '  </style>', 1)
+                  text = text.replace('      initMarketScroll();', '      /* Auto-scrolling market strip disabled for stable mobile layout. */')
               if text != original:
                   path.write_text(text, encoding='utf-8')
                   changed.append(path.as_posix())
