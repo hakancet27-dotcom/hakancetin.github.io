@@ -1323,6 +1323,7 @@
 
       .visually-hidden { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
   </style>
+<link rel="stylesheet" href="/assets/css/mobile-home-ux.css?v=20260525d">
 </head>
 <body>
   <a class="skip-link" href="#main-content">İçeriğe geç</a>
@@ -1331,16 +1332,16 @@
     <div class="inner">
       <span id="current-time">Yükleniyor...</span>
       <div class="top-links" aria-label="Üst bağlantılar">
-        <a href="/haber">Ana Sayfa</a>
-        <a href="hakkinda/">Hakkında</a>
-        <a href="iletisim/">İletişim</a>
+        <a href="/haber/">Ana Sayfa</a>
+        <a href="/haber/hakkinda/">Hakkında</a>
+        <a href="/haber/iletisim/">İletişim</a>
       </div>
     </div>
   </div>
 
   <header>
     <div class="inner">
-      <a href="/haber" class="logo" aria-label="hakancetin.com.tr ana sayfa">
+      <a href="/haber/" class="logo" aria-label="hakancetin.com.tr ana sayfa">
         <div class="logo-icon">H</div>
         <div class="logo-text">
           <strong>hakancetin.com.tr</strong>
@@ -1351,25 +1352,25 @@
         <span class="market-label">Piyasalar</span>
         <span class="market-item neutral" id="market-usd-item">
           <span class="market-name">USD/TRY</span>
-          <strong class="market-value" id="market-usd">--</strong>
-          <span class="market-change" id="market-usd-change">--</span>
+          <strong class="market-value" id="market-usd">40,75</strong>
+          <span class="market-change" id="market-usd-change">Beklemede</span>
         </span>
         <span class="market-item neutral" id="market-eur-item">
           <span class="market-name">EUR/TRY</span>
-          <strong class="market-value" id="market-eur">--</strong>
-          <span class="market-change" id="market-eur-change">--</span>
+          <strong class="market-value" id="market-eur">47,70</strong>
+          <span class="market-change" id="market-eur-change">Beklemede</span>
         </span>
         <span class="market-item neutral" id="market-gbp-item">
           <span class="market-name">GBP/TRY</span>
-          <strong class="market-value" id="market-gbp">--</strong>
-          <span class="market-change" id="market-gbp-change">--</span>
+          <strong class="market-value" id="market-gbp">55,80</strong>
+          <span class="market-change" id="market-gbp-change">Beklemede</span>
         </span>
         <span class="market-item neutral" id="market-btc-item">
           <span class="market-name">BTC</span>
-          <strong class="market-value" id="market-btc">--</strong>
-          <span class="market-change" id="market-btc-change">--</span>
+          <strong class="market-value" id="market-btc">4,35 Mn</strong>
+          <span class="market-change" id="market-btc-change">Beklemede</span>
         </span>
-        <span class="market-status" id="market-status">Güncelleniyor</span>
+        <span class="market-status" id="market-status">Canlı veri yükleniyor</span>
       </div>
             <div class="header-tools">
         <div class="header-search" role="search" aria-label="Haberlerde ara">
@@ -1377,11 +1378,11 @@
           <input id="news-search-input" type="search" placeholder="Haberlerde ara" autocomplete="off">
           <button id="news-search-clear" type="button" hidden>Temizle</button>
         </div>
-        <a class="member-login-btn" href="#">&Uuml;ye Giri&#351;i</a>
+        <a class="member-login-btn" href="/login.html">&Uuml;ye Giri&#351;i</a>
       </div>
 <nav aria-label="Ana menü">
-        <a href="/haber">Ana Sayfa</a>
-        <a href="/haber" class="active" aria-current="page">Haberler</a>
+        <a href="/haber/">Ana Sayfa</a>
+        <a href="/haber/" class="active" aria-current="page">Haberler</a>
       </nav>
     </div>
   </header>
@@ -1390,7 +1391,7 @@
     <div class="inner">
       <span class="breaking-label">KATEGORİLER</span>
       <div class="topic-list">
-        <a class="topic-link primary" href="/haber" data-topic="son-dakika">Son Dakika</a>
+        <a class="topic-link primary" href="/haber/" data-topic="son-dakika">Son Dakika</a>
         <a class="topic-link" href="/haber?kategori=gundem" data-topic="gundem">Gündem</a>
         <a class="topic-link" href="/haber?kategori=siyaset" data-topic="siyaset">Siyaset</a>
         <a class="topic-link" href="/haber?kategori=ekonomi" data-topic="ekonomi">Ekonomi</a>
@@ -1399,7 +1400,7 @@
         <a class="topic-link" href="/haber?kategori=magazin" data-topic="magazin">Magazin</a>
         <a class="topic-link" href="/haber?kategori=teknoloji" data-topic="teknoloji">Teknoloji</a>
         <a class="topic-link" href="/haber?kategori=saglik" data-topic="saglik">Sağlık</a>
-        <a class="topic-link" href="video/">Video</a>
+        <a class="topic-link" href="/haber/video/">Video</a>
       </div>
     </div>
   </nav>
@@ -1481,14 +1482,14 @@
                 </div>
               </a>
 
-              <a class="headline-slide headline-card topic-card" href="/articles/israil-istanbul-konsoloslugu-kapatma-tartismasi_20260521/" data-topic="dunya" aria-label="İsrail, İstanbul&#x27;daki Konsolosluğu Kapatmayı Tartşıyor">
-                <div class="headline-image"><img src="https://images.unsplash.com/photo-1730196564678-5c7cb13abb22?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHwlQzQlQjBzcmFpbCUyMEJheXJhJUM0JTlGJUM0JUIxfGVufDB8MHx8fDE3NzkzNjYyNzF8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="İsrail, İstanbul&#x27;daki Konsolosluğu Kapatmayı Tartşıyor" loading="lazy" width="1080" height="720"></div>
+              <a class="headline-slide headline-card topic-card" href="/articles/israil-istanbul-konsoloslugu-kapatma-tartismasi_20260521/" data-topic="dunya" aria-label="İsrail, İstanbul&#x27;daki Konsolosluğu Kapatmayı Tartışıyor">
+                <div class="headline-image"><img src="https://images.unsplash.com/photo-1730196564678-5c7cb13abb22?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHwlQzQlQjBzcmFpbCUyMEJheXJhJUM0JTlGJUM0JUIxfGVufDB8MHx8fDE3NzkzNjYyNzF8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="İsrail, İstanbul&#x27;daki Konsolosluğu Kapatmayı Tartışıyor" loading="lazy" width="1080" height="720"></div>
                 <div class="headline-content">
                   <div class="headline-meta">
                     <span class="headline-tag">Öne Çıkan</span>
                     <span class="headline-topic">Dünya</span>
                   </div>
-                  <h3 class="headline-title">İsrail, İstanbul&#x27;daki Konsolosluğu Kapatmayı Tartşıyor</h3>
+                  <h3 class="headline-title">İsrail, İstanbul&#x27;daki Konsolosluğu Kapatmayı Tartışıyor</h3>
                   <time class="headline-date" datetime="2026-05-21">21.05.2026</time>
                 </div>
               </a>
@@ -5298,9 +5299,9 @@
         <div class="sidebar-widget">
           <div class="widget-title">Hava Durumu</div>
           <ul class="weather-list" id="weather-list" aria-label="Hava durumu">
-            <li><span class="weather-city">Istanbul</span><span class="weather-temp">--</span><span class="weather-meta">Yukleniyor</span></li>
-            <li><span class="weather-city">Ankara</span><span class="weather-temp">--</span><span class="weather-meta">Yukleniyor</span></li>
-            <li><span class="weather-city">Izmir</span><span class="weather-temp">--</span><span class="weather-meta">Yukleniyor</span></li>
+            <li><span class="weather-city">Istanbul</span><span class="weather-temp">--</span><span class="weather-meta">Yükleniyor</span></li>
+            <li><span class="weather-city">Ankara</span><span class="weather-temp">--</span><span class="weather-meta">Yükleniyor</span></li>
+            <li><span class="weather-city">Izmir</span><span class="weather-temp">--</span><span class="weather-meta">Yükleniyor</span></li>
           </ul>
         </div>
 
@@ -5343,16 +5344,16 @@
         </div>
         <div>
           <h4>Bağlantılar</h4>
-          <a href="/haber">Ana Sayfa</a>
-          <a href="/haber">Haberler</a>
+          <a href="/haber/">Ana Sayfa</a>
+          <a href="/haber/">Haberler</a>
           <a href="https://www.youtube.com/@NartanesiHaber" target="_blank" rel="noopener">YouTube</a>
         </div>
         <div>
           <h4>Kurumsal</h4>
-          <a href="hakkinda/">Hakkında</a>
-          <a href="kunye/">Künye</a>
-          <a href="yayin-ilkeleri/">Yayın İlkeleri</a>
-          <a href="iletisim/">İletişim</a>
+          <a href="/haber/hakkinda/">Hakkında</a>
+          <a href="/haber/kunye/">Künye</a>
+          <a href="/haber/yayin-ilkeleri/">Yayın İlkeleri</a>
+          <a href="/haber/iletisim/">İletişim</a>
         </div>
         <div>
           <h4>Ülkeler</h4>
@@ -5362,7 +5363,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2026 <a href="/haber">hakancetin.com.tr</a> — Tüm hakları saklıdır.</span>
+        <span>© 2026 <a href="/haber/">hakancetin.com.tr</a> — Tüm hakları saklıdır.</span>
         <span>Güncel Haber Platformu</span>
       </div>
     </div>
@@ -5940,7 +5941,7 @@
         });
       }
       initSearch();
-      initMarketScroll();
+      /* mobile market auto-scroll removed */
       initDynamicShares();
       initWeatherLinks();
       applySearch();
@@ -5965,6 +5966,7 @@
     })();
   </script>
 
+<script defer src="/assets/js/mobile-home-ux.js?v=20260525d"></script>
 </body>
 </html>
 
