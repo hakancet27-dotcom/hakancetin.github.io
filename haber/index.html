@@ -513,10 +513,18 @@
     .headline-tag { background: var(--red); color: white; }
     .headline-topic { background: rgba(255,255,255,0.92); color: var(--red); }
     .headline-title {
-      font-size: 2rem;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      max-width: 92%;
+      overflow: hidden;
+      font-size: clamp(1.45rem, 2vw, 1.86rem);
       line-height: 1.16;
       letter-spacing: 0;
       text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+    .headline-slider .headline-content {
+      right: 92px;
     }
     .headline-date {
       display: inline-block;
@@ -567,6 +575,8 @@
     .side-headline .headline-title {
       font-size: 1rem;
       line-height: 1.24;
+      -webkit-line-clamp: 3;
+      max-width: 100%;
     }
     .side-headline .headline-meta {
       margin-bottom: 7px;
@@ -575,6 +585,18 @@
     .side-headline .headline-topic {
       font-size: 0.66rem;
       padding: 3px 7px;
+    }
+    .headline-card.has-text-image {
+      background:
+        radial-gradient(circle at 18% 20%, rgba(255,255,255,0.14), transparent 24%),
+        radial-gradient(circle at 82% 16%, rgba(225,6,0,0.35), transparent 28%),
+        linear-gradient(135deg, #0f172a, #1f2937 52%, #7f1d1d);
+    }
+    .headline-card.has-text-image .headline-image img {
+      opacity: 0;
+    }
+    .headline-card.has-text-image::after {
+      background: linear-gradient(to top, rgba(0,0,0,0.88), rgba(0,0,0,0.24) 58%, rgba(0,0,0,0.02));
     }
 
     .country-section { margin-bottom: 52px; scroll-margin-top: 90px; }
@@ -976,7 +998,7 @@
       .headline-title { font-size: 1.45rem; }
       .headline-content {
         left: 16px;
-        right: 16px;
+        right: 72px;
         bottom: 16px;
       }
       .side-headlines { grid-template-columns: 1fr; }
@@ -1580,7 +1602,7 @@
                 </div>
               </a>
 
-              <a class="headline-slide headline-card topic-card" href="/articles/nasa-tess-96-sektorlu-gokyuzu-mozaigi_20260524/" data-topic="teknoloji" aria-label="NASA TESS mozaiğinde 679 doğrulanmış ötegezegen, 5.165 aday yer aldı">
+              <a class="headline-slide headline-card topic-card has-text-image" href="/articles/nasa-tess-96-sektorlu-gokyuzu-mozaigi_20260524/" data-topic="teknoloji" aria-label="NASA TESS mozaiğinde 679 doğrulanmış ötegezegen, 5.165 aday yer aldı">
                 <div class="headline-image"><img src="https://hakancetin.com.tr/articles/images/nasa-tess-96-sektorlu-gokyuzu-mozaigi_20260524.svg" alt="NASA TESS mozaiğinde 679 doğrulanmış ötegezegen, 5.165 aday yer aldı" loading="lazy" width="1080" height="720"></div>
                 <div class="headline-content">
                   <div class="headline-meta">
@@ -1664,62 +1686,7 @@
                 </div>
               </a>
               <!-- TURKEY_HERO_END -->
-                            <a class="headline-slide headline-card topic-card" href="/articles/almanya-turkiye-ye-patriot-sistemi-ve-asker-konusslandiriyor_20260519/" data-topic="dunya" aria-label="Almanya Türkiye&#x27;ye Patriot Sistemi ve Asker Konuşlandırıyor">
-                <div class="headline-image"><img src="https://images.unsplash.com/photo-1652883083229-2b288968f3d4?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxQYXRyaW90JTIwU2F2dW5tYSUyMCVDMyU5Q25pdGVzaXxlbnwwfDB8fHwxNzc5MjE0MzgyfDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Almanya Türkiye&#x27;ye Patriot Sistemi ve Asker Konuşlandırıyor" loading="lazy" width="1080" height="720"></div>
-                <div class="headline-content">
-                  <div class="headline-meta">
-                    <span class="headline-tag">Öne Çıkan</span>
-                    <span class="headline-topic">Dünya</span>
-                  </div>
-                  <h3 class="headline-title">Almanya Türkiye&#x27;ye Patriot Sistemi ve Asker Konuşlandırıyor</h3>
-                  <time class="headline-date" datetime="2026-05-19">19.05.2026</time>
-                </div>
-              </a>
-              <a class="headline-slide headline-card topic-card" href="/articles/ak-parti-mkyk-toplantisi-celikten-aciklama_20260519/" data-topic="siyaset" aria-label="AK Parti MKYK Toplantısı Sona Erdi: Ömer Çelik&#x27;ten CHP Liderine Yanıt">
-                <div class="headline-image"><img src="https://images.unsplash.com/photo-1643315761765-6286e31655b6?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxBSyUyMFBhcnRpJTIwR2VuZWwlMjBNZXJrZXppfGVufDB8MHx8fDE3NzkyMjUxNjl8MA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="AK Parti MKYK Toplantısı Sona Erdi: Ömer Çelik&#x27;ten CHP Liderine Yanıt" loading="lazy" width="1080" height="720"></div>
-                <div class="headline-content">
-                  <div class="headline-meta">
-                    <span class="headline-tag">Öne Çıkan</span>
-                    <span class="headline-topic">Siyaset</span>
-                  </div>
-                  <h3 class="headline-title">AK Parti MKYK Toplantısı Sona Erdi: Ömer Çelik&#x27;ten CHP Liderine Yanıt</h3>
-                  <time class="headline-date" datetime="2026-05-19">19.05.2026</time>
-                </div>
-              </a>
-              <a class="headline-slide headline-card topic-card" href="/articles/israil-donanmasi-gazze-yardim-filosuna-saldiri_20260519/" data-topic="teknoloji" aria-label="İsrail Donanması Gazze Yardım Filosuna Saldırdı">
-                <div class="headline-image"><img src="https://hakancetin.com.tr/articles/images/israil-donanmasi-gazze-yardim-filosuna-saldiri_20260519.svg" alt="İsrail Donanması Gazze Yardım Filosuna Saldırdı" loading="lazy" width="1080" height="720"></div>
-                <div class="headline-content">
-                  <div class="headline-meta">
-                    <span class="headline-tag">Öne Çıkan</span>
-                    <span class="headline-topic">Teknoloji</span>
-                  </div>
-                  <h3 class="headline-title">İsrail Donanması Gazze Yardım Filosuna Saldırdı</h3>
-                  <time class="headline-date" datetime="2026-05-19">19.05.2026</time>
-                </div>
-              </a>
-              <a class="headline-slide headline-card topic-card" href="/articles/trump-yonetimi-kubaya-yonelik-askeri-harekati-degerlendiriyor_20260519/" data-topic="gundem" aria-label="Trump yönetimi, Küba&#x27;ya yönelik askeri harekatı değerlendiriyor">
-                <div class="headline-image"><img src="https://images.unsplash.com/photo-1550531996-ff3dcede9477?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHxUcnVtcCUyMHklQzMlQjZuZXRpbWl8ZW58MHwwfHx8MTc3OTE4NjQwN3ww&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" alt="Trump yönetimi, Küba&#x27;ya yönelik askeri harekatı değerlendiriyor" loading="lazy" width="1080" height="720"></div>
-                <div class="headline-content">
-                  <div class="headline-meta">
-                    <span class="headline-tag">Öne Çıkan</span>
-                    <span class="headline-topic">Gündem</span>
-                  </div>
-                  <h3 class="headline-title">Trump yönetimi, Küba&#x27;ya yönelik askeri harekatı değerlendiriyor</h3>
-                  <time class="headline-date" datetime="2026-05-19">19.05.2026</time>
-                </div>
-              </a>
-              <a class="headline-slide headline-card topic-card" href="/articles/bahceliden-ocalan-icin-sosyal-statue-cagrisi_20260519/" data-topic="dunya" aria-label="Bahçeli&#x27;den Öcalan için &#x27;sosyal statü&#x27; çağrısı">
-                <div class="headline-image"><img src="https://hakancetin.com.tr/articles/images/bahceliden-ocalan-icin-sosyal-statue-cagrisi_20260519.svg" alt="Bahçeli&#x27;den Öcalan için &#x27;sosyal statü&#x27; çağrısı" loading="lazy" width="1080" height="720"></div>
-                <div class="headline-content">
-                  <div class="headline-meta">
-                    <span class="headline-tag">Öne Çıkan</span>
-                    <span class="headline-topic">Dünya</span>
-                  </div>
-                  <h3 class="headline-title">Bahçeli&#x27;den Öcalan için &#x27;sosyal statü&#x27; çağrısı</h3>
-                  <time class="headline-date" datetime="2026-05-19">19.05.2026</time>
-                </div>
-              </a>
-<div class="slider-controls" aria-label="Manşet kontrolleri">
+              <div class="slider-controls" aria-label="Manşet kontrolleri">
                 <button class="slider-btn" type="button" data-slider-prev aria-label="Önceki manşet">‹</button>
                 <button class="slider-btn" type="button" data-slider-next aria-label="Sonraki manşet">›</button>
               </div>
@@ -7453,6 +7420,10 @@
       allSlides.forEach(slide => slide.classList.remove('is-active'));
       const preferred = slides.findIndex(slide => slide.querySelector('.headline-image img'));
       let current = preferred >= 0 ? preferred : 0;
+      let autoPausedUntil = 0;
+      const pauseAuto = (duration = 12000) => {
+        autoPausedUntil = Date.now() + duration;
+      };
       slides[current].classList.add('is-active');
       slider.classList.toggle('has-image-active', Boolean(slides[current].querySelector('.headline-image img')));
 
@@ -7465,16 +7436,24 @@
 
       const nextBtn = slider.querySelector('[data-slider-next]');
       const prevBtn = slider.querySelector('[data-slider-prev]');
-      if (nextBtn) nextBtn.addEventListener('click', () => showSlide(current + 1));
-      if (prevBtn) prevBtn.addEventListener('click', () => showSlide(current - 1));
+      if (nextBtn) nextBtn.addEventListener('click', () => {
+        pauseAuto();
+        showSlide(current + 1);
+      });
+      if (prevBtn) prevBtn.addEventListener('click', () => {
+        pauseAuto();
+        showSlide(current - 1);
+      });
 
       let touchStartX = 0;
       let touchDeltaX = 0;
       slider.addEventListener('touchstart', (event) => {
         if (slides.length <= 1) return;
+        pauseAuto();
         touchStartX = event.changedTouches[0].clientX;
         touchDeltaX = 0;
       }, { passive: true });
+      slider.addEventListener('pointerdown', () => pauseAuto(), { passive: true });
       slider.addEventListener('touchmove', (event) => {
         if (slides.length <= 1) return;
         touchDeltaX = event.changedTouches[0].clientX - touchStartX;
@@ -7482,11 +7461,15 @@
       slider.addEventListener('touchend', () => {
         if (slides.length <= 1) return;
         if (Math.abs(touchDeltaX) < 45) return;
+        pauseAuto();
         showSlide(touchDeltaX < 0 ? current + 1 : current - 1);
       }, { passive: true });
 
       if (slides.length > 1) {
-        setInterval(() => showSlide(current + 1), 3000);
+        setInterval(() => {
+          if (Date.now() < autoPausedUntil) return;
+          showSlide(current + 1);
+        }, 3000);
       }
     }
 
@@ -7629,25 +7612,6 @@
       applySearch();
     })();
   </script>
-
-  <script id="codex-swipe-enhancement">
-    (function(){
-      const slider = document.querySelector('.headline-slider');
-      if (!slider || slider.dataset.swipeReady === 'true') return;
-      slider.dataset.swipeReady = 'true';
-      let startX = 0;
-      slider.addEventListener('touchstart', function(event){
-        startX = event.changedTouches[0].clientX;
-      }, { passive: true });
-      slider.addEventListener('touchend', function(event){
-        const delta = event.changedTouches[0].clientX - startX;
-        if (Math.abs(delta) < 45) return;
-        const button = slider.querySelector(delta < 0 ? '[data-slider-next]' : '[data-slider-prev]');
-        if (button) button.click();
-      }, { passive: true });
-    })();
-  </script>
-
 <script defer src="/assets/js/member-home-menu.js?v=20260525b"></script>
 <script defer src="/assets/js/mobile-home-ux.js?v=20260525d"></script>
 </body>
