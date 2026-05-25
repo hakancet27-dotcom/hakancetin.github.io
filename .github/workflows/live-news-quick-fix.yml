@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Apply safe live news text and fallback fixes
+      - name: Apply safe live news text and navigation fixes
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -43,6 +43,7 @@ jobs:
               for old, new in replacements.items():
                   text = text.replace(old, new)
               if path.as_posix() == 'haber/index.html':
+                  text = text.replace('class="member-login-btn" href="#"', 'class="member-login-btn" href="/login.html"')
                   text = text.replace('id="market-usd">--</strong>', 'id="market-usd">40,75</strong>')
                   text = text.replace('id="market-eur">--</strong>', 'id="market-eur">47,70</strong>')
                   text = text.replace('id="market-gbp">--</strong>', 'id="market-gbp">55,80</strong>')
