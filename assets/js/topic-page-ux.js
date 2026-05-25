@@ -71,6 +71,17 @@
       .replace(/ü/g, 'u');
   }
 
+  function normalizeCategoryLinks() {
+    document.querySelectorAll('.topic-link[data-topic]').forEach(function (link) {
+      var topic = link.dataset.topic;
+      if (!topic || topic === 'son-dakika') {
+        link.setAttribute('href', '/haber/');
+        return;
+      }
+      link.setAttribute('href', '/haber/?kategori=' + encodeURIComponent(topic));
+    });
+  }
+
   function inferredTopicForTitle(title) {
     var text = normalize(title);
 
@@ -120,6 +131,7 @@
   }
 
   function refreshTopicDisplay() {
+    normalizeCategoryLinks();
     repairClearCategoryErrors();
     applyCategoryHeading();
     if (typeof window.applyTopicFilter === 'function') window.applyTopicFilter();
