@@ -39,7 +39,8 @@
       if(!active)return;
       var currentUser=await HaberMember.user();
       var title=document.querySelector('.member-top h1');
-      if(title)title.textContent='Hoş geldin, '+metadataName(currentUser);
+      if(title)title.textContent='Hesabım';
+      setText('member-greeting','Hoş geldin, '+metadataName(currentUser));
       setText('member-email',currentUser&&currentUser.email);
 
       var headerInfo=document.querySelector('.member-top > div');
@@ -47,9 +48,6 @@
         var activeBadge=document.createElement('p');
         activeBadge.id='session-status';activeBadge.className='member-session-status';activeBadge.textContent='✓ Oturumunuz açık';
         headerInfo.appendChild(activeBadge);
-        var back=document.createElement('a');
-        back.className='member-btn member-back-link';back.href='/haber/';back.textContent='Haberlere Dön';
-        headerInfo.appendChild(back);
       }
       var logout=node('logout');
       if(logout)logout.addEventListener('click',async function(){await HaberMember.logout();location.href='/haber/';});

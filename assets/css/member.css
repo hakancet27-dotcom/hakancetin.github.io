@@ -54,6 +54,11 @@ body.member-page {
   color: #667085;
   line-height: 1.55;
 }
+.member-greeting {
+  margin: 0 0 4px;
+  color: #171727;
+  font-weight: 800;
+}
 #member-email {
   overflow-wrap: anywhere;
   text-decoration: none;
@@ -140,6 +145,35 @@ body.member-page {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 18px;
   align-items: start;
+}
+.member-tabs {
+  max-width: 980px;
+  margin: 14px auto 0;
+  padding: 0 24px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.member-tabs::-webkit-scrollbar {
+  display: none;
+}
+.member-tabs a {
+  flex: 0 0 auto;
+  text-decoration: none;
+  color: #171727;
+  background: #fff;
+  border: 1px solid #e1e5ea;
+  border-radius: 999px;
+  padding: 9px 12px;
+  font-size: .88rem;
+  font-weight: 900;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, .06);
+}
+.member-tabs a:first-child {
+  background: #e10600;
+  border-color: #e10600;
+  color: #fff;
 }
 .member-panel {
   border-radius: 18px;
@@ -286,6 +320,12 @@ body.member-page {
   .member-page {
     background: #f5f6f8;
   }
+  .member-page::before {
+    content: "";
+    display: block;
+    height: 4px;
+    background: #e10600;
+  }
   .member-shell {
     padding: 16px;
   }
@@ -293,28 +333,98 @@ body.member-page {
     padding: 22px;
   }
   .member-top {
-    margin: 12px 14px 0;
-    padding: 18px;
-    border-radius: 18px;
+    margin: 10px 12px 0;
+    padding: 16px;
+    border-radius: 16px;
     align-items: stretch;
     flex-direction: column;
+    gap: 12px;
+  }
+  .member-brand {
+    margin-bottom: 6px;
+  }
+  .member-eyebrow {
+    margin-bottom: 5px;
+    font-size: .74rem;
+  }
+  .member-top h1 {
+    font-size: 1.95rem;
+    margin-bottom: 5px;
+  }
+  .member-greeting {
+    font-size: .95rem;
+  }
+  #member-email {
+    margin: 0;
+    font-size: .88rem;
   }
   .member-top .member-btn.secondary {
-    width: 100%;
+    width: auto;
+    align-self: flex-start;
+    min-height: 42px;
+    padding: 10px 14px;
   }
   .member-grid {
     grid-template-columns: 1fr;
-    padding: 14px;
-    gap: 14px;
+    padding: 12px;
+    gap: 12px;
+  }
+  .member-tabs {
+    margin-top: 10px;
+    padding: 0 12px;
+    gap: 7px;
+  }
+  .member-tabs a {
+    padding: 8px 10px;
+    font-size: .8rem;
   }
   .member-panel {
-    padding: 18px;
-    border-radius: 17px;
+    padding: 15px;
+    border-radius: 16px;
+  }
+  .member-panel h2 {
+    font-size: 1.34rem;
+  }
+  .member-form {
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .member-form label {
+    min-height: 40px;
+    padding: 9px 10px;
+    border-radius: 10px;
+    font-size: .94rem;
+  }
+  .member-btn {
+    min-height: 44px;
   }
   .member-summary {
-    padding: 0 14px;
-    margin-top: 14px;
-    grid-template-columns: 1fr;
+    padding: 0 12px;
+    margin-top: 12px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+  }
+  .member-summary div {
+    padding: 10px 8px;
+    border-radius: 12px;
+  }
+  .member-summary strong {
+    font-size: 1rem;
+  }
+  .member-summary span {
+    font-size: .68rem;
+    line-height: 1.2;
+  }
+  .member-notice {
+    padding: 10px;
+    font-size: .86rem;
+  }
+  .member-list {
+    margin-top: 8px;
+  }
+  .member-message {
+    min-height: 16px;
+    margin-top: 7px;
   }
   .member-interest-panel {
     grid-column: auto;
