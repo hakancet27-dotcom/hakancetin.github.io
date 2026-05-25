@@ -123,13 +123,13 @@
       }
       if(notificationPanel){
         notificationPanel.id='notifications';
-        notificationPanel.innerHTML='<h2>Bildirim Tercihleri</h2><p class="member-notice">Bildirim altyapısı hazırlık aşamasındadır. Tercihlerinizi şimdiden kaydedebilirsiniz; e-posta ve anlık bildirim gönderimi başladığında bilgilendirileceksiniz.</p><form id="prefs-form" class="member-form"><label><input id="pref-mail" type="checkbox"> Günlük e-posta özeti</label><label><input id="pref-push" type="checkbox"> Son dakika bildirimi</label><button class="member-btn" type="submit">Tercihleri Kaydet</button></form><p id="prefs-message" class="member-message"></p>';
+        notificationPanel.innerHTML='<h2>Bildirim Tercihleri</h2><p class="member-notice">Bildirim sistemi hazırlık aşamasında. Buradaki seçimler yalnızca tercih kaydıdır; şu anda aktif bildirim gönderimi yapılmaz.</p><form id="prefs-form" class="member-form"><label><input id="pref-mail" type="checkbox"> Günlük e-posta özeti</label><label><input id="pref-push" type="checkbox"> Son dakika bildirimi</label><button class="member-btn" type="submit">Tercihleri Kaydet</button></form><p id="prefs-message" class="member-message"></p>';
         node('pref-mail').checked=prefs.email_daily_digest;node('pref-push').checked=prefs.breaking_news_push;
         if(stored.error)statusText(node('prefs-message'),'Kayıtlı tercihler şu anda yüklenemedi.',true);
         node('prefs-form').addEventListener('submit',async function(event){
           event.preventDefault();prefs.email_daily_digest=!!node('pref-mail').checked;prefs.breaking_news_push=!!node('pref-push').checked;
           var response=await HaberMember.savePrefs(prefs);
-          statusText(node('prefs-message'),response.error?'Tercihler kaydedilemedi. Tekrar deneyin.':'Tercihleriniz kaydedildi. Bildirim gönderimi yakında aktif olacaktır.',!!response.error);
+          statusText(node('prefs-message'),response.error?'Tercihler kaydedilemedi. Tekrar deneyin.':'Tercihleriniz kaydedildi. Bildirimler henüz gönderime açılmadı.',!!response.error);
         });
       }
       if(grid){
