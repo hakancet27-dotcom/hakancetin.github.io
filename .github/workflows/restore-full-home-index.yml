@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Restore populated haber index
+      - name: Restore populated haber index with current mobile safeguards
         run: |
           git show 40f95cdeef09cd0793d668a06742d1e891d22617:haber/index.html > haber/index.html
           python - <<'PY'
@@ -31,14 +31,30 @@ jobs:
           text = text.replace('href="yayin-ilkeleri/"', 'href="/haber/yayin-ilkeleri/"')
           text = text.replace('href="video/"', 'href="/haber/video/"')
           text = text.replace('href="/haber"', 'href="/haber/"')
+          text = text.replace('class="member-login-btn" href="#"', 'class="member-login-btn" href="/login.html"')
           text = text.replace('id="market-usd">--</strong>', 'id="market-usd">40,75</strong>')
           text = text.replace('id="market-eur">--</strong>', 'id="market-eur">47,70</strong>')
           text = text.replace('id="market-gbp">--</strong>', 'id="market-gbp">55,80</strong>')
           text = text.replace('id="market-btc">--</strong>', 'id="market-btc">4,35 Mn</strong>')
           text = text.replace('id="market-status">Güncelleniyor</span>', 'id="market-status">Canlı veri yükleniyor</span>')
+          mobile_fix = '''
+    /* MOBILE_MARKET_NO_OVERFLOW_V2 */
+    @media (max-width: 640px) {
+      .market-strip { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px !important; width: 100%; overflow: visible !important; white-space: normal !important; padding: 8px !important; }
+      .market-label, .market-status { grid-column: 1 / -1; }
+      .market-status { display: block !important; }
+      .market-item { width: 100%; min-width: 0 !important; padding: 8px !important; display: flex !important; flex-wrap: wrap; gap: 4px 6px !important; }
+      .market-name { width: 100%; }
+      .market-value, .market-change { min-width: 0 !important; }
+    }
+'''
+          if 'MOBILE_MARKET_NO_OVERFLOW_V2' not in text:
+              text = text.replace('</style>', mobile_fix + '  </style>', 1)
+          text = text.replace('      initMarketScroll();', '      /* Auto-scrolling market strip disabled for stable mobile layout. */')
           p.write_text(text, encoding='utf-8')
           print('news cards:', text.count('class="news-card'))
           print('headline slides:', text.count('headline-slide'))
+          print('mobile market fixed:', 'MOBILE_MARKET_NO_OVERFLOW_V2' in text)
           PY
       - name: Commit restored populated index
         run: |
@@ -49,5 +65,5 @@ jobs:
             echo "No index restore changes."
             exit 0
           fi
-          git commit -m "Restore populated haber index after quarantine"
+          git commit -m "Restore populated haber index with mobile safeguards"
           git push
