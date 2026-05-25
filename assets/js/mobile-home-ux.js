@@ -1,31 +1,42 @@
 (function () {
   'use strict';
 
-  var mobileQuery = window.matchMedia('(max-width: 640px)');
-  var market = document.querySelector('.market-strip');
-  var hero = document.querySelector('.headline-slider');
+  var desktopMarket = document.querySelector('header .desktop-market-strip, header .market-strip:not(.mobile-market-strip)');
+  var mobileMarket = document.querySelector('.mobile-market-strip');
 
-  if (!market || !hero) return;
+  if (!desktopMarket || !mobileMarket) return;
 
-  var marker = document.createComment('market-desktop-position');
-  market.parentNode.insertBefore(marker, market);
+  var keys = ['usd', 'eur', 'gbp', 'btc'];
 
-  function arrangeMobileHome() {
-    if (mobileQuery.matches) {
-      hero.insertAdjacentElement('afterend', market);
-      document.body.classList.add('mobile-home-ux-ready');
-      market.scrollLeft = 0;
-    } else {
-      if (marker.parentNode) {
-        marker.parentNode.insertBefore(market, marker.nextSibling);
-      }
-      document.body.classList.remove('mobile-home-ux-ready');
-    }
+  function syncMarketValues() {
+    keys.forEach(function (key) {
+      var sourceItem = document.getElementById('market-' + key + '-item');
+      var sourceValue = document.getElementById('market-' + key);
+      var sourceChange = document.getElementById('market-' + key + '-change');
+      var targetItem = mobileMarket.querySelector('[data-market-item="' + key + '"]');
+      var targetValue = mobileMarket.querySelector('[data-market-value="' + key + '"]');
+      var targetChange = mobileMarket.querySelector('[data-market-change="' + key + '"]');
+
+      if (!sourceItem || !targetItem) return;
+      targetItem.className = sourceItem.className;
+      if (sourceValue && targetValue) targetValue.textContent = sourceValue.textContent;
+      if (sourceChange && targetChange) targetChange.textContent = sourceChange.textContent;
+    });
+
+    var sourceStatus = document.getElementById('market-status');
+    var targetStatus = mobileMarket.querySelector('[data-market-status]');
+    if (sourceStatus && targetStatus) targetStatus.textContent = sourceStatus.textContent;
   }
 
-  arrangeMobileHome();
+  syncMarketValues();
 
-  if (mobileQuery.addEventListener) {
-    mobileQuery.addEventListener('change', arrangeMobileHome);
+  if ('MutationObserver' in window) {
+    new MutationObserver(syncMarketValues).observe(desktopMarket, {
+      childList: true,
+      characterData: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['class']
+    });
   }
 })();
