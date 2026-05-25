@@ -7,7 +7,28 @@
 <meta name="description" content="Nartanesi Haber YouTube Shorts videolarını dikey akışta izleyin.">
 <link rel="canonical" href="https://hakancetin.com.tr/haber/video/">
 <style>
-html,body{margin:0;height:100%;overflow:hidden;background:#0f0f0f;color:#fff;font-family:Arial,sans-serif}a{color:#fff;text-decoration:none}button{font:inherit;color:inherit}.top{position:fixed;left:0;top:0;bottom:0;width:92px;background:#0f0f0f;z-index:3;padding-top:18px;text-align:center}.top a{display:block;margin:0 0 28px;font-size:13px;font-weight:700}.top .logo{font-size:20px}.feed{height:100dvh;overflow-y:auto;scroll-snap-type:y mandatory}.item{height:100dvh;scroll-snap-align:start;display:grid;place-items:center;position:relative}.phone{height:calc(100dvh - 44px);max-height:820px;aspect-ratio:9/16;background:#111;border-radius:18px;overflow:hidden}.phone iframe{width:100%;height:100%;border:0}.actions{position:absolute;left:calc(50% + 250px);top:50%;transform:translateY(-38%);display:grid;gap:16px;text-align:center}.act{width:58px;height:58px;border:0;border-radius:50%;background:#272727;display:grid;place-items:center;font-size:22px;cursor:pointer}.act.active{background:#e10600}.actions small{display:block;margin-top:4px}.meta{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);width:min(420px,90vw);padding:12px;text-shadow:0 2px 10px #000}.meta b{display:block;margin-bottom:7px}.meta h1{font-size:1.06rem;line-height:1.35;margin:0 0 7px}.meta p{font-size:.86rem;margin:0}.btn{display:inline-block;margin-top:8px;background:#e10600;padding:8px 12px;border-radius:999px;font-weight:700}.hint{position:fixed;right:24px;top:50%;display:grid;gap:24px}.hint span{width:64px;height:64px;border-radius:50%;background:#272727;display:grid;place-items:center;font-size:30px}.badge{display:none;position:fixed;right:16px;top:16px;z-index:4;border:1px solid #333;border-radius:999px;background:#202020;padding:7px 11px;font-size:12px;font-weight:700}.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:#222;padding:10px 14px;border-radius:999px;z-index:9;display:none}.comments{position:fixed;right:20px;bottom:20px;width:min(360px,92vw);max-height:70vh;background:#181818;border:1px solid #333;border-radius:18px;z-index:8;display:none;box-shadow:0 20px 60px #000;overflow:hidden}.comments header{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid #333;font-weight:700}.comments button{background:#333;border:0;border-radius:999px;padding:6px 10px;cursor:pointer}.comment-list{max-height:42vh;overflow:auto;padding:12px 14px;display:grid;gap:8px}.comment{background:#252525;border-radius:12px;padding:8px 10px}.comment-form{display:flex;gap:8px;padding:12px 14px;border-top:1px solid #333}.comment-form input{flex:1;background:#0f0f0f;color:#fff;border:1px solid #444;border-radius:999px;padding:10px}.comment-form button{background:#e10600;border:0;border-radius:999px;padding:10px 12px;font-weight:700}.status{height:100dvh;display:grid;place-items:center;text-align:center;padding:20px}.status-card{max-width:370px;background:#181818;border:1px solid #333;border-radius:18px;padding:20px}.status-card p{color:#c0c0c0}.status-card a{display:inline-block;margin-top:12px;background:#e10600;padding:10px 14px;border-radius:999px;font-weight:700}@media(max-width:760px){.top{left:0;right:0;bottom:auto;width:auto;height:48px;display:flex;gap:18px;align-items:center;padding:0 12px}.top a{margin:0}.phone{width:100vw;height:100dvh;border-radius:0}.actions{right:10px;left:auto;top:auto;bottom:118px;transform:none}.act{width:48px;height:48px;font-size:19px}.hint{display:none}.meta{left:0;right:64px;bottom:18px;transform:none;width:auto}.comments{left:8px;right:8px;bottom:8px;width:auto}.badge{top:58px}}
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#0f0f0f;color:#fff;font-family:Arial,sans-serif}a{color:#fff;text-decoration:none}button{font:inherit;color:inherit}.top{position:fixed;left:0;top:0;bottom:0;width:92px;background:#0f0f0f;z-index:3;padding-top:18px;text-align:center}.top a{display:block;margin:0 0 28px;font-size:13px;font-weight:700}.top .logo{font-size:20px}.feed{height:100dvh;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior-y:contain}.item{height:100dvh;scroll-snap-align:start;display:grid;place-items:center;position:relative}.phone{height:calc(100dvh - 44px);max-height:820px;aspect-ratio:9/16;background:#111;border-radius:18px;overflow:hidden}.phone iframe{width:100%;height:100%;border:0}.actions{position:absolute;left:calc(50% + 250px);top:50%;transform:translateY(-38%);display:grid;gap:16px;text-align:center;z-index:3}.action-wrap{display:grid;justify-items:center;gap:4px}.act{width:58px;height:58px;border:0;border-radius:50%;background:#272727;display:grid;place-items:center;cursor:pointer}.act svg{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.act.like svg{fill:currentColor;stroke:none}.act.active{background:#e10600}.actions small{display:block;font-size:12px}.meta{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);width:min(420px,90vw);padding:12px;text-shadow:0 2px 10px #000;z-index:2}.meta b{display:block;margin-bottom:7px}.meta h1{font-size:1.06rem;line-height:1.35;margin:0 0 7px}.meta p{font-size:.86rem;margin:0}.btn{display:inline-block;margin-top:8px;background:#e10600;padding:8px 12px;border-radius:999px;font-weight:700}.hint{position:fixed;right:24px;top:50%;display:grid;gap:24px}.hint span{width:64px;height:64px;border-radius:50%;background:#272727;display:grid;place-items:center;font-size:30px}.badge{display:none;position:fixed;right:16px;top:16px;z-index:4;border:1px solid rgba(255,255,255,.12);border-radius:999px;background:rgba(22,22,22,.65);backdrop-filter:blur(8px);padding:7px 11px;font-size:12px;font-weight:700}.toast{position:fixed;left:50%;bottom:max(20px,env(safe-area-inset-bottom));transform:translateX(-50%);background:#222;padding:10px 14px;border-radius:999px;z-index:12;display:none}.comment-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.42);z-index:7;opacity:0;transition:opacity .18s ease}.comment-backdrop.is-open{opacity:1}.comments{position:fixed;right:20px;bottom:20px;width:min(360px,92vw);max-height:70vh;background:#181818;border:1px solid #333;border-radius:18px;z-index:8;box-shadow:0 20px 60px #000;overflow:hidden;visibility:hidden;opacity:0;transform:translateY(14px);pointer-events:none;transition:transform .18s ease,opacity .18s ease,visibility .18s}.comments.is-open{visibility:visible;opacity:1;transform:none;pointer-events:auto}.comments header{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid #333;font-weight:700}.comments header button{background:#333;border:0;border-radius:999px;padding:6px 10px;cursor:pointer}.comment-list{max-height:42vh;overflow:auto;padding:12px 14px;display:grid;gap:8px}.comment{background:#252525;border-radius:12px;padding:8px 10px}.comment-form{display:flex;gap:8px;padding:12px 14px;border-top:1px solid #333}.comment-form input{flex:1;min-width:0;background:#0f0f0f;color:#fff;border:1px solid #444;border-radius:999px;padding:10px 13px;font-size:16px}.comment-form button{background:#e10600;border:0;border-radius:999px;padding:10px 12px;font-weight:700}.status{height:100dvh;display:grid;place-items:center;text-align:center;padding:20px}.status-card{max-width:370px;background:#181818;border:1px solid #333;border-radius:18px;padding:20px}.status-card p{color:#c0c0c0}.status-card a{display:inline-block;margin-top:12px;background:#e10600;padding:10px 14px;border-radius:999px;font-weight:700}
+@media(max-width:760px){
+  .top{display:none!important}
+  .phone{width:100vw;height:100dvh;max-height:none;border-radius:0}
+  .actions{right:max(9px,env(safe-area-inset-right));left:auto;top:auto;bottom:max(126px,calc(env(safe-area-inset-bottom) + 94px));transform:none;gap:10px}
+  .act{width:42px;height:42px;font-size:0;background:rgba(17,17,17,.42);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(6px);box-shadow:0 1px 4px rgba(0,0,0,.18)}
+  .act svg{width:20px;height:20px}
+  .actions small{display:none}
+  .actions .like-count:not(:empty){display:block;font-size:11px;text-shadow:0 1px 3px #000;line-height:1}
+  .hint{display:none}
+  .meta{left:0;right:58px;bottom:max(16px,calc(env(safe-area-inset-bottom) + 10px));transform:none;width:auto;padding:12px 14px}
+  .meta b{font-size:.87rem}.meta h1{font-size:1rem;line-height:1.28;max-width:100%}.meta p{font-size:.79rem;opacity:.92}.btn{padding:8px 13px;font-size:.88rem}
+  .badge{top:max(12px,env(safe-area-inset-top));right:max(12px,env(safe-area-inset-right));font-size:11px;padding:6px 10px}
+  .comments{left:0;right:0;bottom:0;width:100%;max-height:min(74dvh,560px);border-radius:20px 20px 0 0;border:0;background:#151515;transform:translateY(100%);padding-bottom:env(safe-area-inset-bottom)}
+  .comments.is-open{transform:translateY(0)}
+  .comments header{position:relative;padding:22px 16px 12px;font-size:1.02rem}
+  .comments header:before{content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);width:38px;height:4px;border-radius:999px;background:#5d5d5d}
+  .comments header button{background:transparent;color:#d0d5dd;padding:6px;font-size:.9rem}
+  .comment-list{max-height:calc(min(74dvh,560px) - 124px);padding:12px 16px}
+  .comment-form{padding:10px 12px 12px;background:#151515}
+  body.comments-open .feed{overflow:hidden}
+}
 </style>
 </head>
 <body>
@@ -16,7 +37,8 @@ html,body{margin:0;height:100%;overflow:hidden;background:#0f0f0f;color:#fff;fon
 <main class="feed" id="feed"><div class="status"><div class="status-card"><strong>Shorts videoları yükleniyor…</strong></div></div></main>
 <div class="hint"><span>↑</span><span>↓</span></div>
 <div class="toast" id="toast"></div>
-<aside class="comments" id="comments"><header><span>Yorumlar</span><button type="button" id="comment-close">Kapat</button></header><div class="comment-list" id="comment-list"></div><form class="comment-form" id="comment-form"><input id="comment-input" maxlength="240" placeholder="Yorum yaz"><button type="submit">Gönder</button></form></aside>
+<div class="comment-backdrop" id="comment-backdrop" hidden></div>
+<aside class="comments" id="comments" role="dialog" aria-modal="true" aria-label="Yorumlar" aria-hidden="true"><header><span>Yorumlar</span><button type="button" id="comment-close" aria-label="Yorumları kapat">Kapat</button></header><div class="comment-list" id="comment-list"></div><form class="comment-form" id="comment-form"><input id="comment-input" maxlength="240" placeholder="Yorum yaz" aria-label="Yorum yaz"><button type="submit">Gönder</button></form></aside>
 <script>
 (function(){
   'use strict';
@@ -24,36 +46,45 @@ html,body{margin:0;height:100%;overflow:hidden;background:#0f0f0f;color:#fff;fon
   const badge=document.getElementById('feed-badge');
   const toast=document.getElementById('toast');
   const panel=document.getElementById('comments');
+  const backdrop=document.getElementById('comment-backdrop');
   const list=document.getElementById('comment-list');
   const form=document.getElementById('comment-form');
   const input=document.getElementById('comment-input');
   let currentId='';
-  let userStartedPlayback=false;
+  let soundPreferred=false;
   function key(id,type){return 'shorts:'+id+':'+type;}
   function text(parent,tag,value,className){const node=document.createElement(tag);if(className){node.className=className;}node.textContent=String(value||'');parent.appendChild(node);return node;}
   function notify(message){toast.textContent=message;toast.style.display='block';window.setTimeout(function(){toast.style.display='none';},1600);}
   function newsUrl(value){return typeof value==='string'&&/^\/haber(?:\/|\?|$)/.test(value)?value:'/haber/';}
-  function embedUrl(id,autoplay){return 'https://www.youtube.com/embed/'+encodeURIComponent(id)+'?rel=0&modestbranding=1&playsinline=1'+(autoplay?'&autoplay=1&mute=1':'');}
+  function embedUrl(id,autoplay){return 'https://www.youtube.com/embed/'+encodeURIComponent(id)+'?rel=0&modestbranding=1&playsinline=1&enablejsapi=1&origin='+encodeURIComponent(location.origin)+(autoplay?'&autoplay=1':'');}
+  function playerCommand(frame,func,args){try{if(frame&&frame.contentWindow){frame.contentWindow.postMessage(JSON.stringify({event:'command',func:func,args:args||[]}), '*');}}catch(error){}}
   function storedComments(){try{return JSON.parse(localStorage.getItem(key(currentId,'comments'))||'[]');}catch(error){return [];}}
   function renderComments(){list.replaceChildren();const rows=storedComments();if(!rows.length){text(list,'div','İlk yorumu sen yaz.','comment');return;}rows.forEach(function(row){text(list,'div',row,'comment');});}
-  function action(label,symbol,className){const button=document.createElement('button');button.type='button';button.className='act '+className;button.setAttribute('aria-label',label);button.textContent=symbol;return button;}
+  function svg(path){return '<svg viewBox="0 0 24 24" aria-hidden="true">'+path+'</svg>';}
+  const icons={like:svg('<path d="M12 20.5S4 15.8 4 9.3A4.4 4.4 0 0 1 12 6.7 4.4 4.4 0 0 1 20 9.3c0 6.5-8 11.2-8 11.2Z"/>'),comment:svg('<path d="M4 5.5h16v11H9l-5 3v-14Z"/>'),share:svg('<path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M5 13v7h14v-7"/>')};
+  function action(label,icon,className){const button=document.createElement('button');button.type='button';button.className='act '+className;button.setAttribute('aria-label',label);button.innerHTML=icon;return button;}
+  function openComments(videoId){currentId=videoId;renderComments();backdrop.hidden=false;requestAnimationFrame(function(){backdrop.classList.add('is-open');panel.classList.add('is-open');});panel.setAttribute('aria-hidden','false');document.body.classList.add('comments-open');input.focus();}
+  function closeComments(){panel.classList.remove('is-open');backdrop.classList.remove('is-open');panel.setAttribute('aria-hidden','true');document.body.classList.remove('comments-open');window.setTimeout(function(){backdrop.hidden=true;},190);}
   function buildItem(video){
     const item=document.createElement('section');item.className='item';item.dataset.id=video.video_id;
     const phone=document.createElement('div');phone.className='phone';const frame=document.createElement('iframe');frame.dataset.src=embedUrl(video.video_id,false);frame.dataset.autoplaySrc=embedUrl(video.video_id,true);frame.title=video.title||'Nartanesi Haber Shorts';frame.loading='lazy';frame.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';frame.allowFullscreen=true;phone.appendChild(frame);item.appendChild(phone);
     const actions=document.createElement('div');actions.className='actions';
-    const likeBox=document.createElement('div');const like=action('Beğen','♥','like');const small=document.createElement('small');const countNode=text(small,'span','0','like-count');likeBox.append(like,small);actions.appendChild(likeBox);
-    const commentBox=document.createElement('div');commentBox.appendChild(action('Yorum yaz','💬','comment-open'));text(commentBox,'small','Yorum');actions.appendChild(commentBox);
-    const shareBox=document.createElement('div');shareBox.appendChild(action('Paylaş','↗','share'));text(shareBox,'small','Paylaş');actions.appendChild(shareBox);item.appendChild(actions);
+    const likeBox=document.createElement('div');likeBox.className='action-wrap';const like=action('Beğen',icons.like,'like');const countNode=text(likeBox,'small','0','like-count');likeBox.prepend(like);actions.appendChild(likeBox);
+    const commentBox=document.createElement('div');commentBox.className='action-wrap';commentBox.appendChild(action('Yorum yaz',icons.comment,'comment-open'));actions.appendChild(commentBox);
+    const shareBox=document.createElement('div');shareBox.className='action-wrap';shareBox.appendChild(action('Paylaş',icons.share,'share'));actions.appendChild(shareBox);item.appendChild(actions);
     const meta=document.createElement('div');meta.className='meta';text(meta,'b','@NartanesiHaber');text(meta,'h1',video.title||'Nartanesi Haber Shorts');text(meta,'p',video.description||'Nartanesi Haber Shorts içeriği.');const read=document.createElement('a');read.className='btn';read.href=newsUrl(video.news_url);read.textContent='Haberi Oku';meta.appendChild(read);item.appendChild(meta);
-    let count=Number(localStorage.getItem(key(video.video_id,'likes'))||0);if(localStorage.getItem(key(video.video_id,'liked'))==='1'){like.classList.add('active');}countNode.textContent=String(count);
-    like.addEventListener('click',function(){const liked=localStorage.getItem(key(video.video_id,'liked'))==='1';count=Math.max(0,count+(liked?-1:1));if(liked){localStorage.removeItem(key(video.video_id,'liked'));like.classList.remove('active');}else{localStorage.setItem(key(video.video_id,'liked'),'1');like.classList.add('active');}localStorage.setItem(key(video.video_id,'likes'),String(count));countNode.textContent=String(count);});
-    item.querySelector('.comment-open').addEventListener('click',function(){currentId=video.video_id;panel.style.display='block';renderComments();input.focus();});
+    let count=Number(localStorage.getItem(key(video.video_id,'likes'))||0);if(localStorage.getItem(key(video.video_id,'liked'))==='1'){like.classList.add('active');}countNode.textContent=count?String(count):'';
+    like.addEventListener('click',function(){const liked=localStorage.getItem(key(video.video_id,'liked'))==='1';count=Math.max(0,count+(liked?-1:1));if(liked){localStorage.removeItem(key(video.video_id,'liked'));like.classList.remove('active');}else{localStorage.setItem(key(video.video_id,'liked'),'1');like.classList.add('active');}localStorage.setItem(key(video.video_id,'likes'),String(count));countNode.textContent=count?String(count):'';});
+    item.querySelector('.comment-open').addEventListener('click',function(){openComments(video.video_id);});
     item.querySelector('.share').addEventListener('click',async function(){const url=location.origin+location.pathname+'?v='+encodeURIComponent(video.video_id);try{if(navigator.share){await navigator.share({title:video.title||'Shorts',url:url});}else{await navigator.clipboard.writeText(url);notify('Link kopyalandı');}}catch(error){notify('Paylaşım iptal edildi');}});
     return item;
   }
-  function activate(item){document.querySelectorAll('.item iframe').forEach(function(frame){if(frame.closest('.item')===item){if(!frame.src){frame.src=userStartedPlayback?frame.dataset.autoplaySrc:frame.dataset.src;}}else if(frame.src){frame.removeAttribute('src');}});}
-  document.addEventListener('pointerdown',function(){userStartedPlayback=true;},{once:true});
-  document.addEventListener('keydown',function(){userStartedPlayback=true;},{once:true});
+  function activate(item){document.querySelectorAll('.item iframe').forEach(function(frame){if(frame.closest('.item')===item){if(!frame.src){frame.src=soundPreferred?frame.dataset.autoplaySrc:frame.dataset.src;if(soundPreferred){frame.addEventListener('load',function(){playerCommand(frame,'unMute');playerCommand(frame,'setVolume',[100]);playerCommand(frame,'playVideo');},{once:true});}}}else if(frame.src){frame.removeAttribute('src');}});}
+  function preferSound(){soundPreferred=true;}
+  feed.addEventListener('pointerdown',preferSound,{passive:true});
+  feed.addEventListener('touchstart',preferSound,{passive:true});
+  feed.addEventListener('scroll',preferSound,{passive:true});
+  document.addEventListener('keydown',preferSound,{once:true});
   function showError(){feed.replaceChildren();const wrap=document.createElement('div');wrap.className='status';const card=document.createElement('div');card.className='status-card';text(card,'strong','Shorts akışı şu anda yüklenemedi.');text(card,'p','Videoları YouTube kanalımızdan izleyebilirsiniz.');const link=document.createElement('a');link.href='https://www.youtube.com/@NartanesiHaber/shorts';link.target='_blank';link.rel='noopener';link.textContent='YouTube Shorts';card.appendChild(link);wrap.appendChild(card);feed.appendChild(wrap);}
   async function loadFeed(){
     try{
@@ -65,7 +96,9 @@ html,body{margin:0;height:100%;overflow:hidden;background:#0f0f0f;color:#fff;fon
       const observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting&&entry.intersectionRatio>=0.65){activate(entry.target);const url=new URL(location.href);url.searchParams.set('v',entry.target.dataset.id);history.replaceState(null,'',url.pathname+url.search);}});},{threshold:[0.65]});items.forEach(function(item){observer.observe(item);});
     }catch(error){showError();}
   }
-  document.getElementById('comment-close').addEventListener('click',function(){panel.style.display='none';});
+  document.getElementById('comment-close').addEventListener('click',closeComments);
+  backdrop.addEventListener('click',closeComments);
+  document.addEventListener('keydown',function(event){if(event.key==='Escape'&&panel.classList.contains('is-open')){closeComments();}});
   form.addEventListener('submit',function(event){event.preventDefault();const value=input.value.trim();if(!value||!currentId){return;}const rows=storedComments();rows.push(value);localStorage.setItem(key(currentId,'comments'),JSON.stringify(rows.slice(-50)));input.value='';renderComments();});
   loadFeed();
 })();
