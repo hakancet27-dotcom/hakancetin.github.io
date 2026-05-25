@@ -1,0 +1,30 @@
+name: Mobile Home Assets Once
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/mobile-home-assets-once.yml']
+permissions:
+  contents: write
+jobs:
+  edit-page:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('haber/index.html')
+          s = p.read_text(encoding='utf-8')
+          if '/assets/css/mobile-home-ux.css' not in s:
+              s = s.replace('</head>', '<link rel="stylesheet" href="/assets/css/mobile-home-ux.css?v=20260525c">\n</head>', 1)
+          if '/assets/js/mobile-home-ux.js' not in s:
+              s = s.replace('</body>', '<script defer src="/assets/js/mobile-home-ux.js?v=20260525c"></script>\n</body>', 1)
+          s = s.replace('      initMarketScroll();', '      /* mobile market auto-scroll removed */')
+          p.write_text(s, encoding='utf-8')
+          PY
+          git config user.name "Mobile Home Fix"
+          git config user.email "mobile-home-fix@users.noreply.github.com"
+          git add haber/index.html
+          git diff --cached --quiet || git commit -m "Attach compact mobile homepage layout"
+          git push
