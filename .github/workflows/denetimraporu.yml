@@ -1,4 +1,7 @@
-name: denitimraporu
+name: denetimraporu
+
+# Sadece denetim raporu üretir.
+# Site dosyalarını değiştirmez, commit atmaz, push yapmaz; raporu artifact ve step summary olarak saklar.
 
 on:
   workflow_dispatch:
@@ -23,7 +26,15 @@ jobs:
       - name: Run site quality audit
         run: python tools/site_quality_audit.py
 
+      - name: Write audit summary
+        if: always()
+        run: |
+          if [ -f reports/site-quality-audit.md ]; then
+            cat reports/site-quality-audit.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
       - name: Upload audit reports
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: denetimraporu
