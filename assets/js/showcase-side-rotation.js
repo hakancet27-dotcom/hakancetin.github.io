@@ -70,7 +70,7 @@
     if (reducedMotion || pageCount <= 1 || paused) return;
     timer = window.setInterval(function () {
       showPage(page + 1);
-    }, 10000);
+    }, 4000);
   }
 
   function refresh() {
