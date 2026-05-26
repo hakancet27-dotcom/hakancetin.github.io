@@ -1,0 +1,58 @@
+{
+  "title": "Bakan Çiftçi'den Gülistan Doku Soruşturması Açıklaması",
+  "meta_title": "Gülistan Doku Soruşturması - Umut Altaş Gözaltına Alındı",
+  "meta_description": "İçişleri Bakanı Mustafa Çiftçi, Gülistan Doku soruşturmasının firari şüphelisi Umut Altaş'ın gözaltına alınmasına ilişkin açıklama yaptı.",
+  "discover_titles": [
+    "Gülistan Doku Soruşturması",
+    "Umut Altaş Gözaltına Alındı",
+    "İçişleri Bakanı Açıklaması"
+  ],
+  "slug": "bakan-ciftcidan-gulistan-doku-sorusturmasi-aciklamasi_20260523",
+  "category": "Gündem",
+  "spot": "İçişleri Bakanı Mustafa Çiftçi, Gülistan Doku soruşturmasının firari şüphelisi olarak ABD'de gözaltına alınan Umut Altaş'ın Türkiye'ye iade sürecinin derhal başlatıldığını bildirdi.",
+  "content_html": "<h2>Gülistan Doku Soruşturması</h2> <p>İçişleri Bakanı Mustafa Çiftçi, Gülistan Doku soruşturmasıyla ilgili önemli bir açıklama yaptı. Bakan Çiftçi, soruşturmanın firari şüphelisi Umut Altaş'ın ABD'de gözaltına alınmasına ilişkin bilgi verdi.</p> <h3>Umut Altaş Gözaltına Alındı</h3> <p>İçişleri Bakanı Mustafa Çiftçi, Umut Altaş'ın gözaltına alınmasının ardından Türkiye'ye iade sürecinin derhal başlatıldığını kaydetti. Bakan Çiftçi, ilgili makamların gerekli işlemleri yürüttüğünü belirtti.</p> <h2>Soruşturma Süreci</h2> <p>Gülistan Doku soruşturması, ilgili makamlar tarafından yürütülen bir dizi soruşturmanın parçası olarak dikkat çekiyor. Soruşturma kapsamında, çeşitli kişiler hakkında işlem yapılmış ve bazıları gözaltına alınmıştı.</p> <h3>İlgili Makamların Açıklamaları</h3> <p>İçişleri Bakanlığı ve ilgili diğer makamlar, soruşturma süreciyle ilgili düzenli olarak açıklamalar yapıyor. Bu açıklamalar, soruşturmanın seyrini ve gelişmeleri kamuoyuna duyuruyor.</p>",
+  "tags": [
+    "Gülistan Doku",
+    "Umut Altaş",
+    "İçişleri Bakanı",
+    "Soruşturma",
+    "Gözaltı"
+  ],
+  "visual_keywords": [
+    "İçişleri Bakanı",
+    "Gülistan Doku",
+    "Umut Altaş"
+  ],
+  "image_prompt": "İçişleri Bakanı Mustafa Çiftçi'nin bir fotoğrafı",
+  "image_alt": "İçişleri Bakanı Mustafa Çiftçi",
+  "fact_guard": {
+    "used_only_source_facts": true,
+    "omitted_missing_reactions": true
+  },
+  "schema_version": 2,
+  "word_count": 134,
+  "date": "23.05.2026",
+  "flag": "TR",
+  "country": "Turkey",
+  "display_country": "Türkiye",
+  "image_url": "https://images.unsplash.com/photo-1758806407977-a37f7f7cb808?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5NTE1NzF8MHwxfHNlYXJjaHwxfHwlQzQlQjAlQzMlQTdpJUM1JTlGbGVyaSUyMEJha2FuJUM0JUIxfGVufDB8MHx8fDE3Nzk1NTU5MzJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+  "summary": "İçişleri Bakanı Mustafa Çiftçi, Gülistan Doku soruşturmasının firari şüphelisi olarak ABD'de gözaltına alınan Umut Altaş'ın Türkiye'ye iade sürecinin derhal başlatıldığını bildirdi.",
+  "language": "Turkish",
+  "url_prefix": "articles",
+  "source_language": "Turkish",
+  "target_language": "Turkish",
+  "quality_score": 70,
+  "quality_status": "blocked_from_index",
+  "review_required": true,
+  "quality_flags": [
+    "very_short_article"
+  ],
+  "quality_notes": [
+    "Metin cok kisa (134 kelime)."
+  ],
+  "quality_word_count": 134,
+  "indexed_on_home": false,
+  "review_status": "pending",
+  "review_source": "quality_gate",
+  "review_run_id": "26338509695"
+}
