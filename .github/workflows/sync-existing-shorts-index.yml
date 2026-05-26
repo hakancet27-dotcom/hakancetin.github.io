@@ -1,5 +1,22 @@
 name: Sync Existing Shorts Index
 
+# YOUTUBE SHORTS İNDEKS SENKRONİZASYONU WORKFLOW'U
+#
+# Ne yapar?
+# - `yt-dlp` ile Nartanesi Haber YouTube kanalındaki Shorts/video listesini okur.
+# - Site içindeki Shorts/video indeks JSON dosyasını günceller.
+# - Değişiklik varsa public site reposuna commit/push yapabilir.
+#
+# Ne zaman çalışır?
+# - Manuel başlatılabilir.
+# - Günlük schedule ile çalışır.
+# - Bu workflow dosyası değişirse push ile de tetiklenebilir.
+#
+# Yetki ve risk notu:
+# - `contents: write` yetkisine sahiptir.
+# - Haber makalesi üretmez; temel etkisi video/shorts indeks dosyasıdır.
+# - YouTube listeleme tarafında hata olursa logdan kontrol edilmelidir.
+
 on:
   workflow_dispatch:
   push:

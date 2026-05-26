@@ -1,11 +1,23 @@
 name: Fill Magazin Teknoloji News
 
+# MAGAZİN VE TEKNOLOJİ EKSİK HABER DOLDURMA WORKFLOW'U
+#
+# Ne yapar?
+# - Google News/RSS benzeri kaynaklardan magazin ve teknoloji haberleri bulmaya çalışır.
+# - Eksik görülen magazin/teknoloji makaleleri için JSON/HTML dosyaları oluşturabilir.
+# - Üretim raporu yazabilir ve değişiklik varsa public site reposuna commit/push yapabilir.
+#
+# Ne zaman çalışır?
+# - Otomatik çalışmaz.
+# - Yalnızca GitHub Actions ekranından bilinçli olarak manuel başlatılmalıdır.
+#
+# Yetki ve risk notu:
+# - `contents: write` yetkisine sahiptir.
+# - Ana üretim akışının yerine kullanılmamalıdır; sadece kontrollü eksik tamamlama
+#   amacıyla düşünülmelidir.
+
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/fill-magazin-teknoloji-news.yml'
 
 permissions:
   contents: write

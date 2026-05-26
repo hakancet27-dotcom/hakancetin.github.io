@@ -1,11 +1,25 @@
 name: Generate Category News 10x10
 
+# KATEGORİ HABERİ ÜRETME WORKFLOW'U
+#
+# Ne yapar?
+# - Public site reposu içinde RSS/YouTube kaynaklarından kategori bazlı haber adayları
+#   üretir.
+# - JSON ve HTML makale dosyaları oluşturabilir.
+# - `newsroom/generated` altında üretim raporu yazabilir.
+# - Değişiklik varsa public site reposuna commit/push yapabilir.
+#
+# Ne zaman çalışır?
+# - Otomatik çalışmaz.
+# - Yalnızca GitHub Actions ekranından bilinçli olarak manuel başlatılmalıdır.
+#
+# Yetki ve risk notu:
+# - `contents: write` yetkisine sahiptir.
+# - Ana haber üretimi normalde haber-botu reposundaki ana pipeline üzerinden
+#   yürütülmelidir; bu workflow geçici/kontrollü kategori tamamlama içindir.
+
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/generate-category-news-10x10.yml'
 
 permissions:
   contents: write

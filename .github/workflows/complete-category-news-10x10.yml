@@ -1,11 +1,24 @@
 name: Complete Category News 10x10
 
+# EKSİK KATEGORİ HABERLERİNİ TAMAMLAMA WORKFLOW'U
+#
+# Ne yapar?
+# - Public site içinde bazı kategorilerde hedef haber sayısını tamamlamaya çalışır.
+# - RSS kaynaklarından haber bilgisi alıp eksik kategori makaleleri oluşturabilir.
+# - JSON/HTML haber dosyaları ve üretim raporu yazabilir.
+# - Değişiklik varsa public site reposuna commit/push yapabilir.
+#
+# Ne zaman çalışır?
+# - Otomatik çalışmaz.
+# - Yalnızca GitHub Actions ekranından bilinçli olarak manuel başlatılmalıdır.
+#
+# Yetki ve risk notu:
+# - `contents: write` yetkisine sahiptir.
+# - Geniş arşive dokunma riski nedeniyle çalıştırmadan önce hangi kategori eksiğinin
+#   kapatılacağı net olmalıdır.
+
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/complete-category-news-10x10.yml'
 
 permissions:
   contents: write
