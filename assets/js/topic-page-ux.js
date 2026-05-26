@@ -28,7 +28,7 @@
     },
     'dunya': {
       label: 'Dünya',
-      heading: 'Türkiye ve Dünya Haberleri',
+      heading: 'Dünya Haberleri',
       note: 'Dünya kategorisindeki güncel haberler gösteriliyor.',
       title: 'Dünya Haberleri | hakancetin.com.tr'
     },
@@ -57,6 +57,11 @@
       title: 'Sağlık Haberleri | hakancetin.com.tr'
     }
   };
+
+  function selectedTopic() {
+    var topic = new URLSearchParams(window.location.search).get('kategori') || 'son-dakika';
+    return topics[topic] ? topic : 'son-dakika';
+  }
 
   function normalize(value) {
     return (value || '')
@@ -119,22 +124,159 @@
     });
   }
 
+  function makeElement(tag, className, text) {
+    var node = document.createElement(tag);
+    if (className) node.className = className;
+    if (typeof text === 'string') node.textContent = text;
+    return node;
+  }
+
+  function buildHeroFromFeedCard(source, topic) {
+    var sourceLink = source.querySelector('.card-title a[href], .card-image-link[href]');
+    var sourceTitle = source.querySelector('.card-title');
+    if (!sourceLink || !sourceTitle) return null;
+
+    var title = sourceTitle.textContent.trim();
+    var slide = makeElement('a', 'headline-slide headline-card topic-card is-category-promoted-hero');
+    slide.href = sourceLink.getAttribute('href');
+    slide.dataset.topic = topic;
+    slide.setAttribute('aria-label', title);
+
+    var sourceImage = source.querySelector('.card-image img');
+    var media;
+    if (sourceImage && sourceImage.getAttribute('src')) {
+      media = makeElement('div', 'headline-image');
+      var image = document.createElement('img');
+      image.src = sourceImage.getAttribute('src');
+      image.alt = sourceImage.getAttribute('alt') || title;
+      image.loading = 'eager';
+      image.setAttribute('fetchpriority', 'high');
+      image.width = 1080;
+      image.height = 720;
+      media.appendChild(image);
+    } else {
+      media = makeElement('div', 'headline-placeholder');
+      media.setAttribute('aria-hidden', 'true');
+      media.appendChild(makeElement('span', '', topics[topic].label));
+    }
+
+    var content = makeElement('div', 'headline-content');
+    var meta = makeElement('div', 'headline-meta');
+    meta.appendChild(makeElement('span', 'headline-tag', 'Öne Çıkan'));
+    meta.appendChild(makeElement('span', 'headline-topic', topics[topic].label));
+    content.appendChild(meta);
+    content.appendChild(makeElement('h3', 'headline-title', title));
+
+    var sourceDate = source.querySelector('.card-date');
+    if (sourceDate) {
+      var date = makeElement('time', 'headline-date', sourceDate.textContent.trim());
+      if (sourceDate.getAttribute('datetime')) date.setAttribute('datetime', sourceDate.getAttribute('datetime'));
+      content.appendChild(date);
+    }
+
+    slide.appendChild(media);
+    slide.appendChild(content);
+    return slide;
+  }
+
+  function buildEmptyHero(topic) {
+    var slide = makeElement('div', 'headline-slide headline-card topic-card is-category-empty-hero');
+    slide.dataset.topic = topic;
+    slide.dataset.nonNews = 'true';
+    slide.setAttribute('role', 'status');
+    slide.setAttribute('aria-label', topics[topic].label + ' kategorisinde henüz manşet bulunmuyor');
+
+    var media = makeElement('div', 'headline-placeholder');
+    media.setAttribute('aria-hidden', 'true');
+    media.appendChild(makeElement('span', '', topics[topic].label));
+
+    var content = makeElement('div', 'headline-content');
+    var meta = makeElement('div', 'headline-meta');
+    meta.appendChild(makeElement('span', 'headline-tag', 'Kategori'));
+    meta.appendChild(makeElement('span', 'headline-topic', topics[topic].label));
+    content.appendChild(meta);
+    content.appendChild(makeElement('h3', 'headline-title', topics[topic].label + ' kategorisinde yeni manşet bekleniyor'));
+    content.appendChild(makeElement('p', 'headline-date', 'Yeni haber yayınlandığında burada görünecek.'));
+
+    slide.appendChild(media);
+    slide.appendChild(content);
+    return slide;
+  }
+
+  function ensureCategoryHero() {
+    var topic = selectedTopic();
+    if (topic === 'son-dakika') return;
+
+    var slider = document.querySelector('.headline-slider');
+    if (!slider || slider.querySelector('.headline-slide[data-topic="' + topic + '"]')) return;
+
+    var source = document.querySelector('.news-card.topic-card[data-topic="' + topic + '"]');
+    var slide = source ? buildHeroFromFeedCard(source, topic) : buildEmptyHero(topic);
+    if (!slide) return;
+
+    var controls = slider.querySelector('.slider-controls');
+    slider.insertBefore(slide, controls || null);
+    if (source) source.remove();
+  }
+
+  function activateCategoryHero() {
+    var topic = selectedTopic();
+    if (topic === 'son-dakika') return;
+    var slider = document.querySelector('.headline-slider');
+    if (!slider) return;
+    var selected = slider.querySelector('.headline-slide[data-topic="' + topic + '"]:not([hidden])');
+    if (!selected) return;
+    slider.querySelectorAll('.headline-slide').forEach(function (slide) {
+      slide.classList.remove('is-active');
+    });
+    selected.classList.add('is-active');
+    slider.classList.toggle('has-image-active', Boolean(selected.querySelector('.headline-image img')));
+    var controls = slider.querySelector('.slider-controls');
+    if (controls) controls.hidden = true;
+  }
+
+  function installAccurateCount() {
+    if (typeof window.countCards !== 'function') return;
+    window.countCards = function () {
+      var pairs = [
+        ['count-turkey', '#turkiye .topic-card, #grid-turkey .topic-card'],
+        ['count-usa', '#grid-usa .news-card'],
+        ['count-germany', '#grid-germany .news-card']
+      ];
+      pairs.forEach(function (pair) {
+        var node = document.getElementById(pair[0]);
+        if (!node) return;
+        var visibleCards = Array.prototype.slice.call(document.querySelectorAll(pair[1])).filter(function (card) {
+          return card.dataset.filteredOut !== 'true' && card.dataset.nonNews !== 'true';
+        });
+        node.textContent = visibleCards.length;
+      });
+    };
+  }
+
   function applyCategoryHeading() {
-    var selected = new URLSearchParams(window.location.search).get('kategori') || 'son-dakika';
-    var topic = topics[selected] || topics['son-dakika'];
+    var topic = topics[selectedTopic()];
     var heading = document.getElementById('turkiye-title');
     var note = document.querySelector('.showcase-note');
+    var isEmpty = Boolean(document.querySelector('.is-category-empty-hero[data-topic="' + selectedTopic() + '"]'));
 
     if (heading) heading.textContent = topic.heading;
-    if (note) note.textContent = topic.note;
+    if (note) {
+      note.textContent = isEmpty
+        ? topic.label + ' kategorisinde henüz yayınlanmış manşet bulunmuyor.'
+        : topic.note;
+    }
     document.title = topic.title;
   }
 
   function refreshTopicDisplay() {
     normalizeCategoryLinks();
     repairClearCategoryErrors();
+    ensureCategoryHero();
+    installAccurateCount();
     applyCategoryHeading();
     if (typeof window.applyTopicFilter === 'function') window.applyTopicFilter();
+    activateCategoryHero();
     if (typeof window.countCards === 'function') window.countCards();
     if (typeof window.refreshSideHeadlineRotation === 'function') window.refreshSideHeadlineRotation();
   }
