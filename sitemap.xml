@@ -55,13 +55,13 @@
     <!-- SITEMAP_ARTICLES_START -->
     <url>
         <loc>https://hakancetin.com.tr/news/</loc>
-        <lastmod>2026-05-26</lastmod>
+        <lastmod>2026-05-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://hakancetin.com.tr/nachrichten/</loc>
-        <lastmod>2026-05-26</lastmod>
+        <lastmod>2026-05-27</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
