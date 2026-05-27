@@ -8,8 +8,8 @@ from urllib.parse import quote_plus
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PENDING_DIR = ROOT / "review" / "pending"
-PUBLISHED_REVIEW_DIR = ROOT / "review" / "published"
+PENDING_DIR = ROOT / "newsroom" / "review" / "pending"
+PUBLISHED_REVIEW_DIR = ROOT / "newsroom" / "review" / "published"
 SITE_URL = "https://hakancetin.com.tr"
 
 TARGETS = {
@@ -208,7 +208,8 @@ def update_index(data, target):
 
 def publish_one(json_path):
     data = json.loads(json_path.read_text(encoding="utf-8-sig"))
-    if clean(data.get("review_status")).lower() != "approved":
+    status = clean(data.get("review_status")).lower()
+    if status not in {"approved", "approved_to_publish"}:
         return False
     slug = clean(data.get("slug"))
     url_prefix = clean(data.get("url_prefix") or "articles")
