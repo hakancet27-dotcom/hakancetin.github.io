@@ -34,6 +34,15 @@
     });
   }
 
+  function hideMobileStatus() {
+    if (!mobileMarket) return;
+    var status = mobileMarket.querySelector('[data-market-status], .market-status');
+    if (!status) return;
+    status.hidden = true;
+    status.style.display = 'none';
+    status.setAttribute('aria-hidden', 'true');
+  }
+
   function fixWeatherLinks() {
     var list = document.getElementById('weather-list');
     if (!list) return;
@@ -77,6 +86,7 @@
     if (media.addEventListener) media.addEventListener('change', placeMarket);
   } else {
     document.body.classList.add('mobile-home-static-ready');
+    hideMobileStatus();
     function syncValues() {
       keys.forEach(function (key) {
         var sourceItem = document.getElementById('market-' + key + '-item');
@@ -89,6 +99,7 @@
         if (sourceValue && targetValue) targetValue.textContent = sourceValue.textContent;
         if (sourceChange && targetChange) targetChange.textContent = sourceChange.textContent;
       });
+      hideMobileStatus();
       makeRatesClickable(mobileMarket);
     }
     syncValues();
