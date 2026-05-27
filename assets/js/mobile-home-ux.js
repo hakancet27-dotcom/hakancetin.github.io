@@ -4,22 +4,22 @@
   var desktopMarket = document.querySelector('header .desktop-market-strip, header .market-strip:not(.mobile-market-strip)');
   var mobileMarket = document.querySelector('.mobile-market-strip');
   var keys = ['usd', 'eur', 'gbp', 'btc'];
+  var detailKeys = ['usd', 'eur', 'gbp'];
   var links = {
-    usd: '/weather.html?market=USD',
-    eur: '/weather.html?market=EUR',
-    gbp: '/weather.html?market=GBP',
-    btc: '/weather.html?market=BTC'
+    usd: '/weather.html?rate=USD',
+    eur: '/weather.html?rate=EUR',
+    gbp: '/weather.html?rate=GBP'
   };
 
-  function makeMarketClickable(root) {
+  function makeRatesClickable(root) {
     if (!root) return;
-    keys.forEach(function (key) {
+    detailKeys.forEach(function (key) {
       var item = root.querySelector('[data-market-item="' + key + '"], #market-' + key + '-item');
       if (!item || item.dataset.detailReady) return;
       item.dataset.detailReady = 'true';
       item.setAttribute('role', 'link');
       item.setAttribute('tabindex', '0');
-      item.setAttribute('aria-label', key.toUpperCase() + ' piyasa detayı');
+      item.setAttribute('aria-label', key.toUpperCase() + ' kur detayını aç');
       item.addEventListener('click', function () { location.href = links[key]; });
       item.addEventListener('keydown', function (event) {
         if (event.key === 'Enter' || event.key === ' ') {
@@ -50,7 +50,7 @@
     return;
   }
 
-  makeMarketClickable(desktopMarket);
+  makeRatesClickable(desktopMarket);
 
   if (!mobileMarket) {
     var media = window.matchMedia('(max-width: 640px)');
@@ -85,7 +85,7 @@
         if (sourceValue && targetValue) targetValue.textContent = sourceValue.textContent;
         if (sourceChange && targetChange) targetChange.textContent = sourceChange.textContent;
       });
-      makeMarketClickable(mobileMarket);
+      makeRatesClickable(mobileMarket);
     }
     syncValues();
     if ('MutationObserver' in window) {
