@@ -1,5 +1,5 @@
 {
-  "review_status": "approved_to_publish",
+  "review_status": "published",
   "title": "US Launches New Attacks on Iran Amid Ongoing Conflict Talks",
   "slug": "us-strikes-iran-amid-ongoing-conflict-talks_20260526",
   "date": "26.05.2026",
@@ -11,7 +11,7 @@
   "meta_title": "US Strikes Iran - Latest Updates on Ongoing Conflict",
   "meta_description": "The US military has launched new attacks on Iran while talks to end the conflict are ongoing. Get the latest updates on the situation.",
   "quality_score": 66,
-  "quality_status": "blocked_from_index",
+  "quality_status": "approved",
   "flag": "US",
   "quality_flags": [
     "short_article",
@@ -22,7 +22,7 @@
     "Kategori standart haber kategorileriyle uyumlu degil: US News."
   ],
   "quality_word_count": 229,
-  "indexed_on_home": false,
+  "indexed_on_home": true,
   "display_country": "United States",
   "country": "USA",
   "image_alt": "US and Iran Conflict",
@@ -54,7 +54,7 @@
   "url_prefix": "news/articles",
   "source_language": "English",
   "target_language": "English",
-  "review_required": true,
+  "review_required": false,
   "review_source": "quality_gate",
   "review_run_id": "26467269233"
 }
