@@ -1,5 +1,5 @@
 {
-  "review_status": "approved_to_publish",
+  "review_status": "published",
   "title": "Rusya'dan ABD'ye 'diplomatik misyon çalışanlarını Kiev'den tahliye etme' tavsiyesi",
   "slug": "rusya-abd-ye-kiev-den-tahliye-tavsiyesi_20260526",
   "date": "26.05.2026",
@@ -11,7 +11,7 @@
   "meta_title": "Rusya ABD'ye Kiev'den Tahliye Tavsiyesi",
   "meta_description": "Rusya Dışişleri Bakanı Sergey Lavrov, ABD'li mevkidaşı Marco Rubio'ya diplomatik misyon çalışanlarını Ukrayna'nın başkenti Kiev'den tahliye etmeyi tavsiye etti.",
   "quality_score": 65,
-  "quality_status": "blocked_from_index",
+  "quality_status": "approved",
   "flag": "TR",
   "quality_flags": [
     "very_short_article",
@@ -22,7 +22,7 @@
     "Meta title ideal aralikta degil."
   ],
   "quality_word_count": 166,
-  "indexed_on_home": false,
+  "indexed_on_home": true,
   "display_country": "Türkiye",
   "country": "Turkey",
   "image_alt": "Rusya Dışişleri Bakanı Sergey Lavrov ve ABD'li mevkidaşı Marco Rubio",
@@ -55,7 +55,7 @@
   "url_prefix": "articles",
   "source_language": "Turkish",
   "target_language": "Turkish",
-  "review_required": true,
+  "review_required": false,
   "review_source": "quality_gate",
   "review_run_id": "26429591240"
 }
