@@ -1,5 +1,5 @@
 {
-  "review_status": "approved_to_publish",
+  "review_status": "published",
   "title": "Bosna Savaşı'ndaki Kapiya Katliamı'nın 31. Yılında Kurbanlar Anıldı",
   "slug": "bosna-savasindaki-kapiya-katliami-nin-31-yilinda-kurbanlar-anildi_20260525",
   "date": "25.05.2026",
@@ -11,11 +11,11 @@
   "meta_title": "Bosna Savaşı'ndaki Kapiya Katliamı'nın 31. Yılında...",
   "meta_description": "Bosna Hersek'teki savaşta ülkenin kuzeydoğusundaki Tuzla kentinde, 25 Mayıs 1995'te Sırplar tarafından yapılan katliamda hayatını kaybeden 71 sivili anma...",
   "quality_score": 70,
-  "quality_status": "blocked_from_index",
+  "quality_status": "approved",
   "quality_notes": [
     "Metin cok kisa (125 kelime)."
   ],
-  "indexed_on_home": false,
+  "indexed_on_home": true,
   "quality_word_count": 125,
   "quality_flags": [
     "very_short_article"
@@ -51,7 +51,7 @@
   "url_prefix": "articles",
   "source_language": "Turkish",
   "target_language": "Turkish",
-  "review_required": true,
+  "review_required": false,
   "review_source": "quality_gate",
   "review_run_id": "26412973085"
 }

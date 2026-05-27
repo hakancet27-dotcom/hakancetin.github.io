@@ -1,5 +1,5 @@
 {
-  "review_status": "approved_to_publish",
+  "review_status": "published",
   "title": "Schwere russische Luftangriffe auf die ukrainische Hauptstadt",
   "slug": "schwere-russische-luftangriffe-auf-kiew_20260524",
   "date": "24.05.2026",
@@ -11,11 +11,11 @@
   "meta_title": "Luftangriffe auf Kiew: Schwere Angriffe der russischen...",
   "meta_description": "Kurz nach der Warnung des ukrainischen Präsidenten Selenskyj vor einem schweren russischen Luftangriff ist Kiew von heftigem Beschuss erschüttert worden.",
   "quality_score": 70,
-  "quality_status": "blocked_from_index",
+  "quality_status": "approved",
   "quality_notes": [
     "Metin cok kisa (97 kelime)."
   ],
-  "indexed_on_home": false,
+  "indexed_on_home": true,
   "quality_word_count": 97,
   "quality_flags": [
     "very_short_article"
@@ -52,7 +52,7 @@
   "url_prefix": "nachrichten/artikel",
   "source_language": "German",
   "target_language": "German",
-  "review_required": true,
+  "review_required": false,
   "review_source": "quality_gate",
   "review_run_id": "26351195024"
 }
