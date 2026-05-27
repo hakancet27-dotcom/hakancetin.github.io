@@ -5,11 +5,15 @@
   var mobileMarket = document.querySelector('.mobile-market-strip');
   var keys = ['usd', 'eur', 'gbp', 'btc'];
   var detailKeys = ['usd', 'eur', 'gbp'];
-  var links = {
-    usd: '/weather.html?rate=USD',
-    eur: '/weather.html?rate=EUR',
-    gbp: '/weather.html?rate=GBP'
-  };
+
+  function rateDetailHref(root, key) {
+    var item = root.querySelector('[data-market-item="' + key + '"], #market-' + key + '-item');
+    var value = item && item.querySelector('.market-value');
+    var change = item && item.querySelector('.market-change');
+    return '/weather.html?rate=' + key.toUpperCase()
+      + '&value=' + encodeURIComponent(value ? value.textContent.trim() : '')
+      + '&change=' + encodeURIComponent(change ? change.textContent.trim() : '');
+  }
 
   function makeRatesClickable(root) {
     if (!root) return;
@@ -20,11 +24,11 @@
       item.setAttribute('role', 'link');
       item.setAttribute('tabindex', '0');
       item.setAttribute('aria-label', key.toUpperCase() + ' kur detayını aç');
-      item.addEventListener('click', function () { location.href = links[key]; });
+      item.addEventListener('click', function () { location.href = rateDetailHref(root, key); });
       item.addEventListener('keydown', function (event) {
         if (event.key === 'Enter' || event.key === ' ') {
           event.preventDefault();
-          location.href = links[key];
+          location.href = rateDetailHref(root, key);
         }
       });
     });
