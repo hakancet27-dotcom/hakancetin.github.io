@@ -1,12 +1,20 @@
 {
-  "updated_at": "2026-05-26T02:44:19.532632Z",
+  "updated_at": "2026-05-27T02:55:19.600801Z",
   "channel": "https://www.youtube.com/@NartanesiHaber/shorts",
   "source_urls": [
     "https://www.youtube.com/@NartanesiHaber/shorts",
     "https://www.youtube.com/@NartanesiHaber/videos"
   ],
-  "count": 194,
+  "count": 195,
   "videos": [
+    {
+      "video_id": "WN1Phu6PQys",
+      "title": "Özgür Özel’den Kılıçdaroğlu’na İzmir’de Kritik Mesaj!",
+      "description": "Nartanesi Haber Shorts içeriği.",
+      "shorts_url": "https://www.youtube.com/shorts/WN1Phu6PQys",
+      "embed_url": "https://www.youtube.com/embed/WN1Phu6PQys",
+      "news_url": "/haber/"
+    },
     {
       "video_id": "o8I-vCohPng",
       "title": "Özel Kendini Makam Odasına Kilitledi: “Buradan Çıkmayacağız, Sonuna Kadar Direneceğiz!”",
