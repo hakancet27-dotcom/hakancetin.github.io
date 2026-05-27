@@ -37,6 +37,7 @@
     .rate-grid .max { color:var(--dark); font-size:1.08rem; }
     .notice { margin:16px 0 0; color:var(--muted); font-size:.87rem; line-height:1.55; }
     .error { color:#b42318; font-weight:800; }
+    [hidden] { display:none !important; }
     @media (max-width:800px){ .current{grid-template-columns:1fr;} .grid{grid-template-columns:repeat(2,minmax(0,1fr));} }
     @media (max-width:520px){ .grid{grid-template-columns:1fr;} .hero{padding:20px;} }
   </style>
@@ -86,20 +87,17 @@
       document.getElementById('hero').classList.add('rate-mode');
       buttons.hidden = true;
       document.getElementById('title').textContent = rates[rate] + ' Kur Detayı';
-      document.getElementById('updated').textContent = 'Ana sayfadaki son görüntülenen piyasa verisi';
+      document.getElementById('updated').hidden = true;
       const mainValue = document.getElementById('current-temp');
       mainValue.classList.add('rate-mode-value');
       mainValue.textContent = value;
-      document.getElementById('current-summary').textContent = rates[rate] + ' için görüntülenen son değer.';
-      document.getElementById('current-extra').innerHTML = '<strong>Günlük değişim</strong><br>' + esc(change) + '<br><strong>Veri durumu</strong><br>Gecikmeli piyasa bilgisi';
+      document.getElementById('current-summary').textContent = rates[rate];
+      document.getElementById('current-extra').innerHTML = '<strong>Günlük değişim</strong><br>' + esc(change);
       const detail = document.getElementById('detail-grid');
       detail.classList.add('rate-grid');
       detail.innerHTML = '<div class="day"><strong>Kur</strong><div class="max">' + esc(rates[rate]) + '</div></div>' +
         '<div class="day"><strong>Değer</strong><div class="max">' + esc(value) + '</div></div>' +
         '<div class="day"><strong>Değişim</strong><div class="max">' + esc(change) + '</div></div>';
-      const note = document.getElementById('detail-note');
-      note.hidden = false;
-      note.textContent = 'Veriler bilgilendirme amaçlıdır; yatırım tavsiyesi değildir. Güncel değer için haber ana sayfasındaki piyasa şeridi yenilenir.';
     }
     async function loadWeather(){
       const city = cities[selected];
