@@ -251,10 +251,10 @@ def publish_one(json_path):
     target_json.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
 
     pending_html = json_path.with_suffix(".html")
-    if pending_html.exists():
-        shutil.copy2(pending_html, target_html)
-    else:
-        target_html.write_text(render_article_html(data, target), encoding="utf-8")
+    # CMS tarafindan gelen eski HTML dosyasini birebir kopyalamak yerine
+    # her zaman guncel article sablonunu yeniden uretiriz.
+    # Boylece yeni gorsel/canvas/CSS duzenleri tum yeni yayinlara tutarli uygulanir.
+    target_html.write_text(render_article_html(data, target), encoding="utf-8")
     pretty_dir = target_dir / slug
     pretty_dir.mkdir(parents=True, exist_ok=True)
     shutil.copy2(target_html, pretty_dir / "index.html")
