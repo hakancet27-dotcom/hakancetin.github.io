@@ -57,7 +57,7 @@ collections:
     extension: json
     format: json
     identifier_field: title
-    summary: "{{review_status}} | {{quality_score}} | {{title}}"
+    summary: "Durum: {{review_status}} | Skor: {{quality_score}} | Risk: {{quality_status}} | Bayrak: {{flag}} | {{title}}"
     fields:
       - { label: Durum, name: review_status, widget: select, default: pending, options: [{ label: Beklemede, value: pending }, { label: Onayla ve Yayınla, value: approved_to_publish }, { label: Reddedildi, value: rejected }, { label: Yayınlandı, value: published }] }
       - { label: Başlık, name: title, widget: string }
@@ -70,6 +70,9 @@ collections:
       - { label: Meta Açıklama, name: meta_description, widget: text, required: false }
       - { label: Quality Score, name: quality_score, widget: number, required: false, readonly: true }
       - { label: Quality Status, name: quality_status, widget: string, required: false, readonly: true }
+      - { label: Risk Bayragi, name: flag, widget: string, required: false, readonly: true }
+      - { label: Quality Flags, name: quality_flags, widget: list, required: false, readonly: true, field: { label: Flag, widget: string } }
+      - { label: Kelime Sayisi, name: quality_word_count, widget: number, required: false, readonly: true }
       - { label: Notlar, name: quality_notes, widget: list, required: false, readonly: true, field: { label: Not, widget: string } }
       - { label: Sonuç, name: processor_result, widget: text, required: false, readonly: true }
 
@@ -171,3 +174,4 @@ collections:
       - { label: Alt Metin, name: image_alt, widget: string, required: false }
       - { label: Çıktılar, name: outputs, widget: list, required: false, readonly: true, field: { label: Dosya, widget: string } }
       - { label: Sonuç, name: result, widget: text, required: false, readonly: true }
+

@@ -21,7 +21,7 @@ collections:
     extension: json
     format: json
     identifier_field: title
-    summary: "{{review_status}} | {{quality_score}} | {{category}} | {{title}}"
+    summary: "Durum: {{review_status}} | Skor: {{quality_score}} | Risk: {{quality_status}} | Bayrak: {{flag}} | {{category}} | {{title}}"
     fields:
       - { label: Durum, name: review_status, widget: select, default: pending, options: [{ label: Beklemede, value: pending }, { label: Onayla ve Yayinla, value: approved_to_publish }, { label: Reddedildi, value: rejected }, { label: Yayinlandi, value: published }] }
       - { label: Baslik, name: title, widget: string }
@@ -36,7 +36,10 @@ collections:
       - { label: Meta Description, name: meta_description, widget: text, required: false }
       - { label: Quality Score, name: quality_score, widget: number, required: false, readonly: true }
       - { label: Quality Status, name: quality_status, widget: string, required: false, readonly: true }
+      - { label: Risk Bayragi, name: flag, widget: string, required: false, readonly: true }
+      - { label: Quality Flags, name: quality_flags, widget: list, required: false, readonly: true, field: { label: Flag, widget: string } }
       - { label: Quality Notes, name: quality_notes, widget: list, required: false, readonly: true, field: { label: Not, widget: string } }
+      - { label: Kelime Sayisi, name: quality_word_count, widget: number, required: false, readonly: true }
       - { label: Islem Sonucu, name: processor_result, widget: text, required: false, readonly: true }
 
   - name: published_tr
@@ -66,6 +69,8 @@ collections:
       - { label: Etiketler, name: tags, widget: list, required: false, field: { label: Etiket, widget: string } }
       - { label: Quality Score, name: quality_score, widget: number, required: false, readonly: true }
       - { label: Quality Status, name: quality_status, widget: string, required: false, readonly: true }
+      - { label: Risk Bayragi, name: flag, widget: string, required: false, readonly: true }
+      - { label: Quality Flags, name: quality_flags, widget: list, required: false, readonly: true, field: { label: Flag, widget: string } }
       - { label: Indexed On Home, name: indexed_on_home, widget: boolean, required: false, readonly: true }
 
   - name: published_en
