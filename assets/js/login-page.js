@@ -14,7 +14,15 @@
     const params=new URLSearchParams(window.location.search);
     return params.get('reset')==='1' || window.location.hash.indexOf('type=recovery')!==-1;
   }
+  function ensureResetStyles(){
+    if(document.getElementById('member-reset-inline-style'))return;
+    const style=document.createElement('style');
+    style.id='member-reset-inline-style';
+    style.textContent='.member-hidden{display:none!important}.member-link-btn{display:inline-flex;align-items:center;justify-content:center;border:0;background:transparent;color:#e10600;font:inherit;font-weight:900;text-decoration:underline;cursor:pointer;margin-top:10px;padding:0}.member-link-btn:hover{color:#b42318}';
+    document.head.appendChild(style);
+  }
   function injectPasswordResetUi(){
+    ensureResetStyles();
     const login=document.getElementById('login-form');
     if(!login || document.getElementById('forgot-password-form'))return;
     const toggle=document.createElement('button');
